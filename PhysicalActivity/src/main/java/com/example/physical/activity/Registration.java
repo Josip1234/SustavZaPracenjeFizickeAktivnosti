@@ -16,8 +16,19 @@ private String sifra;
 private String zanimanje;
 public Registration() {
 	id=1;
-	ime="Josip"
+	ime="Josip";
+	prezime="Bošnjak";
+	spol='m';
+	datumr="5.11.1992";
+	drzavar="Švicarska";
+	drzavap="Hrvatska";
+	email="jbosnjak@unipu.hr";
+	sifra="test";
+	zanimanje="student";
 }
+public void register(){
+	System.out.println("Successfull registration");
+};
 
 
 }
