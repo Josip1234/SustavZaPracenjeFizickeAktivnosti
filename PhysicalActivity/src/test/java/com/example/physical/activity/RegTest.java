@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.physical.activity.regist.RegConfig;
+import com.example.physical.activity.regist.Registration;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=RegConfig.class)

@@ -1,0 +1,34 @@
+package com.example.physical.activity.regist;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Registration {
+private int id;
+private String ime;
+private String prezime;
+private char spol;
+private String datumr;
+private String drzavar;
+private String drzavap;
+private String email;
+private String sifra;
+private String zanimanje;
+public Registration() {
+	id=1;
+	ime="Josip";
+	prezime="Bošnjak";
+	spol='m';
+	datumr="5.11.1992";
+	drzavar="Švicarska";
+	drzavap="Hrvatska";
+	email="jbosnjak@unipu.hr";
+	sifra="test";
+	zanimanje="student";
+}
+public void register(){
+	System.out.println("Successfull registration");
+};
+
+
+}
