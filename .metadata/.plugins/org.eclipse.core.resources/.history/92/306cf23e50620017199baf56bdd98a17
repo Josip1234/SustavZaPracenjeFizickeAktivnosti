@@ -1,0 +1,11 @@
+package com.example.physical.activity.login;
+
+public class test {
+
+	public static void main(String[] args) {
+		Registration r = new Registration();
+		Login l = new Login();
+
+	}
+
+}

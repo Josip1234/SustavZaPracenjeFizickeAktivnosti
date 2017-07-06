@@ -15,16 +15,16 @@ private String email;
 private String sifra;
 private String zanimanje;
 public Registration() {
-	id=1;
-	ime="Josip";
-	prezime="Bošnjak";
-	spol='m';
-	datumr="5.11.1992";
-	drzavar="Švicarska";
-	drzavap="Hrvatska";
-	email="jbosnjak@unipu.hr";
-	sifra="test";
-	zanimanje="student";
+	this.id=1;
+	this.ime="Josip";
+	this.prezime="Bošnjak";
+	this.spol='m';
+	this.datumr="5.11.1992";
+	this.drzavar="Švicarska";
+	this.drzavap="Hrvatska";
+	this.email="jbosnjak@unipu.hr";
+	this.sifra="test";
+	this.zanimanje="student";
 }
 public void register(){
 	System.out.println("Successfull registration");
