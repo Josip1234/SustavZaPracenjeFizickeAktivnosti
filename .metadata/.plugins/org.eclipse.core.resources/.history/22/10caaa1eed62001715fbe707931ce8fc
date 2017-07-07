@@ -1,0 +1,12 @@
+package com.example.physical.activity.index;
+
+public class main {
+
+	public static void main(String[] args) {
+	    BMICalculator cal = new BMICalculator(67, 167);
+	    BMIKategorizacija kat=new BMIKategorizacija(cal);
+	    kat.tjelesna_masa();
+	    
+	}
+
+}

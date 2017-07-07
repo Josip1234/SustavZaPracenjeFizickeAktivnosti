@@ -1,0 +1,68 @@
+package com.example.physical.activity.index;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+public class BMIKategorizacija implements ITM {
+private String pothranjenost;
+private String idealna_težina;
+private String prekomjerna_tjelesna_masa;
+private String pretilost;
+private BMICalculator cal;
+
+
+public BMIKategorizacija(String pothranjenost, String idealna_težina, String prekomjerna_tjelesna_masa,
+		String pretilost) {
+	
+	this.pothranjenost = pothranjenost;
+	this.idealna_težina = idealna_težina;
+	this.prekomjerna_tjelesna_masa = prekomjerna_tjelesna_masa;
+	this.pretilost = pretilost;
+}
+
+public String getPothranjenost() {
+	return pothranjenost;
+}
+
+public void setPothranjenost(String pothranjenost) {
+	this.pothranjenost = pothranjenost;
+}
+
+public String getIdealna_težina() {
+	return idealna_težina;
+}
+
+public void setIdealna_težina(String idealna_težina) {
+	this.idealna_težina = idealna_težina;
+}
+
+public String getPrekomjerna_tjelesna_masa() {
+	return prekomjerna_tjelesna_masa;
+}
+
+public void setPrekomjerna_tjelesna_masa(String prekomjerna_tjelesna_masa) {
+	this.prekomjerna_tjelesna_masa = prekomjerna_tjelesna_masa;
+}
+
+public String getPretilost() {
+	return pretilost;
+}
+
+public void setPretilost(String pretilost) {
+	this.pretilost = pretilost;
+}
+
+@Autowired
+public BMIKategorizacija(BMICalculator cal){
+	this.cal=cal;
+}
+
+public void tjelesna_masa(){
+	cal.izracunajBMI(cal.getMasa_u_kg(), cal.getVisina_osobe());
+	
+}
+
+
+
+
+}

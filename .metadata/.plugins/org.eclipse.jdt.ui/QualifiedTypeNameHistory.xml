@@ -6,8 +6,11 @@
 <fullyQualifiedTypeName name="org.springframework.test.context.junit4.SpringJUnit4ClassRunner"/>
 <fullyQualifiedTypeName name="org.springframework.test.context.ContextConfiguration"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.RegTest"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.regist.Registration"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.login.test"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.index.main"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.index.BMIKategorizacija"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.index.BMICalculator"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,12 @@
+package com.example.physical.activity.index;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class BMIKategorizacija implements ITM {
+private String pothranjenost;
+private String idealna_težina;
+private String prekomjerna_tjelesna_masa;
+private String pretilost;
+
+}

@@ -1,0 +1,5 @@
+package com.example.physical.activity.index;
+
+public interface ITM {
+void dohvati_masu();
+}
