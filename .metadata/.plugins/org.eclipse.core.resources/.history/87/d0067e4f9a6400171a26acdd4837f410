@@ -1,0 +1,23 @@
+package com.example.physical.activity.database;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.example.physical.activity.regist.RegConfig;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes=RegConfig.class)
+public class databasetest {
+    @Autowired
+    private Connection cn;
+	@Test
+	public void ConnectionNotNull() {
+		assertNotNull(cn);
+	}
+
+}

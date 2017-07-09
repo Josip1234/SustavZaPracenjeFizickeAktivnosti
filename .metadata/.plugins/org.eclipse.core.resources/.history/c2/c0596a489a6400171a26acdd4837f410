@@ -1,0 +1,6 @@
+package com.example.physical.activity.database;
+
+public interface Conn {
+  void spoji(String host, String user, String pass, String database);
+  String poruka();
+}

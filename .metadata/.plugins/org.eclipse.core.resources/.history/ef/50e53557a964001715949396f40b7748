@@ -1,0 +1,10 @@
+package com.example.physical.activity.database;
+
+public class testbaze {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

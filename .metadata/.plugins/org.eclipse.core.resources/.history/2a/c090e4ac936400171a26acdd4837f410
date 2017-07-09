@@ -1,0 +1,5 @@
+package com.example.physical.activity.database;
+
+public class DatabaseConf {
+
+}

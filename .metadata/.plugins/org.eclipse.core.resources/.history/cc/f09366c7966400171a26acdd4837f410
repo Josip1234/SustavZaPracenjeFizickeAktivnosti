@@ -1,0 +1,34 @@
+package com.example.physical.activity.database;
+import org.springframework.context.annotation.Bean;
+
+public class Connection implements Conn {
+private String host;
+private String user;
+private String pass;
+private String database;
+
+public Connection(){
+	this.host="localhost";
+	this.user="root";
+	this.pass="";
+	this.database="physicalactivity";
+}
+public Connection(String host,String user,String pass,String database){
+	this.host=host;
+	this.user=user;
+	this.pass=pass;
+	this.database=database;
+}
+public void spoji(String host,String user,String pass,String database){
+	
+}
+public String poruka(){
+	return "Uspješno povezanni s bazom";
+}
+
+@Bean(name="Spajanje na bazu")
+public Connection con(){
+	return new Connection(host,user,pass,database);
+}
+
+}

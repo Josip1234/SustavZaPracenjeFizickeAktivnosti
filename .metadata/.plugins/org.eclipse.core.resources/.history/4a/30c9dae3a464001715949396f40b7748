@@ -1,0 +1,19 @@
+package com.example.physical.activity.database;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.springframework.stereotype.Component;
+
+import java.sql.ResultSet;
+@Component("Baza")
+public class PhysicalActivityDatabase {
+/*
+ * Prvo loadati drivere za bazu podataka	
+ */
+public void startDriver(){
+	String driver="org.apache.derby.jdbc.EmbeddedDriver";
+	Class.forName(driver).newInstance();
+}
+}

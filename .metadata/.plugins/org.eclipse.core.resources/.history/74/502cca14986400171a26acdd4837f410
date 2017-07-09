@@ -1,0 +1,16 @@
+package com.example.physical.activity.database;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class databasetest {
+    @Autowired
+    private Connection conn;
+	@Test
+	public void test() {
+		
+	}
+
+}

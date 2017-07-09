@@ -1,0 +1,18 @@
+package com.example.physical.activity.database;
+
+import java.sql.SQLException;
+
+public class testbaze {
+
+	public static void main(String[] args) {
+		PhysicalActivityDatabase baza = new PhysicalActivityDatabase();
+		
+		try {
+			baza.spoji();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
