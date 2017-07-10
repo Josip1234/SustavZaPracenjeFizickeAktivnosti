@@ -3,22 +3,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import java.sql.*;
 import java.sql.ResultSet;
-@Component("Baza")
-public class PhysicalActivityDatabase {
+@Component("Spajanje na bazu")
+public class PhysicalActivityDatabase  {
+	
 	private String ime_baze;
 	private String host;
 	private String user;
 	private String vrsta_baze;
 	
+	
 	public PhysicalActivityDatabase(){
+		
 		this.ime_baze="physicalactivity";
 		this.host="//127.0.0.1/";
 		this.user="root";
 		this.vrsta_baze="jdbc:mysql:";
 	}
+	
+	
 /*
  * Prvo loadati drivere za bazu podataka	
  */
