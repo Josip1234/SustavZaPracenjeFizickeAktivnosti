@@ -1,0 +1,15 @@
+package com.example.physical.activity.regist;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import com.example.physical.activity.RegTest;
+import com.example.physical.activity.database.PhysicalActivityDatabase;
+import com.example.physical.activity.login.Login;
+import com.example.physical.activity.login.test;
+
+@Configuration
+
+public class RegConfig {
+
+}

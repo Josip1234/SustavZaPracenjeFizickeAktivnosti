@@ -4,8 +4,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import com.example.physical.activity.regist.Registration;
+
 import java.sql.*;
 import java.sql.ResultSet;
 @Component("Spajanje na bazu")
@@ -15,7 +19,7 @@ public class PhysicalActivityDatabase  {
 	private String host;
 	private String user;
 	private String vrsta_baze;
-	
+	private Registration reg;
 	
 	public PhysicalActivityDatabase(){
 		
@@ -25,12 +29,31 @@ public class PhysicalActivityDatabase  {
 		this.vrsta_baze="jdbc:mysql:";
 	}
 	
+	@Autowired
+	public PhysicalActivityDatabase(Registration reg){
+
+		this.ime_baze="physicalactivity";
+		this.host="//127.0.0.1/";
+		this.user="root";
+		this.vrsta_baze="jdbc:mysql:";
+		this.reg=reg;
+	}
+	
+	
 	
 /*
  * Prvo loadati drivere za bazu podataka	
  */
 
 
+
+public String getIme_baze() {
+		return ime_baze;
+	}
+
+	public void setIme_baze(String ime_baze) {
+		this.ime_baze = ime_baze;
+	}
 
 /*
  * Nakon loadiranja drivera, možemo napraviti vezu prema bazi

@@ -18,10 +18,13 @@
 <fullyQualifiedTypeName name="java.lang.Class"/>
 <fullyQualifiedTypeName name="org.springframework.test.context.junit4.SpringJUnit4ClassRunner"/>
 <fullyQualifiedTypeName name="org.springframework.test.context.ContextConfiguration"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.login.Login"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
-<fullyQualifiedTypeName name="com.example.physical.activity.database.PhysicalActivityDatabase"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.database.BazaConfig"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.regist.RegConfig"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.regist.Registration"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.database.PhysicalActivityDatabase"/>
 </qualifiedTypeNameHistroy>

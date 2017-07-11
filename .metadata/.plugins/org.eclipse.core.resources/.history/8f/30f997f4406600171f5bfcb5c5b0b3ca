@@ -1,0 +1,57 @@
+package com.example.physical.activity.regist;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import com.example.physical.activity.database.PhysicalActivityDatabase;
+
+
+public class Registration implements registeryourself {
+private int id;
+private String ime;
+private String prezime;
+private char spol;
+private String datumr;
+private String drzavar;
+private String drzavap;
+private String email;
+private String sifra;
+private String zanimanje;
+private PhysicalActivityDatabase db;
+public Registration() {
+	this.id=1;
+	this.ime="Josip";
+	this.prezime="Bošnjak";
+	this.spol='m';
+	this.datumr="5.11.1992";
+	this.drzavar="Švicarska";
+	this.drzavap="Hrvatska";
+	this.email="jbosnjak@unipu.hr";
+	this.sifra="test";
+	this.zanimanje="student";
+}
+public void register(){
+	System.out.println("Successfull registration");
+};
+
+@Autowired
+public Registration(int id,String ime,String prezime,char spol,String datumr,String drzavar,String drzavap,String email,String sifra,String zanimanje,PhysicalActivityDatabase db){
+	this.id=id;
+	this.ime=ime;
+	this.prezime=prezime;
+	this.spol=spol;
+	this.datumr=datumr;
+	this.drzavar=drzavar;
+	this.drzavap=drzavap;
+	this.email=email;
+	this.sifra=sifra;
+	this.zanimanje=zanimanje;
+	this.db=db;
+}
+public void spojise(){
+	db.spoji();
+}
+
+
+}

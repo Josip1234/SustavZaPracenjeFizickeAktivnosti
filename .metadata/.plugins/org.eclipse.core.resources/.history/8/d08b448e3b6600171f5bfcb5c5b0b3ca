@@ -1,0 +1,36 @@
+package com.example.physical.activity.regist;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+
+public class Registration implements registeryourself {
+private int id;
+private String ime;
+private String prezime;
+private char spol;
+private String datumr;
+private String drzavar;
+private String drzavap;
+private String email;
+private String sifra;
+private String zanimanje;
+@Bean(name="defaultni korisnik")
+public Registration() {
+	this.id=1;
+	this.ime="Josip";
+	this.prezime="Bošnjak";
+	this.spol='m';
+	this.datumr="5.11.1992";
+	this.drzavar="Švicarska";
+	this.drzavap="Hrvatska";
+	this.email="jbosnjak@unipu.hr";
+	this.sifra="test";
+	this.zanimanje="student";
+}
+public void register(){
+	System.out.println("Successfull registration");
+};
+
+
+}
