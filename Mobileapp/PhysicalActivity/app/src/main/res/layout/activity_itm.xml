@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activity.physical.example.com.josip.physicalactivity.ITMActivity">
+
+    <TextView
+        android:id="@+id/visina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/visina"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="5dp"
+        tools:text="@string/visina"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/kilaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kg"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="82dp"
+        tools:ignore="MissingConstraints" />
+</android.support.constraint.ConstraintLayout>
