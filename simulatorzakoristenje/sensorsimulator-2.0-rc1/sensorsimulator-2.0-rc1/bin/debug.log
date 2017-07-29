@@ -1,0 +1,3 @@
+[0729/125719.588:ERROR:file_io_win.cc(182)] CreateFile C:\Program Files\Google\Chrome\settings.dat: Access is denied. (0x5)
+[0729/125719.697:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0729/125719.697:ERROR:file_io_win.cc(182)] CreateFile C:\Program Files\Google\Chrome\settings.dat: Access is denied. (0x5)
