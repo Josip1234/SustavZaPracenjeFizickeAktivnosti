@@ -8,6 +8,6 @@ public class PhysicalActivityApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PhysicalActivityApplication.class, args);
-		Registration reg=new Registration();
+		
 	}
 }

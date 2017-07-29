@@ -19,7 +19,8 @@ public class PhysicalActivityDatabase  {
 	private String host;
 	private String user;
 	private String vrsta_baze;
-	private Registration reg;
+	private Registration rg;
+	private String Driver;
 	
 	public PhysicalActivityDatabase(){
 		
@@ -27,23 +28,83 @@ public class PhysicalActivityDatabase  {
 		this.host="//127.0.0.1/";
 		this.user="root";
 		this.vrsta_baze="jdbc:mysql:";
+		this.rg=rg;
+		this.Driver="com.mysql.jdbc.Driver";
 	}
 	
-	@Autowired
-	public PhysicalActivityDatabase(Registration reg){
-
-		this.ime_baze="physicalactivity";
-		this.host="//127.0.0.1/";
-		this.user="root";
-		this.vrsta_baze="jdbc:mysql:";
-		this.reg=reg;
+	
+	
+	public void setVrsta_baze(String vrsta_baze) {
+		this.vrsta_baze = vrsta_baze;
 	}
+
+
+
+	public void setDriver(String driver) {
+		Driver = driver;
+	}
+
+
+
+	public String getVrsta_baze() {
+		return this.vrsta_baze;
+	}
+
+
+
+
+
+	public String getDriver() {
+		return this.Driver;
+	}
+
+
 	
 	
 	
 /*
  * Prvo loadati drivere za bazu podataka	
  */
+
+@Autowired
+public void InsertUser(){
+	 
+   
+    try{
+       Class.forName(Driver).newInstance();
+       System.out.println("Driver dohvaćen");
+    }catch (Exception err) {
+		System.out.println("Driver nije dohvaćen možda nije online");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	String dbname=getIme_baze();
+	Connection conn = null;
+	try{
+		System.out.println("Spajam se nma bazu...");
+		conn=DriverManager.getConnection(vrsta_baze+host);
+		System.out.println("Spojen sam na bazu");
+		System.out.println("Unosim korisnika:");
+		Statement s = conn.createStatement();
+		s.execute("SHOW DATABASES");
+		s.execute("USE physicalactivity");
+		
+		
+		s.execute("INSERT INTO `registration` (`id`, `ime`, `prezime`, `spol`, `datumr`, `drzavar`, `drzavap`, `email`, `sifra`, `zanimanje`) VALUES (1, 'n', 'n', 'n', '2017-10-11', 'n', 'n', 'n', 'n', 'n')");
+		System.out.println( "Korisnik unesen");
+	    conn.close();
+	}catch (SQLException err) {
+		System.err.println("SQL greška");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	
+	
+}
+
+
+
+
 
 
 
@@ -75,7 +136,7 @@ public void spoji(){
 
 	    Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    System.out.println("Spojeno");
-
+        conn.close();
 	} catch (Exception e) {
 
 	    System.out.println(e.toString());

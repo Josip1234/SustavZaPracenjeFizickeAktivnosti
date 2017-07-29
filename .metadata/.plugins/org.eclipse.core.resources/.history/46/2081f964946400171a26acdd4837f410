@@ -1,9 +1,0 @@
-package com.example.physical.activity.database;
-
-
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class DatabaseConf {
-
-}

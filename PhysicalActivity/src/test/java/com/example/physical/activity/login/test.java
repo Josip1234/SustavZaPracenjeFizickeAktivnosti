@@ -7,7 +7,7 @@ public class test {
 	public static void main(String[] args) {
 		Registration r = new Registration();
         Login a = new Login(r);
-        a.login();
+       
 	}
 
 }

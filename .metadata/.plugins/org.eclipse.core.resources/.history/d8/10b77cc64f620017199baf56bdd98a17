@@ -1,9 +1,0 @@
-package com.example.physical.activity.login;
-
-import org.springframework.stereotype.Component;
-
-@Component
-public class Login implements log {
-
-
-}

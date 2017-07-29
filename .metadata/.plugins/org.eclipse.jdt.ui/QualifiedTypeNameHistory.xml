@@ -7,8 +7,6 @@
 <fullyQualifiedTypeName name="com.example.physical.activity.login.test"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.database.Connection"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="java.sql.SQLException"/>
-<fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
@@ -24,7 +22,11 @@
 <fullyQualifiedTypeName name="com.example.physical.activity.database.BazaConfig"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.regist.RegConfig"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
-<fullyQualifiedTypeName name="com.example.physical.activity.regist.Registration"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.database.PhysicalActivityDatabase"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.example.physical.activity.regist.Registration"/>
 </qualifiedTypeNameHistroy>

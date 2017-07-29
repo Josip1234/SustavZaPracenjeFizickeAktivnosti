@@ -1,17 +1,20 @@
 package com.example.physical.activity.regist;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.example.physical.activity.database.PhysicalActivityDatabase;
 
-
+@Component("Registracija")
 public class Registration implements registeryourself {
 private int id;
 private String ime;
 private String prezime;
 private char spol;
+
 private String datumr;
 private String drzavar;
 private String drzavap;
@@ -24,14 +27,17 @@ public Registration() {
 	this.ime="Josip";
 	this.prezime="Bošnjak";
 	this.spol='m';
-	this.datumr="5.11.1992";
+	this.datumr="1992-11-1992";
+	
 	this.drzavar="Švicarska";
 	this.drzavap="Hrvatska";
 	this.email="jbosnjak@unipu.hr";
 	this.sifra="test";
 	this.zanimanje="student";
+	this.db=db;
 }
 public void register(){
+
 	System.out.println("Successfull registration");
 };
 
@@ -42,6 +48,7 @@ public Registration(int id,String ime,String prezime,char spol,String datumr,Str
 	this.prezime=prezime;
 	this.spol=spol;
 	this.datumr=datumr;
+	
 	this.drzavar=drzavar;
 	this.drzavap=drzavap;
 	this.email=email;
@@ -49,10 +56,14 @@ public Registration(int id,String ime,String prezime,char spol,String datumr,Str
 	this.zanimanje=zanimanje;
 	this.db=db;
 }
-public void registrirajse(){
-	db.spoji();
-	
+
+@Autowired
+public Registration(PhysicalActivityDatabase db){
+	this.db=db;
+	db.InsertUser();
+	register();
 }
+
 public void setId(int id) {
 	this.id = id;
 }
@@ -83,9 +94,7 @@ public void setSifra(String sifra) {
 public void setZanimanje(String zanimanje) {
 	this.zanimanje = zanimanje;
 }
-public void setDb(PhysicalActivityDatabase db) {
-	this.db = db;
-}
+
 public int getId() {
 	return id;
 }
@@ -116,9 +125,7 @@ public String getSifra() {
 public String getZanimanje() {
 	return zanimanje;
 }
-public PhysicalActivityDatabase getDb() {
-	return db;
-}
+
 
 
 

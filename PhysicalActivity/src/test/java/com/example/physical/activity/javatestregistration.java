@@ -6,6 +6,8 @@ import com.example.physical.activity.database.*;
 public class javatestregistration {
 
 	public static void main(String[] args) {
+		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+		db.InsertUser();
 		
 	}
 
