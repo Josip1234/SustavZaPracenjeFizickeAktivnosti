@@ -6,8 +6,6 @@ public class testbaze {
 
 	public static void main(String[] args) {
 		PhysicalActivityDatabase baza = new PhysicalActivityDatabase();
-		Registration reg = new Registration();
-	    baza.InsertUser();
 		baza.spoji();
 	}
 

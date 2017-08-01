@@ -7392,3 +7392,2250 @@ java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
 	at java.lang.Thread.run(Unknown Source)
+!SESSION 2017-08-01 09:14:23.814 -----------------------------------------------
+eclipse.buildId=3.9.0.201707061903-RELEASE-e46
+java.version=1.8.0_141
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.springsource.sts.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.springsource.sts.ide
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-08-01 09:15:59.308
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Josip'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:20:21.760
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:20:21.938
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:20:22.402
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:20:22.404
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:20:22.521
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:20:22.526
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.ui 2 2 2017-08-01 09:27:53.784
+!MESSAGE org.eclipse.jdt.junit.ResultView: Deprecated relationship "fast" should be converted to "stack".
+
+!ENTRY org.eclipse.ui 2 2 2017-08-01 09:27:53.796
+!MESSAGE org.springframework.ide.eclipse.aop.ui.navigator.aopReferenceModelNavigator: Deprecated relationship "fast" should be converted to "stack".
+
+!ENTRY org.eclipse.ui 2 2 2017-08-01 09:27:53.798
+!MESSAGE org.eclipse.contribution.xref.ui.views.XReferenceView: Deprecated relationship "fast" should be converted to "stack".
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:29:58.391
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:29:58.395
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:29:58.479
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:29:58.483
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:29:58.587
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:29:58.589
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.jface.text 2 0 2017-08-01 09:30:57.321
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-08-01 09:30:57.322
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:33:24.570
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.jdt.junit
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:33:24.588
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.pde.api.tools.ui
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:33:24.590
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.eclipse.pde.ui
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:33:24.591
+!MESSAGE Invalid extension to quickFixProcessor. Must extends 'org.eclipse.jdt.ui.text.java.IQuickAssistProcessor'.org.springframework.ide.eclipse.quickfix
+
+!ENTRY org.eclipse.jface.text 2 0 2017-08-01 09:34:35.740
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2017-08-01 09:34:35.742
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:00.789
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:00.801
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:00.908
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:00.911
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:01.033
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:01.036
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:25.033
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:25.035
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:25.113
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:25.115
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:43:25.211
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:43:25.214
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:18.068
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:18.070
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:18.153
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:18.155
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:18.249
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:18.251
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:40.747
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:40.749
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:40.830
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:40.833
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:40.917
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:40.919
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:56.868
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:56.870
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:56.960
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:56.963
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 4 2 2017-08-01 09:44:57.048
+!MESSAGE Problems occurred when invoking code from plug-in: "org.springframework.ide.eclipse.beans.core".
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.springframework.ide.eclipse.beans.core 2 0 2017-08-01 09:44:57.050
+!MESSAGE Error occured while running bean post processors
+!STACK 0
+java.lang.NoSuchMethodError: org.springframework.util.Assert.isTrue(ZLjava/util/function/Supplier;)V
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.lambda$of$5(ConfigurationPropertyName.java:454)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.processElement(ConfigurationPropertyName.java:546)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.process(ConfigurationPropertyName.java:536)
+	at org.springframework.boot.context.properties.source.ConfigurationPropertyName.of(ConfigurationPropertyName.java:452)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:142)
+	at org.springframework.boot.context.properties.bind.Binder.bind(Binder.java:129)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExcludeAutoConfigurationsProperty(AutoConfigurationImportSelector.java:219)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.getExclusions(AutoConfigurationImportSelector.java:211)
+	at org.springframework.boot.autoconfigure.AutoConfigurationImportSelector.selectImports(AutoConfigurationImportSelector.java:96)
+	at org.springframework.context.annotation.ConfigurationClassParser.processDeferredImportSelectors(ConfigurationClassParser.java:480)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:191)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:321)
+	at org.springframework.ide.eclipse.metadata.process.JdtConfigurationClassPostProcessor.postProcess(JdtConfigurationClassPostProcessor.java:88)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$3.run(BeansJavaConfig.java:332)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.executePostProcessor(BeansJavaConfig.java:321)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig.access$5(BeansJavaConfig.java:319)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:233)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansJavaConfig$2.call(BeansJavaConfig.java:1)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.recommenders.completion.rcp 4 2 2017-08-01 09:51:38.168
+!MESSAGE Exception during code completion.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.findLocalMethods(CompletionEngine.java:8741)
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.findMethods(CompletionEngine.java:10050)
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.findVariablesAndMethods(CompletionEngine.java:11857)
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.completionOnSingleNameReference(CompletionEngine.java:3300)
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.complete(CompletionEngine.java:1718)
+	at org.eclipse.jdt.internal.codeassist.CompletionEngine.complete(CompletionEngine.java:1944)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.internalCodeComplete(AJCompilationUnit.java:870)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.codeComplete(AJCompilationUnit.java:721)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeComplete(CompilationUnit.java:357)
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeComplete(CompilationUnit.java:345)
+	at org.eclipse.recommenders.completion.rcp.CompletionContextFunctions$InternalCompletionContextFunction.compute(CompletionContextFunctions.java:407)
+	at org.eclipse.recommenders.completion.rcp.RecommendersCompletionContext.get(RecommendersCompletionContext.java:325)
+	at org.eclipse.recommenders.completion.rcp.RecommendersCompletionContext.get(RecommendersCompletionContext.java:333)
+	at org.eclipse.recommenders.completion.rcp.RecommendersCompletionContext.getProposals(RecommendersCompletionContext.java:241)
+	at org.eclipse.recommenders.completion.rcp.processable.IntelligentCompletionProposalComputer.computeCompletionProposals(IntelligentCompletionProposalComputer.java:145)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalComputerDescriptor.computeCompletionProposals(CompletionProposalComputerDescriptor.java:333)
+	at org.eclipse.jdt.internal.ui.text.java.CompletionProposalCategory.computeCompletionProposals(CompletionProposalCategory.java:337)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.collectProposals(ContentAssistProcessor.java:331)
+	at org.eclipse.jdt.internal.ui.text.java.ContentAssistProcessor.computeCompletionProposals(ContentAssistProcessor.java:288)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:560)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:494)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:487)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.showPossibleCompletions(ContentAssistant.java:1747)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor$AdaptedSourceViewer.doOperation(CompilationUnitEditor.java:184)
+	at org.eclipse.ajdt.internal.ui.editor.AspectJEditor$AJTextOperationTarget.doOperation(AspectJEditor.java:165)
+	at org.eclipse.ui.texteditor.ContentAssistAction$1.run(ContentAssistAction.java:84)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.texteditor.ContentAssistAction.run(ContentAssistAction.java:81)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:118)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+	at sun.reflect.GeneratedMethodAccessor199.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:282)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:264)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:152)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:494)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:488)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:210)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:286)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:507)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:558)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:378)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:324)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:86)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1270)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1078)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1130)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1547)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4918)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:364)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4799)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2017-08-01 09:51:40.602
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.ast.SingleMemberAnnotation.memberValuePairs(SingleMemberAnnotation.java:47)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.acceptAnnotation(CompilationUnitStructureRequestor.java:290)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.createMethodInfo(CompilationUnitStructureRequestor.java:442)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.exitMethod(CompilationUnitStructureRequestor.java:688)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitStructureRequestor.exitMethod(AJCompilationUnitStructureRequestor.java:911)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1357)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1606)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1610)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1143)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.parseCompilationUnit(AJSourceElementParser.java:1670)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.buildStructure(AJCompilationUnit.java:390)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.generateInfos(AJCompilationUnit.java:231)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.makeConsistent(AJCompilationUnit.java:446)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:219)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:112)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:51:40.606
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jdt.internal.compiler.ast.SingleMemberAnnotation.memberValuePairs(SingleMemberAnnotation.java:47)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.acceptAnnotation(CompilationUnitStructureRequestor.java:290)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.createMethodInfo(CompilationUnitStructureRequestor.java:442)
+	at org.eclipse.jdt.internal.core.CompilationUnitStructureRequestor.exitMethod(CompilationUnitStructureRequestor.java:688)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitStructureRequestor.exitMethod(AJCompilationUnitStructureRequestor.java:911)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1357)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1606)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1610)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.notifySourceElementRequestor(AJSourceElementParser.java:1143)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser.parseCompilationUnit(AJSourceElementParser.java:1670)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.buildStructure(AJCompilationUnit.java:390)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.generateInfos(AJCompilationUnit.java:231)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.makeConsistent(AJCompilationUnit.java:446)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:219)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:112)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.core 4 1005 2017-08-01 09:53:10.709
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+
+!ENTRY org.eclipse.jdt.ui 4 2 2017-08-01 09:53:10.728
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 1
+Java Model Exception: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	... 17 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-08-01 09:53:10.730
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-08-01 09:53:10.731
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+
+!ENTRY org.eclipse.jdt.ui 4 0 2017-08-01 09:53:10.736
+!MESSAGE Error in JDT Core during reconcile
+!STACK 1
+Java Model Exception: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	... 17 more
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+Caused by: java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2017-08-01 09:53:10.736
+!MESSAGE All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+!STACK 0
+java.lang.RuntimeException: All Source code being worked on:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- SOURCE END ------------------------------------------------------------------------ WORKING COPIES ------------------------------------------------------------------------ WORKING COPY SOURCE BEGIN -------------------------------------
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before(""execution(*com.example.physical.activity.database.Spajanje.spoji()))
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+}
+}
+
+----------------------------------- WORKING COPY SOURCE END ------------------------------------------------------------------------ WORKING COPIES END -------------------------------------
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:299)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:188)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.makeConsistent(AJReconcileWorkingCopyOperation.java:244)
+	at org.eclipse.ajdt.core.reconcile.AJReconcileWorkingCopyOperation.executeOperation(AJReconcileWorkingCopyOperation.java:121)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:724)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:790)
+	at org.eclipse.ajdt.core.javaelements.AJCompilationUnit.reconcile(AJCompilationUnit.java:519)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:128)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:110)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:90)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:154)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:89)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:73)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: -1
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.consumeNormalAnnotation(AJSourceElementParser2.java:569)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.consumeRule(Parser.java:6107)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11141)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parseStatements(Parser.java:11749)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisitMethod(Parser.java:12048)
+	at org.eclipse.jdt.internal.compiler.parser.Parser$1MethodVisitor.endVisit(Parser.java:12034)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.traverse(MethodDeclaration.java:357)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.recoverStatements(Parser.java:12142)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11204)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:11490)
+	at org.eclipse.jdt.internal.compiler.ast.MethodDeclaration.parseStatements(MethodDeclaration.java:191)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:875)
+	at org.eclipse.jdt.internal.compiler.ast.TypeDeclaration.parseMethods(TypeDeclaration.java:865)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.getMethodBodies(Parser.java:10179)
+	at org.eclipse.ajdt.core.parserbridge.AJSourceElementParser2.parseCompilationUnit(AJSourceElementParser2.java:971)
+	at org.eclipse.ajdt.core.parserbridge.AJCompilationUnitProblemFinder.processAJ(AJCompilationUnitProblemFinder.java:241)
+	... 16 more

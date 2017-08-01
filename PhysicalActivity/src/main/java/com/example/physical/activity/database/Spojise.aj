@@ -1,0 +1,23 @@
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public aspect Spojise {
+
+@Before("execution(** com.example.physical.activity.database.PhysicalActivityDatabase.spoji(..))")
+	public void poruka(){
+		System.out.println("Potrebno je spojiti se na bazu");
+	}
+@AfterReturning("execution(** com.example.physical.activity.database.PhysicalActivityDatabase.spoji(..))")
+public void por(){
+	System.out.println("Spojeno na bazu");
+}
+@AfterThrowing("execution(** com.example.physical.activity.database.PhysicalActivityDatabase.spoji(..))")
+public void vrati(){
+	System.out.println("Nešto je pošlo po zlu.");
+}
+}

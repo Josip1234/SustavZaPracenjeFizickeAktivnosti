@@ -1,0 +1,11 @@
+package com.example.physical.activity.database;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+public aspect Spojise {
+@Aspect
+public class spoj{
+	@Before("execution(**com.example.physical.activity.database.Spajanje.spoji(..))")
+}
+}
