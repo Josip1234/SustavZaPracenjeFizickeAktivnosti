@@ -1,0 +1,19 @@
+package com.example.physical.activity.index;
+
+import java.util.Scanner;
+
+public class BMIInputTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      Scanner input = new Scanner(System.in);
+      BMICalculator calculator = new BMICalculator();
+      float visina;
+      float težina;
+      System.out.println("Unos težine:");
+      težina=input.nextFloat();
+      System.out.println("Unos visine:");
+      visina=input.nextFloat();
+	}
+
+}

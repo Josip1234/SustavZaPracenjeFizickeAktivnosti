@@ -1,0 +1,8 @@
+package com.example.physical.activity.index;
+
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect
+public aspect BMIAspekt {
+@Before(args) : pointcut_expression {}
+}

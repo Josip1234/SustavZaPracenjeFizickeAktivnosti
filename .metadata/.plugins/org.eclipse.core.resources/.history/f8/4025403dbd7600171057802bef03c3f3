@@ -1,0 +1,18 @@
+package com.example.physical.activity.index;
+
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public aspect BMIAspekt {
+@Before("execution(** com.example.physical.activity.index.BMICalculator.izracunajBMI))")
+public void poruka(){
+	System.out.println("Unos indeksa tjelesne mase!");
+}
+@AfterReturning("execution(** com.example.physical.activity.index.BMICalculator.izracunajBMI))")
+public void poruk(){
+	System.out.println("Rezultati su tu.");
+}
+
+}
