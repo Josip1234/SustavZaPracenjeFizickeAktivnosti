@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/unipulogolat"
     android:orientation="vertical"
     tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity">
 
@@ -12,7 +13,8 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        >
 
         <TextView
             android:id="@+id/message"
