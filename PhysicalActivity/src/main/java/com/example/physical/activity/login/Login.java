@@ -36,6 +36,10 @@ public class Login implements log {
     public Login(Registration rg){
     	this.rg=rg;
     }
+	
+	public void logiraj(){
+         System.out.println("Korisnik je logiran");
+	}
    
 
 }

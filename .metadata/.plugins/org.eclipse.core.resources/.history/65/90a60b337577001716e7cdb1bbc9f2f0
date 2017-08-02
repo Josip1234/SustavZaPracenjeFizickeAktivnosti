@@ -1,0 +1,10 @@
+package com.example.physical.activity.regist;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public aspect RegASP {
+@Pointcut("execution(** com.example.physical.activity.regist.registeryourself.register(..))")
+public void registeryourself(){};
+}

@@ -4,7 +4,10 @@
     <string name="kg">Unesite broj kilograma:</string>
     <string name="rezultat">Vaš indeks tjelesne mase iznosi:</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Prijavi se</string>
+    <string name="email">Unesi email:</string>
+    <string name="sifra">Unesi sifru:</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="login">Prijavi se</string>
 </resources>
