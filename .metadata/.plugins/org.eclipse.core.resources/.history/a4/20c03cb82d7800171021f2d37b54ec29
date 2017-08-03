@@ -1,0 +1,7 @@
+package com.example.physical.activity.login;
+
+import org.springframework.context.annotation.Bean;
+
+public class LogConfig {
+
+}

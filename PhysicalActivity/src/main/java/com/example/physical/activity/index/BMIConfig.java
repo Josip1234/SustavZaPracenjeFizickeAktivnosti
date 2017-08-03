@@ -2,12 +2,14 @@ package com.example.physical.activity.index;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.example.physical.activity.RegTest;
-import com.example.physical.activity.login.test;
+
 
 @Configuration
-@ComponentScan(basePackageClasses={RegTest.class,test.class,BMITest.class})
+@EnableAspectJAutoProxy
+@ComponentScan(basePackageClasses={RegTest.class,BMITest.class})
 public class BMIConfig {
 
 }

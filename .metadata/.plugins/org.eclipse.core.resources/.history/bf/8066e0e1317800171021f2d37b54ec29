@@ -1,0 +1,25 @@
+package com.example.physical.activity.index;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public aspect BMIAspekt {
+@Pointcut("execution(** com.example.physical.activity.index.BMICalculator.izracunajBMI(..))")
+public void BMICalculator(){};
+@Around("BMICalculator()")
+public void unesiindeks(ProceedingJoinPoint jp){
+	try{
+		System.out.println("Unos indeksa tjelesne mase!");
+		jp.proceed();
+		System.out.println("Rezultati su tu.");
+	}catch(Throwable e){
+		System.out.println("Greška");
+	}
+	
+}
+
+
+}

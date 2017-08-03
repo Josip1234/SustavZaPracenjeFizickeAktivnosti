@@ -1,6 +1,7 @@
 package com.example.physical.activity.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.example.physical.activity.regist.Registration;
@@ -37,7 +38,8 @@ public class Login implements log {
     	this.rg=rg;
     }
 	
-	public void logiraj(){
+	
+	public void prijavi_se(){
          System.out.println("Korisnik je logiran");
 	}
    
