@@ -1,0 +1,5 @@
+package com.example.physical.activity.servlet;
+
+public class SpittrWebAppInitializer {
+
+}

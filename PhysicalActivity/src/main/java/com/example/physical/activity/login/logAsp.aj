@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public aspect logAsp {
-@Pointcut("execution(** com.example.physical.activity.login.Login.logiraj(..))")
+@Pointcut("execution(** com.example.physical.activity.login.Login.prijavi_se(..))")
 public void Login(){};
 @Before("Login()")
 public void poruka(){

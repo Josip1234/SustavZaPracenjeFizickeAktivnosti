@@ -1,0 +1,21 @@
+package com.example.physical.activity.servlet;
+
+import org.springframework.ws.transport.http.support.AbstractAnnotationConfigMessageDispatcherServletInitializer;
+
+public class SpittrWebAppInitializer extends AbstractAnnotationConfigMessageDispatcherServletInitializer {
+
+	
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

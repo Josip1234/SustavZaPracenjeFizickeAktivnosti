@@ -1,0 +1,5 @@
+package com.example.physical.activity.servlet.config;
+
+public class IndexController {
+
+}

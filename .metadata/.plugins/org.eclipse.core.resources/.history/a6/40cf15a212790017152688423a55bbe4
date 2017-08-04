@@ -1,0 +1,15 @@
+package com.example.physical.activity.servlet.config;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class IndexController {
+
+	@RequestMapping(value="/",method=GET)
+	public String index(){
+		return "index";
+	}
+}

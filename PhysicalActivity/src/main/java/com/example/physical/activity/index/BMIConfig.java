@@ -9,7 +9,7 @@ import com.example.physical.activity.RegTest;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackageClasses={RegTest.class,BMITest.class})
+@ComponentScan(basePackageClasses={BMITest.class})
 public class BMIConfig {
 
 }

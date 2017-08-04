@@ -7,19 +7,17 @@ import org.springframework.stereotype.Component;
 import com.example.physical.activity.regist.Registration;
 
 
-@Component("Login user")
+@Component("Prijava korisnika")
 public class Login implements log {
-    private Registration rg;
+    
     private String username;
     private String sifra;
     
+    public Login(String username,String sifra){
+    	this.username=username;
+    	this.sifra=sifra;
+    }
     
-    public Registration getRg() {
-		return rg;
-	}
-	public void setRg(Registration rg) {
-		this.rg = rg;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -32,11 +30,6 @@ public class Login implements log {
 	public void setSifra(String sifra) {
 		this.sifra = sifra;
 	}
-	
-	@Autowired
-    public Login(Registration rg){
-    	this.rg=rg;
-    }
 	
 	
 	public void prijavi_se(){

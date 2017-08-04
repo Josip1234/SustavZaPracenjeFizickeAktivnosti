@@ -4,10 +4,19 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
    public void prijava(View v){
@@ -24,8 +33,29 @@ public class MainActivity extends AppCompatActivity {
        Login login = new Login(em,ps);
        login.setPassword(ps);
        login.setUsername(em);
+       try {
+           kreiraj_json_polje(em,ps);
+       } catch (IOException e) {
+           e.printStackTrace();
+       } catch (JSONException e) {
+           e.printStackTrace();
+       }
 
    }
+
+    public void kreiraj_json_polje(String a,String b) throws IOException,JSONException{
+
+            JSONArray array = new JSONArray();
+            JSONObject object;
+            object=new JSONObject();
+            object.put(a,b);
+            array.put(object);
+            String text = array.toString();
+            FileOutputStream fos = openFileOutput("prijava",MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        Log.i("message","succesfully written to json");
+        }
 
 
     @Override

@@ -1,0 +1,12 @@
+package com.example.physical.activity.index;
+
+import java.util.Map;
+
+import org.aspectj.lang.annotation.Aspect;
+
+import scala.collection.immutable.HashMap;
+
+@Aspect
+public class BMIZadnjeVrijednosti {
+private Map<float, float>zadnjevrijednosti=new HashMap<float,float>();
+}

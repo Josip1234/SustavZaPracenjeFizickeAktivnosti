@@ -8,4 +8,10 @@
     android:visibility="visible"
     tools:context="activity.physical.example.com.josip.physicalactivity.ITMActivity">
 
+    <WebView
+        android:layout_width="304dp"
+        android:layout_height="383dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
