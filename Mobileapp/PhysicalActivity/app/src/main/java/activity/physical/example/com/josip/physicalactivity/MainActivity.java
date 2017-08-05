@@ -1,5 +1,6 @@
 package activity.physical.example.com.josip.physicalactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
        } catch (JSONException e) {
            e.printStackTrace();
        }
-
+       Intent intent = new Intent(MainActivity.this,ListOfMenu.class);
+       startActivity(intent);
    }
 
     public void kreiraj_json_polje(String a,String b) throws IOException,JSONException{

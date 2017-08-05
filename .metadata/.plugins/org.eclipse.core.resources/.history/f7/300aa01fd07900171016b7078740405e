@@ -1,0 +1,10 @@
+package spittr.web;
+
+import org.junit.Test;
+
+public class HomeControllerTest {
+@Test
+public void testHomePage()throws Exception{
+    HomeController 
+}
+}
