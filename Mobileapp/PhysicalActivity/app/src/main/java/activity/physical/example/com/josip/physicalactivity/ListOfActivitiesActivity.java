@@ -1,27 +1,13 @@
 package activity.physical.example.com.josip.physicalactivity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-/**
- * Created by Josip on 5.8.2017..
- */
-
-public class ListOfMenu extends AppCompatActivity {
-
+public class ListOfActivitiesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_activity);
-
-
-
-
-
+        setContentView(R.layout.activity_list_of_activities);
     }
-
-
-
-    ;
 }

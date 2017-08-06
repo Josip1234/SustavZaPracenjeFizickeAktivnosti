@@ -21,8 +21,8 @@
         <activity
             android:name=".ITMActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".BikeActivity"></activity>
-        <activity android:name=".ListOfMenu"></activity>
+        <activity android:name=".BikeActivity" />
+        <activity android:name=".ListOfActivitiesActivity"> </activity>
     </application>
 
 </manifest>

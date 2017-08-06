@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
        } catch (JSONException e) {
            e.printStackTrace();
        }
-       Intent intent = new Intent(MainActivity.this,ListOfMenu.class);
+       Intent intent = new Intent(MainActivity.this,ListOfActivitiesActivity.class);
        startActivity(intent);
    }
 
