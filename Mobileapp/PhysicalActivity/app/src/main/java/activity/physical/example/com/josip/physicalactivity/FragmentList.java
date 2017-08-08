@@ -1,5 +1,6 @@
 package activity.physical.example.com.josip.physicalactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
@@ -7,13 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * Created by Josip on 6.8.2017..
  */
 
 public class FragmentList extends ListFragment {
-
+    ListView listView;
     String[] activities={"Hodanje","Brzo hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
 
 
@@ -38,5 +40,15 @@ public class FragmentList extends ListFragment {
 
 
 
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+         if(position==7){
+            Intent intent = new Intent(v.getContext(),ITMActivity.class);
+            startActivityForResult(intent,7);
+        }
     }
 }

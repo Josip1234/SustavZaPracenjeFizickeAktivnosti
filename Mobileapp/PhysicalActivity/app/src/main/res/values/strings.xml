@@ -12,5 +12,6 @@
     <string name="login">Prijavi se</string>
     <string name="textview">TextView</string>
     <string name="empty">TextView</string>
+    <string name="title_activity_bike_maps">Map</string>
 
 </resources>
