@@ -1,0 +1,212 @@
+package com.example.physical.activity.database;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+import com.example.physical.activity.login.Login;
+import com.example.physical.activity.regist.Registration;
+
+import java.sql.*;
+import java.sql.ResultSet;
+@Component("Spajanje na bazu")
+public class PhysicalActivityDatabase  {
+	
+	private String ime_baze;
+	private String host;
+	private String user;
+	private String vrsta_baze;
+	private Registration rg;
+	private Login log;
+	private String Driver;
+	
+	public PhysicalActivityDatabase(){
+		
+		this.ime_baze="physicalactivity";
+		this.host="//127.0.0.1/";
+		this.user="root";
+		this.vrsta_baze="jdbc:mysql:";
+		this.rg=rg;
+		this.Driver="com.mysql.jdbc.Driver";
+	}
+	
+
+	
+	
+	public void setVrsta_baze(String vrsta_baze) {
+		this.vrsta_baze = vrsta_baze;
+	}
+
+
+
+	public void setDriver(String driver) {
+		Driver = driver;
+	}
+
+
+
+	public String getVrsta_baze() {
+		return this.vrsta_baze;
+	}
+
+
+
+
+
+	public String getDriver() {
+		return this.Driver;
+	}
+
+
+	
+	
+	
+/*
+ * Prvo loadati drivere za bazu podataka	
+ */
+
+@Autowired
+public void InsertUser(Registration rg){
+	 
+   
+    try{
+       Class.forName(Driver).newInstance();
+       System.out.println("Driver dohvaćen");
+    }catch (Exception err) {
+		System.out.println("Driver nije dohvaćen možda nije online");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	String dbname=getIme_baze();
+	Connection conn = null;
+	try{
+		System.out.println("Spajam se nma bazu...");
+		conn=DriverManager.getConnection(vrsta_baze+host);
+		System.out.println("Spojen sam na bazu");
+		System.out.println("Unosim korisnika:");
+		Statement s = conn.createStatement();
+		s.execute("SHOW DATABASES");
+		s.execute("USE physicalactivity");
+		
+		
+		s.execute("INSERT INTO `registration` (`ime`, `prezime`, `spol`, `datumr`, `drzavar`, `drzavap`, `email`, `sifra`, `zanimanje`) VALUES ('"+rg.getIme()+"', '"+rg.getPrezime()+"', '"+rg.getSpol()+"', '"+rg.getDatumr()+"', '"+rg.getDrzavar()+"', '"+rg.getDrzavap()+"', '"+rg.getEmail()+"', '"+rg.getSifra()+"', '"+rg.getZanimanje()+"')");
+		System.out.println( "Korisnik unesen");
+	    conn.close();
+	}catch (SQLException err) {
+		System.err.println("SQL greška");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	
+	
+}
+
+
+@Bean(name="Selekcija korisnika i stvaranje liste korisnika")
+public void selectUsers(Registration rg){
+
+    try{
+       Class.forName(Driver).newInstance();
+       System.out.println("Driver dohvaćen");
+    }catch (Exception err) {
+		System.out.println("Driver nije dohvaćen možda nije online");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	String dbname=getIme_baze();
+	Connection conn = null;
+	try{
+		System.out.println("Spajam se nma bazu...");
+		conn=DriverManager.getConnection(vrsta_baze+host);
+		System.out.println("Spojen sam na bazu");
+		System.out.println("Selektiram:");
+		Statement s = conn.createStatement();
+		s.execute("SHOW DATABASES");
+		s.execute("USE physicalactivity");
+		ResultSet rs = null;
+		System.out.println("Svi trenutno registrirani korisnici:");
+		rs=s.executeQuery("SELECT * FROM registration");
+		while(rs.next()){
+			int id=rs.getInt("id");
+			String ime=rs.getString("ime");
+			String prezime=rs.getString("prezime");
+			String spol=rs.getString("spol");
+			String datumr=rs.getString("datumr");
+			String drzavar=rs.getString("drzavar");
+			String drzavap=rs.getString("drzavap");
+			String email=rs.getString("email");
+			String sifra=rs.getString("sifra");
+			String zanimanje=rs.getString("zanimanje");
+			
+			System.out.println(id+" "+ime+" "+ prezime+" "+spol+" "+datumr+" "+drzavar+" "+drzavap+" "+email+" "+sifra+" "+zanimanje+" ");
+			
+			rg.setId(id);
+			rg.setIme(ime);
+			rg.setPrezime(prezime);
+			rg.setSpol(char(spol));
+			
+			
+		}
+		System.out.println( "Ispisani su korisnici");
+		rs.close();
+	    conn.close();
+	}catch (SQLException err) {
+		System.err.println("SQL greška");
+		err.printStackTrace(System.err);
+		System.exit(0);
+	}
+	
+	
+}
+
+
+
+
+
+
+public String getIme_baze() {
+		return ime_baze;
+	}
+
+	public void setIme_baze(String ime_baze) {
+		this.ime_baze = ime_baze;
+	}
+
+/*
+ * Nakon loadiranja drivera, možemo napraviti vezu prema bazi
+ */
+public void spoji(){
+	try {
+
+	    Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    System.out.println("Registriran driver");
+
+	} catch (Exception e) {
+
+	    System.out.println(e.toString());
+
+	}
+ try {
+	Connection conn= DriverManager.getConnection(vrsta_baze+host);
+	try {
+
+	    Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    System.out.println("Spojeno");
+        conn.close();
+	} catch (Exception e) {
+
+	    System.out.println(e.toString());
+
+	}
+
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+}
+}

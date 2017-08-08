@@ -1,0 +1,12 @@
+package com.example.physical.activity.login;
+import com.example.physical.activity.database.PhysicalActivityDatabase;
+public class PrijavaTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PhysicalActivityDatabase db;
+       Login login = new Login("Josip","blabla");
+       login.log(db);
+	}
+
+}

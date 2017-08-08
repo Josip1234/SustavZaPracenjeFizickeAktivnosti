@@ -1,0 +1,8 @@
+package com.example.physical.activity.database;
+
+
+import com.example.physical.activity.regist.Registration;
+public interface DatabaseReprository {
+   
+   java.util.List<Registration>ispisiImePrezimeMail(String ime,String prezime,String email);
+}

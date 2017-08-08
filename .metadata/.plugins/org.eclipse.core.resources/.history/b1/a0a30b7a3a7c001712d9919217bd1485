@@ -1,0 +1,14 @@
+package com.example.physical.activity.database;
+
+import com.example.physical.activity.regist.Registration;
+
+public class testbaze {
+
+	public static void main(String[] args) {
+		Registration reg  = new Registration();
+		PhysicalActivityDatabase baza = new PhysicalActivityDatabase();
+		baza.selectUsers(reg);
+		System.out.println(reg.getId());
+	}
+
+}

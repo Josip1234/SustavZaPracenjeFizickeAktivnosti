@@ -1,0 +1,63 @@
+package com.example.physical.activity.index;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import com.example.physical.activity.login.Login;
+
+@Component("Indeks tjelesne mase")
+public class BMICalculator implements ITM {
+private float masa_u_kg;
+private float visina_osobe_u_metrima;
+private float rezultat;
+private Login log;
+
+public BMICalculator(){
+	this.masa_u_kg=67;
+	this.visina_osobe_u_metrima=167;
+	
+	
+}
+public BMICalculator(float masa,float visina,Login log){
+	this.masa_u_kg=masa;
+	this.visina_osobe_u_metrima=visina;
+}
+
+
+public float getMasa_u_kg() {
+	return masa_u_kg;
+}
+
+public void setMasa_u_kg(float masa_u_kg) {
+	this.masa_u_kg = masa_u_kg;
+}
+
+public float getVisina_osobe() {
+	return visina_osobe_u_metrima;
+}
+
+public void setVisina_osobe(float visina_osobe) {
+	this.visina_osobe_u_metrima = visina_osobe;
+}
+
+public float getRezultat() {
+	return rezultat;
+}
+
+public void setRezultat(float rezultat) {
+	this.rezultat = rezultat;
+}
+
+public float izracunajBMI(){
+	float a,b;
+	a=getMasa_u_kg();
+	b=getVisina_osobe();
+	this.rezultat=a/(b*b);
+	return this.rezultat*10000;
+}
+
+@Bean
+public BMICalculator calc(Login log){
+	return new BMICalculator(log);
+}
+}
+

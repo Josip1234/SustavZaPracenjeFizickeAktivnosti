@@ -1,0 +1,6 @@
+package com.example.physical.activity.database;
+
+public interface DatabaseReprository {
+   
+	
+}
