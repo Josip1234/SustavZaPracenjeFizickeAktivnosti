@@ -1,0 +1,25 @@
+package com.example.physical.activity.login;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.view.InternalResourceView;
+
+import scala.annotation.meta.setter;
+
+public class LoginTestCase {
+    
+	
+	@Test
+	public void showUsers() throws Exception{
+		List<Login> korisnik= stvoriListuKorisnika(1);
+		LoginRepository mockRepository=mock(LoginRepository.class);
+		when(mockRepository.findUser(username, sifra)).thenReturn(korisnik);
+		
+		LoginController controller = new LoginController(mockRepository);
+		MockMvc mockMvc = standaloneSetup(controller).setSingleView(
+				new InternalResourceView("/WEB-INF/views/listakorisnika.jsp"));
+	}
+}

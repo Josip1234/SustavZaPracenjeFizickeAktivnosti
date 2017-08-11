@@ -45,8 +45,10 @@ public class FragmentList extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-
-         if(position==7){
+        if(position==0){
+            Intent intent = new Intent(v.getContext(),WalkingActivity.class);
+            startActivityForResult(intent,0);
+        } else if(position==7){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);
             startActivityForResult(intent,7);
         }

@@ -12,6 +12,7 @@ public class Login implements log {
     
     private String username;
     private String sifra;
+    private Registration rg;
     
     public Login(String username,String sifra){
     	this.username=username;
@@ -36,5 +37,13 @@ public class Login implements log {
          System.out.println("Korisnik je logiran");
 	}
    
+	@Override
+	public boolean equals(Object that){
+		return EqualsBuilder.reflectionEquals(this,that,"username","sifra");
+	}
+	@Override
+	public int hashCode(){
+		return HashCodeBuilder.reflectionHashCode(this,"username","sifra");
+	}
 
 }

@@ -10,30 +10,25 @@ import com.example.physical.activity.database.PhysicalActivityDatabase;
 
 @Component("Registracija")
 public class Registration implements registeryourself {
-private int id;
+private String OIB;
 private String ime;
 private String prezime;
-private char spol;
+private String spol;
 
 private String datumr;
-private String drzavar;
-private String drzavap;
 private String email;
 private String sifra;
-private String zanimanje;
+
 private PhysicalActivityDatabase db;
 public Registration() {
-	this.id=1;
+	this.OIB="14520369430";
 	this.ime="Josip";
 	this.prezime="Bošnjak";
-	this.spol='m';
+	this.spol="m";
 	this.datumr="1992-11-1992";
-	
-	this.drzavar="Švicarska";
-	this.drzavap="Hrvatska";
 	this.email="jbosnjak@unipu.hr";
 	this.sifra="test";
-	this.zanimanje="student";
+	
 	this.db=db;
 }
 public void register(){
@@ -42,18 +37,16 @@ public void register(){
 };
 
 @Autowired
-public Registration(int id,String ime,String prezime,char spol,String datumr,String drzavar,String drzavap,String email,String sifra,String zanimanje,PhysicalActivityDatabase db){
-	this.id=id;
+public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra,PhysicalActivityDatabase db){
+	this.OIB=OIB;
 	this.ime=ime;
 	this.prezime=prezime;
 	this.spol=spol;
 	this.datumr=datumr;
 	
-	this.drzavar=drzavar;
-	this.drzavap=drzavap;
 	this.email=email;
 	this.sifra=sifra;
-	this.zanimanje=zanimanje;
+	
 	this.db=db;
 }
 
@@ -64,8 +57,8 @@ public Registration(PhysicalActivityDatabase db){
 	register();
 }
 
-public void setId(int id) {
-	this.id = id;
+public void setOIB(String OIB) {
+	this.OIB = OIB;
 }
 public void setIme(String ime) {
 	this.ime = ime;
@@ -73,30 +66,24 @@ public void setIme(String ime) {
 public void setPrezime(String prezime) {
 	this.prezime = prezime;
 }
-public void setSpol(char spol) {
+public void setSpol(String spol) {
 	this.spol = spol;
 }
 public void setDatumr(String datumr) {
 	this.datumr = datumr;
 }
-public void setDrzavar(String drzavar) {
-	this.drzavar = drzavar;
-}
-public void setDrzavap(String drzavap) {
-	this.drzavap = drzavap;
-}
+
+
 public void setEmail(String email) {
 	this.email = email;
 }
 public void setSifra(String sifra) {
 	this.sifra = sifra;
 }
-public void setZanimanje(String zanimanje) {
-	this.zanimanje = zanimanje;
-}
 
-public int getId() {
-	return id;
+
+public String getOIB() {
+	return OIB;
 }
 public String getIme() {
 	return ime;
@@ -104,27 +91,21 @@ public String getIme() {
 public String getPrezime() {
 	return prezime;
 }
-public char getSpol() {
+public String getSpol() {
 	return spol;
 }
 public String getDatumr() {
 	return datumr;
 }
-public String getDrzavar() {
-	return drzavar;
-}
-public String getDrzavap() {
-	return drzavap;
-}
+
+
 public String getEmail() {
 	return email;
 }
 public String getSifra() {
 	return sifra;
 }
-public String getZanimanje() {
-	return zanimanje;
-}
+
 
 
 
