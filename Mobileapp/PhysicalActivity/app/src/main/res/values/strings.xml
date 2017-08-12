@@ -18,4 +18,8 @@
     <string name="stop_chrono">Stop chrono</string>
     <string name="start_stop">Startaj/stopiraj</string>
     <string name="google_maps_key">AIzaSyDm_s9UqGcF8zph-wiScfKjreyFfAm1tHs</string>
+    <string name="pomakulijevo">pomakulijevo</string>
+    <string name="pomakudesno">pomakudesno</string>
+    <string name="hello">Hello World, SensorSimulatorDemo!</string>
+
 </resources>

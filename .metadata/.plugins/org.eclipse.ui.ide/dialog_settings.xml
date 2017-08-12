@@ -111,6 +111,10 @@
 		<item value="org.springsource.sts.package:3.9.0.201707061903-RELEASE-e46"/>
 		<item value="org.springsource.sts:3.9.0.201707061903-RELEASE"/>
 	</list>
+	<section name="ResourceNavigator">
+		<item value="" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
 	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
 		<item value="D:\xamppnovi\htdocs\SustavZaPracenjeFizickeAktivnosti" key="OUTSIDE_LOCATION"/>
 	</section>

@@ -1,5 +1,12 @@
 package activity.physical.example.com.josip.physicalactivity;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.hardware.TriggerEvent;
+import android.hardware.TriggerEventListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
@@ -7,10 +14,18 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
+
+
+
+
 
 public class WalkingActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     private Chronometer cr;
     private Switch sv;
+    private TextView atv;
+
+
     public void start(){
         cr=(Chronometer) findViewById(R.id.chronometer2);
         cr.start();
@@ -38,6 +53,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
 
 
 
+
         sv=(Switch) findViewById(R.id.switch2);
         sv.setOnCheckedChangeListener(this);
 
@@ -54,4 +70,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
              getTimeAfterStop();
          }
     }
+
+
+
 }

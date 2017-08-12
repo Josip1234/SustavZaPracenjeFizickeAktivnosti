@@ -12,4 +12,16 @@
 		<list key="issueManagementUrl">
 		</list>
 	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.dialogs.MavenRepositorySearchDialog">
+		<item value="480" key="width"/>
+		<item value="443" key="x"/>
+		<item value="12" key="y"/>
+		<item value="531" key="height"/>
+	</section>
+	<section name="org.eclipse.m2e.editor.dialogs.ManageDependenciesDialog">
+		<item value="623" key="width"/>
+		<item value="372" key="x"/>
+		<item value="64" key="y"/>
+		<item value="451" key="height"/>
+	</section>
 </section>

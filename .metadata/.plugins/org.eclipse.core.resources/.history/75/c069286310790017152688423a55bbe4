@@ -1,7 +1,0 @@
-package com.example.physical.activity.servlet;
-
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
-public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
-}

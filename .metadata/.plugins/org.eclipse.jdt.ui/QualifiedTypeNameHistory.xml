@@ -30,7 +30,6 @@
 <fullyQualifiedTypeName name="org.springframework.ws.transport.http.support.AbstractAnnotationConfigMessageDispatcherServletInitializer"/>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
 <fullyQualifiedTypeName name="org.springframework.security.web.header.writers.frameoptions.StaticAllowFromStrategy"/>
-<fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="spittr.web.HomeControllerTest"/>
 <fullyQualifiedTypeName name="spittr.web.HomeController"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
 </qualifiedTypeNameHistroy>
