@@ -48,9 +48,6 @@ public class FragmentList extends ListFragment {
         if(position==0){
             Intent intent = new Intent(v.getContext(),WalkingActivity.class);
             startActivityForResult(intent,0);
-        } else if(position==1){
-            Intent intent = new Intent(v.getContext(),Senz.class);
-            startActivityForResult(intent,1);
         }
         else if(position==7){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);

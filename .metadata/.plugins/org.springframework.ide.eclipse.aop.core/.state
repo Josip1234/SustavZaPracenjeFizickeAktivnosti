@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="PhysicalActivity"/>
-<aop-project name="SustavZaPracenjeFizickeAktivnosti"/>
+<aop-project name="PhysicalActivityMVC"/>
 </aop-reference-model>

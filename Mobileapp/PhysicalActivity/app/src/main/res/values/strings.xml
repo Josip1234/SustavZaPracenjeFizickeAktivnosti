@@ -21,5 +21,6 @@
     <string name="pomakulijevo">pomakulijevo</string>
     <string name="pomakudesno">pomakudesno</string>
     <string name="hello">Hello World, SensorSimulatorDemo!</string>
+    <string name="accelerometer_disabled">Accelerometer: disabled</string>
 
 </resources>
