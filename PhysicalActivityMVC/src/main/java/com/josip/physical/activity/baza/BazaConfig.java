@@ -5,12 +5,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
-import com.josip.physical.activity.regist.Registration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
+
+
 
 @Configuration
-@ComponentScan(basePackageClasses={PhysicalActivityDatabase.class})
-@EnableAspectJAutoProxy
-@Import(Registration.class)
-public class BazaConfig {
 
+@EnableAspectJAutoProxy
+
+public class BazaConfig {
+  
 }
+

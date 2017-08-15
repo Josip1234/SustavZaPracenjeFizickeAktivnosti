@@ -3,7 +3,7 @@
 	<item value="false" key="TypeHierarchyViewPart.qualifiednames"/>
 	<item value="3" key="TypeHierarchyViewPart.orientation"/>
 	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
-	<item value="C:\Users\Josip\Desktop\diplomski rad\spring-framework-4.3.9.RELEASE-dist\spring-framework-4.3.9.RELEASE\libs" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="C:\Users\Josip\Desktop\diplomski rad\com.mysql.jdbc_5.1.5.jar" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
 		<item value="false" key="renameSubpackages"/>
@@ -89,7 +89,7 @@
 		<item value="false" key="FinalModifier"/>
 	</section>
 	<section name="ClasspathContainerSelectionPage">
-		<item value="0" key="index"/>
+		<item value="2" key="index"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>

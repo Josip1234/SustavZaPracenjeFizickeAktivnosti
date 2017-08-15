@@ -1,16 +1,12 @@
 package com.josip.physical.activity.login;
 
-import org.springframework.stereotype.Component;
 
-import com.josip.physical.activity.regist.Registration;
-
-@Component("Prijava korisnika")
 
 public class Login implements log {
 
     private String username;
     private String sifra;
-    private Registration rg;
+   
     
     public Login(String username,String sifra){
     	this.username=username;

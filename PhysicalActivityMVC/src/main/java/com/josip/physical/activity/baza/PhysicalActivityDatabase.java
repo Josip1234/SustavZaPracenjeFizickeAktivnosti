@@ -8,7 +8,7 @@ import java.sql.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.josip.physical.activity.regist.Registration;
+
 
 
 @Component("Spajanje na bazu")
@@ -18,7 +18,6 @@ private String ime_baze;
 private String host;
 private String user;
 private String vrsta_baze;
-private Registration rg;
 private String Driver;
 
 public PhysicalActivityDatabase(){
@@ -27,7 +26,6 @@ public PhysicalActivityDatabase(){
 	this.host="//127.0.0.1/";
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
-	this.rg=rg;
 	this.Driver="com.mysql.jdbc.Driver";
 }
 
