@@ -4,8 +4,8 @@ public class terstconn {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
-         db.spoji();
+        String a="ž";
+        System.out.println(a);
 	}
 
 }

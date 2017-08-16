@@ -43,7 +43,7 @@ public void register(){
 	System.out.println("Successfull registration");
 };
 
-@Autowired
+
 public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra,PhysicalActivityDatabase db){
 	this.OIB=OIB;
 	this.ime=ime;
@@ -57,7 +57,7 @@ public Registration(String OIB,String ime,String prezime,String spol,String datu
 	this.db=db;
 }
 
-@Autowired
+
 public Registration(PhysicalActivityDatabase db){
 	this.db=db;
 	db.InsertUser();

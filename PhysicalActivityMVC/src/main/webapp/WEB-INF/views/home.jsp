@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<a href="<c:url value="/index" />">Spittles</a> |
+<a href="<c:url value="/spitter/register" />">Register</a>
 </body>
 </html>

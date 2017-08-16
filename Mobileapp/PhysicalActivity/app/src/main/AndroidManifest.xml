@@ -43,9 +43,6 @@
                 android:value="@string/google_maps_key" />
         </activity>
         <activity android:name=".WalkingActivity" />
-        <activity android:name=".Sensor_Activity">
-
-        </activity>
     </application>
 
 </manifest>

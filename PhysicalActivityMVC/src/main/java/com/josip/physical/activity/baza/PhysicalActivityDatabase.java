@@ -63,7 +63,6 @@ public String getDriver() {
 * Prvo loadati drivere za bazu podataka	
 */
 
-@Autowired
 public void InsertUser(){
  
 
