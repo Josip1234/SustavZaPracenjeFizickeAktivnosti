@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/unipulogolat"
     android:orientation="vertical"
+    android:screenOrientation="portrait"
     tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity">
 
     <FrameLayout
@@ -44,7 +45,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="80dp"
-                    android:layout_marginStart="100dp" />
+                    android:layout_marginStart="100dp"
+                    android:paddingTop="15dp"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/StepCounter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="80dp"
+                    android:layout_marginStart="100dp"
+                    android:paddingTop="15dp"
+                    android:text="@string/default_count"
+                    android:textSize="30sp" />
 
             </LinearLayout>
         </LinearLayout>

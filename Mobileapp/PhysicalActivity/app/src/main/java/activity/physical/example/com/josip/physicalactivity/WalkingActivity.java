@@ -74,7 +74,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
          }else{
              onclickedstopchronomethar();
 
-             getTimeAfterStop();
+
          }
     }
 
@@ -88,7 +88,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
             float z = sensorEvent.values[2];
 
             long curTime = System.currentTimeMillis();
-            if ((curTime - lastUpdate) > 10) {
+            if ((curTime - lastUpdate) > 100) {
                 long difftime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 
@@ -100,7 +100,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
 
                 if(x<0.0){
                     start();
-                }else if(x>0.0){
+                }else{
                     onclickedstopchronomethar();
                 }
             }
@@ -111,6 +111,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
             public void onAccuracyChanged (Sensor sensor,int i){
 
             }
+
         protected void onPause(){
             super.onPause();
             senSensorManager.unregisterListener(this);
