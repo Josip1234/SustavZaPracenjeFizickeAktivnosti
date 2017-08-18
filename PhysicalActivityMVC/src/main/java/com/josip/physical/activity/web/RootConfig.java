@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ComponentScan(basePackages={"com.josip.physical.activity"},excludeFilters={@Filter(type=FilterType.ANNOTATION,value=EnableWebMvc.class)})
+@ComponentScan(basePackages={"com.josip"},excludeFilters={@Filter(type=FilterType.ANNOTATION,value=EnableWebMvc.class)})
 public class RootConfig {
 
 }

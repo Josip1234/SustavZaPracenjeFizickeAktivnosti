@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
@@ -20,16 +21,17 @@ import android.widget.TextView;
 
 
 
-public class WalkingActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener,SensorEventListener {
+public class WalkingActivity extends AppCompatActivity implements SensorEventListener {
     private Chronometer cr;
-    private Switch sv;
     private TextView atv;
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
     private long lastUpdate=0;
     private float last_x,last_y,last_z;
-    private static final int SHAKE_THRESHOLD=600;
     private TextView tv1,tv2,tv3;
+    private static String time;
+
+
 
     public void start(){
         cr=(Chronometer) findViewById(R.id.chronometer2);
@@ -51,6 +53,7 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
         time=cr.getText().toString();
         return time;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,22 +64,10 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
 
 
 
-        sv=(Switch) findViewById(R.id.switch2);
-        sv.setOnCheckedChangeListener(this);
-
 
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-         if(isChecked){
-             start();
-         }else{
-             onclickedstopchronomethar();
 
-
-         }
-    }
 
 
     @Override
@@ -100,9 +91,15 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
 
                 if(x<0.0){
                     start();
+
                 }else{
                     onclickedstopchronomethar();
+                    time=getTimeAfterStop();
+
                 }
+
+
+
             }
         }
     }
@@ -112,13 +109,19 @@ public class WalkingActivity extends AppCompatActivity implements CompoundButton
 
             }
 
+
         protected void onPause(){
             super.onPause();
             senSensorManager.unregisterListener(this);
+
+            time=getTimeAfterStop();
         };
+
         protected void onResume() {
             super.onResume();
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
+
         };
         /*
         public void changeText() {

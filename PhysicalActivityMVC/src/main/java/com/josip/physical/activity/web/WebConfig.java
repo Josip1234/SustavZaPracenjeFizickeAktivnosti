@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.example.physical.activity.web")
+@ComponentScan("com.josip")
 public class WebConfig extends WebMvcConfigurerAdapter {
 @Bean
 public ViewResolver viewResolver(){
