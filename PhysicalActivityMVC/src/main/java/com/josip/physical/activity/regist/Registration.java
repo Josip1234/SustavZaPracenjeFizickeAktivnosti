@@ -14,8 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 
-
-@Component("Registracija")
 public class Registration {
 private String OIB;
 private String ime;
@@ -26,7 +24,8 @@ private String datumr;
 private String email;
 private String sifra;
 
-private PhysicalActivityDatabase db;
+public PhysicalActivityDatabase db;
+
 public Registration() {
 	this.OIB="14520369430";
 	this.ime="Josip";
@@ -44,7 +43,7 @@ public void register(){
 };
 
 
-public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra,PhysicalActivityDatabase db){
+public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra){
 	this.OIB=OIB;
 	this.ime=ime;
 	this.prezime=prezime;
@@ -112,7 +111,6 @@ public String getEmail() {
 public String getSifra() {
 	return sifra;
 }
-
 
 
 

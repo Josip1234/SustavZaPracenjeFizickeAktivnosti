@@ -2,11 +2,16 @@ package com.josip.physical.activity.baza;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.josip.physical.activity.regist.Registration;
 
 
 
@@ -19,7 +24,7 @@ private String host;
 private String user;
 private String vrsta_baze;
 private String Driver;
-
+private Registration rg;
 public PhysicalActivityDatabase(){
 	
 	this.ime_baze="physicalactivity";
@@ -98,7 +103,47 @@ try{
 
 }
 
-
+public String traziKorisnika(String OIB){
+String korisnik="";
+try{
+   Class.forName(Driver).newInstance();
+   System.out.println("Driver dohvacen");
+}catch (Exception err) {
+	System.out.println("Driver nije dohvacen mozda nije online");
+	err.printStackTrace(System.err);
+	System.exit(0);
+}
+String dbname=getIme_baze();
+Connection conn = null;
+try{
+	System.out.println("Spajam se nma bazu...");
+	conn=DriverManager.getConnection(vrsta_baze+host);
+	System.out.println("Spojen sam na bazu");
+	System.out.println("Unosim korisnika:");
+	Statement s = conn.createStatement();
+	s.execute("SHOW DATABASES");
+	s.execute("USE physicalactivity");
+	ResultSet rs = null;
+	String query="SELECT OIB,ime,prezime,spol,email FROM registration WHERE OIB='"+OIB+"'";
+	while(rs.next()){
+		String oib=rs.getString("OIB");
+		String ime=rs.getString("ime");
+		String prezime=rs.getString("prezime");
+		String spol=rs.getString("spol");
+		String email=rs.getString("email");
+		korisnik=oib+ime+prezime+spol+email;
+	}
+	rs.close();
+	
+    conn.close();
+    
+}catch (SQLException err) {
+	System.err.println("SQL greska");
+	err.printStackTrace(System.err);
+	System.exit(0);
+}
+return korisnik;
+}
 
 
 
@@ -144,5 +189,9 @@ try {
 e.printStackTrace();
 }
 }
+
+
+
+
 
 }

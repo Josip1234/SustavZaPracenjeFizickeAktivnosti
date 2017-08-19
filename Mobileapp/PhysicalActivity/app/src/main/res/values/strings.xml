@@ -26,4 +26,9 @@
     <string name="y">y</string>
     <string name="z">z</string>
     <string name="default_count">0</string>
+    <string name="Z">Z</string>
+    <string name="X">X</string>
+    <string name="Y">Y</string>
+    <string name="resetsteps">ResetSteps</string>
+
 </resources>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
@@ -15,6 +14,7 @@ href="<c:url value="/resources/pad.css" />">
 <body>
 <h1>Dobrodošli na početnu stranicu</h1>
 <a href="home">Index</a> |
-<a href="<c:url value="register" />">Register</a>
+<a href="BMICalc">Indeks tjelesne mase</a>
+<a href="registracija">Register</a>
 </body>
 </html>

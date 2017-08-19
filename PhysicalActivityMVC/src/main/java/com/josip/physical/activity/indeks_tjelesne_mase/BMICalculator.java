@@ -1,24 +1,33 @@
 package com.josip.physical.activity.indeks_tjelesne_mase;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import com.josip.physical.activity.regist.Registration;
 
 @Component("Indeks tjelesne mase")
 public class BMICalculator implements BMIReprository {
-	
+	private String OIB;
 	private float masa_u_kg;
 	private float visina_osobe_u_metrima;
 	private float rezultat;
-
+   
+    
 	public BMICalculator(){
 	
 		this.masa_u_kg=67;
 		this.visina_osobe_u_metrima=(float)1.67;
 	}
-	public BMICalculator(float masa,float visina){
+	public BMICalculator(String OIB,float masa,float visina){
+		this.OIB=OIB;
 		this.masa_u_kg=masa;
 		this.visina_osobe_u_metrima=visina;
 	}
+    
+	
 
+	
 
 	public float getMasa_u_kg() {
 		return masa_u_kg;
@@ -80,5 +89,7 @@ public class BMICalculator implements BMIReprository {
 		return izraz;
 		
 	}
+	
+	
 
 }

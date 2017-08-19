@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
-<fullyQualifiedTypeName name="com.example.physical.activity.index.BMICalculator"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.ProceedingJoinPoint"/>
-<fullyQualifiedTypeName name="java.lang.Throwable"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.Around"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="scala.collection.immutable.HashMap"/>
 <fullyQualifiedTypeName name="org.springframework.ws.transport.http.support.AbstractAnnotationConfigMessageDispatcherServletInitializer"/>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
 <fullyQualifiedTypeName name="org.springframework.security.web.header.writers.frameoptions.StaticAllowFromStrategy"/>
@@ -22,8 +14,6 @@
 <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MockMvc"/>
 <fullyQualifiedTypeName name="scala.annotation.meta.setter"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.view.InternalResourceView"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
@@ -34,14 +24,12 @@
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.EnableAspectJAutoProxy"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.baza.PhysicalActivityDatabase"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.baza.BazaConfig"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Aspect"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Pointcut"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Before"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ViewResolver"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 <fullyQualifiedTypeName name="java.lang.Override"/>
@@ -54,10 +42,22 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
 <fullyQualifiedTypeName name="java.sql.JDBCType"/>
 <fullyQualifiedTypeName name="com.example.physical.activity.regist.Registration"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.regist.Registration"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.regist.registeryourself"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.web.RegistrationRepository"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.baza.PhysicalActivityDatabase"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.regist.Registration"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
+<fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
 </qualifiedTypeNameHistroy>
