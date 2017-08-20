@@ -29,6 +29,32 @@ public String home(){
 public String registracija(){
 	return "registracija";
 }
+@RequestMapping(value="korisnik",method=RequestMethod.GET)
+public String korisnik(Model model){
+	Registration registration = new Registration();
+	String podatak="";
+	podatak=registration.getOIB();
+	String ime="";
+	ime=registration.getIme();
+	String prezime="";
+	prezime=registration.getPrezime();
+	model.addAttribute("OIB",podatak);
+	model.addAttribute("Ime",ime);
+	model.addAttribute("Prezime",prezime);
+	String spol="";
+	spol=registration.getSpol();
+	model.addAttribute("spol",spol);
+	String datumr="";
+	datumr=registration.getDatumr();
+	model.addAttribute("Datum_rodjenja",datumr);
+	String email="";
+	email=registration.getEmail();
+	model.addAttribute("Email",email);
+	String sifra="";
+	sifra=registration.getSifra();
+	model.addAttribute("sifra",sifra);
+	return "korisnik";
+}
 
 
 @RequestMapping(value="BMICalc",method=GET)
