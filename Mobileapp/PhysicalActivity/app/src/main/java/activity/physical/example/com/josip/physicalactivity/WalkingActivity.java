@@ -1,13 +1,18 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
@@ -28,9 +33,9 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView atv;
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    private long lastUpdate=0;
-    private float last_x,last_y,last_z;
-    private TextView tv1,tv2,tv3;
+    private long lastUpdate = 0;
+    private float last_x, last_y, last_z;
+    private TextView tv1, tv2, tv3;
     private static String time;
     private TextView textViewX;
     private TextView textViewY;
@@ -44,28 +49,31 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private int numSteps;
     private SeekBar seekBar;
     private int threshold;
+    private TextView tLattitude;
+    private TextView tLongittude;
 
 
-
-
-    public void start(){
-        cr=(Chronometer) findViewById(R.id.chronometer2);
+    public void start() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.start();
     }
-    public void onclickedstopchronomethar(){
-        cr=(Chronometer) findViewById(R.id.chronometer2);
+
+    public void onclickedstopchronomethar() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.stop();
     }
-    public String getTimeAfterStop(){
+
+    public String getTimeAfterStop() {
         String time;
-        cr=(Chronometer) findViewById(R.id.chronometer2);
-        time=cr.getText().toString();
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = cr.getText().toString();
         return time;
     }
-    public String getTimeAfterWishClick(){
+
+    public String getTimeAfterWishClick() {
         String time;
-        cr=(Chronometer) findViewById(R.id.chronometer2);
-        time=cr.getText().toString();
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = cr.getText().toString();
         return time;
     }
 
@@ -73,6 +81,45 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+        tLattitude = (TextView) findViewById(R.id.outputLat);
+        tLongittude = (TextView) findViewById(R.id.outputLong);
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationListener locListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location loc) {
+                double lat=loc.getLatitude();
+                double lon= loc.getLongitude();
+
+                tLattitude.setText(String.valueOf(lat));
+                tLongittude.setText(String.valueOf(lon));
+            }
+
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+
+            }
+        };
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
         textViewX=(TextView) findViewById(R.id.textViewX);
         textViewY=(TextView) findViewById(R.id.textViewY);
         textViewZ=(TextView) findViewById(R.id.textViewZ);
@@ -98,6 +145,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
 
     }
+
 
    public void resetSteps(View v){
        numSteps=0;
@@ -187,6 +235,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
 
         };
+
+
+
+
+
         /*
         public void changeText() {
             tv1 = (TextView) findViewById(R.id.x);

@@ -98,7 +98,20 @@
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/textSensitive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            tools:ignore="HardcodedText" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:ignore="DuplicateIds">
 
                         <SeekBar
                             android:id="@+id/seekBar"
@@ -108,16 +121,39 @@
 
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="DuplicateIds">
+                        android:layout_height="match_parent" >
 
                         <TextView
-                            android:id="@+id/textSensitive"
+                            android:id="@+id/Lat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TextView"
-                            tools:ignore="HardcodedText" />
+                            android:text="@string/lattitude" />
+
+                        <TextView
+                            android:id="@+id/outputLat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dots" />
                     </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/Long"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/longitude" />
+
+                        <TextView
+                            android:id="@+id/outputLong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dots2" />
+
+                    </TableRow>
+
                 </TableLayout>
 
 
