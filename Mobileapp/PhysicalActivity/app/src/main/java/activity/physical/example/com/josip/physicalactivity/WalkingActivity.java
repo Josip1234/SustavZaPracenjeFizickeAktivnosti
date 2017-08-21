@@ -117,7 +117,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                         List<Address> listAddresses = geocoder.getFromLocation(lat, lon, 1);
                         if(null!=listAddresses&&listAddresses.size()>0){
                             String _Location = listAddresses.get(0).getAddressLine(0);
-                            tLocDesc.setText(_Location);
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -131,7 +131,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
 
 
-
+                tLocDesc.setText(provider);
                 tLattitude.setText(String.valueOf(lat));
                 tLongittude.setText(String.valueOf(lon));
             }
