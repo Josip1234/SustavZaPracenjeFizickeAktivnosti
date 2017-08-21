@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
@@ -17,7 +18,7 @@ import com.josip.physical.activity.regist.Registration;
 @RequestMapping(value="/")
 public class IndexController {
 
-@RequestMapping(method=GET)
+@RequestMapping(value="index",method=GET)
 public String index(){
 	return "index";
 }
@@ -28,7 +29,19 @@ public String home(){
 @RequestMapping(value="registracija",method=GET)
 public String registracija(){
 	return "registracija";
+
 }
+
+@RequestMapping(value="registracija",method=POST)
+	public String vrijednosti(@RequestParam("OIB")String OIB,Model model){
+		Registration registration=new Registration();
+		String O="";
+		registration.setOIB(OIB);
+		O=registration.getOIB();
+		model.addAttribute("OIB",O);
+		return "redirect:index";
+	}
+
 @RequestMapping(value="korisnik",method=RequestMethod.GET)
 public String korisnik(Model model){
 	Registration registration = new Registration();

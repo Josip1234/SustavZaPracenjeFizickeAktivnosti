@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="org.springframework.ws.transport.http.support.AbstractAnnotationConfigMessageDispatcherServletInitializer"/>
 <fullyQualifiedTypeName name="javax.ws.rs.GET"/>
 <fullyQualifiedTypeName name="org.springframework.security.web.header.writers.frameoptions.StaticAllowFromStrategy"/>
 <fullyQualifiedTypeName name="spittr.web.HomeControllerTest"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="com.josip.physical.activity.regist.Registration"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
 <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 </qualifiedTypeNameHistroy>

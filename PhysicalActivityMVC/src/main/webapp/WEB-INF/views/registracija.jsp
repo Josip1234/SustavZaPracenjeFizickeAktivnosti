@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Register:</h1>
-<form method="POST">
+<form action="registracija" method="POST">
 OIB:<input type="text" name="OIB"/><br/>
 Ime:<input type="text" name="ime"/><br/>
 Prezime:<input type="text" name="prezime"/><br/>
@@ -19,6 +19,7 @@ Email:<input type="email" name="email"/><br/>
 Šifra:<input type="password" name="sifra"/><br/>
 
 <input type="submit" value="Registracija"/>
+<p>${OIB}</p>
 </form>
 </body>
 </html>
