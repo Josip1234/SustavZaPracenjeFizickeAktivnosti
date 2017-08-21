@@ -34,5 +34,7 @@
     <string name="lattitude">Lattitude</string>
     <string name="dots2">---</string>
     <string name="longitude">Longitude:</string>
+    <string name="location_description">location_description</string>
+    <string name="locdses">---</string>
 
 </resources>

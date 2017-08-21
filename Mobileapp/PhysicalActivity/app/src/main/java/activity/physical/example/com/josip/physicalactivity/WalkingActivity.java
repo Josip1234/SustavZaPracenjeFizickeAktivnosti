@@ -8,6 +8,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -26,6 +29,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 
 public class WalkingActivity extends AppCompatActivity implements SensorEventListener {
@@ -47,12 +54,12 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private float previousY;
     private float currentY;
     private int numSteps;
-    private SeekBar seekBar;
+    //private SeekBar seekBar;
     private int threshold;
     private TextView tLattitude;
     private TextView tLongittude;
-
-
+    private TextView tLocDesc;
+    private Context mCon;
     public void start() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.start();
@@ -83,12 +90,47 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         setContentView(R.layout.activity_walking);
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
-        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        tLocDesc = (TextView) findViewById(R.id.location_dsc);
+        final LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         LocationListener locListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location loc) {
-                double lat=loc.getLatitude();
-                double lon= loc.getLongitude();
+                double lat = loc.getLatitude();
+                double lon = loc.getLongitude();
+                String provider = locManager.getBestProvider(new Criteria(), true);
+
+                if (ActivityCompat.checkSelfPermission(mCon, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mCon, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                Location locations = locManager.getLastKnownLocation(provider);
+                List<String> providerList = locManager.getAllProviders();
+                if(null!=locations && null!=providerList && providerList.size()>0){
+                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                    try {
+                        List<Address> listAddresses = geocoder.getFromLocation(lat, lon, 1);
+                        if(null!=listAddresses&&listAddresses.size()>0){
+                            String _Location = listAddresses.get(0).getAddressLine(0);
+                            tLocDesc.setText(_Location);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+
+
+
+
+
+
 
                 tLattitude.setText(String.valueOf(lat));
                 tLongittude.setText(String.valueOf(lon));
@@ -126,10 +168,10 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         textViewSteps=(TextView) findViewById(R.id.textSteps);
         textSensitive=(TextView) findViewById(R.id.textSensitive);
         buttonReset = (Button) findViewById(R.id.buttonReset);
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        /*seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(10);
-        seekBar.setOnSeekBarChangeListener(seekBarListener);
-        threshold=10;
+        seekBar.setOnSeekBarChangeListener(seekBarListener);*/
+        threshold=15;
         textSensitive.setText(String.valueOf(threshold));
         previousY=0;
         currentY=0;
@@ -191,7 +233,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             textViewZ.setText(String.valueOf(z));
 
             previousY=y;
-            if ((curTime - lastUpdate) > 20) {
+            if ((curTime - lastUpdate) > 10) {
                 long difftime = (curTime - lastUpdate);
                 lastUpdate = curTime;
 
@@ -201,10 +243,10 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 last_z = z;
 
 
-                if(x>0.0){
+                if(x>5){
                     start();
 
-                }else if(x<=0.0){
+                }else if(x<-5){
                     onclickedstopchronomethar();
                     time=getTimeAfterStop();
 
