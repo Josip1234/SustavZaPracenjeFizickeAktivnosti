@@ -1,5 +1,5 @@
 package com.josip.physical.activity.baza;
-
+import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.regist.Registration;
@@ -42,9 +43,7 @@ public void setVrsta_baze(String vrsta_baze) {
 
 
 
-public void setDriver(String driver) {
-	Driver = driver;
-}
+
 
 
 
@@ -68,8 +67,8 @@ public String getDriver() {
 * Prvo loadati drivere za bazu podataka	
 */
 
-public void InsertUser(){
- 
+public boolean InsertUser(Registration rg){
+ rg=new Registration(rg.getOIB(),rg.getIme(),rg.getPrezime(),rg.getSpol(),rg.getDatumr(),rg.getEmail(),rg.getSifra());
 
 try{
    Class.forName(Driver).newInstance();
@@ -91,16 +90,16 @@ try{
 	s.execute("USE physicalactivity");
 	
 	
-	s.execute("INSERT INTO `registration` (`id`, `ime`, `prezime`, `spol`, `datumr`, `drzavar`, `drzavap`, `email`, `sifra`, `zanimanje`) VALUES (1, 'n', 'n', 'n', '2017-10-11', 'n', 'n', 'n', 'n', 'n')");
+	s.execute("INSERT INTO `registration` (`OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES ('"+rg.getOIB()+"', '"+rg.getIme()+"', '"+rg.getPrezime()+"', '"+rg.getSpol()+"', '"+rg.getDatumr()+"', '"+rg.getEmail()+"', '"+rg.getSifra()+"')");
 	System.out.println( "Korisnik unesen");
     conn.close();
 }catch (SQLException err) {
-	System.err.println("SQL greška");
+	System.err.println("SQL greska");
 	err.printStackTrace(System.err);
 	System.exit(0);
 }
 
-
+return true;
 }
 
 public String traziKorisnika(String OIB){

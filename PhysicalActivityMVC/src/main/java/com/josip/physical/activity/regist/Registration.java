@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class Registration {
 private String OIB;
 private String ime;
@@ -27,13 +27,13 @@ private String sifra;
 public PhysicalActivityDatabase db;
 
 public Registration() {
-	this.OIB="14520369430";
-	this.ime="Josip";
-	this.prezime="Bošnjak";
-	this.spol="m";
-	this.datumr="1992-11-1992";
-	this.email="jbosnjak@unipu.hr";
-	this.sifra="test";
+	this.OIB="";
+	this.ime="";
+	this.prezime="";
+	this.spol="";
+	this.datumr="0000-00-00";
+	this.email="";
+	this.sifra="";
 	
 	this.db=db;
 }
@@ -57,11 +57,7 @@ public Registration(String OIB,String ime,String prezime,String spol,String datu
 }
 
 
-public Registration(PhysicalActivityDatabase db){
-	this.db=db;
-	db.InsertUser();
-	register();
-}
+
 
 public void setOIB(String OIB) {
 	this.OIB = OIB;
