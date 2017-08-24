@@ -36,5 +36,6 @@
     <string name="longitude">Longitude:</string>
     <string name="location_description">location_description</string>
     <string name="locdses">---</string>
+    <string name="pokreni">Pokreni</string>
 
 </resources>
