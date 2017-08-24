@@ -19,10 +19,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
@@ -59,7 +61,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView tLattitude;
     private TextView tLongittude;
     private TextView tLocDesc;
-    private Context mCon;
+
     public void start() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.start();
@@ -91,49 +93,38 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
         tLocDesc = (TextView) findViewById(R.id.location_dsc);
-        final LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         LocationListener locListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location loc) {
                 double lat = loc.getLatitude();
                 double lon = loc.getLongitude();
-                String provider = locManager.getBestProvider(new Criteria(), true);
-
-                if (ActivityCompat.checkSelfPermission(mCon, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mCon, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                Location locations = locManager.getLastKnownLocation(provider);
-                List<String> providerList = locManager.getAllProviders();
-                if(null!=locations && null!=providerList && providerList.size()>0){
-                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                    try {
-                        List<Address> listAddresses = geocoder.getFromLocation(lat, lon, 1);
-                        if(null!=listAddresses&&listAddresses.size()>0){
-                            String _Location = listAddresses.get(0).getAddressLine(0);
-
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
 
 
 
-
-
-
-
-                tLocDesc.setText(provider);
                 tLattitude.setText(String.valueOf(lat));
                 tLongittude.setText(String.valueOf(lon));
+
+                String cityName=null;
+                Geocoder gcd = new Geocoder(getBaseContext(),Locale.getDefault());
+                List<Address> addresses;
+
+
+                try {
+                     addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
+                    if(addresses.size()>0){
+                        Log.i("poruka",addresses.get(0).getLocality());
+                        System.out.println(addresses.get(0).getLocality());
+                        cityName=addresses.get(0).getLocality();
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String s =
+                        cityName;
+                tLocDesc.setText(s);
             }
 
             @Override
@@ -161,7 +152,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locListener);
         textViewX=(TextView) findViewById(R.id.textViewX);
         textViewY=(TextView) findViewById(R.id.textViewY);
         textViewZ=(TextView) findViewById(R.id.textViewZ);
