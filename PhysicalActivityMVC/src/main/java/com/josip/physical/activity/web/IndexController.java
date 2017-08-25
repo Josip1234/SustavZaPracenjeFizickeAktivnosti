@@ -25,6 +25,7 @@ import com.josip.physical.activity.regist.Registration;
 @RequestMapping(value="/")
 public class IndexController {
 
+
 @RequestMapping(value="index",method=GET)
 public String index(){
 
@@ -94,4 +95,6 @@ public String korisnik(Model model){
 public String BMICalc(){
 	return "BMICalc";
 }
+
+
 }

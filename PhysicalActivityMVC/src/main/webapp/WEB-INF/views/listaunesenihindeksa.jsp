@@ -10,6 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<p>Vama je indeks: ${indeks}</p>
 </body>
 </html>

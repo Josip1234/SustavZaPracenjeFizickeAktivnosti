@@ -8,59 +8,58 @@ import com.josip.physical.activity.regist.Registration;
 
 @Component("Indeks tjelesne mase")
 public class BMICalculator implements BMIReprository {
-	private String OIB;
-	private float masa_u_kg;
-	private float visina_osobe_u_metrima;
-	private float rezultat;
-   
+	private int masa_u_kg;
+	private double visina_osobe_u_metrima;
+	private double rezultat;
+    Registration rg;
     
 	public BMICalculator(){
 	
 		this.masa_u_kg=67;
-		this.visina_osobe_u_metrima=(float)1.67;
+		this.visina_osobe_u_metrima=1.67;
+		
 	}
-	public BMICalculator(String OIB,float masa,float visina){
-		this.OIB=OIB;
+	public BMICalculator(int masa,double visina){
+		
 		this.masa_u_kg=masa;
 		this.visina_osobe_u_metrima=visina;
+		
 	}
-    
+   
 	
+  
 
-	
-
-	public float getMasa_u_kg() {
+	public int getMasa_u_kg() {
 		return masa_u_kg;
 	}
 
-	public void setMasa_u_kg(float masa_u_kg) {
+	public void setMasa_u_kg(int masa_u_kg) {
 		this.masa_u_kg = masa_u_kg;
 	}
 
-	public float getVisina_osobe() {
+	public double getVisina_osobe() {
 		return visina_osobe_u_metrima;
 	}
 
-	public void setVisina_osobe(float visina_osobe) {
+	public void setVisina_osobe(double visina_osobe) {
 		this.visina_osobe_u_metrima = visina_osobe;
 	}
 
-	public float getRezultat() {
+	public double getRezultat() {
 		return rezultat;
 	}
 
-	public void setRezultat(float rezultat) {
+	public void setRezultat(double rezultat) {
 		this.rezultat = rezultat;
 	}
     
-	public float izracunajBMI(float masa,float visina_osobe){
+	public double izracunajBMI(int masa,double visina_osobe){
 		
 		this.rezultat=masa/(visina_osobe*visina_osobe);
 		return this.rezultat;
 	}
 	
-	public String granica_BMI(float BMI,String spol){
-		String izraz="";
+	public String granica_BMI(double BMI,String spol,String izraz){
 		if(BMI<19.1 && spol=="f"){
 			izraz= "prenizak BMI";
 		}else if(BMI<20.7 && spol=="m" ){
@@ -85,10 +84,13 @@ public class BMICalculator implements BMIReprository {
 			
 		}else if((BMI>45)&&(spol=="m"||spol=="f")){
 			izraz= "izrazito visok BMI";
-		};
+		}else{
+			izraz="greska";
+		}
 		return izraz;
 		
 	}
+	
 	
 	
 
