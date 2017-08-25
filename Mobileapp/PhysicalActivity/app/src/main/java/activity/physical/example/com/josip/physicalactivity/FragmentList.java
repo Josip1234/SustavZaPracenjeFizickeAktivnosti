@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 public class FragmentList extends ListFragment {
     ListView listView;
-    String[] activities={"Hodanje","Brzo hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
+    String[] activities={"Hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
 
 
 
@@ -49,7 +49,7 @@ public class FragmentList extends ListFragment {
             Intent intent = new Intent(v.getContext(),WalkingActivity.class);
             startActivityForResult(intent,0);
         }
-        else if(position==7){
+        else if(position==6){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);
             startActivityForResult(intent,7);
         }
