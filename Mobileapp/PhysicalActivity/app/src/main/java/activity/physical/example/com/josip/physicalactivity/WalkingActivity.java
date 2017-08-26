@@ -61,7 +61,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView tLattitude;
     private TextView tLongittude;
     private TextView tLocDesc;
-
+    private TextView state;
+    private TextView adr;
     public void start() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.start();
@@ -93,6 +94,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
         tLocDesc = (TextView) findViewById(R.id.location_dsc);
+        state=(TextView) findViewById(R.id.state_dsc);
+        adr=(TextView) findViewById(R.id.homead);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         LocationListener locListener = new LocationListener() {
@@ -107,6 +110,10 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 tLongittude.setText(String.valueOf(lon));
 
                 String cityName=null;
+                String stateName=null;
+                String ad=null;
+                String ad2=null;
+                String posta=null;
                 Geocoder gcd = new Geocoder(getBaseContext(),Locale.getDefault());
                 List<Address> addresses;
 
@@ -115,8 +122,16 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                      addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
                     if(addresses.size()>0){
                         Log.i("poruka",addresses.get(0).getLocality());
-                        System.out.println(addresses.get(0).getLocality());
+                        Log.i("poruka",addresses.get(0).getCountryName());
+                        Log.i("poruka",addresses.get(0).getAddressLine(0));
+                        Log.i("poruka",addresses.get(0).getAddressLine(1));
+                        Log.i("poruka",addresses.get(0).getAddressLine(2));
+                        Log.i("poruka",addresses.get(0).getPostalCode());
                         cityName=addresses.get(0).getLocality();
+                        stateName=addresses.get(0).getCountryName();
+                        ad=addresses.get(0).getAddressLine(1);
+
+
 
                     }
                 } catch (IOException e) {
@@ -124,7 +139,13 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 }
                 String s =
                         cityName;
+                String p=stateName;
+                String a=ad;
+
+
                 tLocDesc.setText(s);
+                state.setText(p);
+                adr.setText(a);
             }
 
             @Override

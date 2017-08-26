@@ -37,5 +37,7 @@
     <string name="location_description">location_description</string>
     <string name="locdses">---</string>
     <string name="pokreni">Pokreni</string>
+    <string name="state">država</string>
+    <string name="homead">homeadr</string>
 
 </resources>
