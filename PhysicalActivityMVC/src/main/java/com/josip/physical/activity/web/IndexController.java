@@ -5,6 +5,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collection;
+import java.util.Map;
+
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMIReprository;
+import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
 @Controller
 @RequestMapping(value="/")
@@ -95,6 +100,21 @@ public String korisnik(Model model){
 public String BMICalc(){
 	return "BMICalc";
 }
+@RequestMapping(value="prijavnica",method=GET)
+public String prijavnica(){
+	return "prijavnica";
+}
 
+@RequestMapping(value="prijavnica",method=POST)
+public String provjeriPrijavu(@RequestParam("email")String email,@RequestParam("sifra")String sifra){
+	System.out.println(email);
+    System.out.println(sifra);
+    Login lg = new Login(email,sifra);
+    boolean user;
+    PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+    user=db.traziKorisnika(email);
+    System.out.println(user);
+	return "redirect:index";
+}
 
 }

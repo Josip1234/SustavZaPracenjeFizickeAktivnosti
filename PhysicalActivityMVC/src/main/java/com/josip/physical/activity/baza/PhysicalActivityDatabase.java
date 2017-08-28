@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
 
 
@@ -26,6 +27,9 @@ private String user;
 private String vrsta_baze;
 private String Driver;
 private Registration rg;
+public int broji=0;
+private Login lg;
+
 public PhysicalActivityDatabase(){
 	
 	this.ime_baze="physicalactivity";
@@ -33,6 +37,7 @@ public PhysicalActivityDatabase(){
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
 	this.Driver="com.mysql.jdbc.Driver";
+	this.lg=lg;
 }
 
 
@@ -102,8 +107,8 @@ try{
 return true;
 }
 
-public String traziKorisnika(String OIB){
-String korisnik="";
+public boolean traziKorisnika(String email){
+
 try{
    Class.forName(Driver).newInstance();
    System.out.println("Driver dohvacen");
@@ -123,14 +128,13 @@ try{
 	s.execute("SHOW DATABASES");
 	s.execute("USE physicalactivity");
 	ResultSet rs = null;
-	String query="SELECT OIB,ime,prezime,spol,email FROM registration WHERE OIB='"+OIB+"'";
+	String query="SELECT OIB FROM registration WHERE email='email'";
+	rs=s.executeQuery(query);
+	String oib="";
 	while(rs.next()){
-		String oib=rs.getString("OIB");
-		String ime=rs.getString("ime");
-		String prezime=rs.getString("prezime");
-		String spol=rs.getString("spol");
-		String email=rs.getString("email");
-		korisnik=oib+ime+prezime+spol+email;
+		oib=rs.getString("OIB");
+		broji+=1;
+		
 	}
 	rs.close();
 	
@@ -141,7 +145,11 @@ try{
 	err.printStackTrace(System.err);
 	System.exit(0);
 }
-return korisnik;
+if(broji==1){
+	return true;
+}else{
+	return false;
+}
 }
 
 

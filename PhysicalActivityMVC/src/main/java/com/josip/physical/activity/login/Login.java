@@ -1,16 +1,20 @@
 package com.josip.physical.activity.login;
 
-
+import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
 public class Login implements log {
 
     private String username;
     private String sifra;
-   
+	private PhysicalActivityDatabase db;
+    
+    
+
     
     public Login(String username,String sifra){
     	this.username=username;
     	this.sifra=sifra;
+    	
     }
     
 	public String getUsername() {
