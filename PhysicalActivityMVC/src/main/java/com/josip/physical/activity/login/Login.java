@@ -1,10 +1,16 @@
 package com.josip.physical.activity.login;
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
+import javax.validation.constraints.*;
+
+import org.springframework.stereotype.Component;
+
 
 public class Login implements log {
 
+	
     private String username;
+    
     private String sifra;
 	private PhysicalActivityDatabase db;
     

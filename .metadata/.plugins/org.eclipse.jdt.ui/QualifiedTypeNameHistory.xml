@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="retrofit2.http.GET"/>
-<fullyQualifiedTypeName name="com.gargoylesoftware.htmlunit.javascript.host.media.webkitMediaStream"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="com.example.physical.activity.login.LoginRepository"/>
-<fullyQualifiedTypeName name="com.example.physical.activity.login.LoginController"/>
 <fullyQualifiedTypeName name="org.springframework.test.web.servlet.MockMvc"/>
 <fullyQualifiedTypeName name="scala.annotation.meta.setter"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.view.InternalResourceView"/>
@@ -14,7 +9,6 @@
 <fullyQualifiedTypeName name="java.sql.Statement"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.baza.BazaConfig"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer"/>
@@ -58,6 +52,12 @@
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
 <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.login.Login"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.baza.PhysicalActivityDatabase"/>
+<fullyQualifiedTypeName name="com.sun.istack.internal.NotNull"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.login.Login"/>
+<fullyQualifiedTypeName name="org.springframework.validation.Errors"/>
+<fullyQualifiedTypeName name="javax.validation.Valid"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 </qualifiedTypeNameHistroy>
