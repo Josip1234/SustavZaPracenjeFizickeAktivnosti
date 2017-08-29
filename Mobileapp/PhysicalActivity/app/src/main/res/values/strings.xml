@@ -39,5 +39,7 @@
     <string name="pokreni">Pokreni</string>
     <string name="state">država</string>
     <string name="homead">homeadr</string>
+    <string name="korisnik">korisnik</string>
+    <string name="sesija">sesija</string>
 
 </resources>

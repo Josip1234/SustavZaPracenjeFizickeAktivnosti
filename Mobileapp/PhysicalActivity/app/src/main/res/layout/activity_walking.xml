@@ -46,8 +46,7 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
                     <TableRow
                         android:layout_width="match_parent"
@@ -152,16 +151,17 @@
                         android:layout_height="match_parent">
 
 
-
                         <TextView
                             android:id="@+id/location_dsc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/locdses" />
                     </TableRow>
+
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <TextView
                             android:id="@+id/homead"
                             android:layout_width="match_parent"
@@ -173,19 +173,50 @@
 
                     </TableRow>
 
-                   <TableRow
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent">
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                       <TextView
-                           android:id="@+id/state_dsc"
-                           android:layout_width="match_parent"
-                           android:layout_height="match_parent"
-                           android:text="@string/state"
+                        <TextView
+                            android:id="@+id/state_dsc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/state"
 
-                           />
+                            />
 
-                   </TableRow>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/korisnik"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+
+                            android:text="@string/korisnik" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/sesija"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+
+                            android:text="@string/sesija" />
+
+
+                    </TableRow>
                 </TableLayout>
 
 

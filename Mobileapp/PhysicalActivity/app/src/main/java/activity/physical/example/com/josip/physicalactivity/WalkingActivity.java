@@ -126,7 +126,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                         Log.i("poruka",addresses.get(0).getAddressLine(0));
                         Log.i("poruka",addresses.get(0).getAddressLine(1));
                         Log.i("poruka",addresses.get(0).getAddressLine(2));
-                        Log.i("poruka",addresses.get(0).getPostalCode());
+
                         cityName=addresses.get(0).getLocality();
                         stateName=addresses.get(0).getCountryName();
                         ad=addresses.get(0).getAddressLine(1);

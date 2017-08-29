@@ -21,6 +21,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
    public void prijava(View v){
+
        EditText email;
        EditText sifra;
        TextView tv;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
            e.printStackTrace();
        }
        Intent intent = new Intent(MainActivity.this,ListOfActivitiesActivity.class);
+       intent.putExtra("ime",em);
+       intent.putExtra("šifra",ps);
        startActivity(intent);
    }
 

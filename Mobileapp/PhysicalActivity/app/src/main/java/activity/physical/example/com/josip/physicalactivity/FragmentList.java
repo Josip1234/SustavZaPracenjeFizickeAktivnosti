@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import static android.content.Intent.getIntent;
+
 /**
  * Created by Josip on 6.8.2017..
  */
 
+@SuppressWarnings("deprecation")
 public class FragmentList extends ListFragment {
     ListView listView;
     String[] activities={"Hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
@@ -46,6 +49,7 @@ public class FragmentList extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         if(position==0){
+
             Intent intent = new Intent(v.getContext(),WalkingActivity.class);
             startActivityForResult(intent,0);
         }
@@ -54,4 +58,6 @@ public class FragmentList extends ListFragment {
             startActivityForResult(intent,7);
         }
     }
+
+
 }
