@@ -7,6 +7,7 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -50,7 +51,7 @@ public String registracija(){
 }
 
 @RequestMapping(value="registracija",method=POST)
-	public String vrijednosti(@RequestParam("OIB")String OIB,@RequestParam("ime")String ime,@RequestParam("prezime")String prezime,@RequestParam("spol")String spol,@RequestParam("datumr")Date datumr,@RequestParam("email")String email,@RequestParam("sifra")String sifra,Model model){
+	public String vrijednosti(@Valid Registration rg,Errors errors,@RequestParam("OIB")String OIB,@RequestParam("ime")String ime,@RequestParam("prezime")String prezime,@RequestParam("spol")String spol,@RequestParam("datumr")Date datumr,@RequestParam("email")String email,@RequestParam("sifra")String sifra,Model model){
 	
 		
 		String O=OIB;
@@ -60,7 +61,10 @@ public String registracija(){
 		String e=email;
 		String sf=sifra;
 		String dt=datumr.toString();
-	    Registration rg = new Registration(O,i,p,s,dt,e,sf);
+	    rg = new Registration(O,i,p,s,dt,e,sf);
+	    if(errors.hasErrors()){
+	    	return "registracija";
+	    }
         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
         
 

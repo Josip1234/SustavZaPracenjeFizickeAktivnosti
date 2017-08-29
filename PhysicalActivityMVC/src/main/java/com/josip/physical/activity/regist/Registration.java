@@ -9,19 +9,31 @@ import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
 import java.sql.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("Registracija")
 public class Registration {
+@NotNull
+@Size(min=11,max=11)
 private String OIB;
+@NotNull
 private String ime;
+@NotNull
 private String prezime;
+@NotNull
 private String spol;
-
+@NotNull
 private String datumr;
+@NotNull
 private String email;
+@NotNull
+@Size(min=8)
 private String sifra;
 
 public PhysicalActivityDatabase db;
