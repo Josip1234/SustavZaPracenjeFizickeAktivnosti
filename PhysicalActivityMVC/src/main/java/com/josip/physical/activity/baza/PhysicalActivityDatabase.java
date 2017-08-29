@@ -123,21 +123,21 @@ try{
 	System.out.println("Spajam se nma bazu...");
 	conn=DriverManager.getConnection(vrsta_baze+host);
 	System.out.println("Spojen sam na bazu");
-	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
 	s.execute("USE physicalactivity");
 	ResultSet rs = null;
-	String query="SELECT OIB FROM registration WHERE email='email'";
+	String query="SELECT OIB FROM registration WHERE email='"+email+"'";
 	rs=s.executeQuery(query);
 	String oib="";
 	while(rs.next()){
 		oib=rs.getString("OIB");
+		System.out.println(oib);
 		broji+=1;
 		
 	}
 	rs.close();
-	
+	System.out.println(oib);
     conn.close();
     
 }catch (SQLException err) {
@@ -145,11 +145,8 @@ try{
 	err.printStackTrace(System.err);
 	System.exit(0);
 }
-if(broji==1){
-	return true;
-}else{
-	return false;
-}
+if(broji<2 && broji>0) return true;
+else return false;
 }
 
 
