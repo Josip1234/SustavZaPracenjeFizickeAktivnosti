@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,14 @@ import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
+import com.josip.physical.activity.web.RegistrationRep;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
 
 
 @Component("Spajanje na bazu")
-public class PhysicalActivityDatabase{
+public class PhysicalActivityDatabase implements RegistrationRep{
 
 private String ime_baze;
 private String host;
@@ -194,7 +198,64 @@ e.printStackTrace();
 }
 }
 
-
+@Bean(name="ListaKorisnika")
+public List<Registration> listaKorisnika(){
+	List<Registration> registracija = new ArrayList<Registration>();
+	try{
+		   Class.forName(Driver).newInstance();
+		   
+		}catch (Exception err) {
+			
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+		String dbname=getIme_baze();
+		Connection conn = null;
+		try{
+			
+			conn=DriverManager.getConnection(vrsta_baze+host);
+			
+			Statement s = conn.createStatement();
+			s.execute("SHOW DATABASES");
+			s.execute("USE physicalactivity");
+			ResultSet rs = null;
+			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration";
+			rs=s.executeQuery(query);
+			
+		    int broj=0;
+			while(rs.next()){
+				
+				String oib=rs.getString("OIB");
+				String ime = rs.getString("ime");
+				String prezime = rs.getString("prezime");
+				String spol=rs.getString("spol");
+				String datum=rs.getString("datumr");
+				String email=rs.getString("email");
+		        String sifra=rs.getString("sifra");
+		       
+		       
+		        registracija.add(new Registration(oib,ime,prezime,spol,datum,email,sifra));
+		        
+				
+				
+				
+			}
+			rs.close();
+			
+		    conn.close();
+		    
+		    
+		}catch (SQLException err) {
+			System.err.println("SQL greska");
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+	
+	
+	
+	
+	return registracija;
+}
 
 
 

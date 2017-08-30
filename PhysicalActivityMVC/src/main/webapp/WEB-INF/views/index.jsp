@@ -19,5 +19,6 @@ href="<c:url value="/resources/pad.css" />">
 <a href="registracija">Register</a>
 <a href="korisnik">Profil korisnika</a>
 <a href="prijavnica">Prijava</a>
+<a href="registar">Lista korisnika</a>
 </body>
 </html>
