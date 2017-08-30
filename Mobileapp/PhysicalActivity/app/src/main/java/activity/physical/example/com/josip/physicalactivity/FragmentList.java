@@ -10,6 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONException;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import static android.content.Intent.getIntent;
 
 /**
@@ -17,6 +23,7 @@ import static android.content.Intent.getIntent;
  */
 
 @SuppressWarnings("deprecation")
+
 public class FragmentList extends ListFragment {
     ListView listView;
     String[] activities={"Hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
@@ -51,6 +58,7 @@ public class FragmentList extends ListFragment {
         if(position==0){
 
             Intent intent = new Intent(v.getContext(),WalkingActivity.class);
+
             startActivityForResult(intent,0);
         }
         else if(position==6){

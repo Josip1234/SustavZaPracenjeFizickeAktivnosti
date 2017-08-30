@@ -16,10 +16,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
    public void prijava(View v){
 
        EditText email;
@@ -53,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
             JSONArray array = new JSONArray();
             JSONObject object;
             object=new JSONObject();
-            object.put(a,b);
+            object.put("username:",a);
+            object.put("pass",b);
             array.put(object);
             String text = array.toString();
             FileOutputStream fos = openFileOutput("prijava",MODE_PRIVATE);
@@ -62,6 +65,29 @@ public class MainActivity extends AppCompatActivity {
         Log.i("message","succesfully written to json");
         }
 
+    public void procitaj_json() throws IOException,JSONException{
+        String naziv="prijava";
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() !=0){
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer= new StringBuffer();
+        for(int i=0;i<data.length();i++){
+            String object=data.getJSONObject(i).getString("username");
+            String pass=data.getJSONObject(i).getString("pass");
+            prijavaBuffer.append(object+" "+pass);
+        }
+
+        Log.i("poruka","pročitan json");
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,7 @@ package activity.physical.example.com.josip.physicalactivity;
  * Created by Josip on 3.8.2017..
  */
 
-public class Login {
+public class Login{
   private String username;
   private String password;
 
