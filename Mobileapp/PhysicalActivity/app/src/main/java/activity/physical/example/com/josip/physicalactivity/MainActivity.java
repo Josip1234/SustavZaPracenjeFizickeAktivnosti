@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
             JSONArray array = new JSONArray();
             JSONObject object;
             object=new JSONObject();
-            object.put("username:",a);
+            object.put("username",a);
             object.put("pass",b);
             array.put(object);
             String text = array.toString();

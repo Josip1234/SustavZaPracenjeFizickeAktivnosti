@@ -200,23 +200,7 @@
                             android:text="@string/korisnik" />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
 
-
-                        >
-
-                        <TextView
-                            android:id="@+id/sesija"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-
-
-                            android:text="@string/sesija" />
-
-
-                    </TableRow>
                 </TableLayout>
 
 

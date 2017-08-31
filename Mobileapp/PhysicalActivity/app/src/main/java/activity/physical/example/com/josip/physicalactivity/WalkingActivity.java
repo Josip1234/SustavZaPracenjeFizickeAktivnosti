@@ -30,8 +30,12 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -51,6 +55,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView textViewZ;
     private TextView textSensitive;
     private TextView textViewSteps;
+    private TextView mKorisnik;
     private Button buttonReset;
     private float acceleration;
     private float previousY;
@@ -86,6 +91,32 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         time = cr.getText().toString();
         return time;
     }
+    public String vrati_korisnika() throws IOException,JSONException {
+        String naziv="prijava";
+        String korisnik="";
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() !=0){
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer= new StringBuffer();
+        for(int i=0;i<data.length();i++){
+            String object=data.getJSONObject(i).getString("username");
+            korisnik=object;
+            prijavaBuffer.append(object);
+        }
+        Log.i("poruka","pročitan json");
+        Log.i("korisnik",korisnik);
+        return korisnik;
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +127,14 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         tLocDesc = (TextView) findViewById(R.id.location_dsc);
         state=(TextView) findViewById(R.id.state_dsc);
         adr=(TextView) findViewById(R.id.homead);
+        mKorisnik=(TextView) findViewById(R.id.korisnik);
+        try {
+            mKorisnik.setText(vrati_korisnika());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         LocationListener locListener = new LocationListener() {
