@@ -30,6 +30,7 @@ private String host;
 private String user;
 private String vrsta_baze;
 private String Driver;
+
 private Registration rg;
 public int broji=0;
 private Login lg;
@@ -198,6 +199,8 @@ e.printStackTrace();
 }
 }
 
+
+
 @Bean(name="ListaKorisnika")
 public List<Registration> listaKorisnika(){
 	List<Registration> registracija = new ArrayList<Registration>();
@@ -232,11 +235,12 @@ public List<Registration> listaKorisnika(){
 				String datum=rs.getString("datumr");
 				String email=rs.getString("email");
 		        String sifra=rs.getString("sifra");
-		       
-		       
-		        registracija.add(new Registration(oib,ime,prezime,spol,datum,email,sifra));
 		        
-				
+		       
+		       
+		        registracija.add(new Registration(oib+broj,ime+broj,prezime+broj,spol+broj, datum+broj,email+broj,sifra+broj));
+		        
+				broj+=1;
 				
 				
 			}
