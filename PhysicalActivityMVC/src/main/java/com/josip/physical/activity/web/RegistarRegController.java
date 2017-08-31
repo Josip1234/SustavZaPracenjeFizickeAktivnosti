@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RegistarRegController {
+	
 	private RegistrationRep registrationRep;
 	@Autowired
 	public RegistarRegController(RegistrationRep registrationRep){
@@ -16,8 +17,9 @@ public class RegistarRegController {
 	}
 	@RequestMapping(value="registar",method=GET)
 	public String registar(Model model){
-		model.addAttribute("lista",registrationRep.listaKorisnika());
+		model.addAttribute("lista",registrationRep.listaKorisnika().get(0).getOIB());
 		
 		return "registar";
 	}
+	
 }

@@ -5,7 +5,7 @@ import javax.validation.constraints.*;
 
 import org.springframework.stereotype.Component;
 
-
+@Component("Prijava")
 public class Login implements log {
 
 	
@@ -15,7 +15,10 @@ public class Login implements log {
 	private PhysicalActivityDatabase db;
     
     
-
+   public Login(){
+	   this.username="jbosnjak3@gmail.com";
+	   this.sifra="eecae4Ai";
+   }
     
     public Login(String username,String sifra){
     	this.username=username;

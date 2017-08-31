@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.baza.BazaConfig"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
-<fullyQualifiedTypeName name="org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ViewResolver"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan.Filter"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.FilterType"/>
@@ -34,9 +29,7 @@
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterReturning"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.baza.PhysicalActivityDatabase"/>
 <fullyQualifiedTypeName name="com.sun.istack.internal.NotNull"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.login.Login"/>
 <fullyQualifiedTypeName name="org.springframework.validation.Errors"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
@@ -58,6 +51,13 @@
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.regist.Registration"/>
-<fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.login.Login"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.baza.PhysicalActivityDatabase"/>
 </qualifiedTypeNameHistroy>
