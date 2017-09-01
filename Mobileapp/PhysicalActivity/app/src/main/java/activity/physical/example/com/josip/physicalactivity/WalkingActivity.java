@@ -160,15 +160,23 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 try {
                      addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
                     if(addresses.size()>0){
-                        Log.i("poruka",addresses.get(0).getLocality());
+                        try {
+                            Log.i("poruka",addresses.get(0).getLocality());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         Log.i("poruka",addresses.get(0).getCountryName());
                         Log.i("poruka",addresses.get(0).getAddressLine(0));
-                        Log.i("poruka",addresses.get(0).getAddressLine(1));
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(1));
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                         Log.i("poruka",addresses.get(0).getAddressLine(2));
 
                         cityName=addresses.get(0).getLocality();
                         stateName=addresses.get(0).getCountryName();
-                        ad=addresses.get(0).getAddressLine(1);
+                        ad=addresses.get(0).getAddressLine(0);
 
 
 

@@ -60,6 +60,9 @@ public class FragmentList extends ListFragment {
             Intent intent = new Intent(v.getContext(),WalkingActivity.class);
 
             startActivityForResult(intent,0);
+        }else if(position==1){
+            Intent intent = new Intent(v.getContext(),TrcanjeActivity.class);
+            startActivityForResult(intent,1);
         }
         else if(position==6){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);

@@ -41,5 +41,6 @@
     <string name="homead">homeadr</string>
     <string name="korisnik">korisnik</string>
     <string name="sesija">sesija</string>
+    <string name="speed">speed</string>
 
 </resources>

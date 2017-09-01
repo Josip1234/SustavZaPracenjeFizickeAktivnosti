@@ -10,18 +10,29 @@ public class terstconn {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	    String[] username={""};
+		
+	    
 	    char username2;
-	    String[] username3={""};
+	    String[] username3;
 		PhysicalActivityDatabase db= new PhysicalActivityDatabase();
+		int size=db.listaKorisnika().size();
+		String[] email=new String[size];
+		String[] sifra=new String[size];
 		//System.out.println(db.listaKorisnika().get(2).getOIB());
 		//System.out.println(db.listaKorisnika().get(2).getIme());
         //System.out.println(db.listaKorisnika().size());
-        username[0]=db.listaKorisnika().get(0).getEmail();
-        System.out.println(username[0]);
-        System.out.println(username[0].toString()); 
-        String a=username[0].toString();
-        System.out.println(a.substring(0,1));
+        //username[0]=db.listaKorisnika().get(0).getEmail().substring(1,11);
+        //System.out.println(username[0]);
+        
+		for(int i=0;i<size;i++){
+			email[i]=db.listaKorisnika().get(i).getEmail();
+			System.out.println(email[i].substring(1, email[i].length()-1));
+			sifra[i]=db.listaKorisnika().get(i).getSifra();
+			System.out.println(sifra[i].substring(1, sifra[i].length()-1));
+		}
+		
+   
+        
 	}
 
 }
