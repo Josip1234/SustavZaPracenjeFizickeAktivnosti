@@ -172,8 +172,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                         }catch (Exception e){
                             e.printStackTrace();
                         }
-                        Log.i("poruka",addresses.get(0).getAddressLine(2));
-
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(2));
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
                         cityName=addresses.get(0).getLocality();
                         stateName=addresses.get(0).getCountryName();
                         ad=addresses.get(0).getAddressLine(0);

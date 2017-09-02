@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class TrcanjeActivity extends AppCompatActivity implements LocationListener {
@@ -28,7 +29,7 @@ public class TrcanjeActivity extends AppCompatActivity implements LocationListen
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, this);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
         this.onLocationChanged(null);
     }
 
@@ -41,7 +42,7 @@ public class TrcanjeActivity extends AppCompatActivity implements LocationListen
         else{
               float trenutna_brzina=location.getSpeed();
               float brzina= (float) (trenutna_brzina*3.6);
-              tekst.setText(brzina+"km/h");
+              tekst.setText(String.valueOf(trenutna_brzina)+" m/s"+" "+String.valueOf(brzina)+" km/h");
           }
     }
 
