@@ -263,4 +263,81 @@ public List<Registration> listaKorisnika(){
 
 
 
+public String[] mojprofil(String email){
+	String[] profil = new String[7];
+	String confirm="";
+	confirm=email;
+	try{
+		   Class.forName(Driver).newInstance();
+		   
+		}catch (Exception err) {
+			
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+		String dbname=getIme_baze();
+		Connection conn = null;
+		try{
+			
+			conn=DriverManager.getConnection(vrsta_baze+host);
+			
+			Statement s = conn.createStatement();
+			s.execute("SHOW DATABASES");
+			s.execute("USE physicalactivity");
+			ResultSet rs = null;
+			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+confirm+"'";
+			rs=s.executeQuery(query);
+			
+		    int broj=0;
+			while(rs.next()){
+				
+				String oib=rs.getString("OIB");
+				profil[broj]=oib;
+				broj+=1;
+				String ime = rs.getString("ime");
+				profil[broj]=ime;
+				broj+=1;
+				String prezime = rs.getString("prezime");
+				profil[broj]=prezime;
+				broj+=1;
+				String spol=rs.getString("spol");
+				profil[broj]=spol;
+				broj+=1;
+				String datum=rs.getString("datumr");
+				profil[broj]=datum;
+				broj+=1;
+				String e=rs.getString("email");
+				profil[broj]=e;
+				broj+=1;
+		        String sifra=rs.getString("sifra");
+		        profil[broj]=sifra;
+				
+			}
+			rs.close();
+			
+		    conn.close();
+		    
+		    
+		}catch (SQLException err) {
+			System.err.println("SQL greska");
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+	
+	
+	
+	
+	return profil;
+}
+
+
+
+
+
+
+
+
+
+
+
 }

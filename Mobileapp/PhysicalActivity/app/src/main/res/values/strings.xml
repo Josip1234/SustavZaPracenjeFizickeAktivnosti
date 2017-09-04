@@ -42,5 +42,9 @@
     <string name="korisnik">korisnik</string>
     <string name="sesija">sesija</string>
     <string name="speed">speed</string>
-
+    <string name="kmnah">Km/h</string>
+    <string name="ulica">ulica</string>
+    <string name="gradpost">poštanski broj i naziv grada</string>
+    <string name="st">Država</string>
+    <string name="brojkilometara">Broj pretrčanih kilometara</string>
 </resources>

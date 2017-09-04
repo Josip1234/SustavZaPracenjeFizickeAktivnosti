@@ -11,6 +11,7 @@ public class Login implements log {
 	
     private String username;
     
+	
     private String sifra;
 	private PhysicalActivityDatabase db;
     

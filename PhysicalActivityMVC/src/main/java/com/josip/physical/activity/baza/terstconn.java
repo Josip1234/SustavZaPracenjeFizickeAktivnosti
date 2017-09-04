@@ -11,10 +11,11 @@ public class terstconn {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-	    
+	    /*
 	    char username2;
-	    String[] username3;
+	    String[] username3;*/
 		PhysicalActivityDatabase db= new PhysicalActivityDatabase();
+		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];
 		String[] sifra=new String[size];
@@ -30,8 +31,13 @@ public class terstconn {
 			sifra[i]=db.listaKorisnika().get(i).getSifra();
 			System.out.println(sifra[i].substring(1, sifra[i].length()-1));
 		}
+		*/
 		
-   
+		String polje[]=db.mojprofil("jbosnjak3@gmail.com");
+        for (String string : polje) {
+			System.out.println(string);
+		}
+        
         
 	}
 

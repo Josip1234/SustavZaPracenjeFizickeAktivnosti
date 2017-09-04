@@ -16,8 +16,8 @@ href="<c:url value="/resources/pad.css" />">
 <h1>Dobrodošli na početnu stranicu</h1>
 <a href="home">Index</a> |
 <a href="BMICalc">Indeks tjelesne mase</a>
+<a href="dohvatpodataka">Dohvat podataka</a>
 <a href="registracija">Register</a>
-<a href="korisnik">Profil korisnika</a>
 <a href="prijavnica">Prijava</a>
 <a href="registar">Lista korisnika</a>
 </body>

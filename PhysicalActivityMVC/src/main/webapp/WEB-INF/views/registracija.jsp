@@ -3,9 +3,9 @@
 <%@ page session="false" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<html>
+<!DOCTYPE html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,7 +16,7 @@ Ime:<input type="text" name="ime"/><br/>
 Prezime:<input type="text" name="prezime"/><br/>
 Spol:<select name="spol"><option value="m">Muško</option><option value="f">Žensko</option></select>
 <br/>
-Datum rođenja:<input type="date" name="datumr"/><br/>
+Datum rođenja:<input type="date" name="datumr" /><br/>
 Email:<input type="email" name="email"/><br/>
 Šifra:<input type="password" name="sifra"/><br/>
 

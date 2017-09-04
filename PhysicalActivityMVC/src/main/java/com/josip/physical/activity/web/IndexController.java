@@ -1,5 +1,6 @@
 package com.josip.physical.activity.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import java.sql.Date;
@@ -11,17 +12,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -31,6 +39,8 @@ import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMIReprository;
 import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
+
+import sun.security.action.OpenFileInputStreamAction;
 @Controller
 @RequestMapping(value="/")
 public class IndexController {
@@ -41,6 +51,17 @@ public String index(){
 
 	return "index";
 }
+@RequestMapping(value="mojprofil", method=GET)
+public String mojprofil(){
+	
+	return "mojprofil";
+}
+@RequestMapping(value="dohvatpodataka", method=GET)
+public String dohvatpodataka(){
+	
+	return "dohvatpodataka";
+}
+
 @RequestMapping(value="home",method=GET)
 public String home(){
 	return "home";
@@ -64,15 +85,15 @@ public String registracija(){
 		String dt=datumr.toString();
 	    rg = new Registration(O,i,p,s,dt,e,sf);
 	    if(errors.hasErrors()){
-	    	return "registracija";
-	    }
+	    	return "index";
+	    }else{
         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
-        
+        db.InsertUser(rg);
+        return "redirect:prijavnica";
+	    }
 
 
-		model.addAttribute("OIB",O);
 	   
-		return "redirect:korisnik"+db.InsertUser(rg);
 	}
 
 
@@ -114,15 +135,22 @@ public String prijavnica(){
 }
 
 @RequestMapping(value="prijavnica",method=POST)
-public String provjeriPrijavu(@RequestParam("email")String email,@RequestParam("sifra")String sifra){
+public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email")String email,@RequestParam("sifra")String sifra){
 	System.out.println(email);
     System.out.println(sifra);
-    Login lg = new Login(email,sifra);
+    lg = new Login(email,sifra);
+    if(errors.hasErrors()){
+    	return "prijavnica";
+    }
     boolean user;
     PhysicalActivityDatabase db = new PhysicalActivityDatabase();
     user=db.traziKorisnika(email);
+    if(user==false){
+    	return "redirect:registracija";
+    }else{
     System.out.println(user);
-	return "redirect:index";
+	return "redirect:mojprofil";
+    }
 }
 
 }
