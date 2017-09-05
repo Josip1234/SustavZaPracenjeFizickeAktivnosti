@@ -1,6 +1,9 @@
 package com.josip.physical.activity.login;
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
+
+import java.util.Map;
+
 import javax.validation.constraints.*;
 
 import org.springframework.stereotype.Component;
@@ -44,7 +47,17 @@ public class Login implements log {
 	public void prijavi_se(){
          System.out.println("Korisnik je logiran");
 	}
-   
+	
+
+
+@Override
+   public String toString(){
+	   StringBuilder sb = new StringBuilder();
+	   sb.append("\nLogin podaci\n");
+	   sb.append("Korisničko ime:"+getUsername()+"\n");
+	   sb.append("Lozinka:"+getSifra()+"\n");
+	   return sb.toString();
+   }
 	
 
 }

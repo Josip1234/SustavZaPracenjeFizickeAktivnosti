@@ -101,6 +101,7 @@
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/javax.validation-1.0.0.GA.jar/javax.validation-1.0.0.GA.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/hibernate-validator-4.2.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/spring-security-web-5.0.0.M2.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/jackson-core-2.7.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/jackson-databind-2.7.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

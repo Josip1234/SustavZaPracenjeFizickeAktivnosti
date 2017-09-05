@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.mysql.jdbc.Driver"/>
-<fullyQualifiedTypeName name="java.sql.Driver"/>
-<fullyQualifiedTypeName name="com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator"/>
-<fullyQualifiedTypeName name="org.springframework.context.annotation.EnableAspectJAutoProxy"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.Pointcut"/>
-<fullyQualifiedTypeName name="org.aspectj.lang.annotation.After"/>
-<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterReturning"/>
 <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
 <fullyQualifiedTypeName name="com.sun.istack.internal.NotNull"/>
@@ -37,7 +30,6 @@
 <fullyQualifiedTypeName name="org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.ViewControllerRegistry"/>
 <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.builders.WebSecurity"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.web.SecurityWebInitializer"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.web.SecurityConfig"/>
@@ -58,6 +50,14 @@
 <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.slf4j.Logger"/>
+<fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.databind.ObjectMapper"/>
+<fullyQualifiedTypeName name="com.josip.physical.activity.login.ObjectMapperRead"/>
 </qualifiedTypeNameHistroy>
