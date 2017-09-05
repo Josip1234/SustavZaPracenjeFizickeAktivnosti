@@ -47,4 +47,6 @@
     <string name="gradpost">poštanski broj i naziv grada</string>
     <string name="st">Država</string>
     <string name="brojkilometara">Broj pretrčanih kilometara</string>
+    <string name="mapiranje">Mapiraj lokaciju</string>
+    <string name="ma">Mapiraj lokaciju</string>
 </resources>

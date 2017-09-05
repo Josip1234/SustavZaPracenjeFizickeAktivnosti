@@ -126,12 +126,11 @@
                             android:text="TextView"
                             tools:text="@string/korisnik"
                             tools:ignore="HardcodedText" />
-                    </TableRow>
 
+                    </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="UselessLeaf">
+                        android:layout_height="match_parent" >
 
                         <TextView
                             android:id="@+id/brkm"
@@ -139,6 +138,20 @@
                             android:layout_height="wrap_content"
                             android:text="@string/brojkilometara"
                             tools:text="@string/brojkilometara" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+
+                        <Button
+                            android:id="@+id/map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="mapiraj"
+                            android:text="@string/mapiranje"
+                            tools:text="@string/mapiranje" />
                     </TableRow>
 
 

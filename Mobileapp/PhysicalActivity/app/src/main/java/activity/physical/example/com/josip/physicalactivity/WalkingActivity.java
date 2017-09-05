@@ -117,6 +117,9 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
 
     }
+    public void mapi(){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
@@ -34,14 +35,18 @@ public int indeks=0;
 public int indeks2=0;
 private Location loc1=null;
     private Location loc2=null;
+private Button map;
 private double[] kilometri;
 private float suma=0;
+public void mapiraj(View v){
+
+}
     public void stop(View v){
         cr=(Chronometer) findViewById(R.id.chronometer2);
         cr.stop();
     }
     public String vrati_korisnika() throws IOException,JSONException {
-        String naziv="prijava";
+        String naziv="prijava.json";
         String korisnik="";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -72,18 +77,18 @@ private float suma=0;
         JSONArray array = new JSONArray();
         JSONObject object;
         object=new JSONObject();
-        object.put("lattitude",lat);
+        object.put("latitude",lat);
         object.put("longitude",lon);
         array.put(object);
         String text = array.toString();
-        FileOutputStream fos = openFileOutput("koordinate",MODE_PRIVATE);
+        FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
         fos.write(text.getBytes());
         fos.close();
         Log.i("message","succesfully written to json");
     }
     public double vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
-        String naziv="koordinate";
-        double koordin=00.00;
+        String naziv="koordinate.json";
+        double lat=00.00;
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -97,16 +102,24 @@ private float suma=0;
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer= new StringBuffer();
-        for(int i=0;i<data.length();i++){
-            double object=data.getJSONObject(i).getDouble(naziv_koordinate);
+        if(naziv=="latitude") {
 
-            koordin=object;
+                double object = data.getJSONObject(0).getDouble(naziv_koordinate);
+
+                lat = object;
+
+                prijavaBuffer.append(object);
+
+        }else if(naziv=="longitude"){
+            double object = data.getJSONObject(1).getDouble(naziv_koordinate);
+
+            lat = object;
 
             prijavaBuffer.append(object);
         }
 
         Log.i("poruka","pročitan json");
-        return koordin;
+        return lat;
 
 
     }
@@ -161,20 +174,20 @@ private float suma=0;
                     }
                 }else{
                     try {
-                        polje[0]=vrati_koordinate("lattitude");
+                        polje[0]=vrati_koordinate("latitude");
                         System.out.println(polje[0]);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     try {
-                        polje[1]=vrati_koordinate("longittude");
+                        polje[1]=vrati_koordinate("longitude");
                         System.out.println(polje[1]);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
                 }
-
+                double temp=suma;
 
                 kilometri[0]=location.distanceTo(loc2)/1000;
 

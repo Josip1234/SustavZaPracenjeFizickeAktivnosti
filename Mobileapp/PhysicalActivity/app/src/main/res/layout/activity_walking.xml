@@ -1,213 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/unipulogolat"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@mipmap/unipulogolat"
+android:orientation="vertical"
+android:gravity="center"
+tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/content"
+<FrameLayout
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_weight="1"
+    android:background="@color/colorPrimary"
+    android:clipToPadding="false">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_weight="1"
-        android:background="@color/colorPrimary"
-        android:clipToPadding="false">
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             tools:ignore="UselessParent">
 
-            <LinearLayout
+
+            <Chronometer
+                android:id="@+id/chronometer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="80dp"
+                android:layout_marginStart="70dp"
+                android:paddingTop="15dp"
+                android:textSize="18sp" />
+
+            <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:ignore="UselessParent">
+                android:padding="5dp">
 
-
-                <Chronometer
-                    android:id="@+id/chronometer2"
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="80dp"
-                    android:layout_marginStart="70dp"
-                    android:paddingTop="15dp"
-                    android:textSize="18sp" />
+                    android:layout_height="match_parent">
 
-                <TableLayout
+                    <TextView
+                        android:id="@+id/textViewX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/X"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Y"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Z"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/buttonReset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="resetSteps"
+                        android:text="@string/resetsteps" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textSteps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        tools:ignore="HardcodedText" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textSensitive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        tools:ignore="HardcodedText" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
+                    tools:ignore="DuplicateIds">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/Lat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/lattitude" />
 
-                        <TextView
-                            android:id="@+id/textViewX"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/X"
-                            android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/outputLat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dots" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/textViewY"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Y"
-                            android:textSize="12sp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/textViewZ"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Z"
-                            android:textSize="12sp" />
-                    </TableRow>
+                    <TextView
+                        android:id="@+id/Long"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/longitude" />
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/outputLong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dots2" />
 
-                        <Button
-                            android:id="@+id/buttonReset"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="resetSteps"
-                            android:text="@string/resetsteps" />
-                    </TableRow>
+                </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/textSteps"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            tools:ignore="HardcodedText" />
-                    </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/location_dsc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/locdses" />
+                </TableRow>
 
-                        <TextView
-                            android:id="@+id/textSensitive"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            tools:ignore="HardcodedText" />
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
+                    <TextView
+                        android:id="@+id/homead"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:ignore="DuplicateIds">
+                        android:text="@string/homead"
 
-                        <TextView
-                            android:id="@+id/Lat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lattitude" />
+                        />
 
-                        <TextView
-                            android:id="@+id/outputLat"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dots" />
-                    </TableRow>
 
-                    <TableRow
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/state_dsc"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:text="@string/state"
 
-                        <TextView
-                            android:id="@+id/Long"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/longitude" />
+                        />
 
-                        <TextView
-                            android:id="@+id/outputLong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/dots2" />
+                </TableRow>
 
-                    </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
+                    <TextView
+                        android:id="@+id/korisnik"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
 
 
-                        <TextView
-                            android:id="@+id/location_dsc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/locdses" />
-                    </TableRow>
+                        android:text="@string/korisnik" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/homead"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/homead"
-
-                            />
+                    <Button
+                        android:id="@+id/ma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="mapi"
+                        android:text="@string/ma"
+                        tools:text="@string/ma" />
+                </TableRow>
 
 
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/state_dsc"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="@string/state"
-
-                            />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/korisnik"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+            </TableLayout>
 
 
-                            android:text="@string/korisnik" />
-                    </TableRow>
-
-
-                </TableLayout>
-
-
-            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
-    </FrameLayout>
+</FrameLayout>
 
 </LinearLayout>
 

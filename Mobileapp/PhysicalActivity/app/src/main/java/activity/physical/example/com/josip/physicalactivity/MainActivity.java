@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity{
             object.put("pass",b);
             array.put(object);
             String text = array.toString();
-            FileOutputStream fos = openFileOutput("prijava",MODE_PRIVATE);
+            FileOutputStream fos = openFileOutput("prijava.json",MODE_PRIVATE);
             fos.write(text.getBytes());
             fos.close();
         Log.i("message","succesfully written to json");
         }
 
     public void procitaj_json() throws IOException,JSONException{
-        String naziv="prijava";
+        String naziv="prijava.json";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
