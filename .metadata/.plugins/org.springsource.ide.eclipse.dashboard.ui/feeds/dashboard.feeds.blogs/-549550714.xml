@@ -1264,9 +1264,10 @@ needed to take to customize the project to suit your company&amp;#8217;s needs. 
   private var nettyContext: BlockingNettyContext? = null&#xD;
   &#xD;
   constructor(port: Int = 8080) {&#xD;
-    val context = GenericApplicationContext()&#xD;
-    beans().invoke(context)&#xD;
-    context.refresh()&#xD;
+    val context = GenericApplicationContext().apply {&#xD;
+        beans().initialize(this)&#xD;
+        refresh()&#xD;
+    }&#xD;
     server = HttpServer.create(port)&#xD;
     httpHandler = WebHttpHandlerBuilder.applicationContext(context).build()&#xD;
   }&#xD;

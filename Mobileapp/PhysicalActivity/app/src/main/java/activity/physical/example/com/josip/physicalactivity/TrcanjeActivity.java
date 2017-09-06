@@ -26,21 +26,23 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class TrcanjeActivity extends AppCompatActivity  {
 private Chronometer cr;
-    private  double[] polje={00.00,00.00};
-private double locations[];
+
+
 public int indeks=0;
-public int indeks2=0;
-private Location loc1=null;
-    private Location loc2=null;
-private Button map;
+    private Button map;
 private double[] kilometri;
 private float suma=0;
+private int brojPojavljivanjaKoordinata=0;
 public void mapiraj(View v){
 
 }
+
+
+
     public void stop(View v){
         cr=(Chronometer) findViewById(R.id.chronometer2);
         cr.stop();
@@ -86,6 +88,8 @@ public void mapiraj(View v){
         fos.close();
         Log.i("message","succesfully written to json");
     }
+
+
     public double vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
         String naziv="koordinate.json";
         double lat=00.00;
@@ -125,9 +129,29 @@ public void mapiraj(View v){
     }
 
 
+    public void dohvati_koordinate(double lat,double lon){
+
+
+        try {
+            kreiraj_prethodne_koordinate(lat,lon);
+            Log.i("poruka","Uspješno spremljene koordinate");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+            double loc1=location.getLatitude();
+            double loc2=location.getLongitude();
+            System.out.println(loc1);
+            System.out.println(loc2);
+            brojPojavljivanjaKoordinata+=1;
+            System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");
+            dohvati_koordinate(loc1,loc2);
             TextView tekst=(TextView) findViewById(R.id.kmh);
             TextView km=(TextView) findViewById(R.id.kilometar);
             if(location==null){
@@ -138,20 +162,7 @@ public void mapiraj(View v){
                 float brzina= (float) (trenutna_brzina*3.6);
                 tekst.setText(String.valueOf(trenutna_brzina)+" m/s");
                 km.setText(String.valueOf(brzina)+" km/h");
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
+            };
 
             String cityName=null;
             String stateName=null;
@@ -161,44 +172,21 @@ public void mapiraj(View v){
             Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
             List<Address> addresses;
 
+            //double temp=suma;
+
+
+            // kilometri[0]=location.distanceTo(loc2)/1000;
+
+
+            //suma+=kilometri[0];
+
+/*
+            TextView k=(TextView) findViewById(R.id.brkm);
+            k.setText(suma+"km/h");*/
+
 
             try {
                 addresses=gcd.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                if((polje[0]==00.00)&&(polje[1]==00.00)){
-                    polje[0]=location.getLatitude();
-                    polje[1]=location.getLongitude();
-                    try {
-                        kreiraj_prethodne_koordinate(polje[0],polje[1]);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }else{
-                    try {
-                        polje[0]=vrati_koordinate("latitude");
-                        System.out.println(polje[0]);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        polje[1]=vrati_koordinate("longitude");
-                        System.out.println(polje[1]);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-                double temp=suma;
-
-                kilometri[0]=location.distanceTo(loc2)/1000;
-
-
-                        suma+=kilometri[0];
-
-
-                TextView k=(TextView) findViewById(R.id.brkm);
-                k.setText(suma+"km/h");
-
-
                 if(addresses.size()>0){
                     try {
                         Log.i("poruka",addresses.get(0).getLocality());
@@ -227,6 +215,8 @@ public void mapiraj(View v){
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
             String s =
                     cityName;
             String p=stateName;
@@ -239,7 +229,7 @@ public void mapiraj(View v){
             TextView dr=(TextView) findViewById(R.id.state);
             dr.setText(p);
 
-        }
+        };
 
         @Override
         public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -284,7 +274,7 @@ public void mapiraj(View v){
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }};
 
 
-}
+

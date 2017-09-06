@@ -138,6 +138,13 @@
                             android:layout_height="wrap_content"
                             android:text="@string/brojkilometara"
                             tools:text="@string/brojkilometara" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
                     </TableRow>
 
                     <TableRow
