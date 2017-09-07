@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +25,7 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.DoubleBuffer;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -90,9 +92,9 @@ public void mapiraj(View v){
     }
 
 
-    public double vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
+    public String vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
         String naziv="koordinate.json";
-        double lat=00.00;
+        String lat="";
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -105,22 +107,24 @@ public void mapiraj(View v){
         fis.close();
 
         JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer= new StringBuffer();
+        StringBuffer prijavaBuffer = new StringBuffer();
+
         if(naziv=="latitude") {
 
-                double object = data.getJSONObject(0).getDouble(naziv_koordinate);
+                String object = data.getJSONObject(0).getString(naziv_koordinate);
 
                 lat = object;
 
                 prijavaBuffer.append(object);
 
         }else if(naziv=="longitude"){
-            double object = data.getJSONObject(1).getDouble(naziv_koordinate);
+            String object = data.getJSONObject(1).getString(naziv_koordinate);
 
             lat = object;
 
             prijavaBuffer.append(object);
         }
+
 
         Log.i("poruka","pročitan json");
         return lat;
@@ -145,10 +149,40 @@ public void mapiraj(View v){
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+            String loc3="";
+            String loc4="";
+            try {
+                loc3=vrati_koordinate("latitude");
+                loc4=vrati_koordinate("longitude");
+                System.out.println(loc3);
+                System.out.println(loc4);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             double loc1=location.getLatitude();
             double loc2=location.getLongitude();
             System.out.println(loc1);
             System.out.println(loc2);
+            Location l1=new Location("Lokacija 1");
+
+            try {
+                l1.setLatitude(Double.parseDouble(loc3));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            try {
+                l1.setLongitude(Double.parseDouble(loc4));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+            Location l2=new Location("Lokacija 2");
+            l2.getLatitude();
+            l2.getLongitude();
+            float distance=l1.distanceTo(l2);
+            System.out.println(distance);
+
             brojPojavljivanjaKoordinata+=1;
             System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");
             dohvati_koordinate(loc1,loc2);
@@ -171,6 +205,7 @@ public void mapiraj(View v){
             String posta=null;
             Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
             List<Address> addresses;
+
 
             //double temp=suma;
 
