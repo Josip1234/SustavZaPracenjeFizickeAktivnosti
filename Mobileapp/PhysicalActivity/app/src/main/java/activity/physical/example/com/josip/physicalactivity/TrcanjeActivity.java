@@ -20,6 +20,7 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -33,7 +34,7 @@ import java.util.Map;
 public class TrcanjeActivity extends AppCompatActivity  {
 private Chronometer cr;
 
-
+private TextView mtv1;
 public int indeks=0;
     private Button map;
 private double[] kilometri;
@@ -94,7 +95,7 @@ public void mapiraj(View v){
 
     public String vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
         String naziv="koordinate.json";
-        String lat="";
+
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -108,26 +109,20 @@ public void mapiraj(View v){
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
+        for(int i=0;i<data.length();i++){
 
-        if(naziv=="latitude") {
+                String koordinata = data.getJSONObject(i).getString(naziv_koordinate);
+                prijavaBuffer.append(koordinata);
+                break;
 
-                String object = data.getJSONObject(0).getString(naziv_koordinate);
 
-                lat = object;
 
-                prijavaBuffer.append(object);
-
-        }else if(naziv=="longitude"){
-            String object = data.getJSONObject(1).getString(naziv_koordinate);
-
-            lat = object;
-
-            prijavaBuffer.append(object);
         }
 
 
+
         Log.i("poruka","pročitan json");
-        return lat;
+        return prijavaBuffer.toString();
 
 
     }
@@ -180,23 +175,15 @@ public void mapiraj(View v){
             Location l2=new Location("Lokacija 2");
             l2.getLatitude();
             l2.getLongitude();
-            float distance=l1.distanceTo(l2);
-            System.out.println(distance);
-
+            double distance=l2.distanceTo(l1);
+            System.out.println("Udaljenost do druge točke:"+distance/1000+" kilometara");
+            mtv1.setText("Udaljenost:"+distance/1000);
             brojPojavljivanjaKoordinata+=1;
             System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");
             dohvati_koordinate(loc1,loc2);
             TextView tekst=(TextView) findViewById(R.id.kmh);
             TextView km=(TextView) findViewById(R.id.kilometar);
-            if(location==null){
-                tekst.setText("nema brzine");
-            }
-            else{
-                float trenutna_brzina=location.getSpeed();
-                float brzina= (float) (trenutna_brzina*3.6);
-                tekst.setText(String.valueOf(trenutna_brzina)+" m/s");
-                km.setText(String.valueOf(brzina)+" km/h");
-            };
+
 
             String cityName=null;
             String stateName=null;
@@ -243,13 +230,18 @@ public void mapiraj(View v){
                     cityName=addresses.get(0).getLocality();
                     stateName=addresses.get(0).getCountryName();
                     ad=addresses.get(0).getAddressLine(0);
-
+                    float trenutna_brzina=location.getSpeed();
+                    float brzina= (float) (trenutna_brzina*3.6);
+                    tekst.setText(String.valueOf(trenutna_brzina)+" m/s");
+                    km.setText(String.valueOf(brzina)+" km/h");
 
 
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
 
 
             String s =

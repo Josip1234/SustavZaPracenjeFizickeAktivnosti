@@ -50,4 +50,5 @@
     <string name="mapiranje">Mapiraj lokaciju</string>
     <string name="ma">Mapiraj lokaciju</string>
     <string name="pretrckm">koliko_sam_pretrčao</string>
+    <string name="udaljenost">Udaljenost</string>
 </resources>
