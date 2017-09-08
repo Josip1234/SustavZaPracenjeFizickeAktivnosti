@@ -16,20 +16,32 @@ public class Login implements log {
     
 	
     private String sifra;
+    private boolean autoriziran;
 	private PhysicalActivityDatabase db;
     
     
    public Login(){
 	   this.username="jbosnjak3@gmail.com";
-	   this.sifra="eecae4Ai";
+	   this.sifra="bls";
+	   this.autoriziran=true;
    }
     
-    public Login(String username,String sifra){
-    	this.username=username;
-    	this.sifra=sifra;
-    	
-    }
+   
     
+	public Login(String email, String sifra,boolean autoriziran) {
+		this.username=username;
+    	this.sifra=sifra;
+    	this.autoriziran=autoriziran;
+	}
+
+	public void setAutoriziran(boolean autoriziran) {
+		this.autoriziran = autoriziran;
+	}
+
+	public boolean isAutoriziran() {
+		return autoriziran;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -47,7 +59,7 @@ public class Login implements log {
 	public void prijavi_se(){
          System.out.println("Korisnik je logiran");
 	}
-	
+
 
 
 @Override

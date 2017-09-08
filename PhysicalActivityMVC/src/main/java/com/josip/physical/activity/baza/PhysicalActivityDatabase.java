@@ -92,7 +92,7 @@ String dbname=getIme_baze();
 Connection conn = null;
 try{
 	System.out.println("Spajam se nma bazu...");
-	conn=DriverManager.getConnection(vrsta_baze+host);
+	conn=DriverManager.getConnection(vrsta_baze+host+"?useUnicode=true&characterEncoding=UTF-8");
 	System.out.println("Spojen sam na bazu");
 	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();

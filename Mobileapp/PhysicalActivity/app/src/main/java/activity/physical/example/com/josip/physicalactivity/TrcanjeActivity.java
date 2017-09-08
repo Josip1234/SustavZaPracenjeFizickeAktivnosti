@@ -175,9 +175,13 @@ public void mapiraj(View v){
             Location l2=new Location("Lokacija 2");
             l2.getLatitude();
             l2.getLongitude();
-            double distance=l2.distanceTo(l1);
+            float distance=l2.distanceTo(l1);
             System.out.println("Udaljenost do druge točke:"+distance/1000+" kilometara");
-            mtv1.setText("Udaljenost:"+distance/1000);
+            try {
+                mtv1.setText("Udaljenost:"+String.valueOf(distance/1000));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             brojPojavljivanjaKoordinata+=1;
             System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");
             dohvati_koordinate(loc1,loc2);

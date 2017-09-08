@@ -84,8 +84,10 @@ public String registracija(){
 		String sf=sifra;
 		String dt=datumr.toString();
 	    rg = new Registration(O,i,p,s,dt,e,sf);
+	    
 	    if(errors.hasErrors()){
-	    	return "index";
+	    	
+	    	return "registracija";
 	    }else{
         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
         db.InsertUser(rg);
@@ -138,7 +140,7 @@ public String prijavnica(){
 public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email")String email,@RequestParam("sifra")String sifra){
 	System.out.println(email);
     System.out.println(sifra);
-    lg = new Login(email,sifra);
+    
     if(errors.hasErrors()){
     	return "prijavnica";
     }
@@ -148,6 +150,7 @@ public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email
     if(user==false){
     	return "redirect:registracija";
     }else{
+    lg = new Login(email,sifra,user);
     System.out.println(user);
 	return "redirect:mojprofil";
     }

@@ -1,5 +1,6 @@
 package com.josip.physical.activity.regist;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,6 @@ private String datumr;
 @NotNull
 private String email;
 @NotNull
-@Size(min=8)
 private String sifra;
 
 public PhysicalActivityDatabase db;
