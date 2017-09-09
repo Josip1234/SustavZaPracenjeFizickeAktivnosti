@@ -82,8 +82,10 @@ public void mapiraj(View v){
         JSONArray array = new JSONArray();
         JSONObject object;
         object=new JSONObject();
-        object.put("latitude",lat);
-        object.put("longitude",lon);
+        object.put("koordinata",lat);
+        array.put(object);
+        object=new JSONObject();
+        object.put("koordinata",lon);
         array.put(object);
         String text = array.toString();
         FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
@@ -93,7 +95,7 @@ public void mapiraj(View v){
     }
 
 
-    public String vrati_koordinate(String naziv_koordinate) throws IOException,JSONException {
+    public String vrati_koordinate(int pozicija) throws IOException,JSONException {
         String naziv="koordinate.json";
 
 
@@ -109,19 +111,20 @@ public void mapiraj(View v){
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
-        for(int i=0;i<data.length();i++){
-
-                String koordinata = data.getJSONObject(i).getString(naziv_koordinate);
-                prijavaBuffer.append(koordinata);
-                break;
 
 
+                String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
+                prijavaBuffer.append(koordinata2);
 
-        }
+
+
+
+
 
 
 
         Log.i("poruka","pročitan json");
+
         return prijavaBuffer.toString();
 
 
@@ -147,10 +150,9 @@ public void mapiraj(View v){
             String loc3="";
             String loc4="";
             try {
-                loc3=vrati_koordinate("latitude");
-                loc4=vrati_koordinate("longitude");
-                System.out.println(loc3);
-                System.out.println(loc4);
+                loc3=vrati_koordinate(0);
+                loc4=vrati_koordinate(1);
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (JSONException e) {
@@ -175,19 +177,23 @@ public void mapiraj(View v){
             Location l2=new Location("Lokacija 2");
             l2.getLatitude();
             l2.getLongitude();
-            float distance=l2.distanceTo(l1);
-            System.out.println("Udaljenost do druge točke:"+distance/1000+" kilometara");
+            float distance=l2.distanceTo(l1)/1000;
+            System.out.println("Udaljenost do druge točke:"+String.valueOf(distance)+" kilometara");
             try {
-                mtv1.setText("Udaljenost:"+String.valueOf(distance/1000));
+                mtv1=(TextView) findViewById(R.id.dist);
+                mtv1.setText("Udaljenost:"+String.valueOf(distance)+"km");
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            /*
             brojPojavljivanjaKoordinata+=1;
-            System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");
+            System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");*/
             dohvati_koordinate(loc1,loc2);
             TextView tekst=(TextView) findViewById(R.id.kmh);
             TextView km=(TextView) findViewById(R.id.kilometar);
 
+            loc3="";
+            loc4="";
 
             String cityName=null;
             String stateName=null;
