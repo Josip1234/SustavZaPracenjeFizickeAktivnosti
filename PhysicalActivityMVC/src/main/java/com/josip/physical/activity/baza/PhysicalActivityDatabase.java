@@ -30,7 +30,7 @@ private String host;
 private String user;
 private String vrsta_baze;
 private String Driver;
-
+private String encoding;
 private Registration rg;
 public int broji=0;
 private Login lg;
@@ -42,7 +42,20 @@ public PhysicalActivityDatabase(){
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
 	this.Driver="com.mysql.jdbc.Driver";
+	this.encoding="?useUnicode=true&characterEncoding=UTF-8";
 	this.lg=lg;
+}
+
+
+
+public String getEncoding() {
+	return encoding;
+}
+
+
+
+public void setEncoding(String encoding) {
+	this.encoding = encoding;
 }
 
 
@@ -92,7 +105,7 @@ String dbname=getIme_baze();
 Connection conn = null;
 try{
 	System.out.println("Spajam se nma bazu...");
-	conn=DriverManager.getConnection(vrsta_baze+host+"?useUnicode=true&characterEncoding=UTF-8");
+	conn=DriverManager.getConnection(vrsta_baze+host+encoding);
 	System.out.println("Spojen sam na bazu");
 	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();

@@ -4,15 +4,19 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>Početna stranica</title>
 </head>
 <body>
 <h1>
-	Hello world!  
+	Dobrodošli  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="<c:url value="/index" />">Spittles</a> |
-<a href="<c:url value="/spitter/register" />">Register</a>
+<p> Dobrodošli na stranicu preko koje će se ubacivati podaci prikupljeni preko mobilne aplikacije u realnom vremenu. Kako koristiti aplikaciju? </p>
+<p>Prvo, korisnik se mora prijaviti preko web aplikacije. Zatim se mora logirati. Potrebno se je logirati i preko weba, za korištenje web aplikacije,
+ali i preko mobitela za korištenje mobilne aplikacije. Kada se korisnik prijavljuje preko mobitela, njegovi podaci o prijavi se 
+šalju na server. Server zatim vraća autorizaciju u obliku dali se taj korisnik nalazi u bazi podataka registriranih korisnika. Ako se korisnik nalazi
+u bazi registriranih korisnika, vratiti će se true, ako ne vratiti će se false i nekakva poruka da se korisnik treba registrirati.</p>
+<a href="<c:url value="/index" />">Izbornik</a> |
+
 </body>
 </html>

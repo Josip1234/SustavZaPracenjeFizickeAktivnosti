@@ -14,7 +14,7 @@ href="<c:url value="/resources/pad.css" />">
 </head>
 <body>
 <h1>Dobrodošli na početnu stranicu</h1>
-<a href="home">Index</a> |
+<a href="home">Početna stranica</a> |
 <a href="BMICalc">Indeks tjelesne mase</a>
 <a href="dohvatpodataka">Dohvat podataka</a>
 <a href="registracija">Register</a>
