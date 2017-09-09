@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2017 at 09:29 AM
+-- Generation Time: Sep 09, 2017 at 09:17 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -53,6 +53,22 @@ CREATE TABLE `ibm` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mapiranje`
+--
+
+CREATE TABLE `mapiranje` (
+  `id` int(11) NOT NULL,
+  `OIB` varchar(11) COLLATE utf8_croatian_ci NOT NULL,
+  `naziv_rute` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `latituda` double NOT NULL,
+  `longituda` double NOT NULL,
+  `grad` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `adresa` varchar(255) COLLATE utf8_croatian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `registration`
 --
 
@@ -66,6 +82,14 @@ CREATE TABLE `registration` (
   `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `sifra` varchar(255) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`id`, `OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES
+(1, '86052601428', 'Josip', 'Bošnjak', 'm', '1992-11-05', 'jbosnjak3@gmail.com', 'test'),
+(2, '14588899666', 'Marko', 'Marković', 'm', '2017-09-30', 'mmarkovic@gmail.com', 'egeggheghdhehe');
 
 --
 -- Indexes for dumped tables
@@ -85,6 +109,14 @@ ALTER TABLE `activities`
 --
 ALTER TABLE `ibm`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `OIB` (`OIB`);
+
+--
+-- Indexes for table `mapiranje`
+--
+ALTER TABLE `mapiranje`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `naziv_rute` (`naziv_rute`),
   ADD KEY `OIB` (`OIB`);
 
 --
@@ -111,10 +143,15 @@ ALTER TABLE `activities`
 ALTER TABLE `ibm`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `mapiranje`
+--
+ALTER TABLE `mapiranje`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -123,13 +160,19 @@ ALTER TABLE `registration`
 -- Constraints for table `activities`
 --
 ALTER TABLE `activities`
-  ADD CONSTRAINT `OIBk` FOREIGN KEY (`OIB`) REFERENCES `registration` (`OIB`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `oibk` FOREIGN KEY (`OIB`) REFERENCES `registration` (`OIB`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ibm`
 --
 ALTER TABLE `ibm`
-  ADD CONSTRAINT `oibkeyx` FOREIGN KEY (`OIB`) REFERENCES `registration` (`OIB`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `oibkeyx` FOREIGN KEY (`OIB`) REFERENCES `registration` (`OIB`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `mapiranje`
+--
+ALTER TABLE `mapiranje`
+  ADD CONSTRAINT `oib` FOREIGN KEY (`OIB`) REFERENCES `registration` (`OIB`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
