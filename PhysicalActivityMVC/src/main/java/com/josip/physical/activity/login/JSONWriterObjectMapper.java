@@ -20,7 +20,7 @@ public void writeOdgovorToJson(Login log){
 		logger.info("Odgovor u jsonu je\n"+jsonInString);
 		objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 		try {
-			objectMapper.writeValue(new File("logintrue.json"), log);
+			objectMapper.writeValue(new File("json_files/logintrue.json"), log);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

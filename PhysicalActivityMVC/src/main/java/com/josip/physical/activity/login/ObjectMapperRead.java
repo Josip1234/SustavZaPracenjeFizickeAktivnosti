@@ -16,7 +16,7 @@ private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 public void readJsonWithObjectMapper() throws IOException{
 	ObjectMapper objectMapper=new ObjectMapper();
-	Map<?, ?> logMap=objectMapper.readValue(new FileInputStream("prijava.json"),Map.class);
+	Map<?, ?> logMap=objectMapper.readValue(new FileInputStream("json_files/prijava.json"),Map.class);
 	for(Map.Entry<?, ?> entry : logMap.entrySet()){
 		logger.info(entry.getKey()+"="+entry.getValue()+"\n");
 	}
