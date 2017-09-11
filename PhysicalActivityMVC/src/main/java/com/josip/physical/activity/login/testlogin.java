@@ -18,12 +18,12 @@ public class testlogin {
 			e.printStackTrace();
 		}
 		
-		/*
+		
 		Login login = new Login();
 		login.setAutoriziran(true);
 		JSONWriterObjectMapper jsonWriter= new JSONWriterObjectMapper();
 		jsonWriter.writeOdgovorToJson(login);
-		*/
+		
 	}
 
 }

@@ -35,7 +35,7 @@
 
 
                 <Chronometer
-                    android:id="@+id/chronometer2"
+                    android:id="@+id/chronometer3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="80dp"
@@ -43,6 +43,8 @@
                     android:onClick="stop"
                     android:paddingTop="15dp"
                     android:textSize="18sp" />
+
+
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -138,12 +140,6 @@
                             android:layout_height="wrap_content"
                             android:text="@string/brojkilometara"
                             tools:text="@string/brojkilometara" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
                     </TableRow>
 

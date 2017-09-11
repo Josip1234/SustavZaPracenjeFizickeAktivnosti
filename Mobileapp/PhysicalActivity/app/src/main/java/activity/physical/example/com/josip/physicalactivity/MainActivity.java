@@ -1,6 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
@@ -17,13 +18,25 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.URL;
+import java.nio.channels.SocketChannel;
 
 public class MainActivity extends AppCompatActivity{
+    private TextView mfail;
    public void prijava(View v){
-
+       boolean autoriziran=false;
        EditText email;
        EditText sifra;
        TextView tv;
@@ -44,10 +57,19 @@ public class MainActivity extends AppCompatActivity{
        } catch (JSONException e) {
            e.printStackTrace();
        }
-       Intent intent = new Intent(MainActivity.this,ListOfActivitiesActivity.class);
-       intent.putExtra("ime",em);
-       intent.putExtra("šifra",ps);
-       startActivity(intent);
+
+
+
+
+       if(autoriziran==true) {
+           Intent intent = new Intent(MainActivity.this, ListOfActivitiesActivity.class);
+           intent.putExtra("ime", em);
+           intent.putExtra("šifra", ps);
+           startActivity(intent);
+       }else{
+           mfail=(TextView) findViewById(R.id.fail);
+           mfail.setText("Nema korisnika ne možete dalje");
+       }
    }
 
     public void kreiraj_json_polje(String a,String b) throws IOException,JSONException{
@@ -63,6 +85,10 @@ public class MainActivity extends AppCompatActivity{
             fos.write(text.getBytes());
             fos.close();
         Log.i("message","succesfully written to json");
+        if (object.length() > 0) {
+            new sendDataToServer().execute(String.valueOf(object));
+
+        }
         }
 
     public void procitaj_json() throws IOException,JSONException{
@@ -100,5 +126,81 @@ public class MainActivity extends AppCompatActivity{
 
     };
 
+class sendDataToServer extends AsyncTask<String,String,String>{
+    @Override
+    protected String doInBackground(String... params) {
 
+        String JsonResponse = null;
+        String JsonDATA = params[0];
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        try {
+            URL url = new URL("http://localhost:8080/physical/mobilnaverifikacijavalidacija");
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setDoOutput(true);
+            // is output buffer writter
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/json");
+            urlConnection.setRequestProperty("Accept", "application/json");
+//set headers and method
+            Writer writer = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream(), "UTF-8"));
+            writer.write(JsonDATA);
+// json data
+            writer.close();
+            InputStream inputStream = urlConnection.getInputStream();
+//input stream
+            StringBuffer buffer = new StringBuffer();
+            if (inputStream == null) {
+                // Nothing to do.
+                return null;
+            }
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String inputLine;
+            while ((inputLine = reader.readLine()) != null)
+                buffer.append(inputLine + "\n");
+            if (buffer.length() == 0) {
+                // Stream was empty. No point in parsing.
+                return null;
+            }
+            JsonResponse = buffer.toString();
+//response data
+
+            try {
+//send to post execute
+                return JsonResponse;
+            }catch (Exception e) {
+                return null;
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (final IOException e) {
+
+                }
+            }
+        }
+        return null;
+
+
+
+
+    }
+
+
+    @Override
+    protected void onPostExecute(String s) {
+    }
+
+}
+}
 }

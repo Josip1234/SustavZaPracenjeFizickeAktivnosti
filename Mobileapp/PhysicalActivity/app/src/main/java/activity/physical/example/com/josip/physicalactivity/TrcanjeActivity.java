@@ -43,13 +43,31 @@ private int brojPojavljivanjaKoordinata=0;
 public void mapiraj(View v){
 
 }
+    public void startc() {
+        cr = (Chronometer) findViewById(R.id.chronometer3);
+        cr.start();
+    }
 
-
-
-    public void stop(View v){
-        cr=(Chronometer) findViewById(R.id.chronometer2);
+    public void stopc() {
+        cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.stop();
     }
+
+    public String getTimeAfterStop() {
+        String time;
+        cr = (Chronometer) findViewById(R.id.chronometer3);
+        time = cr.getText().toString();
+        return time;
+    }
+
+    public String getTimeAfterWishClick() {
+        String time;
+        cr = (Chronometer) findViewById(R.id.chronometer3);
+        time = cr.getText().toString();
+        return time;
+    }
+
+
     public String vrati_korisnika() throws IOException,JSONException {
         String naziv="prijava.json";
         String korisnik="";
@@ -147,125 +165,124 @@ public void mapiraj(View v){
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-            String loc3="";
-            String loc4="";
-            try {
-                loc3=vrati_koordinate(0);
-                loc4=vrati_koordinate(1);
+            if(location!=null) {
+                String loc1 = "";
+                String loc2 = "";
+                try {
+                    loc1 = vrati_koordinate(0);
+                    loc2 = vrati_koordinate(1);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            double loc1=location.getLatitude();
-            double loc2=location.getLongitude();
-            System.out.println(loc1);
-            System.out.println(loc2);
-            Location l1=new Location("Lokacija 1");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                double loc3 = location.getLatitude();
+                double loc4 = location.getLongitude();
+                System.out.println(loc3);
+                System.out.println(loc4);
+                Location l1 = new Location("Lokacija 1");
 
-            try {
-                l1.setLatitude(Double.parseDouble(loc3));
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-            try {
-                l1.setLongitude(Double.parseDouble(loc4));
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
-            }
-            Location l2=new Location("Lokacija 2");
-            l2.getLatitude();
-            l2.getLongitude();
-            float distance=l2.distanceTo(l1)/1000;
-            System.out.println("Udaljenost do druge točke:"+String.valueOf(distance)+" kilometara");
-            try {
-                mtv1=(TextView) findViewById(R.id.dist);
-                mtv1.setText("Udaljenost:"+String.valueOf(distance)+"km");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                try {
+                    l1.setLatitude(Double.parseDouble(loc1));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    l1.setLongitude(Double.parseDouble(loc2));
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                Location l2 = new Location("Lokacija 2");
+                l2.getLatitude();
+                l2.getLongitude();
+                float distance = l1.distanceTo(l2) / 1000;
+                System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
+                try {
+                    mtv1 = (TextView) findViewById(R.id.dist);
+                    mtv1.setText("Udaljenost:" + String.valueOf(distance) + "km");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             /*
             brojPojavljivanjaKoordinata+=1;
             System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");*/
-            dohvati_koordinate(loc1,loc2);
-            TextView tekst=(TextView) findViewById(R.id.kmh);
-            TextView km=(TextView) findViewById(R.id.kilometar);
+                dohvati_koordinate(loc3, loc4);
+                TextView tekst = (TextView) findViewById(R.id.kmh);
+                TextView km = (TextView) findViewById(R.id.kilometar);
 
-            loc3="";
-            loc4="";
+                loc1 = "";
+                loc2 = "";
 
-            String cityName=null;
-            String stateName=null;
-            String ad=null;
-            String ad2=null;
-            String posta=null;
-            Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-            List<Address> addresses;
-
-
-            //double temp=suma;
+                String cityName = null;
+                String stateName = null;
+                String ad = null;
+                String ad2 = null;
+                String posta = null;
+                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+                List<Address> addresses;
 
 
-            // kilometri[0]=location.distanceTo(loc2)/1000;
+                //double temp=suma;
 
 
-            //suma+=kilometri[0];
+                // kilometri[0]=location.distanceTo(loc2)/1000;
+
+
+                //suma+=kilometri[0];
 
 /*
             TextView k=(TextView) findViewById(R.id.brkm);
             k.setText(suma+"km/h");*/
 
 
-            try {
-                addresses=gcd.getFromLocation(location.getLatitude(),location.getLongitude(),1);
-                if(addresses.size()>0){
-                    try {
-                        Log.i("poruka",addresses.get(0).getLocality());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Log.i("poruka",addresses.get(0).getCountryName());
-                    Log.i("poruka",addresses.get(0).getAddressLine(0));
-                    try {
-                        Log.i("poruka", addresses.get(0).getAddressLine(1));
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                    try {
-                        Log.i("poruka", addresses.get(0).getAddressLine(2));
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
-                    cityName=addresses.get(0).getLocality();
-                    stateName=addresses.get(0).getCountryName();
-                    ad=addresses.get(0).getAddressLine(0);
-                    float trenutna_brzina=location.getSpeed();
-                    float brzina= (float) (trenutna_brzina*3.6);
-                    tekst.setText(String.valueOf(trenutna_brzina)+" m/s");
-                    km.setText(String.valueOf(brzina)+" km/h");
+                try {
+                    addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                    if (addresses.size() > 0) {
+                        try {
+                            Log.i("poruka", addresses.get(0).getLocality());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Log.i("poruka", addresses.get(0).getCountryName());
+                        Log.i("poruka", addresses.get(0).getAddressLine(0));
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(1));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(2));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        cityName = addresses.get(0).getLocality();
+                        stateName = addresses.get(0).getCountryName();
+                        ad = addresses.get(0).getAddressLine(0);
+                        float trenutna_brzina = location.getSpeed();
+                        float brzina = (float) (trenutna_brzina * 3.6);
+                        tekst.setText(String.valueOf(trenutna_brzina) + " m/s");
+                        km.setText(String.valueOf(brzina) + " km/h");
 
 
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+
+
+                String s =
+                        cityName;
+                String p = stateName;
+                String a = ad;
+
+                TextView t = (TextView) findViewById(R.id.ulica);
+                t.setText(a);
+                TextView tv = (TextView) findViewById(R.id.pcity);
+                tv.setText(s);
+                TextView dr = (TextView) findViewById(R.id.state);
+                dr.setText(p);
             }
-
-
-
-
-            String s =
-                    cityName;
-            String p=stateName;
-            String a=ad;
-
-            TextView t=(TextView) findViewById(R.id.ulica);
-            t.setText(a);
-            TextView tv=(TextView) findViewById(R.id.pcity);
-            tv.setText(s);
-            TextView dr=(TextView) findViewById(R.id.state);
-            dr.setText(p);
-
         };
 
         @Override
@@ -288,8 +305,7 @@ public void mapiraj(View v){
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trcanje);
-        cr=(Chronometer) findViewById(R.id.chronometer2);
-        cr.start();
+
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

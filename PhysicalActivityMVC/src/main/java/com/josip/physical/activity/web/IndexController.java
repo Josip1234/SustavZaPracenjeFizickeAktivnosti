@@ -23,6 +23,10 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.InetSocketAddress;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,7 +41,9 @@ import javax.validation.Valid;
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMIReprository;
+import com.josip.physical.activity.login.JSONWriterObjectMapper;
 import com.josip.physical.activity.login.Login;
+import com.josip.physical.activity.login.ObjectMapperRead;
 import com.josip.physical.activity.regist.Registration;
 
 import sun.security.action.OpenFileInputStreamAction;
@@ -155,5 +161,10 @@ public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email
 	return "redirect:mojprofil";
     }
 }
-
+@RequestMapping(value="mobilnaverifikacijavalidacija",method=GET)
+public String mobilnaverifikacijavalidacija(Model model){boolean autoriziran=false;
+	
+   model.addAttribute("autor", autoriziran);
+   return "mobilnaverifikacijavalidacija";
+}
 }

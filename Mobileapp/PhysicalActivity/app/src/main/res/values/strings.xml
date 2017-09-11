@@ -51,4 +51,7 @@
     <string name="ma">Mapiraj lokaciju</string>
     <string name="pretrckm">koliko_sam_pretrčao</string>
     <string name="udaljenost">Udaljenost</string>
+    <string name="vrijemestart">Startaj</string>
+    <string name="vrijemestop">Stopiraj</string>
+    <string name="fail"></string>
 </resources>
