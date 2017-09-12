@@ -43,6 +43,36 @@ private int brojPojavljivanjaKoordinata=0;
 public void mapiraj(View v){
 
 }
+
+    private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        if (unit == "K") {
+            dist = dist * 1.609344;
+        } else if (unit == "N") {
+            dist = dist * 0.8684;
+        }
+
+        return (dist);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts decimal degrees to radians						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts radians to decimal degrees						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
+    }
+
     public void startc() {
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.start();
@@ -166,37 +196,27 @@ public void mapiraj(View v){
         @Override
         public void onLocationChanged(Location location) {
             if(location!=null) {
-                String loc1 = "";
-                String loc2 = "";
+                double loc1 = 00.00;
+                double loc2 = 00.00;
                 try {
-                    loc1 = vrati_koordinate(0);
-                    loc2 = vrati_koordinate(1);
+                    loc1 = Double.parseDouble(vrati_koordinate(0));
+                    loc2 = Double.parseDouble(vrati_koordinate(1));
+                    System.out.println(loc1);
+                    System.out.println(loc2);
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                double loc3 = location.getLatitude();
-                double loc4 = location.getLongitude();
+                double loc3 =  location.getLatitude();
+                double loc4 =  location.getLongitude();
                 System.out.println(loc3);
                 System.out.println(loc4);
-                Location l1 = new Location("Lokacija 1");
 
-                try {
-                    l1.setLatitude(Double.parseDouble(loc1));
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    l1.setLongitude(Double.parseDouble(loc2));
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-                Location l2 = new Location("Lokacija 2");
-                l2.getLatitude();
-                l2.getLongitude();
-                float distance = l1.distanceTo(l2) / 1000;
+
+
+                double distance = distance(loc1,loc2,loc3,loc4,"K");
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
                 try {
                     mtv1 = (TextView) findViewById(R.id.dist);
@@ -211,8 +231,8 @@ public void mapiraj(View v){
                 TextView tekst = (TextView) findViewById(R.id.kmh);
                 TextView km = (TextView) findViewById(R.id.kilometar);
 
-                loc1 = "";
-                loc2 = "";
+                loc1 = 00.00;
+                loc2 = 00.00;
 
                 String cityName = null;
                 String stateName = null;
@@ -282,6 +302,7 @@ public void mapiraj(View v){
                 tv.setText(s);
                 TextView dr = (TextView) findViewById(R.id.state);
                 dr.setText(p);
+                location.reset();
             }
         };
 

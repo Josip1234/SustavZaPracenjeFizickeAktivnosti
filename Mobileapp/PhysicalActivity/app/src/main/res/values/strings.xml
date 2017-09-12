@@ -54,4 +54,6 @@
     <string name="vrijemestart">Startaj</string>
     <string name="vrijemestop">Stopiraj</string>
     <string name="fail"></string>
+    <string name="sp"></string>
+    <string name="udalj"></string>
 </resources>

@@ -36,7 +36,7 @@ import java.nio.channels.SocketChannel;
 public class MainActivity extends AppCompatActivity{
     private TextView mfail;
    public void prijava(View v){
-       boolean autoriziran=false;
+       boolean autoriziran=true;
        EditText email;
        EditText sifra;
        TextView tv;
@@ -79,16 +79,18 @@ public class MainActivity extends AppCompatActivity{
             object=new JSONObject();
             object.put("username",a);
             object.put("pass",b);
+
+           if (object.length() > 0) {
+            new sendDataToServer().execute(String.valueOf(object));
+
+            }
             array.put(object);
             String text = array.toString();
             FileOutputStream fos = openFileOutput("prijava.json",MODE_PRIVATE);
             fos.write(text.getBytes());
             fos.close();
         Log.i("message","succesfully written to json");
-        if (object.length() > 0) {
-            new sendDataToServer().execute(String.valueOf(object));
 
-        }
         }
 
     public void procitaj_json() throws IOException,JSONException{
@@ -135,7 +137,7 @@ class sendDataToServer extends AsyncTask<String,String,String>{
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         try {
-            URL url = new URL("http://localhost:8080/physical/mobilnaverifikacijavalidacija");
+            URL url = new URL("http://10.0.2.2:8080/physical/mobilnaverifikacijavalidacija");
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setDoOutput(true);
             // is output buffer writter
@@ -201,6 +203,5 @@ class sendDataToServer extends AsyncTask<String,String,String>{
     protected void onPostExecute(String s) {
     }
 
-}
 }
 }
