@@ -37,9 +37,11 @@ private Chronometer cr;
 private TextView mtv1;
 public int indeks=0;
     private Button map;
-private double[] kilometri;
+private double kilometri=00.00;
+    private double[] kilometraza;
 private float suma=0;
 private int brojPojavljivanjaKoordinata=0;
+    private TextView mBrojPretrcanih;
 public void mapiraj(View v){
 
 }
@@ -217,6 +219,7 @@ public void mapiraj(View v){
 
 
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
+
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
                 try {
                     mtv1 = (TextView) findViewById(R.id.dist);
@@ -224,9 +227,14 @@ public void mapiraj(View v){
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            /*
-            brojPojavljivanjaKoordinata+=1;
-            System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");*/
+
+
+
+                    kilometri+=distance;
+                    mBrojPretrcanih=(TextView) findViewById(R.id.brkm);
+                    mBrojPretrcanih.setText(String.valueOf(kilometri));
+
+            //System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");//
                 dohvati_koordinate(loc3, loc4);
                 TextView tekst = (TextView) findViewById(R.id.kmh);
                 TextView km = (TextView) findViewById(R.id.kilometar);
@@ -243,17 +251,6 @@ public void mapiraj(View v){
                 List<Address> addresses;
 
 
-                //double temp=suma;
-
-
-                // kilometri[0]=location.distanceTo(loc2)/1000;
-
-
-                //suma+=kilometri[0];
-
-/*
-            TextView k=(TextView) findViewById(R.id.brkm);
-            k.setText(suma+"km/h");*/
 
 
                 try {
@@ -303,6 +300,7 @@ public void mapiraj(View v){
                 TextView dr = (TextView) findViewById(R.id.state);
                 dr.setText(p);
                 location.reset();
+
             }
         };
 
