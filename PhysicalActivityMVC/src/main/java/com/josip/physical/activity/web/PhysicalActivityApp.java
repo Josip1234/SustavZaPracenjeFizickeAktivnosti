@@ -13,7 +13,7 @@ public class PhysicalActivityApp extends AbstractAnnotationConfigDispatcherServl
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class<?>[]{RootConfig.class};
+		return new Class<?>[]{SecurityConfig.class};
 	}
 
 	@Override

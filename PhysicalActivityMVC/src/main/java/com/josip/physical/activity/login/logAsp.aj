@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public aspect logAsp {
+	/*
 	@Pointcut("execution(** com.example.physical.activity.login.Login.prijavi_se(..))")
 	public void Login(){};
 	
@@ -20,7 +21,7 @@ public aspect logAsp {
 	public void greska(){
 		System.out.println("Završeno");
 	}
-	
+	*/
 	
 	
 	

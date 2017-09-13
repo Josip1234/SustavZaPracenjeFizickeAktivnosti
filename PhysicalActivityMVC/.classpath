@@ -103,6 +103,8 @@
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/hibernate-validator-4.2.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/jackson-core-2.7.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/jackson-databind-2.7.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/spring-security-core-4.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/spring-security-core-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/spring-security-web-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Josip/Desktop/diplomski rad/spring-security-config-3.2.0.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public aspect BMIAspekt {
+	/*
 	@Pointcut("execution(** com.josip.physical.activity.index_tjelesne_mase.BMICalculator.izracunajBMI(..))")
 	public void BMICalculator(){};
 	@Before("BMICalculator()")
@@ -17,5 +18,5 @@ public aspect BMIAspekt {
 	public void poruk(){
 		System.out.println("Rezultati su tu.");
 	}
-
+*/
 }
