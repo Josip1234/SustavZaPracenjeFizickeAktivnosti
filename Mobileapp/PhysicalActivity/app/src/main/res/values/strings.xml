@@ -31,9 +31,9 @@
     <string name="Y">Y</string>
     <string name="resetsteps">ResetSteps</string>
     <string name="dots">---</string>
-    <string name="lattitude">Lattitude</string>
+    <string name="lattitude">Brzina u m/s:</string>
     <string name="dots2">---</string>
-    <string name="longitude">Longitude:</string>
+    <string name="longitude">Brzina u km/h:</string>
     <string name="location_description">location_description</string>
     <string name="locdses">---</string>
     <string name="pokreni">Pokreni</string>
@@ -56,4 +56,5 @@
     <string name="fail"></string>
     <string name="sp"></string>
     <string name="udalj"></string>
+    <string name="reset">Resetiraj</string>
 </resources>

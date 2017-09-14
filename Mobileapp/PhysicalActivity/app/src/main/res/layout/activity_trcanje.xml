@@ -130,18 +130,6 @@
                             tools:ignore="HardcodedText" />
 
                     </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/brkm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/brojkilometara"
-                            tools:text="@string/brojkilometara" />
-
-                    </TableRow>
 
                     <TableRow
                         android:layout_width="match_parent"

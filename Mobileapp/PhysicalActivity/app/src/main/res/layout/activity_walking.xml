@@ -50,6 +50,29 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
                 <TableRow
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/udaljenost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/udaljenost" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/reset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset"
+                        tools:text="@string/reset" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <TextView
@@ -116,7 +139,7 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                     tools:ignore="DuplicateIds">
 
                     <TextView
-                        android:id="@+id/Lat"
+                        android:id="@+id/brzinaum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/lattitude" />
@@ -133,7 +156,7 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/Long"
+                        android:id="@+id/brzinaukm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/longitude" />
@@ -198,18 +221,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
 
                         android:text="@string/korisnik" />
-                </TableRow>
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/ma"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="mapi"
-                        android:text="@string/ma"
-                        tools:text="@string/ma" />
                 </TableRow>
 
 

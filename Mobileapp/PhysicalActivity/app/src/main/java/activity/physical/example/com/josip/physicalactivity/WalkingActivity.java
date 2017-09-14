@@ -32,10 +32,12 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -68,6 +70,105 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView tLocDesc;
     private TextView state;
     private TextView adr;
+    private TextView tUdaljenost;
+    public void dohvati_koordinate(double lat,double lon){
+
+
+        try {
+            kreiraj_prethodne_koordinate(lat,lon);
+            Log.i("poruka","Uspješno spremljene koordinate");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void kreiraj_prethodne_koordinate(double lat ,double lon) throws IOException,JSONException{
+
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        object=new JSONObject();
+        object.put("koordinata",lat);
+        array.put(object);
+        object=new JSONObject();
+        object.put("koordinata",lon);
+        array.put(object);
+        String text = array.toString();
+        FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
+        fos.write(text.getBytes());
+        fos.close();
+        Log.i("message","succesfully written to json");
+    }
+
+
+    public String vrati_koordinate(int pozicija) throws IOException,JSONException {
+        String naziv="koordinate.json";
+
+
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() !=0){
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+
+
+        String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
+        prijavaBuffer.append(koordinata2);
+
+
+
+
+
+
+
+
+        Log.i("poruka","pročitan json");
+
+        return prijavaBuffer.toString();
+
+
+    }
+
+    private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        if (unit == "K") {
+            dist = dist * 1.609344;
+        } else if (unit == "N") {
+            dist = dist * 0.8684;
+        }
+
+        return (dist);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts decimal degrees to radians						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+	/*::	This function converts radians to decimal degrees						 :*/
+	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+    private static double rad2deg(double rad) {
+        return (rad * 180 / Math.PI);
+    }
+
+
+
     public void start() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.start();
@@ -146,11 +247,35 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 double lat = loc.getLatitude();
                 double lon = loc.getLongitude();
 
+                if(loc!=null) {
+                    double loc1 = 00.00;
+                    double loc2 = 00.00;
+                    try {
+                        loc1 = Double.parseDouble(vrati_koordinate(0));
+                        loc2 = Double.parseDouble(vrati_koordinate(1));
+                        System.out.println(loc1);
+                        System.out.println(loc2);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    double loc3 =  lat;
+                    double loc4 =  lon;
 
 
-                tLattitude.setText(String.valueOf(lat));
-                tLongittude.setText(String.valueOf(lon));
+                float trenutna_brzina = loc.getSpeed();
+                float brzina = (float) (trenutna_brzina * 3.6);
 
+                tLattitude.setText(String.valueOf(trenutna_brzina));
+                tLongittude.setText(String.valueOf(brzina));
+
+
+                double distance = distance(loc1,loc2,loc3,loc4,"K");
+                    tUdaljenost=(TextView) findViewById(R.id.udaljenost);
+                    tUdaljenost.setText(String.valueOf(distance));
+                    dohvati_koordinate(loc3, loc4);
                 String cityName=null;
                 String stateName=null;
                 String ad=null;
@@ -199,7 +324,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 tLocDesc.setText(s);
                 state.setText(p);
                 adr.setText(a);
-            }
+                loc.reset();
+            }}
 
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {

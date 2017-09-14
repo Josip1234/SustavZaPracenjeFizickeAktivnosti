@@ -230,9 +230,9 @@ public void mapiraj(View v){
 
 
 
-                    kilometri+=distance;
-                    mBrojPretrcanih=(TextView) findViewById(R.id.brkm);
-                    mBrojPretrcanih.setText(String.valueOf(kilometri));
+                   // kilometri+=distance;
+                   // mBrojPretrcanih=(TextView) findViewById(R.id.brkm);
+                    //mBrojPretrcanih.setText(String.valueOf(kilometri));
 
             //System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");//
                 dohvati_koordinate(loc3, loc4);
