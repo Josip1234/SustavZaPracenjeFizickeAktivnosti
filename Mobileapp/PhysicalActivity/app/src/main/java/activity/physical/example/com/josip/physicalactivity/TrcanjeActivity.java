@@ -7,6 +7,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,9 +43,9 @@ private double kilometri=00.00;
 private float suma=0;
 private int brojPojavljivanjaKoordinata=0;
     private TextView mBrojPretrcanih;
-public void mapiraj(View v){
-
-}
+    private Button mStart;
+    private Button mStop;
+    private Button mReset;
 
     private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
         double theta = lon1 - lon2;
@@ -75,6 +76,11 @@ public void mapiraj(View v){
         return (rad * 180 / Math.PI);
     }
 
+    public void resetc(){
+        cr=(Chronometer) findViewById(R.id.chronometer3);
+        cr.setBase(SystemClock.elapsedRealtime());
+        cr.stop();
+    }
     public void startc() {
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.start();
@@ -324,6 +330,28 @@ public void mapiraj(View v){
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trcanje);
+
+        mStart=(Button) findViewById(R.id.start);
+        mStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startc();
+            }
+        });
+        mStop=(Button) findViewById(R.id.stop);
+        mStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stopc();
+            }
+        });
+        mReset=(Button) findViewById(R.id.reset);
+        mReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetc();
+            }
+        });
 
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

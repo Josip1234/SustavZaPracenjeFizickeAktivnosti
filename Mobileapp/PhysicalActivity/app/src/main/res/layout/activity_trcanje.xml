@@ -53,6 +53,53 @@
 
                     <TableRow
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <Button
+                                    android:id="@+id/start"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:text="@string/vrijemestart"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp,UnusedAttribute" />
+
+                                <Button
+                                    android:id="@+id/stop"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:text="@string/vrijemestop"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp"
+                                    tools:text="@string/vrijemestop" />
+
+                                <Button
+                                    android:id="@+id/reset"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:text="@string/reset"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp"
+                                    tools:text="@string/reset" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <TextView
@@ -131,19 +178,6 @@
 
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-
-                        <Button
-                            android:id="@+id/map"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="mapiraj"
-                            android:text="@string/mapiranje"
-                            tools:text="@string/mapiranje" />
-                    </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" >

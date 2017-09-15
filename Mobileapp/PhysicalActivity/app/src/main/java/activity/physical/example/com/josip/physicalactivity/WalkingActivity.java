@@ -71,6 +71,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private TextView state;
     private TextView adr;
     private TextView tUdaljenost;
+    private Button mReset;
+
     public void dohvati_koordinate(double lat,double lon){
 
 
@@ -168,6 +170,12 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
 
+    public void resetc(){
+        cr=(Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime());
+        cr.stop();
+    }
+
 
     public void start() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
@@ -232,6 +240,13 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         state=(TextView) findViewById(R.id.state_dsc);
         adr=(TextView) findViewById(R.id.homead);
         mKorisnik=(TextView) findViewById(R.id.korisnik);
+        mReset=(Button) findViewById(R.id.reset);
+        mReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetc();
+            }
+        });
         try {
             mKorisnik.setText(vrati_korisnika());
         } catch (IOException e) {
