@@ -47,7 +47,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TrcanjeActivity"></activity>
+        <activity android:name=".TrcanjeActivity" />
+        <activity android:name=".BikingActivity"></activity>
     </application>
 
 </manifest>

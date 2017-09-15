@@ -26,7 +26,7 @@ import static android.content.Intent.getIntent;
 
 public class FragmentList extends ListFragment {
     ListView listView;
-    String[] activities={"Hodanje","Trčanje","Bicikliranje","Trbušnjaci","Sklekovi","Rezultati","ITM"};
+    String[] activities={"Hodanje","Trčanje","Bicikliranje","Rezultati","ITM"};
 
 
 
@@ -63,10 +63,13 @@ public class FragmentList extends ListFragment {
         }else if(position==1){
             Intent intent = new Intent(v.getContext(),TrcanjeActivity.class);
             startActivityForResult(intent,1);
+        }else if(position==2){
+            Intent intent = new Intent(v.getContext(),BikingActivity.class);
+            startActivityForResult(intent,2);
         }
-        else if(position==6){
+        else if(position==4){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);
-            startActivityForResult(intent,7);
+            startActivityForResult(intent,4);
         }
     }
 

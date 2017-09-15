@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.josip.physical.activity.regist.Registration"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.josip.physical.activity.login.Login"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
 <fullyQualifiedTypeName name="org.springframework.security.provisioning.InMemoryUserDetailsManager"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer"/>
+<fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
 </qualifiedTypeNameHistroy>
