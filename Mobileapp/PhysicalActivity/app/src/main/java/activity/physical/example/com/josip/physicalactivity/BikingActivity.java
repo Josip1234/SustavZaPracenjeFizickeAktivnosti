@@ -41,7 +41,7 @@ private Button mReset;
     private TextView mDrzava;
     private TextView mKorisnik;
     private TextView mUdaljenost;
-private Button mGoogleMaps;
+
 
     public void startcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
@@ -177,14 +177,11 @@ private Button mGoogleMaps;
             e.printStackTrace();
         }
     }
-    public void idi_na_mapu(){
-        Intent intent = new Intent(BikingActivity.this,MapsActivity.class);
-        startActivity(intent);
-    }
+
     LocationListener locListener = new LocationListener() {
         @Override
-        public void onLocationChanged(Location location) {
-            if(location!=null) {
+        public void onLocationChanged(Location loca) {
+            if(loca!=null) {
                 mSpeed=(TextView) findViewById(R.id.brzina);
                 mSpeedkmH=(TextView) findViewById(R.id.brzinakm);
                 mUlica=(TextView) findViewById(R.id.ulica);
@@ -206,9 +203,9 @@ private Button mGoogleMaps;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                double loc3 =  location.getLatitude();
-                double loc4 =  location.getLongitude();
-                float trenutna_brzina = location.getSpeed();
+                double loc3 =  loca.getLatitude();
+                double loc4 =  loca.getLongitude();
+                float trenutna_brzina = loca.getSpeed();
                 float brzina = (float) (trenutna_brzina * 3.6);
                 mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
                 mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
@@ -243,7 +240,7 @@ private Button mGoogleMaps;
 
 
                 try {
-                    addresses = gcd.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                    addresses = gcd.getFromLocation(loca.getLatitude(), loca.getLongitude(), 1);
                     if (addresses.size() > 0) {
                         try {
                             Log.i("poruka", addresses.get(0).getLocality());
@@ -285,7 +282,7 @@ private Button mGoogleMaps;
                 mPostaNaziv.setText(s);
 
                 mDrzava.setText(p);
-                location.reset();
+                loca.reset();
 
             }
         };
@@ -331,12 +328,7 @@ private Button mGoogleMaps;
                 resetcron();
             }
         });
-        mGoogleMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                idi_na_mapu();
-            }
-        });
+
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

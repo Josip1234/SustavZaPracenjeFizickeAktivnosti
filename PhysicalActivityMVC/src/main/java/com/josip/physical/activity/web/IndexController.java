@@ -14,9 +14,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.io.BufferedInputStream;
@@ -162,9 +164,14 @@ public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email
     }
 }
 @RequestMapping(value="mobilnaverifikacijavalidacija",method=GET)
-public String mobilnaverifikacijavalidacija(Model model){boolean autoriziran=false;
-	
-   model.addAttribute("autor", autoriziran);
-   return "mobilnaverifikacijavalidacija";
+public String mobilnaverifikacijavalidacija(){
+	return "mobilnaverifikacijavalidacija";
+}
+@RequestMapping(value="mobilnaverifikacijavalidacija",method=RequestMethod.POST,consumes="application/json")
+public @ResponseBody
+Login saveLogin(@RequestBody Login login){
+	return login.saveLogin(login);
+  
+   
 }
 }

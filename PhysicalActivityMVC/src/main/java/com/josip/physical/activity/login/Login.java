@@ -2,6 +2,7 @@ package com.josip.physical.activity.login;
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.validation.constraints.*;
@@ -32,6 +33,18 @@ public class Login implements log {
 		this.username=username;
     	this.sifra=sifra;
     	this.autoriziran=autoriziran;
+	}
+	public Login saveLogin(Login login){
+
+        ObjectMapperRead read = new ObjectMapperRead();
+        try {
+			login.setUsername(read.readJsonWithObjectMapper());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return login;
 	}
 
 	public void setAutoriziran(boolean autoriziran) {

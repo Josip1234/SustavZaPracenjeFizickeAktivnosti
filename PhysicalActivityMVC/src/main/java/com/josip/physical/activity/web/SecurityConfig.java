@@ -9,14 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-@Configuration
-@EnableWebMvcSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+//@Configuration
+//@EnableWebMvcSecurity
+public class SecurityConfig /*extends WebSecurityConfigurerAdapter*/ {
+/*
 	@Bean
 	protected void configure(AuthenticationManagerBuilder auth)
 	throws Exception {
 	
 	}
-	
+	*/
 }

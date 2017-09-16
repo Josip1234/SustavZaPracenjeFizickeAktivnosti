@@ -36,7 +36,7 @@ import java.nio.channels.SocketChannel;
 public class MainActivity extends AppCompatActivity{
     private TextView mfail;
    public void prijava(View v){
-       boolean autoriziran=true;
+       boolean autoriziran=false;
        EditText email;
        EditText sifra;
        TextView tv;
