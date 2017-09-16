@@ -219,9 +219,14 @@ private int brojPojavljivanjaKoordinata=0;
                 }
                 double loc3 =  location.getLatitude();
                 double loc4 =  location.getLongitude();
+                TextView tekst = (TextView) findViewById(R.id.kmh);
+                TextView km = (TextView) findViewById(R.id.kilometar);
                 System.out.println(loc3);
                 System.out.println(loc4);
-
+                float trenutna_brzina = location.getSpeed();
+                float brzina = (float) (trenutna_brzina * 3.6);
+                tekst.setText(String.valueOf(trenutna_brzina) + " m/s");
+                km.setText(String.valueOf(brzina) + " km/h");
 
 
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
@@ -242,8 +247,7 @@ private int brojPojavljivanjaKoordinata=0;
 
             //System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");//
                 dohvati_koordinate(loc3, loc4);
-                TextView tekst = (TextView) findViewById(R.id.kmh);
-                TextView km = (TextView) findViewById(R.id.kilometar);
+
 
                 loc1 = 00.00;
                 loc2 = 00.00;
@@ -282,10 +286,7 @@ private int brojPojavljivanjaKoordinata=0;
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
-                        float trenutna_brzina = location.getSpeed();
-                        float brzina = (float) (trenutna_brzina * 3.6);
-                        tekst.setText(String.valueOf(trenutna_brzina) + " m/s");
-                        km.setText(String.valueOf(brzina) + " km/h");
+
 
 
                     }

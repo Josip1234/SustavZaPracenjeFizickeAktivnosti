@@ -192,13 +192,7 @@ private Button mGoogleMaps;
                 mDrzava=(TextView) findViewById(R.id.drzava);
                 mKorisnik=(TextView) findViewById(R.id.korisnik);
                 mUdaljenost=(TextView) findViewById(R.id.udaljenost);
-                mGoogleMaps=(Button) findViewById(R.id.mapa);
-                mGoogleMaps.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        idi_na_mapu();
-                    }
-                });
+
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -214,6 +208,10 @@ private Button mGoogleMaps;
                 }
                 double loc3 =  location.getLatitude();
                 double loc4 =  location.getLongitude();
+                float trenutna_brzina = location.getSpeed();
+                float brzina = (float) (trenutna_brzina * 3.6);
+                mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
+                mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
                 System.out.println(loc3);
                 System.out.println(loc4);
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
@@ -267,10 +265,7 @@ private Button mGoogleMaps;
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
-                        float trenutna_brzina = location.getSpeed();
-                        float brzina = (float) (trenutna_brzina * 3.6);
-                        mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
-                        mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
+
 
 
                     }
@@ -334,6 +329,12 @@ private Button mGoogleMaps;
             @Override
             public void onClick(View view) {
                 resetcron();
+            }
+        });
+        mGoogleMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                idi_na_mapu();
             }
         });
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
