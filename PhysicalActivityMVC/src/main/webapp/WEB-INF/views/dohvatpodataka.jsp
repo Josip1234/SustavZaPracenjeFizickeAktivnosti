@@ -9,9 +9,17 @@
 <title>Korisnikovi podaci</title>
 </head>
 <body>
-<ul>
 
-</ul>
+<c:forEach var="email" items="${rep} "> 
+  <tr>
+    
+    <td><c:out value="${email}" /></td>
+
+  </tr>
+</c:forEach>
+
+
+
 <a href="index">Povratak u izbornik</a>
 
 </body>

@@ -46,6 +46,9 @@ public PhysicalActivityDatabase(){
 	this.lg=lg;
 }
 
+public String getHost(){
+	return host;
+}
 
 
 public String getEncoding() {
@@ -89,6 +92,10 @@ public String getDriver() {
 /*
 * Prvo loadati drivere za bazu podataka	
 */
+
+public void setDriver(String driver) {
+	Driver = driver;
+}
 
 public boolean InsertUser(Registration rg){
  rg=new Registration(rg.getOIB(),rg.getIme(),rg.getPrezime(),rg.getSpol(),rg.getDatumr(),rg.getEmail(),rg.getSifra());

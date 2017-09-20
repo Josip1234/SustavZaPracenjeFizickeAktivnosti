@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +46,7 @@ import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMIReprository;
 import com.josip.physical.activity.login.JSONWriterObjectMapper;
 import com.josip.physical.activity.login.Login;
+import com.josip.physical.activity.login.LoginReprository;
 import com.josip.physical.activity.login.ObjectMapperRead;
 import com.josip.physical.activity.regist.Registration;
 
@@ -52,7 +54,6 @@ import sun.security.action.OpenFileInputStreamAction;
 @Controller
 @RequestMapping(value="/")
 public class IndexController {
-
 
 @RequestMapping(value="index",method=GET)
 public String index(){
@@ -64,11 +65,7 @@ public String mojprofil(){
 	
 	return "mojprofil";
 }
-@RequestMapping(value="dohvatpodataka", method=GET)
-public String dohvatpodataka(){
-	
-	return "dohvatpodataka";
-}
+
 
 @RequestMapping(value="home",method=GET)
 public String home(){
@@ -158,20 +155,11 @@ public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email
     if(user==false){
     	return "redirect:registracija";
     }else{
-    lg = new Login(email,sifra,user);
+    lg = new Login(email,sifra);
     System.out.println(user);
 	return "redirect:mojprofil";
     }
 }
-@RequestMapping(value="mobilnaverifikacijavalidacija",method=GET)
-public String mobilnaverifikacijavalidacija(){
-	return "mobilnaverifikacijavalidacija";
-}
-@RequestMapping(value="mobilnaverifikacijavalidacija",method=RequestMethod.POST,consumes="application/json")
-public @ResponseBody
-Login saveLogin(@RequestBody Login login){
-	return login.saveLogin(login);
-  
-   
-}
+
+
 }

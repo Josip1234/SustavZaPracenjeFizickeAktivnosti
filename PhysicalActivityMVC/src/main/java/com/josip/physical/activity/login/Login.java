@@ -29,10 +29,10 @@ public class Login implements log {
     
    
     
-	public Login(String email, String sifra,boolean autoriziran) {
-		this.username=username;
+	public Login(String email, String sifra) {
+		this.username=email;
     	this.sifra=sifra;
-    	this.autoriziran=autoriziran;
+    
 	}
 	public Login saveLogin(Login login){
 
@@ -58,8 +58,8 @@ public class Login implements log {
 	public String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String email) {
+		this.username = email;
 	}
 	public String getSifra() {
 		return sifra;
@@ -74,7 +74,13 @@ public class Login implements log {
 	}
 
 
-
+	@Override
+	public String toString(){
+		
+		return "Login [username"+username+",password"+sifra+"]";
+		
+	}
+/*
 @Override
    public String toString(){
 	   StringBuilder sb = new StringBuilder();
@@ -83,6 +89,6 @@ public class Login implements log {
 	   sb.append("Lozinka:"+getSifra()+"\n");
 	   return sb.toString();
    }
-	
+	*/
 
 }
