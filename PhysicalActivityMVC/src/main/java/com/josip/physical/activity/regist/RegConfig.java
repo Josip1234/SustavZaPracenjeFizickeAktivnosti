@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 
+import com.josip.physical.activity.baza.PhysicalActivityDatabase;
+import com.josip.physical.activity.login.Login;
+
 
 
 @Configuration

@@ -16,14 +16,14 @@ import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
-import com.josip.physical.activity.web.RegistrationRep;
+
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
 
 
 @Component("Spajanje na bazu")
-public class PhysicalActivityDatabase implements RegistrationRep{
+public class PhysicalActivityDatabase {
 
 private String ime_baze;
 private String host;
@@ -31,7 +31,7 @@ private String user;
 private String vrsta_baze;
 private String Driver;
 private String encoding;
-private Registration rg;
+
 public int broji=0;
 private Login lg;
 
@@ -219,9 +219,7 @@ e.printStackTrace();
 }
 }
 
-
-
-@Bean(name="ListaKorisnika")
+/*
 public List<Registration> listaKorisnika(){
 	List<Registration> registracija = new ArrayList<Registration>();
 	try{
@@ -256,6 +254,7 @@ public List<Registration> listaKorisnika(){
 				String email=rs.getString("email");
 		        String sifra=rs.getString("sifra");
 		        
+		      
 		       
 		       
 		        registracija.add(new Registration(oib+broj,ime+broj,prezime+broj,spol+broj, datum+broj,email+broj,sifra+broj));
@@ -281,7 +280,7 @@ public List<Registration> listaKorisnika(){
 	return registracija;
 }
 
-
+*/
 
 public String[] mojprofil(String email){
 	String[] profil = new String[7];

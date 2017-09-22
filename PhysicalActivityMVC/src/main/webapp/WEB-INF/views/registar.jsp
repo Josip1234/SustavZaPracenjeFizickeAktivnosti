@@ -5,5 +5,16 @@
 <!DOCTYPE html>
 <head><title>Prijava</title></head>
 <body>
-<p>${lista}</p>
+
+<ol>
+
+<c:forEach var="li" items="${regist} "> 
+  <tr>
+    
+    <td><c:out value="${li}" /></td>
+
+  </tr>
+</c:forEach>
+
+</ol>
 </body>

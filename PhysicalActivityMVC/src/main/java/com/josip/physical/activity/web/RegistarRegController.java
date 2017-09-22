@@ -7,17 +7,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.josip.physical.activity.login.LoginReprository;
+import com.josip.physical.activity.regist.RegistrationRepository;
+
+
+
 @Controller
+@RequestMapping("registar")
 public class RegistarRegController {
 	
-	private RegistrationRep registrationRep;
+	private RegistrationRepository registrationRepository;
+	
 	@Autowired
-	public RegistarRegController(RegistrationRep registrationRep){
-		this.registrationRep=registrationRep;
+	public  RegistarRegController(RegistrationRepository registrationRepository) {
+		// TODO Auto-generated constructor stub
+		this.registrationRepository=registrationRepository;
 	}
+	
+	
 	@RequestMapping(value="registar",method=GET)
 	public String registar(Model model){
-		model.addAttribute("lista",registrationRep.listaKorisnika().get(0).getOIB());
+		model.addAttribute("regist",registrationRepository.listaKorisnika());
 		
 		return "registar";
 	}

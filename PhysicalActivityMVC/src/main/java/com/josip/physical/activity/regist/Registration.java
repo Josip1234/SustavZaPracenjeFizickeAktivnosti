@@ -36,7 +36,7 @@ private String email;
 @NotNull
 private String sifra;
 
-public PhysicalActivityDatabase db;
+
 
 public Registration() {
 	this.OIB="";
@@ -47,7 +47,6 @@ public Registration() {
 	this.email="";
 	this.sifra="";
 	
-	this.db=db;
 }
 public void register(){
 
@@ -65,7 +64,6 @@ public Registration(String OIB,String ime,String prezime,String spol,String datu
 	this.email=email;
 	this.sifra=sifra;
 	
-	this.db=db;
 }
 
 
@@ -121,7 +119,12 @@ public String getSifra() {
 }
 
 
-
+@Override
+public String toString(){
+	
+	return "Registration OIB"+OIB+",ime"+ime+",prezime"+prezime+",spol"+spol+",datumr"+datumr+",Email"+email+",sifra"+sifra+"";
+	
+}
 
 
 }
