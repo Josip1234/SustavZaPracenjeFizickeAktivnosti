@@ -48,7 +48,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".TrcanjeActivity" />
-        <activity android:name=".BikingActivity"></activity>
+        <activity android:name=".BikingActivity" />
+        <activity android:name=".RezultActivity"></activity>
     </application>
 
 </manifest>

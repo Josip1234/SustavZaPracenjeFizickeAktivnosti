@@ -58,4 +58,20 @@
     <string name="udalj"></string>
     <string name="reset">Resetiraj</string>
     <string name="googlemapa">googlemapa</string>
+    <string name="setnja">Šetnja</string>
+    <string name="vrijeme_provedeno_u_e">Vrijeme_u_šetnji</string>
+    <string name="prijedjeni_kilometri">Prijeđeni_kilometri</string>
+    <string name="prosjecna_brzina">Prosječna_brzina</string>
+    <string name="vus">...</string>
+    <string name="pk">...</string>
+    <string name="pb">...</string>
+    <string name="bk">Ukupan broj koraka</string>
+    <string name="ukbrkor">...</string>
+    <string name="trcanje">Trcanje</string>
+    <string name="vrijeme_trcanja">Vrijeme trčanja</string>
+    <string name="vrtr">...</string>
+    <string name="brojprkmtr">Prijeđeni_kilometri</string>
+    <string name="prkmtr">...</string>
+    <string name="bicikliranje">Bicikliranje</string>
+    <string name="vrijeme_u_bicikliranju">Vrijeme u bicikliranju</string>
 </resources>
