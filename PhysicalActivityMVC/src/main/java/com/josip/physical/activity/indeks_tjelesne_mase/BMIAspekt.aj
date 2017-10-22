@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-@Aspect
+//@Aspect
 public aspect BMIAspekt {
 	/*
 	@Pointcut("execution(** com.josip.physical.activity.index_tjelesne_mase.BMICalculator.izracunajBMI(..))")

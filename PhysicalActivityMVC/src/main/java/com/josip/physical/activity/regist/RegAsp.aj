@@ -4,7 +4,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-@Aspect
+//@Aspect
 public aspect RegAsp {
 	/*
 	@Pointcut("execution(** com.josip.physical.activity.regist.registeryourself.register(..))")

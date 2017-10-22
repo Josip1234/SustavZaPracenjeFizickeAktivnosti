@@ -13,7 +13,7 @@ import com.josip.physical.activity.login.Login;
 
 
 @Configuration
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 
 
 public class RegConfig {

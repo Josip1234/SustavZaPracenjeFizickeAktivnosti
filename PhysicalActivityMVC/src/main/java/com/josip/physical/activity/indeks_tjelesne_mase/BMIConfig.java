@@ -6,7 +6,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 
 @Configuration
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 @ComponentScan(basePackageClasses={BMICalculator.class})
 
 public class BMIConfig {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @ComponentScan(basePackageClasses={Login.class})
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 public class LogConfig {
 
 }
