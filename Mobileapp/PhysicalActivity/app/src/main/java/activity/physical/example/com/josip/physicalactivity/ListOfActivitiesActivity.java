@@ -7,6 +7,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,7 +15,6 @@ import java.io.IOException;
 import static android.content.Intent.getIntent;
 
 public class ListOfActivitiesActivity extends AppCompatActivity {
-
 
 
 
