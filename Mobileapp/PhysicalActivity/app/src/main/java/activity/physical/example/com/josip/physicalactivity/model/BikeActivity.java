@@ -1,0 +1,81 @@
+package activity.physical.example.com.josip.physicalactivity.model;
+
+/**
+ * Created by Josip on 1.11.2017..
+ */
+
+public class BikeActivity {
+    private String vrijemeAktivnosti;
+    private double brzinaUkm;
+    private String lokacija;
+    private double longitude;
+    private double latitude;
+    private String korisnik;
+    private double udaljenost;
+
+    public BikeActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude, String korisnik, double udaljenost) {
+        this.vrijemeAktivnosti = vrijemeAktivnosti;
+        this.brzinaUkm = brzinaUkm;
+        this.lokacija = lokacija;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.korisnik = korisnik;
+        this.udaljenost = udaljenost;
+    }
+
+    public String getVrijemeAktivnosti() {
+        return vrijemeAktivnosti;
+    }
+
+    public void setVrijemeAktivnosti(String vrijemeAktivnosti) {
+        this.vrijemeAktivnosti = vrijemeAktivnosti;
+    }
+
+    public double getBrzinaUkm() {
+        return brzinaUkm;
+    }
+
+    public void setBrzinaUkm(double brzinaUkm) {
+        this.brzinaUkm = brzinaUkm;
+    }
+
+    public String getLokacija() {
+        return lokacija;
+    }
+
+    public void setLokacija(String lokacija) {
+        this.lokacija = lokacija;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getKorisnik() {
+        return korisnik;
+    }
+
+    public void setKorisnik(String korisnik) {
+        this.korisnik = korisnik;
+    }
+
+    public double getUdaljenost() {
+        return udaljenost;
+    }
+
+    public void setUdaljenost(double udaljenost) {
+        this.udaljenost = udaljenost;
+    }
+}

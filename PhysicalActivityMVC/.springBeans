@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beansProjectDescription>
 	<version>1</version>
-	<pluginVersion><![CDATA[3.9.0.201707061730-RELEASE]]></pluginVersion>
+	<pluginVersion><![CDATA[3.9.1.201710100539-RELEASE]]></pluginVersion>
 	<configSuffixes>
 		<configSuffix><![CDATA[xml]]></configSuffix>
 	</configSuffixes>
@@ -9,6 +9,20 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
+		<config>java:com.josip.physical.activity.regist.RegistrationImpl</config>
+		<config>java:com.josip.physical.activity.login.LoginWrapper</config>
+		<config>java:com.josip.physical.activity.regist.Registration</config>
+		<config>java:com.josip.physical.activity.baza.PhysicalActivityDatabase</config>
+		<config>java:com.josip.physical.activity.web.RootConfig</config>
+		<config>java:com.josip.physical.activity.login.Login</config>
+		<config>java:com.josip.physical.activity.login.LogConfig</config>
+		<config>java:com.josip.physical.activity.baza.BazaConfig</config>
+		<config>java:com.josip.physical.activity.web.WebConfig</config>
+		<config>java:com.josip.physical.activity.indeks_tjelesne_mase.BMIConfig</config>
+		<config>java:com.josip.physical.activity.regist.RegConfig</config>
+		<config>java:com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

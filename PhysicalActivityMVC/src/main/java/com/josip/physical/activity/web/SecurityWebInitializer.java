@@ -1,7 +1,0 @@
-package com.josip.physical.activity.web;
-
-import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
-
-public class SecurityWebInitializer extends AbstractSecurityWebApplicationInitializer {
-
-}

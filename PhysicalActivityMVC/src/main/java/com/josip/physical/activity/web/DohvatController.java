@@ -21,4 +21,5 @@ public class DohvatController {
 		model.addAttribute("rep",loginRepository.kreirajListuKorisnika());
 		return "dohvatpodataka";
 	}
+	
 }
