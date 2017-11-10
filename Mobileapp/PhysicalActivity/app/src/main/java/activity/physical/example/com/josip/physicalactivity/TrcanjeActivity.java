@@ -89,6 +89,7 @@ private int brojPojavljivanjaKoordinata=0;
     public void stopc() {
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.stop();
+        String time=cr.getText().toString();
     }
 
     public String getTimeAfterStop() {

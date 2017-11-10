@@ -13,6 +13,11 @@ public class BikeActivity {
     private String korisnik;
     private double udaljenost;
 
+    public BikeActivity(){
+
+    }
+
+
     public BikeActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude, String korisnik, double udaljenost) {
         this.vrijemeAktivnosti = vrijemeAktivnosti;
         this.brzinaUkm = brzinaUkm;

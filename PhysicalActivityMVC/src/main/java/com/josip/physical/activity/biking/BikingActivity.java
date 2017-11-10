@@ -1,5 +1,8 @@
 package com.josip.physical.activity.biking;
 
+import org.springframework.stereotype.Component;
+
+@Component("Bicikliranje")
 public class BikingActivity {
 private String vrijemeAktivnosti;
 private double brzinaUkm;
@@ -17,6 +20,9 @@ private double udaljenost;
  * @param korisnik
  * @param udaljenost
  */
+public BikingActivity(){
+	
+}
 public BikingActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude,
 		String korisnik, double udaljenost) {
 	this.vrijemeAktivnosti = vrijemeAktivnosti;
@@ -69,5 +75,10 @@ public double getUdaljenost() {
 public void setUdaljenost(double udaljenost) {
 	this.udaljenost = udaljenost;
 }
-
+@Override
+public String toString(){
+	
+	return vrijemeAktivnosti+","+brzinaUkm+","+lokacija+","+longitude+","+latitude+","+korisnik+","+udaljenost+"";
+	
+}
 }

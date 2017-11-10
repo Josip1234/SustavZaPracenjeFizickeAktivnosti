@@ -193,7 +193,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         time = cr.getText().toString();
         return time;
     }
-
+     public String getTime(){
+        cr=(Chronometer) findViewById(R.id.chronometer2);
+        String time=cr.getText().toString();
+        return time;
+     }
     public String getTimeAfterWishClick() {
         String time;
         cr = (Chronometer) findViewById(R.id.chronometer2);

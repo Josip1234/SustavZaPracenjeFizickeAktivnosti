@@ -29,7 +29,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class BikingActivity extends AppCompatActivity {
+import activity.physical.example.com.josip.physicalactivity.model.BikeActivity;
+import activity.physical.example.com.josip.physicalactivity.repositories.BikeRepository;
+
+public class BikingActivity extends AppCompatActivity implements BikeRepository {
 private Chronometer cron;
 private Button mStart;
 private Button mStop;
@@ -50,6 +53,10 @@ private Button mReset;
     public void stopcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
         cron.stop();
+        String time=cron.getText().toString();
+        BikeActivity activity = new BikeActivity();
+        activity.setVrijemeAktivnosti(time);
+        System.out.println(time);
     }
     public void resetcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
@@ -342,5 +349,29 @@ private Button mReset;
         }
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
 
+    }
+
+    public void posaljiPodatke(double lat ,double lon) throws IOException,JSONException{
+
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        object=new JSONObject();
+        object.put("koordinata",lat);
+        array.put(object);
+        object=new JSONObject();
+        object.put("koordinata",lon);
+        array.put(object);
+        String text = array.toString();
+        FileOutputStream fos = openFileOutput("bicikliranje.json",MODE_PRIVATE);
+        fos.write(text.getBytes());
+        fos.close();
+        Log.i("message","succesfully written to json");
+    }
+
+
+    @Override
+    public List<BikeActivity> listStuff() {
+
+        return null;
     }
 }
