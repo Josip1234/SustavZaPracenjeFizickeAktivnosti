@@ -1,21 +1,18 @@
 package com.josip.physical.activity.web;
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
-import com.josip.physical.activity.regist.Registration;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping(value={"/index","/BMICalc","/BMICalc"})
 public class BMIController {
-	@RequestMapping(value="BMICalc",method=POST)
-	public void rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")int masa_u_kg,Model model){
+	@RequestMapping(value="/BMICalc",method=POST)
+	public String rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")int masa_u_kg,Model model){
 		String izraz="";
 		double rezultat=0.0;
 		String sp="";
@@ -31,7 +28,7 @@ public class BMIController {
 		ind=bm.granica_BMI(rezultat,sp,izraz);
 		model.addAttribute("rezultat",rezultat+" "+ind);
 		izraz="";
-		
+		return "BMICalc";
 		
 		
 		

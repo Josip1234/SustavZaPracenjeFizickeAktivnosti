@@ -1,4 +1,4 @@
-package activity.physical.example.com.josip.physicalactivity;
+package activity.physical.example.com.josip.physicalactivity.model;
 
 /**
  * Created by Josip on 3.8.2017..

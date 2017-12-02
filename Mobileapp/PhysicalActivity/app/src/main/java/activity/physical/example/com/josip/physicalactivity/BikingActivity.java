@@ -29,10 +29,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import activity.physical.example.com.josip.physicalactivity.implementations.PhysicalImplementation;
 import activity.physical.example.com.josip.physicalactivity.model.BikeActivity;
-import activity.physical.example.com.josip.physicalactivity.repositories.BikeRepository;
 
-public class BikingActivity extends AppCompatActivity implements BikeRepository {
+public class BikingActivity extends AppCompatActivity  {
 private Chronometer cron;
 private Button mStart;
 private Button mStop;
@@ -50,13 +50,15 @@ private Button mReset;
         cron=(Chronometer) findViewById(R.id.chronometer4);
         cron.start();
     }
-    public void stopcron(){
+    public String stopcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
         cron.stop();
         String time=cron.getText().toString();
         BikeActivity activity = new BikeActivity();
         activity.setVrijemeAktivnosti(time);
         System.out.println(time);
+
+        return time;
     }
     public void resetcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
@@ -64,6 +66,7 @@ private Button mReset;
         cron.stop();
     }
     public String vrati_korisnika() throws IOException,JSONException {
+
         String naziv="prijava.json";
         String korisnik="";
         FileInputStream fis = openFileInput(naziv);
@@ -85,6 +88,7 @@ private Button mReset;
         }
         Log.i("poruka","pročitan json");
         Log.i("korisnik",korisnik);
+
         return korisnik;
 
 
@@ -214,11 +218,13 @@ private Button mReset;
                 double loc4 =  loca.getLongitude();
                 float trenutna_brzina = loca.getSpeed();
                 float brzina = (float) (trenutna_brzina * 3.6);
+
                 mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
                 mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
                 System.out.println(loc3);
                 System.out.println(loc4);
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
+
 
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
                 try {
@@ -289,6 +295,8 @@ private Button mReset;
                 mPostaNaziv.setText(s);
 
                 mDrzava.setText(p);
+
+
                 loca.reset();
 
             }
@@ -310,10 +318,12 @@ private Button mReset;
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
+
         mStart=(Button) findViewById(R.id.startch);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -369,9 +379,6 @@ private Button mReset;
     }
 
 
-    @Override
-    public List<BikeActivity> listStuff() {
 
-        return null;
-    }
+
 }

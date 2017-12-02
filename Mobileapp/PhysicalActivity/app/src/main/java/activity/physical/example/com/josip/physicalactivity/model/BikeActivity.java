@@ -83,4 +83,6 @@ public class BikeActivity {
     public void setUdaljenost(double udaljenost) {
         this.udaljenost = udaljenost;
     }
+
+
 }

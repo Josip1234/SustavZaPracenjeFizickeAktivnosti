@@ -1,13 +1,10 @@
 package com.josip.physical.activity.biking;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.josip.physical.activity.regist.Registration;
 
 @Component
 public class BikingImplementation implements BikingRepository {
