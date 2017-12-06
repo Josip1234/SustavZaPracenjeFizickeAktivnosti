@@ -1,14 +1,23 @@
 package com.josip.physical.activity.baza;
+import java.sql.Driver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-
+import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
 
@@ -24,7 +33,7 @@ private String Driver;
 private String encoding;
 
 public int broji=0;
-
+private Login lg;
 
 public PhysicalActivityDatabase(){
 	
@@ -33,7 +42,8 @@ public PhysicalActivityDatabase(){
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
 	this.Driver="com.mysql.jdbc.Driver";
-	
+	this.encoding="?useUnicode=true&characterEncoding=UTF-8";
+	this.lg=lg;
 }
 
 public String getHost(){
@@ -270,7 +280,7 @@ public List<Registration> listaKorisnika(){
 	return registracija;
 }
 
-
+*/
 
 public String[] mojprofil(String email){
 	String[] profil = new String[7];
@@ -338,7 +348,7 @@ public String[] mojprofil(String email){
 	
 	return profil;
 }
-*/
+
 
 
 

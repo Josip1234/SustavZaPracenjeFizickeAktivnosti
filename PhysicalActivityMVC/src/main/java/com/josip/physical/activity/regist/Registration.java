@@ -1,8 +1,21 @@
 package com.josip.physical.activity.regist;
 
+import org.hibernate.validator.constraints.Email;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.josip.physical.activity.baza.PhysicalActivityDatabase;
+
+
+
+import java.sql.Date;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component("Registracija")
@@ -105,13 +118,13 @@ public String getSifra() {
 	return sifra;
 }
 
-/*
+
 @Override
 public String toString(){
 	
-	return getOIB()+","+getIme()+","+getPrezime()+","+getSpol()+","+getDatumr()+","+getEmail()+","+getSifra();
+	return "Registration OIB"+OIB+",ime"+ime+",prezime"+prezime+",spol"+spol+",datumr"+datumr+",Email"+email+",sifra"+sifra+"";
 	
 }
-*/
+
 
 }

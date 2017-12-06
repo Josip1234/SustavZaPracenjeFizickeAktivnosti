@@ -1,5 +1,10 @@
 package com.josip.physical.activity.indeks_tjelesne_mase;
 
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
 //@Aspect
 public aspect BMIAspekt {
 	/*

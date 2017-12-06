@@ -7,13 +7,13 @@ public class PhysicalActivityApp extends AbstractAnnotationConfigDispatcherServl
 	@Override
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
-		return new String[]{"/physical"};
+		return new String[]{"/physical/"};
 	}
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class<?>[]{RootConfig.class};
+		return new Class<?>[]{WebConfig.class};
 	}
 
 	@Override

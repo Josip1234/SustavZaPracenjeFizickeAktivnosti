@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.8</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.9.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
@@ -22,7 +22,6 @@
 </repositories>
 	<dependencies>
 		<!-- Spring -->
-		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -35,23 +34,16 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
-		
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>4.2.0.Final</version>
-</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj-version}</version>
+			<version>1.8.1</version>
 		</dependency>	
 		
 		<!-- Logging -->
@@ -127,48 +119,65 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.8.47</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0.20100224</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
 			<version>2.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.2.0.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>4.0.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>4.0.0.RELEASE</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>3.2.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.9.2</version>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.0.0.RELEASE</version>
 		</dependency>
 	</dependencies>
     <build>

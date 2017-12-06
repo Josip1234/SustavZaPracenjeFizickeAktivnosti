@@ -19,14 +19,10 @@ public class RegistrationImpl implements RegistrationRepository {
 	PhysicalActivityDatabase db=new PhysicalActivityDatabase();
 	@Autowired
 	Registration rg;
-	
 	@Override
-	public List<Registration> listaKorisnika()  {
-	
+	public List<Registration> listaKorisnika() {
 		
-		    
 			List<Registration> registracija = new ArrayList<Registration>();
-			
 			try{
 				   Class.forName(db.getDriver()).newInstance();
 				   
@@ -47,34 +43,24 @@ public class RegistrationImpl implements RegistrationRepository {
 					ResultSet rs = null;
 					String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration";
 					rs=s.executeQuery(query);
-					String oib="";
-					String ime = "";
-					String prezime ="";
-					String spol="";
-					String datum="";
-					String email="";
-			        String sifra="";
+					
+				    int broj=0;
 					while(rs.next()){
 						
-						oib=rs.getString("OIB");
-						 ime = rs.getString("ime");
-						prezime = rs.getString("prezime");
-						 spol=rs.getString("spol");
-						 datum=rs.getString("datumr");
-						 email=rs.getString("email");
-				        sifra=rs.getString("sifra");
+						String oib=rs.getString("OIB");
+						String ime = rs.getString("ime");
+						String prezime = rs.getString("prezime");
+						String spol=rs.getString("spol");
+						String datum=rs.getString("datumr");
+						String email=rs.getString("email");
+				        String sifra=rs.getString("sifra");
 				        
-				        
-				        
-				        
+				      
 				       
 				       
+				        registracija.add(new Registration(oib+broj,ime+broj,prezime+broj,spol+broj, datum+broj,email+broj,sifra+broj));
 				        
-				        rg = new Registration(oib,ime,prezime,spol,datum,email,sifra);
-				        registracija.add(new Registration(rg.getOIB(),rg.getIme(),rg.getPrezime(),rg.getSpol(), rg.getDatumr(),rg.getEmail(),rg.getSifra()));
-				       
-				       
-				        
+						broj+=1;
 						
 						
 					}
@@ -88,10 +74,9 @@ public class RegistrationImpl implements RegistrationRepository {
 					err.printStackTrace(System.err);
 					System.exit(0);
 				}
-			    
-				
-			     
-				
+			
+			
+			
 			
 			return registracija;
 		}
