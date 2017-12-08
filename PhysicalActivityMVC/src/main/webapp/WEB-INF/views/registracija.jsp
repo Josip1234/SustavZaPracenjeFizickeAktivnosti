@@ -12,6 +12,9 @@
 <h1>Register:</h1>
 
 <form action="registracija" method="POST"  accept-charset="UTF-8" >
+<input type="hidden"
+name="${_csrf.parameterName}"
+value="${_csrf.token}" />
 OIB:<input type="text" name="OIB" min="11" maxlength="11" required="required"/><br/>
 Ime:<input type="text" name="ime" required="required"/><br/>
 Prezime:<input type="text" name="prezime" required="required"/><br/>
