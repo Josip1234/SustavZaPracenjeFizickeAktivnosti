@@ -14,8 +14,8 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	throws Exception {
 	auth
 	.inMemoryAuthentication()
-	.withUser("user").password("password").roles("USER").and()
-	.withUser("admin").password("password").roles("USER", "ADMIN");
+	.withUser("user").password("user").roles("USER").and()
+	.withUser("admin").password("admin").roles("USER", "ADMIN");
 	}
 	
 }

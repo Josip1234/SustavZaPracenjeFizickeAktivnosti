@@ -7,7 +7,7 @@ public class PhysicalActivityApp extends AbstractAnnotationConfigDispatcherServl
 	@Override
 	protected String[] getServletMappings() {
 		// TODO Auto-generated method stub
-		return new String[]{"/"};
+		return new String[]{"/physical/home"};
 	}
 
 	@Override
