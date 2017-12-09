@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping(value={"/","/physical","/bikingactivity"})
 public class BikingActivityController {
 	private BikingRepository bikingRepository;
 	@Autowired
 	 public BikingActivityController(BikingRepository bikingRepository) {
 		this.bikingRepository=bikingRepository;
 	}
-@RequestMapping(value="bikingactivity",method=RequestMethod.POST, produces="application/json")	
+@RequestMapping(value = {"/","/bikingactivity"},method=RequestMethod.GET, produces="application/json")	
 public String bikingactivity(Model model){
 	model.addAttribute("bike",bikingRepository.listStuff());
 	return "bikingactivity";

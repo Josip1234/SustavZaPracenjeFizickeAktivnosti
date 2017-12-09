@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.josip.physical.activity.login.LoginReprository;
 @Controller
-@RequestMapping("dohvatpodataka")
+@RequestMapping(value={"/","/physical","/index","/dohvatpodataka"})
 public class DohvatController {
 	private LoginReprository loginRepository;
 	@Autowired
 	public DohvatController(LoginReprository loginRepository){
 		this.loginRepository=loginRepository;
 	}
-	@RequestMapping(value="dohvatpodataka", method=GET)
+	@RequestMapping(value="/dohvatpodataka", method=GET)
 	public String dohvatpodataka(Model model){
 		model.addAttribute("rep",loginRepository.kreirajListuKorisnika());
 		return "dohvatpodataka";

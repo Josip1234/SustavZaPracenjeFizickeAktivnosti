@@ -13,7 +13,7 @@ import com.josip.physical.activity.regist.RegistrationRepository;
 
 
 @Controller
-@RequestMapping("registar")
+@RequestMapping(value={"/","/physical","/index","/registar"})
 public class RegistarRegController {
 	
 	private RegistrationRepository registrationRepository;
@@ -25,7 +25,7 @@ public class RegistarRegController {
 	}
 	
 	
-	@RequestMapping(value="registar",method=GET)
+	@RequestMapping(value="/registar",method=GET)
 	public String registar(Model model){
 		model.addAttribute("regist",registrationRepository.listaKorisnika());
 		
