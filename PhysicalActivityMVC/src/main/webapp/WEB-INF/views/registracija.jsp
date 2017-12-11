@@ -11,15 +11,31 @@
 <body>
 <h1>Register:</h1>
 <sf:form method="POST" modelAttribute="registration">
+<sf:errors path="*" element="div" cssClass="errors" />
+<sf:label path="OIB"
+cssErrorClass="error">OIB</sf:label>:
+<sf:input path="OIB"/><br>
+<sf:label path="ime"
+cssErrorClass="error">Ime</sf:label>:
+<sf:input path="ime"/><br>
+<sf:label path="prezime"
+cssErrorClass="error">Prezime</sf:label>:
+<sf:input path="prezime"/><br>
+<sf:label path="spol"
+cssErrorClass="error">Spol</sf:label>:
+<sf:select path="spol"><sf:option value="m">Muško</sf:option><sf:option value="f">Žensko</sf:option></sf:select>
 
-OIB:<sf:input path="OIB"/><br>
-Ime:<sf:input path="ime"/><br>
-Prezime:<sf:input path="prezime"/><br>
-Spol:<sf:select path="spol"><sf:option value="m">Muško</sf:option><sf:option value="f">Žensko</sf:option></sf:select>
-<br/>
-Datum rođenja:<sf:input path="datumr" type="date" /><br>
-Email:<sf:input path="email" type="email" /><br>
-Šifra:<sf:input path="sifra"/>
+<br>
+<sf:label path="datumr"
+cssErrorClass="error">Datum rođenja</sf:label>:
+<sf:input path="datumr" type="date" />
+<br>
+<sf:label path="email"
+cssErrorClass="error">E-mail adresa</sf:label>:
+<sf:input path="email" type="email" /><br>
+<sf:label path="sifra"
+cssErrorClass="error">Šifra</sf:label>:
+<sf:password path="sifra"/>
 <input type="submit" value="Registracija"/>
 </sf:form>
 
