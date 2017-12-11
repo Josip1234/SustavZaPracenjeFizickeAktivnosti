@@ -3,7 +3,11 @@
 <%@ page session="false" %><%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <!DOCTYPE html>
-<head><title>Prijava</title></head>
+<head>
+<link rel="stylesheet"
+type="text/css"
+href="<c:url value="/resources/pad.css" />">
+<title>Prijava</title></head>
 <body>
 <form action="prijavnica" method="post">
 <label>Email:</label>

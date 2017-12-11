@@ -72,7 +72,8 @@ public String home(){
 	return "home";
 }
 @RequestMapping(value="registracija",method=GET)
-public String registracija(){
+public String registracija(Model model){
+	model.addAttribute(new Registration());
 	return "registracija";
 
 }
@@ -96,7 +97,7 @@ public String registracija(){
 	    }else{
         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
         db.InsertUser(rg);
-        return "redirect:prijavnica";
+        return "redirect:mojprofil";
 	    }
 
 

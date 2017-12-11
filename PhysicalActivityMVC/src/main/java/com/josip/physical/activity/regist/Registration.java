@@ -39,19 +39,10 @@ private String sifra;
 
 
 public Registration() {
-	this.OIB="";
-	this.ime="";
-	this.prezime="";
-	this.spol="";
-	this.datumr="0000-00-00";
-	this.email="";
-	this.sifra="";
+	
 	
 }
-public void register(){
 
-	System.out.println("Successfull registration");
-};
 
 
 public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra){
