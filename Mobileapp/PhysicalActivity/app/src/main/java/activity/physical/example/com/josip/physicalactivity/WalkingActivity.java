@@ -452,7 +452,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 last_y = y;
                 last_z = z;
 
-
+/*
                 if(x>5){
                     start();
 
@@ -460,7 +460,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                     onclickedstopchronomethar();
                     time=getTimeAfterStop();
 
-                }
+                }*/
 
 
 
