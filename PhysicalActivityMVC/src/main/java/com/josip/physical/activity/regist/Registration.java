@@ -21,19 +21,23 @@ import org.springframework.stereotype.Component;
 @Component("Registracija")
 public class Registration {
 @NotNull
-@Size(min=11,max=11)
+@Size(min=11,max=11,message="{OIB.size}")
 private String OIB;
 @NotNull
+@Size(max=50,message="{ime.size}")
 private String ime;
 @NotNull
+@Size(max=50,message="{prezime.size}")
 private String prezime;
 @NotNull
 private String spol;
 @NotNull
 private String datumr;
 @NotNull
+@Email(message="{email.valid}")
 private String email;
 @NotNull
+@Size(min=8,message="{sifra.size}")
 private String sifra;
 
 

@@ -14,7 +14,8 @@ public class terstconn {
 	    /*
 	    char username2;
 	    String[] username3;*/
-		PhysicalActivityDatabase db= new PhysicalActivityDatabase();
+		//PhysicalActivityDatabase db= new PhysicalActivityDatabase();
+		//db.InsertUser(new Registration("12344444444","Bošnjak","bošnjak","m","2017-12-12","aaa@gg.aa","sggsššæš"));
 		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];
@@ -33,11 +34,11 @@ public class terstconn {
 		}
 		*/
 		
-		String polje[]=db.mojprofil("jbosnjak3@gmail.com");
+		/*String polje[]=db.mojprofil("jbosnjak3@gmail.com");
         for (String string : polje) {
 			System.out.println(string);
 		}
-        
+        */
         
 	}
 
