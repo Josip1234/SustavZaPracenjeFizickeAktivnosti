@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
@@ -37,5 +38,16 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	*/
 		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select email,sifra,true "+ "from registration where email=?").authoritiesByUsernameQuery("select email,'ROLE_USER' from registration where email=?");
 }
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+		http.formLogin().and()
+		.authorizeRequests()
+		 .antMatchers("/bikingactivity").hasRole("USER")
+		 .antMatchers("/mojprofil").hasRole("USER")
+		 .anyRequest().permitAll();
+		 
+		
+	}
 }
 

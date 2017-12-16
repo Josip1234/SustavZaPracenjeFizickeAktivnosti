@@ -16,7 +16,7 @@
 ali i preko mobitela za korištenje mobilne aplikacije. Kada se korisnik prijavljuje preko mobitela, njegovi podaci o prijavi se 
 šalju na server. Server zatim vraća autorizaciju u obliku dali se taj korisnik nalazi u bazi podataka registriranih korisnika. Ako se korisnik nalazi
 u bazi registriranih korisnika, vratiti će se true, ako ne vratiti će se false i nekakva poruka da se korisnik treba registrirati.</p>
-<a href="<c:url value="/index" />">Izbornik</a> |<a href="<c:url value="/bikingactivity" />">Biking</a>
+<a href="<c:url value="/index" />">Izbornik</a> 
 
 </body>
 </html>

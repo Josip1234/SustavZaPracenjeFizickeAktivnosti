@@ -97,7 +97,7 @@ public String registracija(Model model){
 	    }else{
         PhysicalActivityDatabase db = new PhysicalActivityDatabase();
         db.InsertUser(rg);
-        return "redirect:mojprofil";
+        return "redirect:index";
 	    }
 
 
