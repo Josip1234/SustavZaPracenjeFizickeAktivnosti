@@ -10,25 +10,18 @@
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/root-context.xml</config>
 		<config>java:com.josip.physical.activity.regist.RegistrationImpl</config>
-		<config>java:com.josip.physical.activity.running.RunningActivity</config>
+		<config>java:com.josip.physical.activity.login.LoginWrapper</config>
 		<config>java:com.josip.physical.activity.regist.Registration</config>
 		<config>java:com.josip.physical.activity.baza.PhysicalActivityDatabase</config>
 		<config>java:com.josip.physical.activity.web.RootConfig</config>
-		<config>java:com.josip.physical.activity.login.LogConfig</config>
-		<config>java:com.josip.physical.activity.summary.SummaryActivity</config>
-		<config>java:com.josip.physical.activity.regist.RegConfig</config>
-		<config>java:com.josip.physical.activity.biking.BikingImplementation</config>
-		<config>java:com.josip.physical.activity.login.LoginWrapper</config>
-		<config>java:com.josip.physical.activity.walking.WalkingActivity</config>
 		<config>java:com.josip.physical.activity.login.Login</config>
-		<config>java:com.josip.physical.activity.web.SecurityMvc</config>
-		<config>java:com.josip.physical.activity.web.Security</config>
+		<config>java:com.josip.physical.activity.login.LogConfig</config>
 		<config>java:com.josip.physical.activity.baza.BazaConfig</config>
-		<config>java:com.josip.physical.activity.biking.BikingActivity</config>
 		<config>java:com.josip.physical.activity.web.WebConfig</config>
 		<config>java:com.josip.physical.activity.indeks_tjelesne_mase.BMIConfig</config>
-		<config>java:com.josip.physical.activity.biking.BikingConfig</config>
+		<config>java:com.josip.physical.activity.regist.RegConfig</config>
 		<config>java:com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator</config>
 	</autoconfigs>
 	<configSets>
