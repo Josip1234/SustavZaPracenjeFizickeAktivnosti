@@ -2,7 +2,7 @@ package com.josip.physical.activity.walking;
 
 import org.springframework.stereotype.Component;
 
-@Component("Hodanje")
+
 public class WalkingActivity {
 private double udaljenost;
 private String vrijemeAktivnosti;
@@ -22,6 +22,7 @@ private String korisnik;
  * @param brzinaUkm
  * @param korisnik
  */
+
 public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude,
 		double latitude, double brzinaUkm, String korisnik) {
 	this.udaljenost = udaljenost;

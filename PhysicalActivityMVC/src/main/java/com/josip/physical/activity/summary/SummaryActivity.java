@@ -2,7 +2,7 @@ package com.josip.physical.activity.summary;
 
 import org.springframework.stereotype.Component;
 
-@Component("Ukupno")
+
 public class SummaryActivity {
 private String korisnik;
 private int ukupanBrojKoraka;
@@ -17,6 +17,7 @@ private double prosjecnaBrzina;
  * @param prijedjeniKilometri
  * @param prosjecnaBrzina
  */
+
 public SummaryActivity( String korisnik, int ukupanBrojKoraka, String ukupnoVrijeme,
 		double prijedjeniKilometri, double prosjecnaBrzina) {
 	
