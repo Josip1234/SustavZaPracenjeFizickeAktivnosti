@@ -1,5 +1,8 @@
 package com.josip.physical.activity.running;
 
+import org.springframework.stereotype.Component;
+
+@Component("Trcanje")
 public class RunningActivity {
 private String vrijemeAktivnosti;
 private double brzinaUkm;
