@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.josip.physical.activity.biking.BikingRepository;
+
 @Controller
-@RequestMapping(value={"/","/physical","/runningactivity"})
+@RequestMapping
 public class RunningActivityController {
 	private RunningRepository runningRepository;
 	@Autowired
