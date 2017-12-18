@@ -16,10 +16,10 @@ public class RunningActivityController {
 	 public RunningActivityController(RunningRepository runningRepository) {
 		this.runningRepository=runningRepository;
 	}
-	
+	/*
 @RequestMapping(value = {"/","/runningactivity"},method=RequestMethod.GET)	
 public String runningactivity(Model model){
 	model.addAttribute("run",runningRepository.display());
 	return "runningactivity";
-}
+}*/
 }
