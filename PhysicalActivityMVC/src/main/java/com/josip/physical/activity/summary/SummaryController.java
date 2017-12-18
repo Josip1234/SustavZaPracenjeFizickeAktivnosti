@@ -16,9 +16,9 @@ public class SummaryController {
 	 public SummaryController(SummaryRepository summaryRepository) {
 		this.summaryRepository=summaryRepository;
 	}
-/*@RequestMapping(value = {"/","/summaryactivity"},method=RequestMethod.GET)	
+@RequestMapping(value = {"/","/summaryactivity"},method=RequestMethod.GET)	
 public String summaryactivity(Model model){
 	model.addAttribute("sum",summaryRepository.show());
 	return "summaryactivity";
-}*/
+}
 }

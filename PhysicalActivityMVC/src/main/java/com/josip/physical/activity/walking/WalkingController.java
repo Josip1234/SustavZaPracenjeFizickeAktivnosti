@@ -16,11 +16,11 @@ public class WalkingController {
 	 public WalkingController(WalkingRepository walkingRepository) {
 		this.walkingRepository=walkingRepository;
 	}
-	/*
+	
 @RequestMapping(value = {"/","/walkingactivity"},method=RequestMethod.GET)	
 public String walkingactivity(Model model){
 	model.addAttribute("walk",walkingRepository.disp());
 	return "walkingactivity";
 }
-*/
+
 }
