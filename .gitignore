@@ -63,3 +63,4 @@ $RECYCLE.BIN/
 *.lnk
 /.metadata/
 /.recommenders/
+PhysicalActivityMVC/target/m2e-wtp/web-resources/META-INF/maven/com.josip/physical/pom.properties
