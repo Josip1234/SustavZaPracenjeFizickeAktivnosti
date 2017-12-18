@@ -1,5 +1,8 @@
 package com.josip.physical.activity.walking;
 
+import org.springframework.stereotype.Component;
+
+@Component("Hodanje")
 public class WalkingActivity {
 private double udaljenost;
 private String vrijemeAktivnosti;
