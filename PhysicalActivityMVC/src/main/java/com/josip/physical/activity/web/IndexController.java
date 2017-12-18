@@ -65,11 +65,7 @@ public String mojprofil(){
 	
 	return "mojprofil";
 }
-@RequestMapping(value="runningactivity",method=GET)
-public String runningactivity(){
 
-	return "runningactivity";
-}
 
 @RequestMapping(value="home",method=GET)
 public String home(){
