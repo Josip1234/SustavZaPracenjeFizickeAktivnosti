@@ -6,9 +6,19 @@
 <!DOCTYPE html>
 <head>
 
-<title>Mobilna verifikacija i validacija</title>
+<title>Trčanje</title>
 </head>
 <body>
-<p>${autor}</p>
+<ul>
+
+<c:forEach var="li" items="${run} "> 
+  
+    
+    <li><c:out value="${li}" /></li>
+
+  
+</c:forEach>
+
+</ul>
 </body>
 </html>
