@@ -8,7 +8,7 @@
 
 <ol>
 
-<c:forEach var="li" items="${regist} "> 
+<c:forEach var="li" items="${sum} "> 
   <tr>
     
     <td><c:out value="${li}" /></td>
