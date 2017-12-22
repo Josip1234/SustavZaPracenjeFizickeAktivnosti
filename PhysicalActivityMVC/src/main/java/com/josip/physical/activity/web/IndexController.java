@@ -104,7 +104,7 @@ public String registracija(Model model){
 	   
 	}
 
-
+/*
 @RequestMapping(value="korisniktrue",method=RequestMethod.GET)
 public String korisnik(Model model){
 	Registration registration = new Registration();
@@ -131,16 +131,18 @@ public String korisnik(Model model){
 	model.addAttribute("sifra",sifra);
 	return "korisniktrue";
 }
-
+*/
 
 @RequestMapping(value="BMICalc",method=GET)
 public String BMICalc(){
 	return "BMICalc";
 }
+/*
 @RequestMapping(value="prijavnica",method=GET)
 public String prijavnica(){
 	return "prijavnica";
 }
+
 
 @RequestMapping(value="prijavnica",method=POST)
 public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email")String email,@RequestParam("sifra")String sifra){
@@ -161,6 +163,6 @@ public String provjeriPrijavu(@Valid Login lg,Errors errors,@RequestParam("email
 	return "redirect:mojprofil";
     }
 }
-
+*/
 
 }

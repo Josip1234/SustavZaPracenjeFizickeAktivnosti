@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void prijava(View v) {
-        boolean autoriziran = false;
+        boolean autoriziran = true;
         EditText email;
         EditText sifra;
         TextView tv;

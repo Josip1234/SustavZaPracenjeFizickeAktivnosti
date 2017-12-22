@@ -43,58 +43,72 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                 android:paddingTop="15dp"
                 android:textSize="18sp" />
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
+
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
-                    <TextView
-                        android:id="@+id/udaljenost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/udaljenost" />
-                </TableRow>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/reset"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reset"
-                        tools:text="@string/reset" />
-                </TableRow>
+                            <Button
+                                android:id="@+id/start"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:onClick="resetc"
+                                android:text="@string/vrijemestart"
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp,UnusedAttribute" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                            <Button
+                                android:id="@+id/stop"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:onClick="onclickedstopchronomethar"
+                                android:text="@string/vrijemestop"
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp"
+                                tools:text="@string/vrijemestop" />
 
-                    <TextView
-                        android:id="@+id/textViewX"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/X"
-                        android:textSize="12sp" />
+                            <Button
+                                android:id="@+id/reset"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:onClick="resetc"
+                                android:text="@string/reset"
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp"
+                                tools:text="@string/reset" />
+                        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textViewY"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Y"
-                        android:textSize="12sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textViewZ"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Z"
-                        android:textSize="12sp" />
                 </TableRow>
 
                 <TableRow
@@ -109,6 +123,16 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                         android:text="@string/resetsteps" />
                 </TableRow>
 
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/udaljenost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/udaljenost" />
+                </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -222,13 +246,41 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
                         android:text="@string/korisnik" />
                 </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textViewX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/X"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Y"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textViewZ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Z"
+                        android:textSize="12sp" />
+                </TableRow>
 
 
             </TableLayout>
-
+                </HorizontalScrollView>
+            </ScrollView>
 
         </LinearLayout>
     </LinearLayout>
+
+
 
 </FrameLayout>
 
