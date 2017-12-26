@@ -1,4 +1,4 @@
-package com.josip.physical.activity.web;
+package com.josip.physical.controllers;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,13 @@ import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.regist.Registration;
 
 @Controller
-@RequestMapping(value="/")
+@RequestMapping(value= {"/","/index/","/BMICalc"})
 public class BMIController {
-	@RequestMapping(value="BMICalc",method=POST)
+	@RequestMapping(value="/BMICalc",method=GET)
+	public String BMICalc(){
+		return "BMICalc";
+	}
+	@RequestMapping(value="/BMICalc",method=POST)
 	public void rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")int masa_u_kg,Model model){
 		String izraz="";
 		double rezultat=0.0;

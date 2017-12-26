@@ -32,7 +32,7 @@ cssErrorClass="error">Datum rođenja</sf:label>:
 <br>
 <sf:label path="email"
 cssErrorClass="error">E-mail adresa</sf:label>:
-<sf:input path="email"  /><br>
+<sf:input path="email" /><br>
 <sf:label path="sifra"
 cssErrorClass="error">Šifra</sf:label>:
 <sf:password path="sifra"/>

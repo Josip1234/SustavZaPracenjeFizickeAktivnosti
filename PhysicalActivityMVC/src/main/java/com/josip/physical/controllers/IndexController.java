@@ -1,4 +1,4 @@
-package com.josip.physical.activity.web;
+package com.josip.physical.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -55,22 +55,20 @@ import sun.security.action.OpenFileInputStreamAction;
 @RequestMapping(value="/")
 public class IndexController {
 
-@RequestMapping(value="index",method=GET)
+@RequestMapping(value="/index",method=GET)
 public String index(){
 
 	return "index";
 }
-@RequestMapping(value="mojprofil", method=GET)
-public String mojprofil(){
-	
-	return "mojprofil";
-}
+/*
 
 
-@RequestMapping(value="home",method=GET)
+*/
+@RequestMapping(value="/home",method=GET)
 public String home(){
 	return "home";
 }
+/*
 @RequestMapping(value="registracija",method=GET)
 public String registracija(Model model){
 	model.addAttribute(new Registration());
@@ -132,7 +130,7 @@ public String korisnik(Model model){
 	return "korisniktrue";
 }
 */
-
+/*
 @RequestMapping(value="BMICalc",method=GET)
 public String BMICalc(){
 	return "BMICalc";

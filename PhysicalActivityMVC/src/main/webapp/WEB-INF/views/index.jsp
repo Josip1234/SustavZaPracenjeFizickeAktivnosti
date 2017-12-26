@@ -14,12 +14,11 @@ href="<c:url value="/resources/pad.css" />">
 </head>
 <body>
 <h1>Dobrodošli na početnu stranicu</h1>
-<a href="home">Početna stranica</a> |
-<a href="BMICalc">Indeks tjelesne mase</a>
+<a href="<c:url value="/home" />">Početna stranica</a> |
+<a href="<c:url value="/BMICalc" />">Indeks tjelesne mase</a>
 <a href="<c:url value="/bikingactivity" />">Bicikliranje</a>
-<a href="<c:url value="/prijavnica" />">Prijava</a>
 <a href="<c:url value="/mojprofil" />">Profil korisnika</a>
 <a href="<c:url value="/runningactivity" />">Trčanje</a>
-<a href="registracija">Register</a>
+<a href="<c:url value="/registracija"/>">Register</a>
 </body>
 </html>

@@ -17,7 +17,7 @@
 <p>Masa u kg:</p>
 <input type="text" name="masa_u_kg">
 <br>
-
+<input type="hidden" name="_csrf" value="${_csrf.token}" />
 <input type="submit" value="Izrčunaj">
 </form><br>
 <p>Rezultat: ${rezultat}</p>

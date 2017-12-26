@@ -1,4 +1,4 @@
-package com.josip.physical.activity.web;
+package com.josip.physical.controllers;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 

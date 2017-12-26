@@ -34,6 +34,7 @@ private String spol;
 @NotNull
 private String datumr;
 @NotNull
+@Size(max=50,min=10,message="{email.size}")
 @Email(message="{email.valid}")
 private String email;
 @NotNull

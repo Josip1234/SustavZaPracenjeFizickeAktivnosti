@@ -1,4 +1,4 @@
-package com.josip.physical.activity.web;
+package com.josip.physical.controllers;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -12,10 +12,10 @@ import com.josip.physical.activity.regist.RegistrationRepository;
 
 
 
-@Controller
-@RequestMapping(value={"/","/physical","/index","/registar"})
+//@Controller
+//@RequestMapping(value={"/","/physical","/index","/registar"})
 public class RegistarRegController {
-	
+	/*
 	private RegistrationRepository registrationRepository;
 	
 	@Autowired
@@ -31,5 +31,5 @@ public class RegistarRegController {
 		
 		return "registar";
 	}
-	
+	*/
 }
