@@ -19,6 +19,7 @@ href="<c:url value="/resources/pad.css" />">
 <a href="<c:url value="/bikingactivity" />">Bicikliranje</a>
 <a href="<c:url value="/mojprofil" />">Profil korisnika</a>
 <a href="<c:url value="/runningactivity" />">Trčanje</a>
-<a href="<c:url value="/registracija"/>">Register</a>
+<a href="<c:url value="/registracija"/>">Registracija</a>
+<a href="<c:url value="/sum"/>">Ukupno</a>
 </body>
 </html>
