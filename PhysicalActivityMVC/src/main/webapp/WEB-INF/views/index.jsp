@@ -21,5 +21,6 @@ href="<c:url value="/resources/pad.css" />">
 <a href="<c:url value="/runningactivity" />">Trčanje</a>
 <a href="<c:url value="/registracija"/>">Registracija</a>
 <a href="<c:url value="/sum"/>">Ukupno</a>
+<a href="<c:url value="/walking"/>">Hodanje</a>
 </body>
 </html>

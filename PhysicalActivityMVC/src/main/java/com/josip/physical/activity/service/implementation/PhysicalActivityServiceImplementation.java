@@ -16,7 +16,7 @@ import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.service.PhysicalActivityService;
 
 public class PhysicalActivityServiceImplementation implements PhysicalActivityService{
-
+/*
 	@Autowired
 	Login login;
 	
@@ -79,7 +79,7 @@ public class PhysicalActivityServiceImplementation implements PhysicalActivitySe
 	
 	
 	
-	
+	*/
 	
 }
 
