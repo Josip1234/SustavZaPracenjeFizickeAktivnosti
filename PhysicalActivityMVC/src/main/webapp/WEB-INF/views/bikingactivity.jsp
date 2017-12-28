@@ -8,16 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ol>
 
-<c:forEach var="li" items="${bike} "> 
-  <tr>
-    
-    <td><c:out value="${li}" /></td>
-
-  </tr>
+<div class="pregledBicikliranja">
+<c:forEach items="${bike}" var="li">
+<p> ${li.vrijemeAktivnosti}
+<br>
+${li.brzinaUkm}
+<br>
+${li.lokacija}<br>
+${li.longitude }<br>
+${li.latitude } <br>
+${li.korisnik }<br>
+${li.udaljenost }
+</p>
 </c:forEach>
+</div>
 
-</ol>
+
 </body>
 </html>

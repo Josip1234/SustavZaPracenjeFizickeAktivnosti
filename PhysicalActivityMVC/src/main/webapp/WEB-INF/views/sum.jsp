@@ -8,16 +8,19 @@
 <title>Ukupno</title>
 </head>
 <body>
-<ol>
+<div class="pregledUkupnog">
+<c:forEach items="${sum}" var="li">
+<p> ${li.korisnik}
+<br>
+${li.ukupanBrojKoraka}
+<br>
+${li.ukupnoVrijeme}<br>
+${li.prijedjeniKilometri }<br>
+${li.prosjecnaBrzina } <br>
 
-<c:forEach var="li" items="${sum} "> 
-  <tr>
-    
-    <td><c:out value="${li}" /></td>
-
-  </tr>
+</p>
 </c:forEach>
+</div>
 
-</ol>
 </body>
 </html>

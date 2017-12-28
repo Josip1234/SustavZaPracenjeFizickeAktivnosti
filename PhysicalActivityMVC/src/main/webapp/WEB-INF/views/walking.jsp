@@ -7,16 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ol>
-
-<c:forEach var="li" items="${hod} "> 
-  <tr>
-    
-    <td><c:out value="${li}" /></td>
-
-  </tr>
+<div class="pregledHodanja">
+<c:forEach items="${hod}" var="li">
+<p> ${li.udaljenost}
+<br>
+${li.vrijemeAktivnosti}
+<br>
+${li.koraci}<br>
+${li.adresa }<br>
+${li.longitude } <br>
+${li.latitude } <br>
+${li.brzinaUkm } <br>
+${li.korisnik } <br>
+</p>
 </c:forEach>
+</div>
 
-</ol>
 </body>
 </html>

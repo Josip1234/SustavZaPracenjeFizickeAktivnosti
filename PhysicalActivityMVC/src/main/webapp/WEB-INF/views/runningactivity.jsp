@@ -9,16 +9,20 @@
 <title>Trčanje</title>
 </head>
 <body>
-<ul>
-
-<c:forEach var="li" items="${run} "> 
-  
-    
-    <li><c:out value="${li}" /></li>
-
-  
+<div class="pregledBicikliranja">
+<c:forEach items="${run}" var="li">
+<p> ${li.vrijemeAktivnosti}
+<br>
+${li.brzinaUkm}
+<br>
+${li.lokacija}<br>
+${li.longitude }<br>
+${li.latitude } <br>
+${li.korisnik }<br>
+${li.udaljenost }
+</p>
 </c:forEach>
+</div>
 
-</ul>
 </body>
 </html>
