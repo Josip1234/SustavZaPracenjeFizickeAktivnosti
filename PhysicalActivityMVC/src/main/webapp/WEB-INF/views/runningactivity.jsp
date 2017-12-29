@@ -23,6 +23,9 @@ ${li.udaljenost }
 </p>
 </c:forEach>
 </div>
-
+<a href="<c:url value="/index" />">Izbornik</a> 
+<div id="odjava">
+<form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button><form>
+</div>
 </body>
 </html>

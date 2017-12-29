@@ -41,7 +41,7 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.formLogin().and()
+		http.formLogin().and().rememberMe().tokenValiditySeconds(2419200).and().logout().logoutSuccessUrl("/").and()
 		.authorizeRequests()
 		 .antMatchers("/bikingactivity").hasRole("USER")
 		 .antMatchers("/mojprofil").hasRole("USER")

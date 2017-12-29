@@ -16,4 +16,5 @@ href="<c:url value="/resources/pad.css" />">
 <input type="password" name="sifra"/>
 <input type="submit" value="Prijava" />
 </form>
+<a href="<c:url value="/index" />">Izbornik</a> 
 </body>
