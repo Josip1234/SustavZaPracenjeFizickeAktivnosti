@@ -107,5 +107,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Josip/Desktop/Spring and android libraries/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Josip/Desktop/Spring and android libraries/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE-javadoc.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Josip/Desktop/Spring and android libraries/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Josip/Desktop/Spring and android libraries/hamcrest-core-1.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

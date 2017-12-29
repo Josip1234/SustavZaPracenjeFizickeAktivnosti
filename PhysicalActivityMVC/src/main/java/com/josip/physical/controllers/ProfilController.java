@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value= {"/","/index/","/mojprofil"})
 public class ProfilController {
-	@RequestMapping(value="/mojprofil", method=RequestMethod.GET)
+	@RequestMapping(value="/mojprofil", method=RequestMethod.POST)
 	public String mojprofil(){
 		
 		return "mojprofil";
