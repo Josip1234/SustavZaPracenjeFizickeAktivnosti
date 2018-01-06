@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 @Configuration
 @EnableWebMvcSecurity
@@ -37,10 +40,13 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	}
 	*/
 		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select email,sifra,true "+ "from registration where email=?").authoritiesByUsernameQuery("select email,'ROLE_USER' from registration where email=?");
+	   
+	  
 }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
+		
 		http.formLogin().and().rememberMe().tokenValiditySeconds(2419200).and().logout().logoutSuccessUrl("/").and()
 		.authorizeRequests()
 		 .antMatchers("/bikingactivity").hasRole("USER")
