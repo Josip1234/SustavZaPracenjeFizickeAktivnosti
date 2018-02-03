@@ -39,7 +39,7 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	.withUser("admin").password("admin").roles("USER", "ADMIN");
 	}
 	*/
-		auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select email,sifra,true "+ "from registration where email=?").authoritiesByUsernameQuery("select email,'ROLE_USER' from registration where email=?");
+	auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("select email,sifra,true "+ "from registration where email=?").authoritiesByUsernameQuery("select email,'ROLE_USER' from registration where email=?");
 	   
 	  
 }

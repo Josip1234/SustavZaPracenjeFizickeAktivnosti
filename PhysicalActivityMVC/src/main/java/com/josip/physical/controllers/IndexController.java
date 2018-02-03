@@ -44,7 +44,7 @@ import javax.validation.Valid;
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMICalculator;
 import com.josip.physical.activity.indeks_tjelesne_mase.BMIReprository;
-import com.josip.physical.activity.login.JSONWriterObjectMapper;
+
 import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.login.LoginReprository;
 import com.josip.physical.activity.login.ObjectMapperRead;
