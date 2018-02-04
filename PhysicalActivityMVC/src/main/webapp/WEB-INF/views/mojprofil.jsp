@@ -10,7 +10,7 @@
 <title>Korisnikovi podaci</title>
 </head>
 <body>
-
+<div id="userCredentials">
 <c:out value="${korisnik.OIB}" /><br>
 <c:out value="${korisnik.ime}" /><br>
 <c:out value="${korisnik.prezime}" /><br>
@@ -18,6 +18,13 @@
 <c:out value="${korisnik.datumr}" /><br>
 <c:out value="${korisnik.email}" /><br>
 <c:out value="${korisnik.sifra}" /><br>
+</div>
+
+<div id="userForm">
+
+</div>
+
+
 
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button><form>

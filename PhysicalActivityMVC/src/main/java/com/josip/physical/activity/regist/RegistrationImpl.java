@@ -10,18 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 @Component
 public class RegistrationImpl implements RegistrationRepository {
+	
 	List<Registration> korisnikli=new ArrayList<Registration>();
 	int length=0;
-	/*@Autowired
-	PhysicalActivityDatabase db=new PhysicalActivityDatabase();
-	*/
+	@Autowired
+	PhysicalActivityDatabase db;
+	
+	
+	
 	@Autowired
 	Registration rg;
 	/*@Override
@@ -89,6 +98,7 @@ public class RegistrationImpl implements RegistrationRepository {
 	@Override
 	public List<Registration> spremiPodatke(String OIB, String ime, String prezime, String spol, String datumr,
 			String email, String sifra) {
+		db.InsertUser(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
 		List<Registration> korisnik=new ArrayList<Registration>();
 		
 				

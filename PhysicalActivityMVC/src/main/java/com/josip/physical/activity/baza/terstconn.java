@@ -11,14 +11,19 @@ import com.josip.physical.activity.regist.Registration;
 public class terstconn {
 	
 	public static void main(String[] args) {
+		
+		
+		
 		// TODO Auto-generated method stub
-		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
-		db.spoji();
+		/*PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+		db.spoji();*/
 	    /*
 	    char username2;
 	    String[] username3;*/
-		//PhysicalActivityDatabase db= new PhysicalActivityDatabase();
-		//db.InsertUser(new Registration("12344444444","Boönjak","boönjak","m","2017-12-12","aaa@gg.aa","sggsööÊö"));
+		
+		PhysicalActivityDatabase db= new PhysicalActivityDatabase();
+		db.mojprofil("jbosnjak3@gmail.com");
+		//db.InsertUser(new Registration("12344444444","Bo≈°njak","bo≈°njak","m","2017-12-12","aaa@gg.aa","sggsƒçƒáƒá"));
 		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];
