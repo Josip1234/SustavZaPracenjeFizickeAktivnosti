@@ -21,7 +21,7 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://127.0.0.1/physicalactivity");
+		ds.setUrl("jdbc:mysql://127.0.0.1/ttt");
 		ds.setUsername("root");
 		ds.setPassword("");
 		return ds;

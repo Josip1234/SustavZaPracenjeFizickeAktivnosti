@@ -33,23 +33,35 @@ private String Driver;
 private String encoding;
 
 public int broji=0;
-private Login lg;
+
 
 public PhysicalActivityDatabase(){
 	
-	this.ime_baze="physicalactivity";
-	this.host="//127.0.0.1/";
+	this.ime_baze="ttt";
+	this.host="//localhost:3307/?";
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
 	this.Driver="com.mysql.jdbc.Driver";
 	this.encoding="?useUnicode=true&characterEncoding=UTF-8";
-	this.lg=lg;
+	
 }
 
 public String getHost(){
 	return host;
 }
 
+
+public void setHost(String host) {
+	this.host = host;
+}
+
+public void setUser(String user) {
+	this.user = user;
+}
+
+public void setBroji(int broji) {
+	this.broji = broji;
+}
 
 public String getEncoding() {
 	return encoding;
@@ -112,14 +124,12 @@ String dbname=getIme_baze();
 Connection conn = null;
 try{
 	System.out.println("Spajam se nma bazu...");
-	conn=DriverManager.getConnection(vrsta_baze+host+encoding);
+	conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 	System.out.println("Spojen sam na bazu");
 	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
-	s.execute("USE physicalactivity");
-	
-	
+	s.execute("USE ttt");
 	s.execute("INSERT INTO `registration` (`OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES ('"+rg.getOIB()+"', '"+rg.getIme()+"', '"+rg.getPrezime()+"', '"+rg.getSpol()+"', '"+rg.getDatumr()+"', '"+rg.getEmail()+"', '"+rg.getSifra()+"')");
 	System.out.println( "Korisnik unesen");
     conn.close();
@@ -146,11 +156,11 @@ String dbname=getIme_baze();
 Connection conn = null;
 try{
 	System.out.println("Spajam se nma bazu...");
-	conn=DriverManager.getConnection(vrsta_baze+host);
+	conn=DriverManager.getConnection(vrsta_baze+host+encoding);
 	System.out.println("Spojen sam na bazu");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
-	s.execute("USE physicalactivity");
+	s.execute("USE ttt");
 	ResultSet rs = null;
 	String query="SELECT OIB FROM registration WHERE email='"+email+"'";
 	rs=s.executeQuery(query);
@@ -302,7 +312,7 @@ public String[] mojprofil(String email){
 			
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
-			s.execute("USE physicalactivity");
+			s.execute("USE ttt");
 			ResultSet rs = null;
 			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+confirm+"'";
 			rs=s.executeQuery(query);

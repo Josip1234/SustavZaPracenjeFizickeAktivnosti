@@ -11,16 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.josip.profile.of.user.UserProfileOperations;
 
 @Controller
 @RequestMapping(value= {"/","/index/","/mojprofil"})
 public class ProfilController {
-	private UserProfileOperations operations;
 	
-	public ProfilController(UserProfileOperations profileOperations) {
-		this.operations=profileOperations;
-	}
 	
 	
 	@RequestMapping(value="/mojprofil", method=RequestMethod.POST)

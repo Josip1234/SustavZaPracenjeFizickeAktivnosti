@@ -6,9 +6,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
-//@Aspect
+@Aspect
 public aspect Spojise {
-/*
+
 @Pointcut("execution(** com.josip.physical.activity.database.PhysicalActivityDatabase.spoji(..))")
 public void PhysicalActivityDatabase(){}
 @Before("PhysicalActivityDatabase()")
@@ -24,7 +24,7 @@ public void por(){
 public void p(){
 	System.out.println("Nesto je poslo po zlu.");
 }
-	*/
+	
 		
 
 }

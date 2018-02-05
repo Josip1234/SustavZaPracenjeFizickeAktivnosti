@@ -13,8 +13,7 @@ import org.springframework.context.annotation.Import;
 
 
 @Configuration
-
-//@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy
 
 public class BazaConfig {
   

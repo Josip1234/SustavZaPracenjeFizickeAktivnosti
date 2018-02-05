@@ -15,15 +15,14 @@ public class terstconn {
 		
 		
 		// TODO Auto-generated method stub
-		/*PhysicalActivityDatabase db = new PhysicalActivityDatabase();
-		db.spoji();*/
+		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+		db.spoji();
 	    /*
 	    char username2;
 	    String[] username3;*/
 		
-		PhysicalActivityDatabase db= new PhysicalActivityDatabase();
-		db.mojprofil("jbosnjak3@gmail.com");
-		//db.InsertUser(new Registration("12344444444","Bošnjak","bošnjak","m","2017-12-12","aaa@gg.aa","sggsčćć"));
+		
+		db.InsertUser(new Registration("12458888","Bo�njak","bo�njak","m","2017-12-12","ad3h@gg.aa","dwddw"));
 		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];

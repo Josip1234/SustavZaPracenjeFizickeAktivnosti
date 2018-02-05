@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,15 +23,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
+
 @Controller
 @RequestMapping(value= {"/","/index/","/registracija","/mojprofil"})
 public class RegistrationController {
 	private RegistrationRepository registrationRepository;
 	
 	
+	
 	@Autowired
 	public RegistrationController(RegistrationRepository registrationRepository) {
 		this.registrationRepository=registrationRepository;
+		
 		// TODO Auto-generated constructor stub
 	}
 	@RequestMapping(value="/registracija",method=RequestMethod.GET)
@@ -56,6 +60,13 @@ public class RegistrationController {
 		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}
+	@RequestMapping(value="mojprofil",method=GET)
+	public String profil(Model model) throws UnsupportedEncodingException {
+		
+       
+		return "mojprofil";
+	}
+	
 	/*
 	@RequestMapping(value="/registracija",method=RequestMethod.POST)
 	public String vrijednosti(@Valid Registration rg,Errors errors,@RequestParam("OIB")String OIB,@RequestParam("ime")String ime,@RequestParam("prezime")String prezime,@RequestParam("spol")String spol,@RequestParam("datumr")String datumr,@RequestParam("email")String email,@RequestParam("sifra")String sifra,Model model){

@@ -2,6 +2,7 @@ package com.josip.physical.activity.regist;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -129,6 +130,22 @@ public class RegistrationImpl implements RegistrationRepository {
 		
 		return korisnik;
 		
+	}
+	@Override
+	public List<Registration> ListUser(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Registration> updateUser(String oib, String ime, String prezime, String spol, Date datumRodjenja,
+			String email, String sifra) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean deleteUser(String email) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 		

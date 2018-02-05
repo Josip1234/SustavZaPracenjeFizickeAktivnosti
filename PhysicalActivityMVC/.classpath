@@ -41,7 +41,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/hibernate-validator-4.2.0.Final.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jackson-core-2.7.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jackson-databind-2.7.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/com.mysql.jdbc_5.1.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/hamcrest-core-1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-aop-4.3.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-aop-4.3.9.RELEASE-javadoc.jar"/>
@@ -108,8 +107,11 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/slf4j-1.7.25/slf4j-1.7.25/slf4j-api-1.7.25.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/slf4j-1.7.25/slf4j-1.7.25/slf4j-simple-1.7.25.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/slf4j-1.7.25/slf4j-1.7.25/integration/lib/junit-3.8.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/c3p0-0.9.1-pre6.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper-src.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/com.mysql.jdbc_5.1.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
