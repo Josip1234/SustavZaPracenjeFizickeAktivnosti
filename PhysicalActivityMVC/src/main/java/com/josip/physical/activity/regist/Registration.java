@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
-
-
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 
 import javax.validation.constraints.NotNull;
@@ -19,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component("Registracija")
-public class Registration {
+public class Registration  {
 @NotNull
 @Size(min=11,max=11,message="{OIB.size}")
 private String OIB;
@@ -96,8 +95,8 @@ public String getOIB() {
 public String getIme() {
 	return ime;
 }
-public String getPrezime() {
-	return prezime;
+public String getPrezime() throws UnsupportedEncodingException {
+	return new String(prezime.getBytes ("iso-8859-1"), "UTF-8");
 }
 public String getSpol() {
 	return spol;
@@ -118,7 +117,7 @@ public String getSifra() {
 @Override
 public String toString(){
 	
-	return "Registration OIB"+OIB+",ime"+ime+",prezime"+prezime+",spol"+spol+",datumr"+datumr+",Email"+email+",sifra"+sifra+"";
+	return "Registration OIB:"+OIB+",ime:"+ime+",prezime:"+prezime+",spol:"+spol+",datumr:"+datumr+",Email:"+email+",sifra:"+sifra+"";
 	
 }
 

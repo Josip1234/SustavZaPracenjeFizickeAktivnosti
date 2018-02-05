@@ -1,5 +1,6 @@
 package com.josip.physical.activity.baza;
 import java.sql.Driver;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -109,7 +110,7 @@ public void setDriver(String driver) {
 	Driver = driver;
 }
 
-public boolean InsertUser(Registration rg){
+public boolean InsertUser(Registration rg) throws UnsupportedEncodingException{
  rg=new Registration(rg.getOIB(),rg.getIme(),rg.getPrezime(),rg.getSpol(),rg.getDatumr(),rg.getEmail(),rg.getSifra());
 
 try{
@@ -156,7 +157,7 @@ String dbname=getIme_baze();
 Connection conn = null;
 try{
 	System.out.println("Spajam se nma bazu...");
-	conn=DriverManager.getConnection(vrsta_baze+host+encoding);
+	conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 	System.out.println("Spojen sam na bazu");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
@@ -229,8 +230,8 @@ e.printStackTrace();
 }
 }
 
-/*
-public List<Registration> listaKorisnika(){
+
+public List<Registration> listaKorisnika(String email) throws UnsupportedEncodingException{
 	List<Registration> registracija = new ArrayList<Registration>();
 	try{
 		   Class.forName(Driver).newInstance();
@@ -244,13 +245,13 @@ public List<Registration> listaKorisnika(){
 		Connection conn = null;
 		try{
 			
-			conn=DriverManager.getConnection(vrsta_baze+host);
+			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 			
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
-			s.execute("USE physicalactivity");
+			s.execute("USE ttt");
 			ResultSet rs = null;
-			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration";
+			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+email+"'";
 			rs=s.executeQuery(query);
 			
 		    int broj=0;
@@ -258,16 +259,16 @@ public List<Registration> listaKorisnika(){
 				
 				String oib=rs.getString("OIB");
 				String ime = rs.getString("ime");
-				String prezime = rs.getString("prezime");
+				String prezime = new String(rs.getString("prezime").getBytes ("iso-8859-1"), "UTF-8");
 				String spol=rs.getString("spol");
 				String datum=rs.getString("datumr");
-				String email=rs.getString("email");
+				String emai=rs.getString("email");
 		        String sifra=rs.getString("sifra");
 		        
 		      
 		       
 		       
-		        registracija.add(new Registration(oib+broj,ime+broj,prezime+broj,spol+broj, datum+broj,email+broj,sifra+broj));
+		        registracija.add(new Registration(oib,ime,prezime,spol, datum,emai,sifra));
 		        
 				broj+=1;
 				
@@ -290,7 +291,7 @@ public List<Registration> listaKorisnika(){
 	return registracija;
 }
 
-*/
+
 
 public String[] mojprofil(String email){
 	String[] profil = new String[7];

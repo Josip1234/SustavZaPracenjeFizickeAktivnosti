@@ -98,7 +98,7 @@ public class RegistrationImpl implements RegistrationRepository {
 		*/
 	@Override
 	public List<Registration> spremiPodatke(String OIB, String ime, String prezime, String spol, String datumr,
-			String email, String sifra) {
+			String email, String sifra) throws UnsupportedEncodingException {
 		db.InsertUser(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
 		List<Registration> korisnik=new ArrayList<Registration>();
 		
@@ -133,7 +133,8 @@ public class RegistrationImpl implements RegistrationRepository {
 	}
 	@Override
 	public List<Registration> ListUser(String email) {
-		// TODO Auto-generated method stub
+		List<Registration> reg=new ArrayList<Registration>();
+		
 		return null;
 	}
 	@Override

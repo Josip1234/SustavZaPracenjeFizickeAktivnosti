@@ -1,5 +1,6 @@
 package com.josip.physical.activity.baza;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import com.josip.physical.activity.regist.Registration;
 
 public class terstconn {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		
 		
 		
@@ -20,9 +21,15 @@ public class terstconn {
 	    /*
 	    char username2;
 	    String[] username3;*/
+		List<Registration> reg=new ArrayList();
 		
-		
-		db.InsertUser(new Registration("12458888","Bošnjak","bošnjak","m","2017-12-12","ad3h@gg.aa","dwddw"));
+		reg=db.listaKorisnika("jbosnjak3@gmail.com");
+		for (Registration registration : reg) {
+			System.out.println(reg); 
+			System.out.println(registration.getOIB());
+			System.out.println(registration.getIme());
+			System.out.println(registration.getPrezime());
+		}
 		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];
