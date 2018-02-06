@@ -13,7 +13,7 @@ public class terstconn {
 	
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		
-		
+		boolean a;
 		
 		// TODO Auto-generated method stub
 		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
@@ -21,7 +21,7 @@ public class terstconn {
 	    /*
 	    char username2;
 	    String[] username3;*/
-		List<Registration> reg=new ArrayList();
+		/*List<Registration> reg=new ArrayList();
 		
 		reg=db.listaKorisnika("jbosnjak3@gmail.com");
 		for (Registration registration : reg) {
@@ -29,7 +29,9 @@ public class terstconn {
 			System.out.println(registration.getOIB());
 			System.out.println(registration.getIme());
 			System.out.println(registration.getPrezime());
-		}
+		}*/
+		/*a=db.delete("ad3h@gg.aa");
+		System.out.println(a);
 		/*
 		int size=db.listaKorisnika().size();
 		String[] email=new String[size];

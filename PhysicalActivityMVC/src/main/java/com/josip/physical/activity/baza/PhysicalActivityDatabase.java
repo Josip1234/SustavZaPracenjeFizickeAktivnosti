@@ -10,14 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
+import java.sql.PreparedStatement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.login.Login;
 import com.josip.physical.activity.regist.Registration;
-
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
@@ -38,7 +37,7 @@ public int broji=0;
 
 public PhysicalActivityDatabase(){
 	
-	this.ime_baze="ttt";
+	this.ime_baze="physical";
 	this.host="//localhost:3307/?";
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
@@ -130,7 +129,7 @@ try{
 	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
-	s.execute("USE ttt");
+	s.execute("USE physical");
 	s.execute("INSERT INTO `registration` (`OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES ('"+rg.getOIB()+"', '"+rg.getIme()+"', '"+rg.getPrezime()+"', '"+rg.getSpol()+"', '"+rg.getDatumr()+"', '"+rg.getEmail()+"', '"+rg.getSifra()+"')");
 	System.out.println( "Korisnik unesen");
     conn.close();
@@ -161,7 +160,7 @@ try{
 	System.out.println("Spojen sam na bazu");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
-	s.execute("USE ttt");
+	s.execute("USE physical");
 	ResultSet rs = null;
 	String query="SELECT OIB FROM registration WHERE email='"+email+"'";
 	rs=s.executeQuery(query);
@@ -249,7 +248,7 @@ public List<Registration> listaKorisnika(String email) throws UnsupportedEncodin
 			
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
-			s.execute("USE ttt");
+			s.execute("USE physical");
 			ResultSet rs = null;
 			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+email+"'";
 			rs=s.executeQuery(query);
@@ -293,10 +292,8 @@ public List<Registration> listaKorisnika(String email) throws UnsupportedEncodin
 
 
 
-public String[] mojprofil(String email){
-	String[] profil = new String[7];
-	String confirm="";
-	confirm=email;
+public boolean delete(String email){
+	
 	try{
 		   Class.forName(Driver).newInstance();
 		   
@@ -309,41 +306,13 @@ public String[] mojprofil(String email){
 		Connection conn = null;
 		try{
 			
-			conn=DriverManager.getConnection(vrsta_baze+host);
+			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 			
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
-			s.execute("USE ttt");
-			ResultSet rs = null;
-			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+confirm+"'";
-			rs=s.executeQuery(query);
-			
-		    int broj=0;
-			while(rs.next()){
-				
-				String oib=rs.getString("OIB");
-				profil[broj]=oib;
-				broj+=1;
-				String ime = rs.getString("ime");
-				profil[broj]=ime;
-				broj+=1;
-				String prezime = rs.getString("prezime");
-				profil[broj]=prezime;
-				broj+=1;
-				String spol=rs.getString("spol");
-				profil[broj]=spol;
-				broj+=1;
-				String datum=rs.getString("datumr");
-				profil[broj]=datum;
-				broj+=1;
-				String e=rs.getString("email");
-				profil[broj]=e;
-				broj+=1;
-		        String sifra=rs.getString("sifra");
-		        profil[broj]=sifra;
-				
-			}
-			rs.close();
+			s.execute("USE physical");
+			PreparedStatement st = conn.prepareStatement("DELETE  FROM registration WHERE email='"+email+"'");
+			st.executeUpdate();
 			
 		    conn.close();
 		    
@@ -357,7 +326,7 @@ public String[] mojprofil(String email){
 	
 	
 	
-	return profil;
+	return true;
 }
 
 

@@ -138,14 +138,14 @@ public class RegistrationImpl implements RegistrationRepository {
 		return null;
 	}
 	@Override
-	public List<Registration> updateUser(String oib, String ime, String prezime, String spol, Date datumRodjenja,
+	public boolean updateUser(String oib, String ime, String prezime, String spol, Date datumRodjenja,
 			String email, String sifra) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return true;
 	}
 	@Override
 	public boolean deleteUser(String email) {
-		// TODO Auto-generated method stub
+		db.delete(email);
 		return false;
 	}
 
