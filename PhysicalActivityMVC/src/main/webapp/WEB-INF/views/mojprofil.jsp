@@ -34,7 +34,7 @@
 
 </div>
 <div id="forma">
-<form action="mojprofil" method="post">
+<form action="index" method="post">
 <h2>Ažuriranje profila</h2>
 <label>Oib:</label>
 <input type="text" name="OIB">
