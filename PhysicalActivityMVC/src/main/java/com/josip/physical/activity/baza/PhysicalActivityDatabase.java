@@ -369,6 +369,58 @@ public List<Registration> update(List<Registration> reg) throws UnsupportedEncod
 }
 
 
+public String dohvatiOib(String email){
+	String oib="";
+	try{
+		   Class.forName(Driver).newInstance();
+		   
+		}catch (Exception err) {
+			
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+		String dbname=getIme_baze();
+		Connection conn = null;
+		try{
+			
+			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
+			
+			Statement s = conn.createStatement();
+			s.execute("SHOW DATABASES");
+			s.execute("USE physical");
+			ResultSet rs = null;
+			String query="SELECT OIB FROM registration WHERE email='"+email+"'";
+			rs=s.executeQuery(query);
+			
+		    int broj=0;
+			while(rs.next()){
+				
+				oib=rs.getString("OIB");
+				
+		      
+		       
+		       
+		      
+				
+				
+			}
+			rs.close();
+			
+		    conn.close();
+		    
+		    
+		}catch (SQLException err) {
+			System.err.println("SQL greska");
+			err.printStackTrace(System.err);
+			System.exit(0);
+		}
+	
+	
+	
+	
+	return oib;
+}
+
 
 
 

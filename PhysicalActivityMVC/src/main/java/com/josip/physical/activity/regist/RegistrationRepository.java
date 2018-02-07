@@ -15,4 +15,5 @@ public interface RegistrationRepository {
 	public List<Registration> ListUser(String email);
 	public boolean updateUser(String oib,String ime,String prezime, String email,String sifra) throws UnsupportedEncodingException;
 	public boolean deleteUser(String email);
+	public String pronadjiOib(String email);
 }

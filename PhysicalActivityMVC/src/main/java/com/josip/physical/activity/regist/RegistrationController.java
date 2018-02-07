@@ -61,7 +61,7 @@ public class RegistrationController {
 		return "mojprofil";
 	}
 	@RequestMapping(value="/index/mojprofil",method=GET)
-	public String profil(Model model) throws UnsupportedEncodingException {
+	public String profil(Model model) {
 		
        
 		return "mojprofil";

@@ -149,6 +149,12 @@ public class RegistrationImpl implements RegistrationRepository {
 		db.delete(email);
 		return false;
 	}
+	@Override
+	public String pronadjiOib(String email) {
+		String oib="";
+		oib=db.dohvatiOib(email);
+		return oib;
+	}
 
 		
 	}
