@@ -46,7 +46,13 @@ public Registration() {
 	
 	
 }
-
+public Registration(String oib, String ime, String prezime, String email, String sifra) {
+	this.OIB=oib;
+	this.ime=ime;
+	this.prezime=prezime;
+	this.email=email;
+	this.sifra=sifra;
+}
 
 
 public Registration(String OIB,String ime,String prezime,String spol,String datumr,String email,String sifra){
