@@ -8,22 +8,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.josip.physical.activity.regist.Registration;
-import com.josip.physical.activity.regist.RegistrationImpl;
-import com.josip.physical.activity.regist.RegistrationRepository;
 
 public class terstconn {
 	
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		
-		//boolean a;
+		boolean a;
 		
 		// TODO Auto-generated method stub
-		/*
 		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
 		db.spoji();
-		RegistrationImpl regImpl=new RegistrationImpl();
-		regImpl.updateUser("11111144444", "marko", "markoviè", "jbosnjak3@gmail.com", "rggegeef");
-		
 	    /*
 	    char username2;
 	    String[] username3;*/

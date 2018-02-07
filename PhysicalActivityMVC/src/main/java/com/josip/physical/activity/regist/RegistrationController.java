@@ -1,7 +1,7 @@
 package com.josip.physical.activity.regist;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
@@ -65,10 +65,6 @@ public class RegistrationController {
 		
        
 		return "mojprofil";
-	}
-	@RequestMapping(value="/index",method=POST)
-	public String show(Model model,@RequestParam(value="OIB",defaultValue="10111111111") String OIB,@RequestParam(value="ime",defaultValue="blabla") String ime,@RequestParam(value="prezime",defaultValue="gegrgeg") String prezime,@RequestParam(value="email",defaultValue="email@email.email") String email,@RequestParam(value="sifra",defaultValue="grgegergg") String sifra) {
-		return "index";
 	}
 	
 	/*

@@ -138,10 +138,9 @@ public class RegistrationImpl implements RegistrationRepository {
 		return null;
 	}
 	@Override
-	public boolean updateUser(String oib, String ime, String prezime, String email, String sifra) throws UnsupportedEncodingException {
-		List<Registration> registration = new ArrayList();
-		registration.add(new Registration(oib,ime,prezime,email,sifra));
-		db.update(registration);
+	public boolean updateUser(String oib, String ime, String prezime, String spol, Date datumRodjenja,
+			String email, String sifra) {
+		
 		return true;
 	}
 	@Override

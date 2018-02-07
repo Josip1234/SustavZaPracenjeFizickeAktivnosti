@@ -3,7 +3,6 @@
 buildscript {
     repositories {
         jcenter()
-        google()
     }
         // in the individual module build.gradle files
         dependencies {
@@ -17,7 +16,6 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        google()
     }
 }
 

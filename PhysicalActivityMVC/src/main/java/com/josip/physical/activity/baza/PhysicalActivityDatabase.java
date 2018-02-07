@@ -141,7 +141,7 @@ try{
 
 return true;
 }
-/*
+
 public boolean traziKorisnika(String email){
 
 try{
@@ -184,7 +184,7 @@ if(broji<2 && broji>0) return true;
 else return false;
 }
 
-*/
+
 
 
 
@@ -329,44 +329,7 @@ public boolean delete(String email){
 	return true;
 }
 
-public List<Registration> update(List<Registration> reg) throws UnsupportedEncodingException {
-	
-	List<Registration> regist = new ArrayList();
-	
-	regist=reg;
-	
-	try{
-		   Class.forName(Driver).newInstance();
-		   System.out.println("Driver dohvacen");
-		}catch (Exception err) {
-			System.out.println("Driver nije dohvacen mozda nije online");
-			err.printStackTrace(System.err);
-			System.exit(0);
-		}
-		String dbname=getIme_baze();
-		Connection conn = null;
-		try{
-			System.out.println("Spajam se nma bazu...");
-			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
-			System.out.println("Spojen sam na bazu");
-			System.out.println("Ažuriram korisnika:");
-			Statement s = conn.createStatement();
-			s.execute("SHOW DATABASES");
-			s.execute("USE physical");
-			for (Registration registration : regist) {
-				s.execute("UPDATE `registration` (`OIB`, `ime`, `prezime`, `email`, `sifra`) SET ('"+registration.getOIB()+"', '"+registration.getIme()+"', '"+registration.getPrezime()+"', '"+registration.getEmail()+"', '"+registration.getSifra()+"')");
-			}
-			
-			System.out.println( "Korisnik ažuriran");
-		    conn.close();
-		}catch (SQLException err) {
-			System.err.println("SQL greska");
-			err.printStackTrace(System.err);
-			System.exit(0);
-		}
-	
-	return regist;
-}
+
 
 
 
