@@ -107,13 +107,13 @@ public class RegistrationImpl implements RegistrationRepository {
 		reg.setPrezime(prezime);
 		reg.setSifra(sifra);
 		reg.setSpol(spol);
-		String ime2=new String(reg.getIme().getBytes ("iso-8859-1"), "UTF-8");
-		System.out.println(ime2);
-		db.InsertUser(new Registration(OIB,ime2,prezime,spol,datumr,email,sifra));
+		
+		
+		db.InsertUser(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
 		List<Registration> korisnik=new ArrayList<Registration>();
 		
 				
-				korisnikli.add(new Registration(OIB, ime, prezime, spol, datumr,email,  sifra));
+				korisnikli.add(new Registration(reg.getOIB(), reg.getIme(), reg.getPrezime(), reg.getSpol(), reg.getDatumr(),reg.getEmail(),  reg.getSifra()));
 				
 				
 				return korisnikli;

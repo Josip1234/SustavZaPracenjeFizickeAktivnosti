@@ -38,7 +38,7 @@ public int broji=0;
 public PhysicalActivityDatabase(){
 	
 	this.ime_baze="physical";
-	this.host="//localhost:3307/?";
+	this.host="//localhost:3306/";
 	this.user="root";
 	this.vrsta_baze="jdbc:mysql:";
 	this.Driver="com.mysql.jdbc.Driver";
@@ -122,14 +122,16 @@ try{
 }
 String dbname=getIme_baze();
 Connection conn = null;
+PhysicalActivityDatabase db = new PhysicalActivityDatabase();
 try{
 	System.out.println("Spajam se na bazu...");
-	conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
+	//conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
+	conn= DriverManager.getConnection(db.getVrsta_baze()+db.getHost()+db.getIme_baze()+db.getEncoding(),db.getUser(),"");
 	System.out.println("Spojen sam na bazu");
 	System.out.println("Unosim korisnika:");
 	Statement s = conn.createStatement();
 	s.execute("SHOW DATABASES");
-	s.execute("USE physical");
+	//s.execute("USE physical");
 	s.execute("INSERT INTO `registration` (`OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES ('"+rg.getOIB()+"', '"+rg.getIme()+"', '"+rg.getPrezime()+"', '"+rg.getSpol()+"', '"+rg.getDatumr()+"', '"+rg.getEmail()+"', '"+rg.getSifra()+"')");
 	System.out.println( "Korisnik unesen");
     conn.close();
@@ -211,7 +213,9 @@ try {
 
 }
 try {
-Connection conn= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
+	PhysicalActivityDatabase db=new PhysicalActivityDatabase();
+Connection conn= DriverManager.getConnection(db.getVrsta_baze()+db.getHost()+db.getIme_baze()+db.getEncoding(),db.getUser(),"");//"jdbc:mysql://127.0.0.1:3306/?"+"user=root"//);
+		
 try {
 
     Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -229,6 +233,14 @@ e.printStackTrace();
 }
 }
 
+
+public String getUser() {
+	return user;
+}
+
+public int getBroji() {
+	return broji;
+}
 
 public List<Registration> listaKorisnika(String email) throws UnsupportedEncodingException{
 	List<Registration> registracija = new ArrayList<Registration>();
@@ -349,7 +361,7 @@ public List<Registration> update(List<Registration> reg) throws UnsupportedEncod
 			System.out.println("Spajam se nma bazu...");
 			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 			System.out.println("Spojen sam na bazu");
-			System.out.println("Ažuriram korisnika:");
+			System.out.println("Aï¿½uriram korisnika:");
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
 			s.execute("USE physical");
@@ -357,7 +369,7 @@ public List<Registration> update(List<Registration> reg) throws UnsupportedEncod
 				s.execute("UPDATE `registration` (`OIB`, `ime`, `prezime`, `email`, `sifra`) SET ('"+registration.getOIB()+"', '"+registration.getIme()+"', '"+registration.getPrezime()+"', '"+registration.getEmail()+"', '"+registration.getSifra()+"')");
 			}
 			
-			System.out.println( "Korisnik ažuriran");
+			System.out.println( "Korisnik aï¿½uriran");
 		    conn.close();
 		}catch (SQLException err) {
 			System.err.println("SQL greska");

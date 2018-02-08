@@ -74,10 +74,20 @@ public void setOIB(String OIB) {
 	this.OIB = OIB;
 }
 public void setIme(String ime) {
-	this.ime = ime;
+	try {
+		this.ime = new String(ime.getBytes ("iso-8859-1"), "UTF-8");
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 public void setPrezime(String prezime) {
-	this.prezime = prezime;
+	 try {
+		this.prezime = new String(prezime.getBytes ("iso-8859-1"), "UTF-8");
+	} catch (UnsupportedEncodingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 }
 public void setSpol(String spol) {
 	this.spol = spol;
@@ -91,7 +101,12 @@ public void setEmail(String email) {
 	this.email = email;
 }
 public void setSifra(String sifra) {
-	this.sifra = sifra;
+	 try {
+			this.sifra = new String(sifra.getBytes ("iso-8859-1"), "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 }
 
 

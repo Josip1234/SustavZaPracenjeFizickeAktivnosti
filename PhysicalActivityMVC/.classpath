@@ -102,16 +102,16 @@
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE-javadoc.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/spring-framework-4.3.9.RELEASE-dist/spring-framework-4.3.9.RELEASE/libs/spring-websocket-4.3.9.RELEASE-sources.jar"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/c3p0-0.9.1-pre6.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper-src.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/com.mysql.jdbc_5.1.5.jar"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
