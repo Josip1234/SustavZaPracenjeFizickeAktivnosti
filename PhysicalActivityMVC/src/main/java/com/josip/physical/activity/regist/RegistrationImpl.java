@@ -123,6 +123,7 @@ public class RegistrationImpl implements RegistrationRepository {
 		Registration korisnik = new Registration();
 		for(int i=0;i<korisnikli.size();i++){
 			if(korisnikli.get(i).getOIB().equals(OIB)){
+				//ispraviti ovo u setteru je u glavnoj klasi postavljeno za dohvat enkodiranja
 				System.out.println(new String (korisnikli.get(i).getOIB().getBytes ("iso-8859-1"), "UTF-8"));
 				System.out.println(new String (korisnikli.get(i).getIme().getBytes ("iso-8859-1"), "UTF-8"));
 				korisnik.setOIB(new String (OIB.getBytes ("iso-8859-1"), "UTF-8"));
