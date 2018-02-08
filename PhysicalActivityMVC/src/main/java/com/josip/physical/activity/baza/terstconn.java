@@ -15,13 +15,15 @@ public class terstconn {
 	
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		
-		//boolean a;
+		boolean a;
 		
 		// TODO Auto-generated method stub
-		/*
+		
 		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
 		db.spoji();
-		RegistrationImpl regImpl=new RegistrationImpl();
+		//a=db.delete("mmarkovic@gmail.com");
+		//System.out.println(a);
+		/*RegistrationImpl regImpl=new RegistrationImpl();
 		regImpl.updateUser("11111144444", "marko", "markoviè", "jbosnjak3@gmail.com", "rggegeef");
 		
 	    /*

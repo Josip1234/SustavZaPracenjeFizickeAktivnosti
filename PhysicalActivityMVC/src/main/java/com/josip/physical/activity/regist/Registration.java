@@ -101,7 +101,7 @@ public String getOIB() {
 public String getIme() {
 	return ime;
 }
-public String getPrezime() throws UnsupportedEncodingException {
+public String getPrezime(){
 	return prezime; //new String(prezime.getBytes ("iso-8859-1"), "UTF-8");
 }
 public String getSpol() {

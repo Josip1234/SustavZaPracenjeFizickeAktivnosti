@@ -60,16 +60,8 @@ public class RegistrationController {
 		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}
-	@RequestMapping(value="/index/mojprofil",method=GET)
-	public String profil(Model model) {
-		
-       
-		return "mojprofil";
-	}
-	@RequestMapping(value="/index",method=POST)
-	public String show(Model model,@RequestParam(value="OIB",defaultValue="10111111111") String OIB,@RequestParam(value="ime",defaultValue="blabla") String ime,@RequestParam(value="prezime",defaultValue="gegrgeg") String prezime,@RequestParam(value="email",defaultValue="email@email.email") String email,@RequestParam(value="sifra",defaultValue="grgegergg") String sifra) {
-		return "index";
-	}
+	
+	
 	
 	/*
 	@RequestMapping(value="/registracija",method=RequestMethod.POST)

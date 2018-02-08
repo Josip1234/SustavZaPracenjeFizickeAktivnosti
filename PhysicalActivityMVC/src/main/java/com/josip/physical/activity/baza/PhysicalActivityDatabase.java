@@ -123,7 +123,7 @@ try{
 String dbname=getIme_baze();
 Connection conn = null;
 try{
-	System.out.println("Spajam se nma bazu...");
+	System.out.println("Spajam se na bazu...");
 	conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 	System.out.println("Spojen sam na bazu");
 	System.out.println("Unosim korisnika:");
@@ -211,7 +211,7 @@ try {
 
 }
 try {
-Connection conn= DriverManager.getConnection(vrsta_baze+host);
+Connection conn= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
 try {
 
     Class.forName("com.mysql.jdbc.Driver").newInstance();

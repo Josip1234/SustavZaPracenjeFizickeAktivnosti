@@ -99,7 +99,17 @@ public class RegistrationImpl implements RegistrationRepository {
 	@Override
 	public List<Registration> spremiPodatke(String OIB, String ime, String prezime, String spol, String datumr,
 			String email, String sifra) throws UnsupportedEncodingException {
-		db.InsertUser(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
+		Registration reg =new Registration();
+		reg.setIme(ime);
+		reg.setDatumr(datumr);
+		reg.setEmail(email);
+		reg.setOIB(OIB);
+		reg.setPrezime(prezime);
+		reg.setSifra(sifra);
+		reg.setSpol(spol);
+		String ime2=new String(reg.getIme().getBytes ("iso-8859-1"), "UTF-8");
+		System.out.println(ime2);
+		db.InsertUser(new Registration(OIB,ime2,prezime,spol,datumr,email,sifra));
 		List<Registration> korisnik=new ArrayList<Registration>();
 		
 				

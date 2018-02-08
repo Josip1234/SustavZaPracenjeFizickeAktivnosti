@@ -14,7 +14,7 @@ import com.josip.physical.activity.login.Login;
 
 @Configuration
 //@EnableAspectJAutoProxy
-
+@ComponentScan(basePackages="com.josip.physical.activity.regist")
 
 public class RegConfig {
 
