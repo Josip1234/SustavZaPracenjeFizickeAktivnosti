@@ -97,7 +97,7 @@ public class RegistrationImpl implements RegistrationRepository {
 		}
 		*/
 	@Override
-	public List<Registration> spremiPodatke(String OIB, String ime, String prezime, String spol, String datumr,
+	public boolean spremiPodatke(String OIB, String ime, String prezime, String spol, String datumr,
 			String email, String sifra) throws UnsupportedEncodingException {
 		Registration reg =new Registration();
 		reg.setIme(ime);
@@ -110,15 +110,10 @@ public class RegistrationImpl implements RegistrationRepository {
 		
 		
 		db.InsertUser(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
-		List<Registration> korisnik=new ArrayList<Registration>();
-		
-				
-				korisnikli.add(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
-				
-				
-				return korisnikli;
+	
+				return true;
 	}
-	@Override
+	/*@Override
 	public Registration pronadjiPoOibu(String OIB) throws UnsupportedEncodingException {
 		Registration korisnik = new Registration();
 		List<Registration> list = new ArrayList<Registration>();
@@ -126,8 +121,8 @@ public class RegistrationImpl implements RegistrationRepository {
 			if(korisnikli.get(i).getOIB().equals(OIB)){
 			    list=db.listaKorisnika(korisnikli.get(i).getEmail());
 				//ispraviti ovo u setteru je u glavnoj klasi postavljeno za dohvat enkodiranja
-				System.out.println(new String (korisnikli.get(i).getOIB().getBytes ("iso-8859-1"), "UTF-8"));
-				System.out.println(new String (korisnikli.get(i).getIme().getBytes ("iso-8859-1"), "UTF-8"));
+				System.out.println(korisnikli.get(i).getOIB());
+				System.out.println(korisnikli.get(i).getIme());
 				korisnik.setOIB(OIB);
 				korisnik.setIme(list.get(i).getIme());
 				korisnik.setPrezime(list.get(i).getPrezime());
@@ -143,12 +138,12 @@ public class RegistrationImpl implements RegistrationRepository {
 		
 		return korisnik;
 		
-	}
+	}*/
 	@Override
 	public List<Registration> ListUser(String email) {
 		List<Registration> reg=new ArrayList<Registration>();
-		
-		return null;
+		reg=db.listaKorisnika(email);
+		return reg;
 	}
 	@Override
 	public boolean updateUser(String oib, String ime, String prezime, String email, String sifra) throws UnsupportedEncodingException {

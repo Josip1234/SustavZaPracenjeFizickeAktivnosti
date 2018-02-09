@@ -49,17 +49,17 @@ public class RegistrationController {
 			return "registracija";
 		}else {
 		registrationRepository.spremiPodatke(korisnik.getOIB(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getSpol(),korisnik.getDatumr(),korisnik.getEmail(),korisnik.getSifra());
-		return "redirect:registracija/mojprofil/"+korisnik.getOIB();
+		return "redirect:index";//+korisnik.getOIB();
 		}
 	}
-	@RequestMapping(value="registracija/mojprofil/{OIB}",method=GET)
+	/*@RequestMapping(value="registracija/mojprofil/{OIB}",method=GET)
 	public String showProfile(@PathVariable String OIB,Model model) throws UnsupportedEncodingException {
 		 
-        Registration kor = registrationRepository.pronadjiPoOibu(OIB);
+        //Registration kor = registrationRepository.pronadjiPoOibu(OIB);
         
-		model.addAttribute("korisnik",kor);
+		//model.addAttribute("korisnik",kor);
 		return "mojprofil";
-	}
+	}*/
 	
 	
 	
