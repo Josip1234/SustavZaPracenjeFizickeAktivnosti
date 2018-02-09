@@ -242,8 +242,10 @@ public int getBroji() {
 	return broji;
 }
 
-public List<Registration> listaKorisnika(String email) throws UnsupportedEncodingException{
+public List<Registration> listaKorisnika(String email){
 	List<Registration> registracija = new ArrayList<Registration>();
+	PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+	
 	try{
 		   Class.forName(Driver).newInstance();
 		   
@@ -256,11 +258,11 @@ public List<Registration> listaKorisnika(String email) throws UnsupportedEncodin
 		Connection conn = null;
 		try{
 			
-			conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
-			
+			//conn=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/?"+"user=root");
+			conn= DriverManager.getConnection(db.getVrsta_baze()+db.getHost()+db.getIme_baze()+db.getEncoding(),db.getUser(),"");
 			Statement s = conn.createStatement();
 			s.execute("SHOW DATABASES");
-			s.execute("USE physical");
+			//s.execute("USE physical");
 			ResultSet rs = null;
 			String query="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM registration WHERE email='"+email+"'";
 			rs=s.executeQuery(query);
@@ -270,16 +272,17 @@ public List<Registration> listaKorisnika(String email) throws UnsupportedEncodin
 				
 				String oib=rs.getString("OIB");
 				String ime = rs.getString("ime");
-				String prezime = new String(rs.getString("prezime").getBytes ("iso-8859-1"), "UTF-8");
+				String prezime = rs.getString("prezime");
 				String spol=rs.getString("spol");
 				String datum=rs.getString("datumr");
 				String emai=rs.getString("email");
 		        String sifra=rs.getString("sifra");
+		        Registration reg = new Registration(oib,ime,prezime,spol,datum,emai,sifra);
 		        
 		      
 		       
 		       
-		        registracija.add(new Registration(oib,ime,prezime,spol, datum,emai,sifra));
+		        registracija.add(new Registration(oib,ime,prezime,spol,datum,emai,sifra));
 		        
 				broj+=1;
 				

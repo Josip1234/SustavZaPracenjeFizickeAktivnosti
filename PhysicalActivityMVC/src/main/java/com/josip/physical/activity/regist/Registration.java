@@ -114,6 +114,7 @@ public String getOIB() {
 	return OIB;
 }
 public String getIme() {
+	
 	return ime;
 }
 public String getPrezime(){

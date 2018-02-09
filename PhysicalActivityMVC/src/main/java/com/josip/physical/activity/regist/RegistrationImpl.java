@@ -113,7 +113,7 @@ public class RegistrationImpl implements RegistrationRepository {
 		List<Registration> korisnik=new ArrayList<Registration>();
 		
 				
-				korisnikli.add(new Registration(reg.getOIB(), reg.getIme(), reg.getPrezime(), reg.getSpol(), reg.getDatumr(),reg.getEmail(),  reg.getSifra()));
+				korisnikli.add(new Registration(OIB,ime,prezime,spol,datumr,email,sifra));
 				
 				
 				return korisnikli;
@@ -121,18 +121,20 @@ public class RegistrationImpl implements RegistrationRepository {
 	@Override
 	public Registration pronadjiPoOibu(String OIB) throws UnsupportedEncodingException {
 		Registration korisnik = new Registration();
+		List<Registration> list = new ArrayList<Registration>();
 		for(int i=0;i<korisnikli.size();i++){
 			if(korisnikli.get(i).getOIB().equals(OIB)){
+			    list=db.listaKorisnika(korisnikli.get(i).getEmail());
 				//ispraviti ovo u setteru je u glavnoj klasi postavljeno za dohvat enkodiranja
 				System.out.println(new String (korisnikli.get(i).getOIB().getBytes ("iso-8859-1"), "UTF-8"));
 				System.out.println(new String (korisnikli.get(i).getIme().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setOIB(new String (OIB.getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setIme(new String (korisnikli.get(i).getIme().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setPrezime(new String (korisnikli.get(i).getPrezime().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setSpol(new String (korisnikli.get(i).getSpol().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setDatumr(new String (korisnikli.get(i).getDatumr().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setEmail(new String (korisnikli.get(i).getEmail().getBytes ("iso-8859-1"), "UTF-8"));
-				korisnik.setSifra(new String (korisnikli.get(i).getSifra().getBytes ("iso-8859-1"), "UTF-8"));
+				korisnik.setOIB(OIB);
+				korisnik.setIme(list.get(i).getIme());
+				korisnik.setPrezime(list.get(i).getPrezime());
+				korisnik.setSpol(list.get(i).getSpol());
+				korisnik.setDatumr(list.get(i).getDatumr());
+				korisnik.setEmail(list.get(i).getEmail());
+				korisnik.setSifra(list.get(i).getSifra());
 				break;
 			}else{
 				continue;

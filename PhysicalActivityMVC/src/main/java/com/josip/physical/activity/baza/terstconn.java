@@ -20,12 +20,15 @@ public class terstconn {
 		// TODO Auto-generated method stub
 		
 		PhysicalActivityDatabase db = new PhysicalActivityDatabase();
+	
 		//db.spoji();
-		db.InsertUser(new Registration("125555555","Joiš","boiš","m","1992-01-01","grgr@gg.gg","122222222"));
+		//db.InsertUser(new Registration("125555555","Joiš","boiš","m","1992-01-01","grgr@gg.gg","122222222"));
 		//a=db.delete("mmarkovic@gmail.com");
+	 
 		//System.out.println(a);
-		/*RegistrationImpl regImpl=new RegistrationImpl();
-		regImpl.updateUser("11111144444", "marko", "markovi�", "jbosnjak3@gmail.com", "rggegeef");
+		RegistrationImpl regImpl=new RegistrationImpl();
+		regImpl.pronadjiPoOibu("14555555555");
+		//regImpl.updateUser("11111144444", "marko", "markovi�", "jbosnjak3@gmail.com", "rggegeef");
 		
 	    /*
 	    char username2;
