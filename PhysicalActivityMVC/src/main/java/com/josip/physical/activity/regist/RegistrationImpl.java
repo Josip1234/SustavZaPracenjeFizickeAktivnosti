@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Component;
 
 
@@ -29,7 +31,50 @@ public class RegistrationImpl implements RegistrationRepository {
 	int length=0;
 	@Autowired
 	PhysicalActivityDatabase db;
-	
+	   static JdbcTemplate obj;
+	    static SimpleDriverDataSource ds;
+	    static String DB_USERNAME="root";
+	    static String DB_PASSWORD ="";
+	    static String DB_URL = "jdbc:mysql://localhost:3306/physical";
+	   
+	    
+		public static DataSource getConn() {
+			DriverManagerDataSource ds = new DriverManagerDataSource();
+			ds.setDriverClassName("com.mysql.jdbc.Driver");
+			ds.setUrl("jdbc:mysql://127.0.0.1/physical");
+			ds.setUsername("root");
+			ds.setPassword("");
+			return ds;
+		}
+		
+	public Registration korisnik(String username) {
+		Registration rg=new Registration();
+		obj=new JdbcTemplate(getConn());
+		if(null != obj) {
+			String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration` WHERE email='"+username+"'";
+			List<Registration> reg=obj.query(select,new RowMapper() {
+				public Registration mapRow(final ResultSet result,final int rowNum) throws SQLException{
+					Registration kor=new Registration();
+					kor.setOIB(result.getString("OIB"));
+					kor.setIme(result.getString("ime"));
+					kor.setPrezime(result.getString("prezime"));
+					kor.setSpol(result.getString("spol"));
+					kor.setDatumr(result.getString("datumr"));
+					kor.setEmail(result.getString("email"));
+					kor.setSifra(result.getString("sifra"));
+					
+					return kor;
+					
+				}});
+				
+			for (Registration registration : reg) {
+				System.out.println(registration.toString());
+				rg=new Registration(registration.getOIB(),registration.getIme(),registration.getPrezime(),registration.getSpol(),registration.getDatumr(),registration.getEmail(),registration.getSifra());
+			}
+			}
+		
+		return rg;
+	}
 	
 	
 	@Autowired

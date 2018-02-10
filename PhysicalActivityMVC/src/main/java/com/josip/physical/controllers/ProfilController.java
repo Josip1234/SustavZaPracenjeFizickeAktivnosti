@@ -27,12 +27,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
+import com.josip.physical.activity.regist.RegistrationRepository;
 
 @Controller
 @RequestMapping(value= {"/","/index/","/mojprofil"})
 public class ProfilController {
 	        @Autowired
 	        Registration kor;
+	        @Autowired
+	        RegistrationImpl impl;
 	     /*   static JdbcTemplate obj;
 	        static SimpleDriverDataSource ds;
 	        static String DB_USERNAME="root";
@@ -54,20 +57,22 @@ public class ProfilController {
 	        */
 	@RequestMapping(value="/mojprofil", method=RequestMethod.GET)
 	public String mojprofil(Model model){
+	    
 		
 		String oib="";
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		Object credentials = auth.getCredentials();
-		
+		Registration rg= impl.korisnik(username);
+		kor=rg;
 		System.out.println(username);
 		System.out.println(oib);
 		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}
-	@RequestMapping(value="/index",method=POST)
+	@RequestMapping(value="/mojprofil",method=POST)
 	public String show(Model model,@RequestParam(value="OIB",defaultValue="10111111111") String OIB,@RequestParam(value="ime",defaultValue="blabla") String ime,@RequestParam(value="prezime",defaultValue="gegrgeg") String prezime,@RequestParam(value="email",defaultValue="email@email.email") String email,@RequestParam(value="sifra",defaultValue="grgegergg") String sifra) {
-		return "index";
+		return "mojprofil";
 	}
 
 	
