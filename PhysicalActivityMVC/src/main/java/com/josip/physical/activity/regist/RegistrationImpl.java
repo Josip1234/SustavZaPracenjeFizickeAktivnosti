@@ -46,6 +46,9 @@ public class RegistrationImpl implements RegistrationRepository {
 			ds.setPassword("");
 			return ds;
 		}
+		public boolean Update(Registration reg) {
+			return true;
+		}
 		
 	public Registration korisnik(String username) {
 		Registration rg=new Registration();

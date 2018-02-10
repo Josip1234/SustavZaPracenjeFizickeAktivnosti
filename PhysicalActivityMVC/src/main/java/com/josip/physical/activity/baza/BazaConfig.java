@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackageClasses= {PhysicalActivityDatabase.class})
+@ComponentScan(basePackageClasses= {PhysicalActivityDatabase.class,SpringDataSource.class})
 public class BazaConfig {
   
 }

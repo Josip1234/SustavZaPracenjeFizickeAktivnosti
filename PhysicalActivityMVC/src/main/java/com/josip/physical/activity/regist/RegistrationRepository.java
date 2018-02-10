@@ -17,4 +17,5 @@ public interface RegistrationRepository {
 	public boolean deleteUser(String email);
 	public String pronadjiOib(String email);
 	public Registration korisnik(String username);
+	public boolean Update(Registration reg);
 }

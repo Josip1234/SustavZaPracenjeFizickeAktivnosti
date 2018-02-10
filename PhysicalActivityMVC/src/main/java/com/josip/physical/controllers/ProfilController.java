@@ -34,6 +34,7 @@ import com.josip.physical.activity.regist.RegistrationRepository;
 public class ProfilController {
 	        @Autowired
 	        Registration kor;
+	      
 	        @Autowired
 	        RegistrationImpl impl;
 	     /*   static JdbcTemplate obj;
@@ -71,7 +72,17 @@ public class ProfilController {
 		return "mojprofil";
 	}
 	@RequestMapping(value="/mojprofil",method=POST)
-	public String show(Model model,@RequestParam(value="OIB",defaultValue="10111111111") String OIB,@RequestParam(value="ime",defaultValue="blabla") String ime,@RequestParam(value="prezime",defaultValue="gegrgeg") String prezime,@RequestParam(value="email",defaultValue="email@email.email") String email,@RequestParam(value="sifra",defaultValue="grgegergg") String sifra) {
+	public String show(Model model,@RequestParam(value="OIB") String OIB,@RequestParam(value="ime") String ime,@RequestParam(value="prezime") String prezime,@RequestParam(value="email") String email,@RequestParam(value="sifra") String sifra) {
+		System.out.println(OIB+ime+prezime+email+sifra);
+		String oib="";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Object credentials = auth.getCredentials();
+		Registration rg= impl.korisnik(username);
+		kor=rg;
+		System.out.println(username);
+		System.out.println(oib);
+		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}
 
