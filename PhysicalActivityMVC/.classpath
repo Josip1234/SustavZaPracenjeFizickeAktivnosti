@@ -113,5 +113,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Korisnik/.m2/repository/org/springframework/spring-core/4.2.4.RELEASE/spring-core-4.2.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Korisnik/.m2/repository/org/springframework/spring-jdbc/4.0.3.RELEASE/spring-jdbc-4.0.3.RELEASE.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

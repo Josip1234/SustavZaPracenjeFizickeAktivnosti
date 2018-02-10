@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     useLibrary 'org.apache.http.legacy'
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "activity.physical.example.com.josip.physicalactivity"
         minSdkVersion 17
@@ -37,13 +37,13 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     /*
-                    compile 'com.squareup.retrofit:retrofit:2.3.0'
-                    compile 'com.squareup.okhttp:okhttp:2.2.0'
-                    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+                        compile 'com.squareup.retrofit:retrofit:2.3.0'
+                        compile 'com.squareup.okhttp:okhttp:2.2.0'
+                        compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
 
-                    compile 'org.springframework.android:spring-android-resttemplate: 1.0.1.RELEASE'
-                    compile 'org.springframework.android:spring-androidcore: 1.0.1.RELEASE'
-                    compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'*/
+                        compile 'org.springframework.android:spring-android-resttemplate: 1.0.1.RELEASE'
+                        compile 'org.springframework.android:spring-androidcore: 1.0.1.RELEASE'
+                        compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'*/
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.okhttp3:parent:3.9.0'
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'

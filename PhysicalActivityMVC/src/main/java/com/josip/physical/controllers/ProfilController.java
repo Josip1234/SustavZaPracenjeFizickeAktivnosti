@@ -33,7 +33,7 @@ import com.josip.physical.activity.regist.RegistrationImpl;
 public class ProfilController {
 	        @Autowired
 	        Registration kor;
-	        static JdbcTemplate obj;
+	     /*   static JdbcTemplate obj;
 	        static SimpleDriverDataSource ds;
 	        static String DB_USERNAME="root";
 	        static String DB_PASSWORD ="";
@@ -51,7 +51,7 @@ public class ProfilController {
 				}
 	        	return ds;
 	        }
-	        
+	        */
 	@RequestMapping(value="/mojprofil", method=RequestMethod.GET)
 	public String mojprofil(Model model){
 		
@@ -59,8 +59,6 @@ public class ProfilController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		Object credentials = auth.getCredentials();
-		
-		
 		
 		System.out.println(username);
 		System.out.println(oib);
@@ -71,4 +69,6 @@ public class ProfilController {
 	public String show(Model model,@RequestParam(value="OIB",defaultValue="10111111111") String OIB,@RequestParam(value="ime",defaultValue="blabla") String ime,@RequestParam(value="prezime",defaultValue="gegrgeg") String prezime,@RequestParam(value="email",defaultValue="email@email.email") String email,@RequestParam(value="sifra",defaultValue="grgegergg") String sifra) {
 		return "index";
 	}
+
+	
 }

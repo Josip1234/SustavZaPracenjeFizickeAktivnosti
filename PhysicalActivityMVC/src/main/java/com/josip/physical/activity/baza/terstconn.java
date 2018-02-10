@@ -2,19 +2,68 @@ package com.josip.physical.activity.baza;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
 import com.josip.physical.activity.regist.RegistrationRepository;
 
 public class terstconn {
+    
+    static JdbcTemplate obj;
+    static SimpleDriverDataSource ds;
+    static String DB_USERNAME="root";
+    static String DB_PASSWORD ="";
+    static String DB_URL = "jdbc:mysql://localhost:3306/physical";
+   
+    
+	public static DataSource getConn() {
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+		ds.setDriverClassName("com.mysql.jdbc.Driver");
+		ds.setUrl("jdbc:mysql://127.0.0.1/physical");
+		ds.setUsername("root");
+		ds.setPassword("");
+		return ds;
+	}
 	
+	
+	
+
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		
+		String username="jbosnjak3@gmail.com";
+		obj=new JdbcTemplate(getConn());
+		if(null != obj) {
+			String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration` WHERE email='"+username+"'";
+			List<Registration> reg=obj.query(select,new RowMapper() {
+				public Registration mapRow(final ResultSet result,final int rowNum) throws SQLException{
+					Registration kor=new Registration();
+					kor.setOIB(result.getString("OIB"));
+					kor.setIme(result.getString("ime"));
+					kor.setPrezime(result.getString("prezime"));
+					kor.setSpol(result.getString("spol"));
+					kor.setDatumr(result.getString("datumr"));
+					kor.setEmail(result.getString("email"));
+					kor.setSifra(result.getString("sifra"));
+					return kor;
+					
+				}});
+				
+			for (Registration registration : reg) {
+				System.out.println(registration.toString());
+			}
+			}
 		//boolean a;
 		
 		// TODO Auto-generated method stub
@@ -69,6 +118,8 @@ public class terstconn {
 		}
         */
         
-	}
+	
 
+
+	}
 }
