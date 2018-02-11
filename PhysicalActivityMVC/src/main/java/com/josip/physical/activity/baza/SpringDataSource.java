@@ -9,14 +9,17 @@ import org.springframework.stereotype.Component;
 
 @Component("Spring jdbc baze")
 public class SpringDataSource {
-	   static JdbcTemplate obj;
+	    static JdbcTemplate obj;
 	    static SimpleDriverDataSource ds;
 	    static String DB_USERNAME="root";
 	    static String DB_PASSWORD ="";
 	    static String DB_URL = "jdbc:mysql://localhost:3306/physical";
 	   
 	    public SpringDataSource() {
-	    	
+	    	this.DB_USERNAME="root";
+	 	    this.DB_PASSWORD ="";
+	 	    this.DB_URL = "jdbc:mysql://localhost:3306/physical";
+	 	    this.obj=new JdbcTemplate(getConn());
 	    }
 	    
 		public static JdbcTemplate getObj() {

@@ -73,15 +73,19 @@ public class ProfilController {
 	}
 	@RequestMapping(value="/mojprofil",method=POST)
 	public String show(Model model,@RequestParam(value="OIB") String OIB,@RequestParam(value="ime") String ime,@RequestParam(value="prezime") String prezime,@RequestParam(value="email") String email,@RequestParam(value="sifra") String sifra) {
+		boolean up;
+		
 		System.out.println(OIB+ime+prezime+email+sifra);
 		String oib="";
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		Object credentials = auth.getCredentials();
 		Registration rg= impl.korisnik(username);
+		up=impl.Update(OIB, ime, prezime, email, sifra,username);
 		kor=rg;
 		System.out.println(username);
 		System.out.println(oib);
+		System.out.println(up);
 		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}

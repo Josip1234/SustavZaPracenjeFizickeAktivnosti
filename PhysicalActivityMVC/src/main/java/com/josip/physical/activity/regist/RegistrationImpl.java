@@ -24,14 +24,19 @@ import org.springframework.stereotype.Component;
 
 
 import com.josip.physical.activity.baza.PhysicalActivityDatabase;
+import com.josip.physical.activity.baza.SpringDataSource;
 @Component
 public class RegistrationImpl implements RegistrationRepository {
 	
 	List<Registration> korisnikli=new ArrayList<Registration>();
 	int length=0;
 	@Autowired
+	Registration registar;
+	@Autowired
 	PhysicalActivityDatabase db;
-	   static JdbcTemplate obj;
+	@Autowired 
+	SpringDataSource source;
+	   /*static JdbcTemplate obj;
 	    static SimpleDriverDataSource ds;
 	    static String DB_USERNAME="root";
 	    static String DB_PASSWORD ="";
@@ -45,17 +50,22 @@ public class RegistrationImpl implements RegistrationRepository {
 			ds.setUsername("root");
 			ds.setPassword("");
 			return ds;
-		}
-		public boolean Update(Registration reg) {
+		}*/
+		public boolean Update(String oib,String ime,String prezime,String email,String sifra,String username) {
+			registar=new Registration(oib,ime,prezime,email,sifra);
+			source=new SpringDataSource();
+			String updateUs="UPDATE registration SET oib=?,ime=?,prezime=?,email=?,sifra=? WHERE email=?";
+			source.getObj().update(updateUs,oib,ime,prezime,email,sifra,username);
 			return true;
 		}
 		
 	public Registration korisnik(String username) {
 		Registration rg=new Registration();
-		obj=new JdbcTemplate(getConn());
-		if(null != obj) {
+		source=new SpringDataSource();
+		
+		if(null != source.getObj()) {
 			String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration` WHERE email='"+username+"'";
-			List<Registration> reg=obj.query(select,new RowMapper() {
+			List<Registration> reg=source.getObj().query(select,new RowMapper() {
 				public Registration mapRow(final ResultSet result,final int rowNum) throws SQLException{
 					Registration kor=new Registration();
 					kor.setOIB(result.getString("OIB"));
