@@ -18,7 +18,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import activity.physical.example.com.josip.physicalactivity.model.Login;
+import activity.physical.example.com.josip.physicalactivity.model.Registration;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         em = email.getText().toString();
         ps = sifra.getText().toString();
         tv.setText(em + ps);
-        Login login = new Login(em, ps);
+        Registration login = new Registration(em, ps);
         login.setPassword(ps);
         login.setUsername(em);
         try {
