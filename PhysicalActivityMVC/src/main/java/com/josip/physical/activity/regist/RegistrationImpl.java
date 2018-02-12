@@ -82,7 +82,7 @@ public class RegistrationImpl implements RegistrationRepository {
 				
 			for (Registration registration : reg) {
 				System.out.println(registration.toString());
-				rg=new Registration(registration.getOIB(),registration.getIme(),registration.getPrezime(),registration.getSpol(),registration.getDatumr(),registration.getEmail(),registration.getSifra());
+				rg=registration;
 			}
 			}
 		
