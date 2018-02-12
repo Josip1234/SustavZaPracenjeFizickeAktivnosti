@@ -41,13 +41,13 @@ public class JsonGeneratorController {
 	    
 		@RequestMapping(value="/1e2b3tzrUZcvn")
 		@ResponseBody
-		public Registration korisnik(){
-		    Registration rg=new Registration();
+		public List<Registration> korisnik(){
+		    List<Registration> rg=new ArrayList<Registration>();
 			ds=new SpringDataSource();
 			Registration temp=new Registration();
-			String username="jbosnjak3@gmail.com";
+			
 			if(null != ds.getObj()) {
-				String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration` WHERE email='"+username+"'";
+				String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration`";
 				List<Registration> reg=ds.getObj().query(select,new RowMapper() {
 					public Registration mapRow(ResultSet result, int rowNum) throws SQLException{
 					    Registration rg=new Registration();
@@ -65,7 +65,7 @@ public class JsonGeneratorController {
 					
 				for (Registration registration : reg) {
 					System.out.println(registration.toString());
-					rg=registration;
+					rg.add(registration);
 					temp=registration;
 					
 				}
