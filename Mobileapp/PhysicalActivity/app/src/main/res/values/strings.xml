@@ -2,6 +2,7 @@
     <string name="app_name">PhysicalActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="resetCr">Reset</string>
+    <string name="pokaziRez">Pokazi</string>
     <string name="email">Unesi email:</string>
     <string name="sifra">Unesi sifru:</string>
     <string name="login">Prijavi se</string>

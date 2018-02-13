@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     private TextView mfail;
 
 
+
     public void prijava(View v) throws IOException,JSONException {
         boolean autoriziran = false;
         EditText email;
@@ -62,13 +63,18 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         }
     }
 
-    public void kreiraj_json_polje(String a, String b) throws IOException, JSONException {
+    public void kreiraj_json_polje(Registration[] registrations) throws IOException, JSONException {
 
         JSONArray array = new JSONArray();
         JSONObject object;
         object = new JSONObject();
-        object.put("username", a);
-        object.put("pass", b);
+        for (Registration reg:registrations
+             ) {
+            object.put("username",reg.getEmail());
+            object.put("pass",reg.getSifra());
+
+        }
+
 
         array.put(object);
         String text = array.toString();
@@ -82,9 +88,12 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     }
 
     public boolean procitaj_json(String username,String password) throws IOException, JSONException {
-        String userjson="";
-        String passjson="";
+        boolean found=false;
+        String userjson = "";
+        String passjson = "";
         String naziv = "prijava.json";
+        List<String> user = new ArrayList<String>();
+
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
@@ -101,20 +110,30 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             String object = data.getJSONObject(i).getString("username");
             String pass = data.getJSONObject(i).getString("pass");
             prijavaBuffer.append(object + " " + pass);
-            userjson=object;
-            passjson=pass;
+            user.add(i,object);
+            user.add(i+1,pass);
+            //userjson=object;
+            //passjson=pass;
         }
 
         Log.i("poruka", "pročitan json");
-        if(username.contentEquals(userjson)){
-            if(password.contentEquals(passjson)){
-                return true;
-            }else{
+        for (int i=0;i<user.size();i++) {
+            if (username.contentEquals(String.valueOf(user.get(i)))) {
+                if (password.contentEquals(String.valueOf(user.get(i + 1)))) {
+                    found=true;
+                    return true;
+
+                } else {
+                    return false;
+
+                }
+            } else {
                 return false;
+
             }
-        }else{
-            return false;
         }
+        return found;
+
 
     }
 
@@ -155,13 +174,14 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
                 Log.i("email",String.valueOf(reg.getEmail()));
                 Log.i("sifra",String.valueOf(reg.getSifra()));
                 try {
-                    kreiraj_json_polje(String.valueOf(reg.getEmail()),String.valueOf(reg.getSifra()));
+                    kreiraj_json_polje(registration);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
+
 
         }
     }
