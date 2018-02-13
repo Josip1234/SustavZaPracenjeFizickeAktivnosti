@@ -1,5 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity.activity.physical.example.com.josip.physicalactivity.interfaces;
 
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
@@ -9,5 +11,7 @@ import activity.physical.example.com.josip.physicalactivity.model.Registration;
  */
 
 public interface PhysicalInterface {
-    Registration getUser(String email);
+
+
+
 }

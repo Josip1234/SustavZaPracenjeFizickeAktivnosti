@@ -1,7 +1,6 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -29,7 +28,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import activity.physical.example.com.josip.physicalactivity.implementations.PhysicalImplementation;
 import activity.physical.example.com.josip.physicalactivity.model.BikeActivity;
 
 public class BikingActivity extends AppCompatActivity  {

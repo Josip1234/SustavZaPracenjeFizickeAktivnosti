@@ -23,20 +23,20 @@ android {
     productFlavors {
     }
 
-}
 
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.google.android.gms:play-services:11.0.4'
-    compile 'com.android.support:multidex:1.0.1'
-    //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    /*
+
+    dependencies {
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        compile 'com.google.android.gms:play-services:11.0.4'
+        compile 'com.android.support:multidex:1.0.1'
+        //noinspection GradleCompatible
+        compile 'com.android.support:appcompat-v7:26.1.0'
+        compile 'com.android.support.constraint:constraint-layout:1.0.2'
+        testCompile 'junit:junit:4.12'
+        /*
                         compile 'com.squareup.retrofit:retrofit:2.3.0'
                         compile 'com.squareup.okhttp:okhttp:2.2.0'
                         compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
@@ -44,12 +44,27 @@ dependencies {
                         compile 'org.springframework.android:spring-android-resttemplate: 1.0.1.RELEASE'
                         compile 'org.springframework.android:spring-androidcore: 1.0.1.RELEASE'
                         compile 'com.fasterxml.jackson.core:jackson-databind:2.4.+'*/
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.okhttp3:parent:3.9.0'
-    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
-    compile 'org.springframework.android:spring-android-core:1.0.1.RELEASE'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
-}
+        compile 'com.squareup.retrofit2:retrofit:2.3.0'
+        compile 'com.squareup.okhttp3:parent:3.9.0'
+        compile 'com.squareup.okhttp3:okhttp-urlconnection:3.9.0'
+        compile 'com.squareup.okhttp3:okhttp:3.9.0'
+        compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+        compile 'org.springframework.android:spring-android-core:1.0.1.RELEASE'
+        compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+
+    }
+    packagingOptions{
+        exclude 'META-INF/NOTICE' // will not include NOTICE file
+        exclude 'META-INF/LICENSE' // will not include LICENSE file
+// as noted by @Vishnuvathsan you may also need to include
+// variations on the file name. It depends on your dependencies.
+// Some other common variations on notice and license file names
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+    }
+
+    }
+
 

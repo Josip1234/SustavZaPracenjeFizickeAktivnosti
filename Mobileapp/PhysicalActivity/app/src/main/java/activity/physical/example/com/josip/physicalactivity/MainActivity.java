@@ -1,6 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -12,21 +13,26 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import activity.physical.example.com.josip.physicalactivity.activity.physical.example.com.josip.physicalactivity.interfaces.PhysicalInterface;
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
 
-@SuppressWarnings("deprecation")
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements PhysicalInterface {
     private TextView mfail;
 
 
     public void prijava(View v) {
-        boolean autoriziran = true;
+        boolean autoriziran = false;
         EditText email;
         EditText sifra;
         TextView tv;
@@ -38,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         ps = sifra.getText().toString();
         tv.setText(em + ps);
         Registration login = new Registration(em, ps);
-        login.setPassword(ps);
-        login.setUsername(em);
+        login.setSifra(ps);
+        login.setEmail(em);
         try {
             kreiraj_json_polje(em, ps);
         } catch (IOException e) {
@@ -107,10 +113,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        new HttpReqTask().execute();
     }
 
-    ;
+
+
+    class HttpReqTask extends AsyncTask<Void,Void,Registration> {
+        Registration rg = new Registration();
+        private final String uri="10.0.2.2";
+        @Override
+        protected Registration doInBackground(Void... voids) {
+            try{
+                String url="http://"+uri+":8080/physical/1e2b3tzrUZcvn";
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                restTemplate.getForObject(url,Registration.class);
+
+                return rg;
+            }catch (Exception ex){
+                Log.e("poruka",ex.getMessage());
+            }
+            return null;
+
+        }
+        @Override
+        protected void onPostExecute(Registration registration){
+            super.onPostExecute(registration);
+            Log.i("email",String.valueOf(registration.getEmail()));
+            Log.i("sifra",String.valueOf(registration.getSifra()));
+            try {
+                kreiraj_json_polje(String.valueOf(registration.getEmail()),String.valueOf(registration.getSifra()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
 
