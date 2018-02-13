@@ -173,13 +173,13 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
                  ) {
                 Log.i("email",String.valueOf(reg.getEmail()));
                 Log.i("sifra",String.valueOf(reg.getSifra()));
-                try {
+               /* try {
                     kreiraj_json_polje(registration);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
 
 
