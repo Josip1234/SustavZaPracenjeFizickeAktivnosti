@@ -115,28 +115,29 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             //user.add(i+1,pass);
             userjson=object;
             passjson=pass;
-        }
-
-        Log.i("poruka", "pročitan json");
-
             if (username.contentEquals(userjson)) {
                 if (password.contentEquals(passjson)) {
                     found=true;
-                    return found;
+                    break;
 
 
                 } else {
 
                     found=false;
-                    return found;
+
 
                 }
             } else {
                 found=false;
-                return false;
+
 
 
             }
+        }
+
+        Log.i("poruka", "pročitan json");
+
+        return found;
 
 
 
