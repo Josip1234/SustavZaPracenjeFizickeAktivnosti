@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         String userjson = "";
         String passjson = "";
         String naziv = "prijava.json";
-        List<String> user = new ArrayList<String>();
+
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -110,29 +111,34 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             String object = data.getJSONObject(i).getString("username");
             String pass = data.getJSONObject(i).getString("pass");
             prijavaBuffer.append(object + " " + pass);
-            user.add(i,object);
-            user.add(i+1,pass);
-            //userjson=object;
-            //passjson=pass;
+            //user.add(i,object);
+            //user.add(i+1,pass);
+            userjson=object;
+            passjson=pass;
         }
 
         Log.i("poruka", "pročitan json");
-        for (int i=0;i<user.size();i++) {
-            if (username.contentEquals(String.valueOf(user.get(i)))) {
-                if (password.contentEquals(String.valueOf(user.get(i + 1)))) {
+
+            if (username.contentEquals(userjson)) {
+                if (password.contentEquals(passjson)) {
                     found=true;
-                    return true;
+                    return found;
+
 
                 } else {
-                    return false;
+
+                    found=false;
+                    return found;
 
                 }
             } else {
+                found=false;
                 return false;
 
+
             }
-        }
-        return found;
+
+
 
 
     }
@@ -169,18 +175,43 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         @Override
         protected void onPostExecute(Registration[] registration){
             super.onPostExecute(registration);
+            JSONArray array = new JSONArray();
+            JSONObject object;
+            object = new JSONObject();
             for (Registration reg:registration
                  ) {
                 Log.i("email",String.valueOf(reg.getEmail()));
                 Log.i("sifra",String.valueOf(reg.getSifra()));
-               /* try {
-                    kreiraj_json_polje(registration);
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+
+                try {
+                    object.put("username",String.valueOf(reg.getEmail()));
+                    object.put("pass",String.valueOf(reg.getSifra()));
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }*/
+                }
+
             }
+            array.put(object);
+            String text = array.toString();
+            FileOutputStream fos = null;
+            try {
+                fos = openFileOutput("prijava.json", MODE_PRIVATE);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos.write(text.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Log.i("message", "succesfully written to json");
 
 
         }
