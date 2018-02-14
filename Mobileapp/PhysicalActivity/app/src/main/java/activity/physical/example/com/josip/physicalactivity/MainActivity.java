@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             super.onPostExecute(registration);
             JSONArray array = new JSONArray();
             JSONObject object;
-            object = new JSONObject();
+
             for (Registration reg:registration
                  ) {
                 Log.i("email",String.valueOf(reg.getEmail()));
@@ -185,14 +185,16 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
 
                 try {
+                    object = new JSONObject();
                     object.put("username",String.valueOf(reg.getEmail()));
                     object.put("pass",String.valueOf(reg.getSifra()));
+                    array.put(object);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
             }
-            array.put(object);
+
             String text = array.toString();
             FileOutputStream fos = null;
             try {
