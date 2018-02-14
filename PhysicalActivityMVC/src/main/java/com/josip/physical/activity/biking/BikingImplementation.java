@@ -41,5 +41,15 @@ public class BikingImplementation implements BikingRepository {
 	    
 		return stuff;
 	}
+	@Override
+	public boolean insert(BikingActivity bak) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean delete(BikingActivity bak) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

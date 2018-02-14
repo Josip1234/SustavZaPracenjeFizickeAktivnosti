@@ -89,6 +89,15 @@ public class ProfilController {
 		model.addAttribute("korisnik",kor);
 		return "mojprofil";
 	}
-
+	@RequestMapping(value="/home",method=POST)
+	public String delete() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		Object credentials = auth.getCredentials();
+		impl.deleteUser(username);
+		auth.setAuthenticated(false);
+		
+		return "home";
+	}
 	
 }

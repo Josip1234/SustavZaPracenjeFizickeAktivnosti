@@ -52,6 +52,15 @@
 <input type="submit" value="Ažuriraj">
 </form>
 </div>
+<div id="forma">
+<form action="home" method="post">
+<h2>Obriši profil</h2>
+
+
+<input type="hidden" name="_csrf" value="${_csrf.token}" />
+<input type="submit" value="Obriši">
+</form>
+</div>
 
 
 <div id="odjava">
