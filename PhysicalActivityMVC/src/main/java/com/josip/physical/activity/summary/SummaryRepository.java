@@ -1,5 +1,7 @@
 package com.josip.physical.activity.summary;
+import java.util.Date;
 import java.util.List;
 public interface SummaryRepository {
-List<SummaryActivity> show();
+public List<SummaryActivity> show();
+
 }

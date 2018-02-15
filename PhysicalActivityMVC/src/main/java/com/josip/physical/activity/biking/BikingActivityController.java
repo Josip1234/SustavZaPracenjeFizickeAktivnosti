@@ -18,7 +18,7 @@ public class BikingActivityController {
 	}
 @RequestMapping(value = {"/","/bikingactivity"},method=RequestMethod.GET, produces="application/json")	
 public String bikingactivity(Model model){
-	model.addAttribute("bike",bikingRepository.listStuff());
+	model.addAttribute("bike",bikingRepository.izlistajSve());
 	return "bikingactivity";
 }
 }

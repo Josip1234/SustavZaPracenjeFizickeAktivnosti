@@ -1,6 +1,7 @@
 package com.josip.physical.activity.biking;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class BikingImplementation implements BikingRepository {
 	@Autowired
 	BikingActivity bike;
 	@Override
-	public List<BikingActivity> listStuff() {
+	public List<BikingActivity> izlistajSve() {
 		List<BikingActivity> stuff=new ArrayList<BikingActivity>();
 		
 		bike.setKorisnik("jbosnjak3@gmail.com");
@@ -50,6 +51,16 @@ public class BikingImplementation implements BikingRepository {
 	public boolean delete(BikingActivity bak) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public boolean izbrisiPoDatumu(Date datum) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<BikingActivity> izlistajRezultatePoDatumu(Date datum) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

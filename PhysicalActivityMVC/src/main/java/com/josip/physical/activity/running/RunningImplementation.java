@@ -1,6 +1,7 @@
 package com.josip.physical.activity.running;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,26 @@ public class RunningImplementation implements RunningRepository {
 	    
 		
 		return running;
+	}
+	@Override
+	public boolean spremiPodatke(RunningActivity run) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<RunningActivity> pokaziPoDatumu(Date date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean izbrisi() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean izbrisiPoDatumu(Date date) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.josip.physical.activity.walking;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,53 @@ public List<WalkingActivity> res() {
 	walk.setVrijemeAktivnosti("5 minuta");
 	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
 	return activity;
+}
+
+@Override
+public List<WalkingActivity> izlistajPoBrojuKoraka(int koraci) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<WalkingActivity> izlistajPoDatumu(Date date) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public List<WalkingActivity> izslistajPoDatumuiKoracima(Date date, int koraci) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public boolean spremiPodatke(List<WalkingActivity> wal) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public boolean izbrisiSve() {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public boolean izbrisiPoDatumu(Date date) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public boolean izbrisiPoKoracima(int koraci) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
+@Override
+public boolean izbrisiPoDatumuIKoracima(Date date, int koraci) {
+	// TODO Auto-generated method stub
+	return false;
 }
 }
