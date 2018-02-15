@@ -9,7 +9,7 @@ import activity.physical.example.com.josip.physicalactivity.model.Izracun;
 public class ImplemetacijaIzracuna implements Izracun {
     @Override
     public boolean izracunUkupneProsjecneBrzine() {
-        
+
         return false;
     }
 
