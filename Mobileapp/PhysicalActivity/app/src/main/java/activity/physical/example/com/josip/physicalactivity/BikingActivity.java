@@ -54,7 +54,7 @@ private Button mReset;
         String time=cron.getText().toString();
 
         System.out.println(time);
-        bike.setVrijemeAktivnosti(time);
+
         return time;
     }
     public void resetcron(){
@@ -85,7 +85,7 @@ private Button mReset;
         }
         Log.i("poruka","pročitan json");
         Log.i("korisnik",korisnik);
-        bike.setKorisnik(korisnik);
+
         return korisnik;
 
 
@@ -196,7 +196,7 @@ private Button mReset;
                 mUlica=(TextView) findViewById(R.id.ulica);
                 mPostaNaziv=(TextView) findViewById(R.id.postbrngr);
                 mDrzava=(TextView) findViewById(R.id.drzava);
-                mKorisnik=(TextView) findViewById(R.id.korisnik);
+
                 mUdaljenost=(TextView) findViewById(R.id.udaljenost);
 
                 double loc1 = 00.00;
@@ -216,13 +216,13 @@ private Button mReset;
                 double loc4 =  loca.getLongitude();
                 float trenutna_brzina = loca.getSpeed();
                 float brzina = (float) (trenutna_brzina * 3.6);
-                bike.setBrzinaUkm(brzina);
+
                 mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
                 mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
                 System.out.println(loc3);
                 System.out.println(loc4);
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
-                bike.setUdaljenost(distance);
+
 
 
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
@@ -234,13 +234,7 @@ private Button mReset;
                 }
 
 
-                try {
-                    mKorisnik.setText(vrati_korisnika());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
                 dohvati_koordinate(loc3, loc4);
                 String cityName = null;
                 String stateName = null;
@@ -294,26 +288,9 @@ private Button mReset;
                 mPostaNaziv.setText(s);
 
                 mDrzava.setText(p);
-                bike.setLokacija(a+s+p);
-                bike.setLongitude(loc4);
-                bike.setLatitude(loc3);
 
-                listaVrijednosti.add(new BikeActivity(bike.getVrijemeAktivnosti(), bike.getBrzinaUkm(), bike.getLokacija(), bike.getLongitude(), bike.getLatitude(), bike.getKorisnik(), bike.getUdaljenost()));
-                for (BikeActivity bk:listaVrijednosti
-                        ) {
-                    System.out.println(bk.getKorisnik());
-                    System.out.println(bk.getBrzinaUkm());
-                    System.out.println(bk.getLatitude());
-                    System.out.println(bk.getLongitude());
-                    System.out.println(bk.getLokacija());
-                    try {
-                        System.out.println(bk.getVrijemeAktivnosti());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(bk.getUdaljenost());
 
-                }
+
 
 
 
@@ -343,8 +320,8 @@ private Button mReset;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
-        listaVrijednosti=new ArrayList<BikeActivity>();
-        bike=new BikeActivity();
+
+
         mStart=(Button) findViewById(R.id.startch);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -379,7 +356,14 @@ private Button mReset;
             return;
         }
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
-
+        mKorisnik=(TextView) findViewById(R.id.korisnik);
+        try {
+            mKorisnik.setText(vrati_korisnika());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

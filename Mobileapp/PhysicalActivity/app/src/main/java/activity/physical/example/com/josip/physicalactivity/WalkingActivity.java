@@ -39,9 +39,11 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import activity.physical.example.com.josip.physicalactivity.model.Registration;
 import activity.physical.example.com.josip.physicalactivity.model.WalkActivity;
 
 
@@ -190,7 +192,6 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
 
-
         cr.stop();
     }
 
@@ -212,7 +213,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         return time;
     }
     public String vrati_korisnika() throws IOException,JSONException {
-        String naziv="prijava";
+        String naziv="prijava.json";
         String korisnik="";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -265,6 +266,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 float trenutna_brzina = loc.getSpeed();
                 float brzina = (float) (trenutna_brzina * 3.6);
 
+
                 tLattitude.setText(String.valueOf(trenutna_brzina));
                 tLongittude.setText(String.valueOf(brzina));
 
@@ -272,6 +274,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
                 tUdaljenost=(TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
+
+
                 dohvati_koordinate(loc3, loc4);
                 String cityName=null;
                 String stateName=null;
@@ -342,16 +346,22 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         }
     };
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+
+
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
         tLocDesc = (TextView) findViewById(R.id.location_dsc);
         state=(TextView) findViewById(R.id.state_dsc);
         adr=(TextView) findViewById(R.id.homead);
-        mKorisnik=(TextView) findViewById(R.id.korisnik);
+
+
         mReset=(Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -371,18 +381,14 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             @Override
             public void onClick(View view) {
                 onclickedstopchronomethar();
-                time=getTimeAfterStop();
+
 
             }
         });
 
-        try {
-            mKorisnik.setText(vrati_korisnika());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
+
+
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -417,11 +423,18 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         senSensorManager=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer=senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this,senAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
-
-
+        mKorisnik=(TextView) findViewById(R.id.korisnik);
+        try {
+            mKorisnik.setText(vrati_korisnika());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
     }
+
 
 
    public void resetSteps(View v){
@@ -460,6 +473,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             long curTime = System.currentTimeMillis();
             if(Math.abs(currentY-previousY)>threshold){
                 numSteps++;
+
                 textViewSteps.setText(String.valueOf(numSteps));
 
             }
