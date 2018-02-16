@@ -42,6 +42,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import activity.physical.example.com.josip.physicalactivity.model.WalkActivity;
+
 
 public class WalkingActivity extends AppCompatActivity implements SensorEventListener {
     private Chronometer cr;
@@ -185,7 +187,10 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
     public void onclickedstopchronomethar() {
+
         cr = (Chronometer) findViewById(R.id.chronometer2);
+
+
         cr.stop();
     }
 
@@ -228,13 +233,114 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         }
         Log.i("poruka","pročitan json");
         Log.i("korisnik",korisnik);
+
         return korisnik;
 
 
     }
-    public void mapi(){
+    LocationListener locListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location loc) {
+            double lat = loc.getLatitude();
+            double lon = loc.getLongitude();
 
-    }
+            if(loc!=null) {
+                double loc1 = 00.00;
+                double loc2 = 00.00;
+                try {
+                    loc1 = Double.parseDouble(vrati_koordinate(0));
+                    loc2 = Double.parseDouble(vrati_koordinate(1));
+                    System.out.println(loc1);
+                    System.out.println(loc2);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                double loc3 =  lat;
+                double loc4 =  lon;
+
+
+                float trenutna_brzina = loc.getSpeed();
+                float brzina = (float) (trenutna_brzina * 3.6);
+
+                tLattitude.setText(String.valueOf(trenutna_brzina));
+                tLongittude.setText(String.valueOf(brzina));
+
+
+                double distance = distance(loc1,loc2,loc3,loc4,"K");
+                tUdaljenost=(TextView) findViewById(R.id.udaljenost);
+                tUdaljenost.setText(String.valueOf(distance));
+                dohvati_koordinate(loc3, loc4);
+                String cityName=null;
+                String stateName=null;
+                String ad=null;
+                String ad2=null;
+                String posta=null;
+                Geocoder gcd = new Geocoder(getBaseContext(),Locale.getDefault());
+                List<Address> addresses;
+
+
+                try {
+                    addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
+                    if(addresses.size()>0){
+                        try {
+                            Log.i("poruka",addresses.get(0).getLocality());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Log.i("poruka",addresses.get(0).getCountryName());
+                        Log.i("poruka",addresses.get(0).getAddressLine(0));
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(1));
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        try {
+                            Log.i("poruka", addresses.get(0).getAddressLine(2));
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                        cityName=addresses.get(0).getLocality();
+                        stateName=addresses.get(0).getCountryName();
+                        ad=addresses.get(0).getAddressLine(0);
+
+
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String s =
+                        cityName;
+                String p=stateName;
+                String a=ad;
+
+
+                tLocDesc.setText(s);
+                state.setText(p);
+                adr.setText(a);
+
+
+                loc.reset();
+            }}
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -279,107 +385,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         }
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        LocationListener locListener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location loc) {
-                double lat = loc.getLatitude();
-                double lon = loc.getLongitude();
 
-                if(loc!=null) {
-                    double loc1 = 00.00;
-                    double loc2 = 00.00;
-                    try {
-                        loc1 = Double.parseDouble(vrati_koordinate(0));
-                        loc2 = Double.parseDouble(vrati_koordinate(1));
-                        System.out.println(loc1);
-                        System.out.println(loc2);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    double loc3 =  lat;
-                    double loc4 =  lon;
-
-
-                float trenutna_brzina = loc.getSpeed();
-                float brzina = (float) (trenutna_brzina * 3.6);
-
-                tLattitude.setText(String.valueOf(trenutna_brzina));
-                tLongittude.setText(String.valueOf(brzina));
-
-
-                double distance = distance(loc1,loc2,loc3,loc4,"K");
-                    tUdaljenost=(TextView) findViewById(R.id.udaljenost);
-                    tUdaljenost.setText(String.valueOf(distance));
-                    dohvati_koordinate(loc3, loc4);
-                String cityName=null;
-                String stateName=null;
-                String ad=null;
-                String ad2=null;
-                String posta=null;
-                Geocoder gcd = new Geocoder(getBaseContext(),Locale.getDefault());
-                List<Address> addresses;
-
-
-                try {
-                     addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
-                    if(addresses.size()>0){
-                        try {
-                            Log.i("poruka",addresses.get(0).getLocality());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        Log.i("poruka",addresses.get(0).getCountryName());
-                        Log.i("poruka",addresses.get(0).getAddressLine(0));
-                        try {
-                            Log.i("poruka", addresses.get(0).getAddressLine(1));
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                        try {
-                            Log.i("poruka", addresses.get(0).getAddressLine(2));
-                        }catch(Exception e){
-                            e.printStackTrace();
-                        }
-                        cityName=addresses.get(0).getLocality();
-                        stateName=addresses.get(0).getCountryName();
-                        ad=addresses.get(0).getAddressLine(0);
-
-
-
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                String s =
-                        cityName;
-                String p=stateName;
-                String a=ad;
-
-
-                tLocDesc.setText(s);
-                state.setText(p);
-                adr.setText(a);
-                loc.reset();
-            }}
-
-            @Override
-            public void onStatusChanged(String s, int i, Bundle bundle) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String s) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String s) {
-
-            }
-        };
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -443,6 +449,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
+
         Sensor mySensor = sensorEvent.sensor;
         if (mySensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = sensorEvent.values[0];
@@ -456,6 +463,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 textViewSteps.setText(String.valueOf(numSteps));
 
             }
+
+
 
             textViewX.setText(String.valueOf(x));
             textViewY.setText(String.valueOf(y));

@@ -28,9 +28,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.DoubleBuffer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import activity.physical.example.com.josip.physicalactivity.model.RunningActivity;
 
 public class TrcanjeActivity extends AppCompatActivity  {
 private Chronometer cr;
@@ -46,7 +49,8 @@ private int brojPojavljivanjaKoordinata=0;
     private Button mStart;
     private Button mStop;
     private Button mReset;
-
+    private RunningActivity run;
+    private List<RunningActivity> listaVrijednosti;
     private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -87,9 +91,11 @@ private int brojPojavljivanjaKoordinata=0;
     }
 
     public void stopc() {
+
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.stop();
         String time=cr.getText().toString();
+        run.setVrijemeAktivnosti(time);
     }
 
     public String getTimeAfterStop() {
@@ -127,6 +133,7 @@ private int brojPojavljivanjaKoordinata=0;
             korisnik=object;
             prijavaBuffer.append(object);
         }
+        run.setKorisnik(korisnik);
         Log.i("poruka","pročitan json");
         Log.i("korisnik",korisnik);
         return korisnik;
@@ -220,6 +227,8 @@ private int brojPojavljivanjaKoordinata=0;
                 }
                 double loc3 =  location.getLatitude();
                 double loc4 =  location.getLongitude();
+                run.setLongitude(loc4);
+                run.setLatitude(loc3);
                 TextView tekst = (TextView) findViewById(R.id.kmh);
                 TextView km = (TextView) findViewById(R.id.kilometar);
                 System.out.println(loc3);
@@ -228,10 +237,10 @@ private int brojPojavljivanjaKoordinata=0;
                 float brzina = (float) (trenutna_brzina * 3.6);
                 tekst.setText(String.valueOf(trenutna_brzina) + " m/s");
                 km.setText(String.valueOf(brzina) + " km/h");
-
+                run.setBrzinaUkm(brzina);
 
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
-
+                run.setUdaljenost(distance);
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
                 try {
                     mtv1 = (TextView) findViewById(R.id.dist);
@@ -307,6 +316,14 @@ private int brojPojavljivanjaKoordinata=0;
                 tv.setText(s);
                 TextView dr = (TextView) findViewById(R.id.state);
                 dr.setText(p);
+
+                run.setLokacija(a+s+p);
+                listaVrijednosti.add(new RunningActivity(run.getVrijemeAktivnosti(),run.getBrzinaUkm(),run.getLokacija(),run.getLongitude(),run.getLatitude(),run.getKorisnik(),run.getUdaljenost()));
+                for (RunningActivity rn: listaVrijednosti
+                     ) {
+                    System.out.println(rn.getBrzinaUkm()+rn.getLatitude()+rn.getLongitude()+rn.getVrijemeAktivnosti()+rn.getLokacija()+rn.getKorisnik()+rn.getUdaljenost());
+
+                }
                 location.reset();
 
             }
@@ -332,6 +349,8 @@ private int brojPojavljivanjaKoordinata=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trcanje);
+        run=new RunningActivity();
+        listaVrijednosti = new ArrayList<RunningActivity>();
 
         mStart=(Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {

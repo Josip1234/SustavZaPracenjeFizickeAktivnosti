@@ -306,7 +306,11 @@ private Button mReset;
                     System.out.println(bk.getLatitude());
                     System.out.println(bk.getLongitude());
                     System.out.println(bk.getLokacija());
-                    System.out.println(bk.getVrijemeAktivnosti());
+                    try {
+                        System.out.println(bk.getVrijemeAktivnosti());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(bk.getUdaljenost());
 
                 }

@@ -13,7 +13,9 @@ public class WalkActivity {
     private double latitude;
     private double brzinaUkm;
     private String korisnik;
+    public WalkActivity(){
 
+    }
     public WalkActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik) {
         this.udaljenost = udaljenost;
         this.vrijemeAktivnosti = vrijemeAktivnosti;
@@ -49,7 +51,7 @@ public class WalkActivity {
         this.koraci = koraci;
     }
 
-    public String getAdresa() {
+    public String getAdresa()  {
         return adresa;
     }
 

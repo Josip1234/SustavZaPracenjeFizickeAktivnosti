@@ -12,7 +12,9 @@ public class RunningActivity {
     private double latitude;
     private String korisnik;
     private double udaljenost;
+    public RunningActivity(){
 
+    }
     public RunningActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude, String korisnik, double udaljenost) {
         this.vrijemeAktivnosti = vrijemeAktivnosti;
         this.brzinaUkm = brzinaUkm;
