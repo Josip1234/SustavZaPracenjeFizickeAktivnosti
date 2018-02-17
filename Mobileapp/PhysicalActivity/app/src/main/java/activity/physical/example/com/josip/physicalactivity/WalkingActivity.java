@@ -37,6 +37,7 @@ import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -78,7 +79,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private Button mReset;
     private Button mStart;
     private Button mStop;
-
+    private JSONArray polje;
+    private JSONObject walk;
     public void dohvati_koordinate(double lat,double lon){
 
 
@@ -189,10 +191,12 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
     public void onclickedstopchronomethar() {
-
+        String time="";
         cr = (Chronometer) findViewById(R.id.chronometer2);
 
         cr.stop();
+        time=getTimeAfterStop();
+
     }
 
     public String getTimeAfterStop() {
@@ -274,7 +278,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 double distance = distance(loc1,loc2,loc3,loc4,"K");
                 tUdaljenost=(TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
-
+                try {
+                    walk.put("udaljenost",distance);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 dohvati_koordinate(loc3, loc4);
                 String cityName=null;
@@ -325,7 +333,14 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 tLocDesc.setText(s);
                 state.setText(p);
                 adr.setText(a);
-
+                try {
+                    walk.put("adresa",s+p+a);
+                    walk.put("longitude", loc4);
+                    walk.put("latitude",loc3);
+                    walk.put("brzinaUkm",brzina);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
                 loc.reset();
             }}
@@ -354,6 +369,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
 
+        polje = new JSONArray();
+        walk=new JSONObject();
 
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
@@ -426,6 +443,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         mKorisnik=(TextView) findViewById(R.id.korisnik);
         try {
             mKorisnik.setText(vrati_korisnika());
+            walk.put("korisnik",vrati_korisnika());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -434,6 +452,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
 
     }
+
 
 
 
@@ -477,7 +496,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 textViewSteps.setText(String.valueOf(numSteps));
 
             }
-
+            try {
+                walk.put("koraci",numSteps);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
             textViewX.setText(String.valueOf(x));
@@ -521,6 +544,24 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             senSensorManager.unregisterListener(this);
 
             time=getTimeAfterStop();
+            try {
+                walk.put("vrijemeAktivnosti",time);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            polje.put(walk);
+            String text=polje.toString();
+            try {
+                FileOutputStream os = openFileOutput("Walking.json",MODE_PRIVATE);
+                try {
+                    os.write(text.getBytes());
+                    os.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         };
 
         protected void onResume() {
@@ -546,3 +587,4 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
         };*/
     };
+
