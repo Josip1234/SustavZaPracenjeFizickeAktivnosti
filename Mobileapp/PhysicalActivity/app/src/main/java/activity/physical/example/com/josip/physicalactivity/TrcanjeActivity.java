@@ -35,16 +35,16 @@ import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.model.RunningActivity;
 
-public class TrcanjeActivity extends AppCompatActivity  {
-private Chronometer cr;
+public class TrcanjeActivity extends AppCompatActivity {
+    private Chronometer cr;
 
-private TextView mtv1;
-public int indeks=0;
+    private TextView mtv1;
+    public int indeks = 0;
     private Button map;
-private double kilometri=00.00;
+    private double kilometri = 00.00;
     private double[] kilometraza;
-private float suma=0;
-private int brojPojavljivanjaKoordinata=0;
+    private float suma = 0;
+    private int brojPojavljivanjaKoordinata = 0;
     private TextView mBrojPretrcanih;
     private Button mStart;
     private Button mStop;
@@ -79,11 +79,12 @@ private int brojPojavljivanjaKoordinata=0;
         return (rad * 180 / Math.PI);
     }
 
-    public void resetc(){
-        cr=(Chronometer) findViewById(R.id.chronometer3);
+    public void resetc() {
+        cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.setBase(SystemClock.elapsedRealtime());
         cr.stop();
     }
+
     public void startc() {
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.start();
@@ -93,7 +94,7 @@ private int brojPojavljivanjaKoordinata=0;
 
         cr = (Chronometer) findViewById(R.id.chronometer3);
         cr.stop();
-        String time=cr.getText().toString();
+        String time = cr.getText().toString();
 
     }
 
@@ -112,13 +113,13 @@ private int brojPojavljivanjaKoordinata=0;
     }
 
 
-    public String vrati_korisnika() throws IOException,JSONException {
-        String naziv="prijava.json";
-        String korisnik="";
+    public String vrati_korisnika() throws IOException, JSONException {
+        String naziv = "prijava.json";
+        String korisnik = "";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -126,46 +127,46 @@ private int brojPojavljivanjaKoordinata=0;
         fis.close();
 
         JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer= new StringBuffer();
-        for(int i=0;i<data.length();i++){
-            String object=data.getJSONObject(i).getString("username");
-            korisnik=object;
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            String object = data.getJSONObject(i).getString("username");
+            korisnik = object;
             prijavaBuffer.append(object);
         }
 
-        Log.i("poruka","pročitan json");
-        Log.i("korisnik",korisnik);
+        Log.i("poruka", "pročitan json");
+        Log.i("korisnik", korisnik);
         return korisnik;
 
 
     }
 
-    public void kreiraj_prethodne_koordinate(double lat ,double lon) throws IOException,JSONException{
+    public void kreiraj_prethodne_koordinate(double lat, double lon) throws IOException, JSONException {
 
         JSONArray array = new JSONArray();
         JSONObject object;
-        object=new JSONObject();
-        object.put("koordinata",lat);
+        object = new JSONObject();
+        object.put("koordinata", lat);
         array.put(object);
-        object=new JSONObject();
-        object.put("koordinata",lon);
+        object = new JSONObject();
+        object.put("koordinata", lon);
         array.put(object);
         String text = array.toString();
-        FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
+        FileOutputStream fos = openFileOutput("koordinate.json", MODE_PRIVATE);
         fos.write(text.getBytes());
         fos.close();
-        Log.i("message","succesfully written to json");
+        Log.i("message", "succesfully written to json");
     }
 
 
-    public String vrati_koordinate(int pozicija) throws IOException,JSONException {
-        String naziv="koordinate.json";
+    public String vrati_koordinate(int pozicija) throws IOException, JSONException {
+        String naziv = "koordinate.json";
 
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -176,17 +177,11 @@ private int brojPojavljivanjaKoordinata=0;
         StringBuffer prijavaBuffer = new StringBuffer();
 
 
-                String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
-                prijavaBuffer.append(koordinata2);
+        String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
+        prijavaBuffer.append(koordinata2);
 
 
-
-
-
-
-
-
-        Log.i("poruka","pročitan json");
+        Log.i("poruka", "pročitan json");
 
         return prijavaBuffer.toString();
 
@@ -194,12 +189,12 @@ private int brojPojavljivanjaKoordinata=0;
     }
 
 
-    public void dohvati_koordinate(double lat,double lon){
+    public void dohvati_koordinate(double lat, double lon) {
 
 
         try {
-            kreiraj_prethodne_koordinate(lat,lon);
-            Log.i("poruka","Uspješno spremljene koordinate");
+            kreiraj_prethodne_koordinate(lat, lon);
+            Log.i("poruka", "Uspješno spremljene koordinate");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -210,7 +205,7 @@ private int brojPojavljivanjaKoordinata=0;
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-            if(location!=null) {
+            if (location != null) {
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -224,8 +219,8 @@ private int brojPojavljivanjaKoordinata=0;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                double loc3 =  location.getLatitude();
-                double loc4 =  location.getLongitude();
+                double loc3 = location.getLatitude();
+                double loc4 = location.getLongitude();
 
                 TextView tekst = (TextView) findViewById(R.id.kmh);
                 TextView km = (TextView) findViewById(R.id.kilometar);
@@ -237,7 +232,7 @@ private int brojPojavljivanjaKoordinata=0;
                 km.setText(String.valueOf(brzina) + " km/h");
 
 
-                double distance = distance(loc1,loc2,loc3,loc4,"K");
+                double distance = distance(loc1, loc2, loc3, loc4, "K");
 
                 System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
                 try {
@@ -248,12 +243,11 @@ private int brojPojavljivanjaKoordinata=0;
                 }
 
 
+                // kilometri+=distance;
+                // mBrojPretrcanih=(TextView) findViewById(R.id.brkm);
+                //mBrojPretrcanih.setText(String.valueOf(kilometri));
 
-                   // kilometri+=distance;
-                   // mBrojPretrcanih=(TextView) findViewById(R.id.brkm);
-                    //mBrojPretrcanih.setText(String.valueOf(kilometri));
-
-            //System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");//
+                //System.out.println("Koordinata se pojavljuje"+brojPojavljivanjaKoordinata+"put");//
                 dohvati_koordinate(loc3, loc4);
 
 
@@ -267,8 +261,6 @@ private int brojPojavljivanjaKoordinata=0;
                 String posta = null;
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
-
-
 
 
                 try {
@@ -296,7 +288,6 @@ private int brojPojavljivanjaKoordinata=0;
                         ad = addresses.get(0).getAddressLine(0);
 
 
-
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -316,11 +307,10 @@ private int brojPojavljivanjaKoordinata=0;
                 dr.setText(p);
 
 
-
                 location.reset();
 
             }
-        };
+        }
 
         @Override
         public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -344,22 +334,21 @@ private int brojPojavljivanjaKoordinata=0;
         setContentView(R.layout.activity_trcanje);
 
 
-
-        mStart=(Button) findViewById(R.id.start);
+        mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startc();
             }
         });
-        mStop=(Button) findViewById(R.id.stop);
+        mStop = (Button) findViewById(R.id.stop);
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 stopc();
             }
         });
-        mReset=(Button) findViewById(R.id.reset);
+        mReset = (Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -380,7 +369,7 @@ private int brojPojavljivanjaKoordinata=0;
         }
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
-        TextView kor=(TextView) findViewById(R.id.korisnik);
+        TextView kor = (TextView) findViewById(R.id.korisnik);
         try {
             kor.setText(vrati_korisnika());
         } catch (IOException e) {
@@ -388,7 +377,40 @@ private int brojPojavljivanjaKoordinata=0;
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }};
+    }
+
+    protected void onResume() {
+        super.onResume();
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
 
+    }
 
+    protected void onStart() {
+        super.onStart();
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
+    }
+
+}
