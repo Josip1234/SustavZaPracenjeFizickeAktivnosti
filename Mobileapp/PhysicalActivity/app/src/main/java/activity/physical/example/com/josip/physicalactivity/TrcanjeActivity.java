@@ -378,7 +378,7 @@ private int brojPojavljivanjaKoordinata=0;
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
         TextView kor=(TextView) findViewById(R.id.korisnik);
         try {

@@ -81,12 +81,13 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private Button mStop;
     private JSONArray polje;
     private JSONObject walk;
-    public void dohvati_koordinate(double lat,double lon){
+
+    public void dohvati_koordinate(double lat, double lon) {
 
 
         try {
-            kreiraj_prethodne_koordinate(lat,lon);
-            Log.i("poruka","Uspješno spremljene koordinate");
+            kreiraj_prethodne_koordinate(lat, lon);
+            Log.i("poruka", "Uspješno spremljene koordinate");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -95,32 +96,32 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
 
-    public void kreiraj_prethodne_koordinate(double lat ,double lon) throws IOException,JSONException{
+    public void kreiraj_prethodne_koordinate(double lat, double lon) throws IOException, JSONException {
 
         JSONArray array = new JSONArray();
         JSONObject object;
-        object=new JSONObject();
-        object.put("koordinata",lat);
+        object = new JSONObject();
+        object.put("koordinata", lat);
         array.put(object);
-        object=new JSONObject();
-        object.put("koordinata",lon);
+        object = new JSONObject();
+        object.put("koordinata", lon);
         array.put(object);
         String text = array.toString();
-        FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
+        FileOutputStream fos = openFileOutput("koordinate.json", MODE_PRIVATE);
         fos.write(text.getBytes());
         fos.close();
-        Log.i("message","succesfully written to json");
+        Log.i("message", "succesfully written to json");
     }
 
 
-    public String vrati_koordinate(int pozicija) throws IOException,JSONException {
-        String naziv="koordinate.json";
+    public String vrati_koordinate(int pozicija) throws IOException, JSONException {
+        String naziv = "koordinate.json";
 
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -135,13 +136,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         prijavaBuffer.append(koordinata2);
 
 
-
-
-
-
-
-
-        Log.i("poruka","pročitan json");
+        Log.i("poruka", "pročitan json");
 
         return prijavaBuffer.toString();
 
@@ -178,8 +173,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
 
-    public void resetc(){
-        cr=(Chronometer) findViewById(R.id.chronometer2);
+    public void resetc() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
         cr.stop();
     }
@@ -191,11 +186,11 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
     public void onclickedstopchronomethar() {
-        String time="";
+        String time = "";
         cr = (Chronometer) findViewById(R.id.chronometer2);
 
         cr.stop();
-        time=getTimeAfterStop();
+        time = getTimeAfterStop();
 
     }
 
@@ -205,24 +200,27 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         time = cr.getText().toString();
         return time;
     }
-     public String getTime(){
-        cr=(Chronometer) findViewById(R.id.chronometer2);
-        String time=cr.getText().toString();
+
+    public String getTime() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        String time = cr.getText().toString();
         return time;
-     }
+    }
+
     public String getTimeAfterWishClick() {
         String time;
         cr = (Chronometer) findViewById(R.id.chronometer2);
         time = cr.getText().toString();
         return time;
     }
-    public String vrati_korisnika() throws IOException,JSONException {
-        String naziv="prijava.json";
-        String korisnik="";
+
+    public String vrati_korisnika() throws IOException, JSONException {
+        String naziv = "prijava.json";
+        String korisnik = "";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -230,26 +228,27 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
         fis.close();
 
         JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer= new StringBuffer();
-        for(int i=0;i<data.length();i++){
-            String object=data.getJSONObject(i).getString("username");
-            korisnik=object;
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            String object = data.getJSONObject(i).getString("username");
+            korisnik = object;
             prijavaBuffer.append(object);
         }
-        Log.i("poruka","pročitan json");
-        Log.i("korisnik",korisnik);
+        Log.i("poruka", "pročitan json");
+        Log.i("korisnik", korisnik);
 
         return korisnik;
 
 
     }
+
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location loc) {
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
 
-            if(loc!=null) {
+            if (loc != null) {
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -263,8 +262,8 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                double loc3 =  lat;
-                double loc4 =  lon;
+                double loc3 = lat;
+                double loc4 = lon;
 
 
                 float trenutna_brzina = loc.getSpeed();
@@ -275,49 +274,48 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 tLongittude.setText(String.valueOf(brzina));
 
 
-                double distance = distance(loc1,loc2,loc3,loc4,"K");
-                tUdaljenost=(TextView) findViewById(R.id.udaljenost);
+                double distance = distance(loc1, loc2, loc3, loc4, "K");
+                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
                 try {
-                    walk.put("udaljenost",distance);
+                    walk.put("udaljenost", distance);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 dohvati_koordinate(loc3, loc4);
-                String cityName=null;
-                String stateName=null;
-                String ad=null;
-                String ad2=null;
-                String posta=null;
-                Geocoder gcd = new Geocoder(getBaseContext(),Locale.getDefault());
+                String cityName = null;
+                String stateName = null;
+                String ad = null;
+                String ad2 = null;
+                String posta = null;
+                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
 
 
                 try {
-                    addresses=gcd.getFromLocation(loc.getLatitude(),loc.getLongitude(),1);
-                    if(addresses.size()>0){
+                    addresses = gcd.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+                    if (addresses.size() > 0) {
                         try {
-                            Log.i("poruka",addresses.get(0).getLocality());
+                            Log.i("poruka", addresses.get(0).getLocality());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        Log.i("poruka",addresses.get(0).getCountryName());
-                        Log.i("poruka",addresses.get(0).getAddressLine(0));
+                        Log.i("poruka", addresses.get(0).getCountryName());
+                        Log.i("poruka", addresses.get(0).getAddressLine(0));
                         try {
                             Log.i("poruka", addresses.get(0).getAddressLine(1));
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                         try {
                             Log.i("poruka", addresses.get(0).getAddressLine(2));
-                        }catch(Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        cityName=addresses.get(0).getLocality();
-                        stateName=addresses.get(0).getCountryName();
-                        ad=addresses.get(0).getAddressLine(0);
-
+                        cityName = addresses.get(0).getLocality();
+                        stateName = addresses.get(0).getCountryName();
+                        ad = addresses.get(0).getAddressLine(0);
 
 
                     }
@@ -326,24 +324,25 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 }
                 String s =
                         cityName;
-                String p=stateName;
-                String a=ad;
+                String p = stateName;
+                String a = ad;
 
 
                 tLocDesc.setText(s);
                 state.setText(p);
                 adr.setText(a);
                 try {
-                    walk.put("adresa",s+p+a);
+                    walk.put("adresa", s + p + a);
                     walk.put("longitude", loc4);
-                    walk.put("latitude",loc3);
-                    walk.put("brzinaUkm",brzina);
+                    walk.put("latitude", loc3);
+                    walk.put("brzinaUkm", brzina);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 loc.reset();
-            }}
+            }
+        }
 
         @Override
         public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -362,38 +361,36 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     };
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
 
         polje = new JSONArray();
-        walk=new JSONObject();
+        walk = new JSONObject();
 
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLongittude = (TextView) findViewById(R.id.outputLong);
         tLocDesc = (TextView) findViewById(R.id.location_dsc);
-        state=(TextView) findViewById(R.id.state_dsc);
-        adr=(TextView) findViewById(R.id.homead);
+        state = (TextView) findViewById(R.id.state_dsc);
+        adr = (TextView) findViewById(R.id.homead);
 
 
-        mReset=(Button) findViewById(R.id.reset);
+        mReset = (Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resetc();
             }
         });
-        mStart=(Button) findViewById(R.id.start);
+        mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 start();
             }
         });
-        mStop=(Button) findViewById(R.id.stop);
+        mStop = (Button) findViewById(R.id.stop);
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -402,8 +399,6 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
             }
         });
-
-
 
 
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -419,31 +414,31 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locListener);
-        textViewX=(TextView) findViewById(R.id.textViewX);
-        textViewY=(TextView) findViewById(R.id.textViewY);
-        textViewZ=(TextView) findViewById(R.id.textViewZ);
-        textViewSteps=(TextView) findViewById(R.id.textSteps);
-        textSensitive=(TextView) findViewById(R.id.textSensitive);
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
+        textViewX = (TextView) findViewById(R.id.textViewX);
+        textViewY = (TextView) findViewById(R.id.textViewY);
+        textViewZ = (TextView) findViewById(R.id.textViewZ);
+        textViewSteps = (TextView) findViewById(R.id.textSteps);
+        textSensitive = (TextView) findViewById(R.id.textSensitive);
         buttonReset = (Button) findViewById(R.id.buttonReset);
         /*seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(10);
         seekBar.setOnSeekBarChangeListener(seekBarListener);*/
-        threshold=15;
+        threshold = 15;
         textSensitive.setText(String.valueOf(threshold));
-        previousY=0;
-        currentY=0;
-        numSteps=0;
-        acceleration=0.00f;
+        previousY = 0;
+        currentY = 0;
+        numSteps = 0;
+        acceleration = 0.00f;
 
 
-        senSensorManager=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        senAccelerometer=senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        senSensorManager.registerListener(this,senAccelerometer,SensorManager.SENSOR_DELAY_NORMAL);
-        mKorisnik=(TextView) findViewById(R.id.korisnik);
+        senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        mKorisnik = (TextView) findViewById(R.id.korisnik);
         try {
             mKorisnik.setText(vrati_korisnika());
-            walk.put("korisnik",vrati_korisnika());
+            walk.put("korisnik", vrati_korisnika());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -454,29 +449,28 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     }
 
 
+    public void resetSteps(View v) {
+        numSteps = 0;
+        textViewSteps.setText(String.valueOf(numSteps));
+    }
 
+    private OnSeekBarChangeListener seekBarListener = new OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            threshold = seekBar.getProgress();
+            textSensitive.setText(String.valueOf(threshold));
+        }
 
-   public void resetSteps(View v){
-       numSteps=0;
-       textViewSteps.setText(String.valueOf(numSteps));
-   }
-   private OnSeekBarChangeListener seekBarListener= new OnSeekBarChangeListener() {
-       @Override
-       public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-           threshold=seekBar.getProgress();
-           textSensitive.setText(String.valueOf(threshold));
-       }
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
 
-       @Override
-       public void onStartTrackingTouch(SeekBar seekBar) {
+        }
 
-       }
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
 
-       @Override
-       public void onStopTrackingTouch(SeekBar seekBar) {
-
-       }
-   };
+        }
+    };
 
 
     @Override
@@ -488,16 +482,16 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             float y = sensorEvent.values[1];
             float z = sensorEvent.values[2];
 
-            currentY=y;
+            currentY = y;
             long curTime = System.currentTimeMillis();
-            if(Math.abs(currentY-previousY)>threshold){
+            if (Math.abs(currentY - previousY) > threshold) {
                 numSteps++;
 
                 textViewSteps.setText(String.valueOf(numSteps));
 
             }
             try {
-                walk.put("koraci",numSteps);
+                walk.put("koraci", numSteps);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -507,7 +501,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             textViewY.setText(String.valueOf(y));
             textViewZ.setText(String.valueOf(z));
 
-            previousY=y;
+            previousY = y;
             if ((curTime - lastUpdate) > 10) {
                 long difftime = (curTime - lastUpdate);
                 lastUpdate = curTime;
@@ -528,48 +522,80 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
                 }*/
 
 
-
             }
         }
     }
 
-            @Override
-            public void onAccuracyChanged (Sensor sensor,int i){
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
 
-            }
+    }
 
 
-        protected void onPause(){
-            super.onPause();
-            senSensorManager.unregisterListener(this);
+    protected void onPause() {
+        super.onPause();
+        senSensorManager.unregisterListener(this);
 
-            time=getTimeAfterStop();
+        time = getTimeAfterStop();
+        try {
+            walk.put("vrijemeAktivnosti", time);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        polje.put(walk);
+        String text = polje.toString();
+        try {
+            FileOutputStream os = openFileOutput("Walking.json", MODE_PRIVATE);
             try {
-                walk.put("vrijemeAktivnosti",time);
-            } catch (JSONException e) {
+                os.write(text.getBytes());
+                os.close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-            polje.put(walk);
-            String text=polje.toString();
-            try {
-                FileOutputStream os = openFileOutput("Walking.json",MODE_PRIVATE);
-                try {
-                    os.write(text.getBytes());
-                    os.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        };
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
-        protected void onResume() {
-            super.onResume();
-            senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    ;
+
+    protected void onResume() {
+        super.onResume();
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
 
-        };
+    }
+
+    ;
+
+    protected void onStart() {
+        super.onStart();
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
+        }
 
 
 

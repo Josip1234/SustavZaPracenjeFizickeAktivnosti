@@ -355,7 +355,7 @@ private Button mReset;
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locListener);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
         mKorisnik=(TextView) findViewById(R.id.korisnik);
         try {
             mKorisnik.setText(vrati_korisnika());
