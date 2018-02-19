@@ -2,6 +2,7 @@ package com.josip.physical.activity.walking;
 
 import org.springframework.stereotype.Component;
 
+
 @Component("walking")
 public class WalkingActivity {
 private double udaljenost;

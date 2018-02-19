@@ -4,7 +4,7 @@ package activity.physical.example.com.josip.physicalactivity.model;
  * Created by Josip on 1.11.2017..
  */
 
-public class WalkActivity {
+public class WalkingActivity {
     private double udaljenost;
     private String vrijemeAktivnosti;
     private int koraci;
@@ -13,10 +13,10 @@ public class WalkActivity {
     private double latitude;
     private double brzinaUkm;
     private String korisnik;
-    public WalkActivity(){
+    public WalkingActivity(){
 
     }
-    public WalkActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik) {
+    public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik) {
         this.udaljenost = udaljenost;
         this.vrijemeAktivnosti = vrijemeAktivnosti;
         this.koraci = koraci;

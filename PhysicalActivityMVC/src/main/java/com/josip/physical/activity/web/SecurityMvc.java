@@ -54,7 +54,7 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 		 .antMatchers("/runningactivity").hasRole("USER")
 		 .antMatchers("/walking").hasRole("USER")
 		 .antMatchers("/sum").hasRole("USER")
-		 .anyRequest().permitAll();
+		 .anyRequest().permitAll().and().csrf().disable();
 		 
 		
 	}

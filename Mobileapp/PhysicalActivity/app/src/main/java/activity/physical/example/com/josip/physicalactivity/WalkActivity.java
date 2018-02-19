@@ -6,49 +6,57 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.hardware.TriggerEvent;
-import android.hardware.TriggerEventListener;
 import android.location.Address;
-import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
-import activity.physical.example.com.josip.physicalactivity.model.WalkActivity;
+import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import retrofit2.http.HTTP;
 
 
-public class WalkingActivity extends AppCompatActivity implements SensorEventListener {
+public class WalkActivity extends AppCompatActivity implements SensorEventListener {
     private Chronometer cr;
     private TextView atv;
     private SensorManager senSensorManager;
@@ -81,6 +89,50 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     private Button mStop;
     private JSONArray polje;
     private JSONObject walk;
+
+
+    public WalkingActivity procitajPodatke() throws IOException, JSONException {
+        WalkingActivity walkingActivity = new WalkingActivity();
+        String userjson = "";
+        String passjson = "";
+        String naziv = "Walking.json";
+
+
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
+            String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
+            int koraci = data.getJSONObject(i).getInt("koraci");
+            String adresa = data.getJSONObject(i).getString("adresa");
+            double longitude = data.getJSONObject(i).getDouble("longitude");
+            double latitude = data.getJSONObject(i).getDouble("latitude");
+            double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
+            String korisnik = data.getJSONObject(i).getString("korisnik");
+            prijavaBuffer.append(udaljenost+""+vrijemeAktivnosti+""+koraci+""+adresa+""+longitude+""+latitude+""+brzinaUkm+""+korisnik);
+            walkingActivity=new WalkingActivity(udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,korisnik);
+
+
+            Log.i("poruka", "pročitan json");
+
+
+
+        }
+        return walkingActivity;
+    }
+
+
+
 
     public void dohvati_koordinate(double lat, double lon) {
 
@@ -365,7 +417,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
-
+        WalkingActivity walkingActivity = new WalkingActivity();
         polje = new JSONArray();
         walk = new JSONObject();
 
@@ -549,18 +601,68 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             try {
                 os.write(text.getBytes());
                 os.close();
+
+
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+
+        //RestTemplate rest = new RestTemplate(true);
+
+        //HttpHeaders headers = new HttpHeaders();
+        //headers.setContentType(MediaType.APPLICATION_JSON);
+
+        try {
+           procitajPodatke();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        //MultiValueMap<String, WalkingActivity> mapa = new LinkedMultiValueMap<String,WalkingActivity>();
+        //mapa.add("kljuc",new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
+       // WalkingActivity mapa = walk;
+/*
+ RestTemplate rest = new RestTemplate(true);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+            mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.ALL));
+            rest.postForLocation("http://10.0.2.2:8080/physical/walking",walkingActivity);
+
+
+
+
+
+
+ */
+        //HttpEntity<MultiValueMap<String,WalkingActivity>> request = new HttpEntity<MultiValueMap<String, WalkingActivity>>(mapa,headers);
+       //HttpEntity<WalkingActivity> request = new HttpEntity<WalkingActivity>(mapa,headers);
+        //MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        //mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.ALL));
+        //rest.getMessageConverters().add(mappingJackson2HttpMessageConverter);
+       // rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
+        //ResponseEntity<WalkingActivity> responseEntity = rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
+        //rest.postForLocation("http://10.0.2.2:8080/physical/walking",walk);
+        //System.out.println("response header:"+responseEntity.getHeaders().toString());
+        //System.out.println("response body:"+responseEntity.getBody().toString());
+
+
+
+
     }
 
-    ;
+
 
     protected void onResume() {
         super.onResume();
+
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -578,7 +680,7 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
 
     }
 
-    ;
+
 
     protected void onStart() {
         super.onStart();
@@ -612,5 +714,21 @@ public class WalkingActivity extends AppCompatActivity implements SensorEventLis
             tv3.setText(Float.toString(last_z));
 
         };*/
-    };
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

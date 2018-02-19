@@ -38,7 +38,7 @@
                 android:value="@string/google_maps_key" />
         </activity>
         <activity
-            android:name=".WalkingActivity"
+            android:name=".WalkActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".StartingActivity">
             <intent-filter>

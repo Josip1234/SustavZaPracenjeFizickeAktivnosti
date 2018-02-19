@@ -57,7 +57,7 @@ public class FragmentList extends ListFragment {
         super.onListItemClick(l, v, position, id);
         if(position==0){
 
-            Intent intent = new Intent(v.getContext(),WalkingActivity.class);
+            Intent intent = new Intent(v.getContext(),WalkActivity.class);
 
             startActivityForResult(intent,0);
         }else if(position==1){
