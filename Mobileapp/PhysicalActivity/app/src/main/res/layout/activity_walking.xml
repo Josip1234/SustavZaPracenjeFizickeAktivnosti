@@ -250,6 +250,34 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+
+                    <ImageButton
+                        android:id="@+id/posaljiPodatke"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:srcCompat="@android:drawable/ic_menu_send" />
+
+
+
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+                    <ProgressBar
+                        android:id="@+id/uTijeku"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/textViewX"
                         android:layout_width="wrap_content"
