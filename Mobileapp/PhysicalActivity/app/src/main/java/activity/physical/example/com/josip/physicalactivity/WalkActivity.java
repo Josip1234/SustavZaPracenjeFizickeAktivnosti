@@ -227,13 +227,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         String time = "";
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = getTimeAfterStop();
+        cr.setText(time);
         timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
         cr.setBase(SystemClock.elapsedRealtime());
 
         cr.stop();
 
-        time = getTimeAfterStop();
-        cr.setText(time);
+
 
     }
 
