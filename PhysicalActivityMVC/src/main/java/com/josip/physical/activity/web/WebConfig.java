@@ -28,6 +28,7 @@ public ViewResolver viewResolver(){
 }
 @Override
 public void configureDefaultServletHandling(DefaultServletHandlerConfigurer config){
+	
 	config.enable();
 }
 

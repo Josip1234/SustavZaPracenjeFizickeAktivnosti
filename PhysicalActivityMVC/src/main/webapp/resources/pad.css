@@ -9,3 +9,40 @@ color: red;
 input.error {
 background-color: #ffcccc;
 }
+body{
+	background-image: url("unipulogolat.png");
+	background-size: 100%;
+	
+}
+#con{
+	border:medium;
+	border-radius:50px;
+	background-repeat: repeat;
+	margin:10%;
+	background-color:yellow;
+	padding:2%;
+	text-align: center;
+
+}
+#con h1{
+	margin:auto;
+	
+}
+#con p{
+	margin:auto;
+	
+}
+ a{
+	text-decoration: none;
+	margin:auto;
+}
+ a:active {
+	color:black;
+}
+ a:target{
+	color:white;
+	
+}
+ a:hover{
+	color:white;
+}
