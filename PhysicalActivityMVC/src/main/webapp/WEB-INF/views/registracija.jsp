@@ -39,6 +39,6 @@ cssErrorClass="error">Šifra</sf:label>:
 <sf:password path="sifra"/>
 <input type="submit" value="Registracija"/>
 </sf:form>
-<a href="<c:url value="/index" />">Izbornik</a> 
+<a href="<c:url value="/home" />">Početna stranica</a> 
 </body>
 </html>

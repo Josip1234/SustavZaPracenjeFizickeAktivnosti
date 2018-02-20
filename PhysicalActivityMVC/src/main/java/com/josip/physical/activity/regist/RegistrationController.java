@@ -49,7 +49,7 @@ public class RegistrationController {
 			return "registracija";
 		}else {
 		registrationRepository.spremiPodatke(korisnik.getOIB(),korisnik.getIme(),korisnik.getPrezime(),korisnik.getSpol(),korisnik.getDatumr(),korisnik.getEmail(),korisnik.getSifra());
-		return "redirect:index";//+korisnik.getOIB();
+		return "redirect:home";//+korisnik.getOIB();
 		}
 	}
 	/*@RequestMapping(value="registracija/mojprofil/{OIB}",method=GET)

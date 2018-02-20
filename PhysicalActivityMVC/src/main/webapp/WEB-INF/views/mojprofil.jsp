@@ -66,7 +66,7 @@
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button><form>
 </div>
-<a href="<c:url value="/index"/>">Povratak u izbornik</a>
+<a href="<c:url value="/home"/>">Početna stranica</a>
 
 </body>
 </html>

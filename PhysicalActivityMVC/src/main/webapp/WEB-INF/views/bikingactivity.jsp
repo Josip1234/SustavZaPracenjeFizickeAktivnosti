@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ ${li.udaljenost }
 </p>
 </c:forEach>
 </div>
-<a href="<c:url value="/index" />">Izbornik</a> 
+<a href="<c:url value="/home" />">Početna stranica</a> 
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button><form>
 </div>

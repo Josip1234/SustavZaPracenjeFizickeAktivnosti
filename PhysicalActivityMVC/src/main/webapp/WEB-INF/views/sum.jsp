@@ -21,7 +21,7 @@ ${li.prosjecnaBrzina } <br>
 </p>
 </c:forEach>
 </div>
-<a href="<c:url value="/index" />">Izbornik</a> 
+<a href="<c:url value="/home" />">Početna stranica</a> 
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button><form>
 </div>

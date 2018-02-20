@@ -22,6 +22,6 @@
 </form><br>
 <p>Rezultat: ${rezultat}</p>
 <br>
-<a href="<c:url value="/index" />">Izbornik</a> 
+<a href="<c:url value="/home" />">Početna stranica</a> 
 </body>
 </html>
