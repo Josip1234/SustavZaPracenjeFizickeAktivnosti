@@ -34,9 +34,14 @@ import com.josip.physical.activity.regist.RegistrationRepository;
 public class ProfilController {
 	        @Autowired
 	        Registration kor;
+	        
+	        @Autowired
+	        Registration privremeniKorisnik;
 	      
 	        @Autowired
 	        RegistrationImpl impl;
+	        
+	        
 	     /*   static JdbcTemplate obj;
 	        static SimpleDriverDataSource ds;
 	        static String DB_USERNAME="root";
@@ -66,9 +71,11 @@ public class ProfilController {
 		Object credentials = auth.getCredentials();
 		Registration rg= impl.korisnik(username);
 		kor=rg;
+		privremeniKorisnik=new Registration(rg.getOIB(),rg.getIme(),rg.getPrezime(),rg.getSpol(),rg.getDatumr(),rg.getEmail(),rg.getSifra());
 		System.out.println(username);
 		System.out.println(oib);
 		model.addAttribute("korisnik",kor);
+		
 		return "mojprofil";
 	}
 	@RequestMapping(value="/mojprofil",method=POST)
