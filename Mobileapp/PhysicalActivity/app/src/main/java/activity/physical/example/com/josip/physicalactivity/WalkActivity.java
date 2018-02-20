@@ -42,6 +42,7 @@ import activity.physical.example.com.josip.physicalactivity.model.WalkingActivit
 
 
 public class WalkActivity extends AppCompatActivity implements SensorEventListener {
+    long timeWhenStopped=0;
     private Chronometer cr;
     private TextView atv;
     private SensorManager senSensorManager;
@@ -65,8 +66,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private int threshold;
     private TextView tLattitude;
     private TextView tLongittude;
-    private TextView tLocDesc;
-    private TextView state;
+
     private TextView adr;
     private TextView tUdaljenost;
     private Button mReset;
@@ -211,20 +211,27 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     public void resetc() {
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
+        timeWhenStopped=0;
         cr.stop();
     }
 
 
     public void start() {
+
         cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime()+timeWhenStopped);
         cr.start();
     }
 
     public void onclickedstopchronomethar() {
         String time = "";
-        cr = (Chronometer) findViewById(R.id.chronometer2);
 
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
+        cr.setBase(SystemClock.elapsedRealtime());
+        time = cr.getText().toString();
         cr.stop();
+
         time = getTimeAfterStop();
 
     }
@@ -242,12 +249,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         return time;
     }
 
-    public String getTimeAfterWishClick() {
-        String time;
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = cr.getText().toString();
-        return time;
-    }
+
 
     public String vrati_korisnika() throws IOException, JSONException {
         String naziv = "prijava.json";
@@ -363,9 +365,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 String a = ad;
 
 
-                tLocDesc.setText(s);
-                state.setText(p);
-                adr.setText(a);
+
+                adr.setText(s+p+a);
                 try {
                     walk.put("adresa", s + p + a);
                     walk.put("longitude", loc4);
@@ -375,7 +376,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                     e.printStackTrace();
                 }
 
-                loc.reset();
+
             }
         }
 
@@ -401,23 +402,33 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
 
+        WalkingActivity walkingActivity = new WalkingActivity();
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime());
+        cr.stop();
+
         mUTijeku = (ProgressBar) findViewById(R.id.uTijeku);
         mUTijeku.setVisibility(View.INVISIBLE);
 
         mPosaljiPodatke = (ImageButton) findViewById(R.id.posaljiPodatke);
         mPosaljiPodatke.setClickable(false);
 
+        textViewSteps = (TextView) findViewById(R.id.textSteps);
+        textViewSteps.setText(String.valueOf(walkingActivity.getKoraci()));
 
         polje = new JSONArray();
         walk = new JSONObject();
 
         tLattitude = (TextView) findViewById(R.id.outputLat);
+        tLattitude.setText(String.valueOf(walkingActivity.getLatitude()));
         tLongittude = (TextView) findViewById(R.id.outputLong);
-        tLocDesc = (TextView) findViewById(R.id.location_dsc);
-        state = (TextView) findViewById(R.id.state_dsc);
+        tLongittude.setText(String.valueOf(walkingActivity.getLatitude()));
+
         adr = (TextView) findViewById(R.id.homead);
-
-
+        adr.setText(walkingActivity.getAdresa());
+        tUdaljenost=(TextView) findViewById(R.id.udaljenost);
+        tUdaljenost.setText(String.valueOf(walkingActivity.getUdaljenost()));
         mReset = (Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -193,17 +193,7 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
-
-                    <TextView
-                        android:id="@+id/location_dsc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/locdses" />
-                </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -220,19 +210,7 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/state_dsc"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/state"
-
-                        />
-
-                </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
