@@ -24,10 +24,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.activity.physical.example.com.josip.physicalactivity.interfaces.PhysicalInterface;
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
+import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 
 
 public class MainActivity extends AppCompatActivity implements PhysicalInterface {
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         String userjson = "";
         String passjson = "";
         String naziv = "prijava.json";
-
+        Map<String,String> mapa = new HashMap<String,String>();
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -113,23 +116,24 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             prijavaBuffer.append(object + " " + pass);
             //user.add(i,object);
             //user.add(i+1,pass);
-            userjson=object;
-            passjson=pass;
-            if (username.contentEquals(userjson)) {
-                if (password.contentEquals(passjson)) {
+
+            //ovo treba ići poslije
+            if (object.contentEquals(username)) {
+                if (pass.contentEquals(password)) {
                     found=true;
                     break;
 
 
-                } else {
 
-                    found=false;
+                }else {
+
+                    continue;
 
 
                 }
             } else {
                 found=false;
-
+                continue;
 
 
             }
@@ -149,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new HttpReqTask().execute();
+
     }
 
 

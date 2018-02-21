@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -29,12 +30,17 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -76,6 +82,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private JSONObject walk;
     private ImageButton mPosaljiPodatke;
     private ProgressBar mUTijeku;
+
+    public WalkActivity(){
+
+    }
+
 
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
         WalkingActivity walkingActivity = new WalkingActivity();
@@ -415,6 +426,12 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         mPosaljiPodatke = (ImageButton) findViewById(R.id.posaljiPodatke);
         mPosaljiPodatke.setClickable(false);
+        mPosaljiPodatke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SlanjePodatakaNaServer().execute(polje);
+            }
+        });
 
         textViewSteps = (TextView) findViewById(R.id.textSteps);
         textViewSteps.setText(String.valueOf(walkingActivity.getKoraci()));
@@ -634,7 +651,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     protected void onResume() {
         super.onResume();
-
+        mPosaljiPodatke.setClickable(true);
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -687,19 +704,35 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         };*/
 
 
-    private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, Void> {
+    private class SlanjePodatakaNaServer extends AsyncTask<JSONArray, Integer, WalkingActivity> {
         @Override
         protected void onPreExecute(){
+          ImageButton ib = (ImageButton) findViewById(R.id.posaljiPodatke);
+          ib.setClickable(false);
 
+          ProgressBar pb=(ProgressBar) findViewById(R.id.uTijeku);
+          pb.setProgress(0);
+          pb.setVisibility(View.VISIBLE);
         }
 
         @Override
-        protected Void doInBackground(Void... voids) {
+        protected WalkingActivity doInBackground(JSONArray... params) {
+            Looper.prepare();
+            WalkActivity walk = new WalkActivity();
+            WalkingActivity walkingActivity = new WalkingActivity();
+            try {
+                walkingActivity=walk.procitajPodatke();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             //MultiValueMap<String, WalkingActivity> mapa = new LinkedMultiValueMap<String,WalkingActivity>();
             //mapa.add("kljuc",new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
             // WalkingActivity mapa = walk;
-/*
- RestTemplate rest = new RestTemplate(true);
+
+            RestTemplate rest = new RestTemplate(true);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -711,7 +744,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
 
- */
+
             //HttpEntity<MultiValueMap<String,WalkingActivity>> request = new HttpEntity<MultiValueMap<String, WalkingActivity>>(mapa,headers);
             //HttpEntity<WalkingActivity> request = new HttpEntity<WalkingActivity>(mapa,headers);
             //MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -726,7 +759,23 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
 
-            return null;
+            return walkingActivity;
+        }
+        @Override
+        protected void onProgressUpdate(Integer... values){
+            ProgressBar pbar= (ProgressBar) findViewById(R.id.uTijeku);
+            pbar.setProgress(0);
+
+
+        }
+        @Override
+        protected void onPostExecute(WalkingActivity res){
+            System.out.println(res.toString());
+            ImageButton imageButton = (ImageButton) findViewById(R.id.posaljiPodatke);
+            imageButton.setClickable(true);
+
+            ProgressBar pbar= (ProgressBar) findViewById(R.id.uTijeku);
+            pbar.setVisibility(View.INVISIBLE);
         }
     }
 }
