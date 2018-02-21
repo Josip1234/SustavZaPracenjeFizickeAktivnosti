@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import activity.physical.example.com.josip.physicalactivity.SqlLite.RegistrationDataSource;
+import activity.physical.example.com.josip.physicalactivity.SqlLite.SqlLiteTablice;
 import activity.physical.example.com.josip.physicalactivity.activity.physical.example.com.josip.physicalactivity.interfaces.PhysicalInterface;
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
@@ -37,8 +39,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     private TextView mfail;
 
 
-
-    public void prijava(View v) throws IOException,JSONException {
+    public void prijava(View v) throws IOException, JSONException {
         boolean autoriziran = false;
         EditText email;
         EditText sifra;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         Registration login = new Registration(em, ps);
         login.setSifra(ps);
         login.setEmail(em);
-        autoriziran=procitaj_json(login.getEmail(),login.getSifra());
+        autoriziran = procitaj_json(login.getEmail(), login.getSifra());
 
 
         if (autoriziran == true) {
@@ -72,10 +73,10 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         JSONArray array = new JSONArray();
         JSONObject object;
         object = new JSONObject();
-        for (Registration reg:registrations
-             ) {
-            object.put("username",reg.getEmail());
-            object.put("pass",reg.getSifra());
+        for (Registration reg : registrations
+                ) {
+            object.put("username", reg.getEmail());
+            object.put("pass", reg.getSifra());
 
         }
 
@@ -91,12 +92,15 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
     }
 
-    public boolean procitaj_json(String username,String password) throws IOException, JSONException {
-        boolean found=false;
+    public boolean procitaj_json(String username, String password) throws IOException, JSONException {
+        boolean found = false;
         String userjson = "";
         String passjson = "";
         String naziv = "prijava.json";
-        Map<String,String> mapa = new HashMap<String,String>();
+        RegistrationDataSource dataSource = new RegistrationDataSource(this);
+
+        dataSource.otvori();
+
 
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -114,10 +118,13 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             String object = data.getJSONObject(i).getString("username");
             String pass = data.getJSONObject(i).getString("pass");
             prijavaBuffer.append(object + " " + pass);
+            Registration registration = new Registration(object,pass);
+            dataSource.dodajKorisnika(registration);
             //user.add(i,object);
             //user.add(i+1,pass);
 
             //ovo treba ići poslije
+            /*
             if (object.contentEquals(username)) {
                 if (pass.contentEquals(password)) {
                     found=true;
@@ -138,15 +145,28 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
             }
         }
+           */
 
-        Log.i("poruka", "pročitan json");
+            Log.i("poruka", "pročitan json");
+
+
+
+
+
+        }
+        dataSource.zatvori();
+        found=autoriziraj(username,password);
 
         return found;
-
-
-
-
-    }
+    };
+    public boolean autoriziraj(String username,String password){
+        boolean found=false;
+        RegistrationDataSource ds = new RegistrationDataSource(this);
+        ds.citaj();
+        found=ds.pronadjiKorisnika(username, password);
+        ds.zatvori();
+        return found;
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
                 e.printStackTrace();
             }
 
-            Log.i("message", "succesfully written to json");
+            Log.i("poruka", "uspješno zapisano json");
 
 
         }

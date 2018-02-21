@@ -5,6 +5,16 @@ package activity.physical.example.com.josip.physicalactivity.model;
  */
 
 public class Registration {
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     private String OIB;
     private String ime;
     private String prezime;

@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SqlLiteTablice extends SQLiteOpenHelper {
     private static final String ime_baze="korisnici.db";
     private static final int verzija=1;
-    private static final String tablica_korisnik="korisnik";
+    public static final String tablica_korisnik="korisnik";
     public static final String id_stupca = "id";
     public static final String korisnik="email";
     public static final String sifra="pass";
