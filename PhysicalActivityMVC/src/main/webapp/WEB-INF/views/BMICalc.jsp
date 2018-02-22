@@ -3,13 +3,34 @@
 <%@ page session="false" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>BMI kalkulator</title>
+	<link rel="stylesheet" href="resources/pad.css">
+
 </head>
 <body>
+<div id="con">	
+<header>
+	<h1>
+	Kalkulator za unos tjelesnog indeksa  
+</h1>
+</header>
+<div id="meni">
+
+<a href="<c:url value="/BMICalc" />">Indeks tjelesne mase</a>
+<a href="<c:url value="/bikingactivity" />">Bicikliranje</a>
+<a href="<c:url value="/runningactivity" />">Trčanje</a>
+<a href="<c:url value="/registracija"/>">Registracija</a>
+<a href="<c:url value="/sum"/>">Ukupno</a>
+<a href="<c:url value="/walking"/>">Hodanje</a>
+<a href="<c:url value="/mojprofil"/>">Profil</a>
+
+</div>
+<section>
+<h2>Unos u kalkulator:</h2>
 <form action="BMICalc" method="post">
 <p>Visina osobe:</p><br>
 <input type="text" name="visina_osobe_u_metrima">
@@ -23,5 +44,7 @@
 <p>Rezultat: ${rezultat}</p>
 <br>
 <a href="<c:url value="/home" />">Početna stranica</a> 
+</section>
+</div>
 </body>
 </html>

@@ -43,6 +43,7 @@ public class RegistrationDataSource {
         dbhelper.close();
 
     }
+
     /*public Registration stvori(Registration registration){
         ContentValues values = new ContentValues();
         values.put(SqlLiteTablice.korisnik,registration.getEmail());

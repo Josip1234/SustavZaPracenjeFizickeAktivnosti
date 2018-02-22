@@ -23,18 +23,21 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
                     sifra + " TEXT"+
                     ")";
 
+
     public SqlLiteTablice(Context context){
         super(context,ime_baze,null,verzija);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-         sqLiteDatabase.execSQL(stvori_tablicu);
+         sqLiteDatabase.delete(tablica_korisnik,null,null);
+
+        sqLiteDatabase.execSQL(stvori_tablicu);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-          sqLiteDatabase.execSQL("DROP TABLE IF EXISTS"+ime_baze);
+          sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+ime_baze);
           onCreate(sqLiteDatabase);
     }
 }

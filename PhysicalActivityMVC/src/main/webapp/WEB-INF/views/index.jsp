@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 type="text/css"
 href="<c:url value="/resources/pad.css" />">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>PhysicalActivity homepage</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/pad.css"/>">
 </head>

@@ -1,5 +1,6 @@
 package activity.physical.example.com.josip.physicalactivity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,8 @@ public class ListOfActivitiesActivity extends AppCompatActivity {
             String sifra=extras.getString("šifra");
             Log.i("poruka",ime);
             Log.i("poruka",sifra);
+
+
         }
 
     }

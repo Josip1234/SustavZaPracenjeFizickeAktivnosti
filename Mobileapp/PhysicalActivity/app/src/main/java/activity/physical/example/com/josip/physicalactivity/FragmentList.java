@@ -43,6 +43,7 @@ public class FragmentList extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         ArrayAdapter<String> adapter =  new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,activities);
 
         setListAdapter(adapter);
@@ -55,6 +56,7 @@ public class FragmentList extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
+
         if(position==0){
 
             Intent intent = new Intent(v.getContext(),WalkActivity.class);

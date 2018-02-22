@@ -40,6 +40,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -81,11 +82,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private JSONArray polje;
     private JSONObject walk;
     private ImageButton mPosaljiPodatke;
-    private ProgressBar mUTijeku;
-
-    public WalkActivity(){
-
-    }
+    private List<WalkingActivity> lista;
+    private WalkingActivity walkingActivity;
 
 
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
@@ -118,7 +116,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             String korisnik = data.getJSONObject(i).getString("korisnik");
             prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + adresa + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik);
             walkingActivity = new WalkingActivity(udaljenost, vrijemeAktivnosti, koraci, adresa, longitude, latitude, brzinaUkm, korisnik);
-
+            lista.add(i,walkingActivity);
 
             Log.i("poruka", "pročitan json");
 
@@ -415,14 +413,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
 
+        lista=new ArrayList<WalkingActivity>();
+
         WalkingActivity walkingActivity = new WalkingActivity();
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
         cr.stop();
 
-        mUTijeku = (ProgressBar) findViewById(R.id.uTijeku);
-        mUTijeku.setVisibility(View.INVISIBLE);
 
         mPosaljiPodatke = (ImageButton) findViewById(R.id.posaljiPodatke);
         mPosaljiPodatke.setClickable(false);
@@ -651,6 +649,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     protected void onResume() {
         super.onResume();
+        try {
+            walkingActivity=procitajPodatke();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         mPosaljiPodatke.setClickable(true);
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -710,9 +716,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
           ImageButton ib = (ImageButton) findViewById(R.id.posaljiPodatke);
           ib.setClickable(false);
 
-          ProgressBar pb=(ProgressBar) findViewById(R.id.uTijeku);
-          pb.setProgress(0);
-          pb.setVisibility(View.VISIBLE);
+
         }
 
         @Override
@@ -761,21 +765,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
             return walkingActivity;
         }
-        @Override
-        protected void onProgressUpdate(Integer... values){
-            ProgressBar pbar= (ProgressBar) findViewById(R.id.uTijeku);
-            pbar.setProgress(0);
 
-
-        }
         @Override
         protected void onPostExecute(WalkingActivity res){
             System.out.println(res.toString());
             ImageButton imageButton = (ImageButton) findViewById(R.id.posaljiPodatke);
             imageButton.setClickable(true);
 
-            ProgressBar pbar= (ProgressBar) findViewById(R.id.uTijeku);
-            pbar.setVisibility(View.INVISIBLE);
         }
     }
 }
