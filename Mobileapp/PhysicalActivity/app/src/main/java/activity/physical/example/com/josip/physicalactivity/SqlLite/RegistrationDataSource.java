@@ -8,11 +8,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.MainActivity;
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Korisnik on 21.2.2018..
@@ -55,6 +63,9 @@ public class RegistrationDataSource {
         return registration;
     }*/
     public boolean pronadjiKorisnika(String username,String password){
+        JSONArray JSONpolje = new JSONArray();
+        JSONObject JSONobjekt;
+
         List<Registration> listaKorisnika=new ArrayList<Registration>();
         String[] result_col={SqlLiteTablice.korisnik,SqlLiteTablice.sifra};
         String where = SqlLiteTablice.korisnik+"=?";
@@ -101,6 +112,21 @@ public class RegistrationDataSource {
             e.printStackTrace();
         }
          */
+        for (Registration registration:listaKorisnika
+             ) {
+             if(username.equals(registration.getEmail())){
+                 if(password.equals(registration.getSifra())){
+
+                     found=true;
+                 }else{
+                     found=false;
+                 }
+
+             }else{
+                 found=false;
+             }
+
+        }
 
         return found;
     }

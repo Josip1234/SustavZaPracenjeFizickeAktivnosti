@@ -263,7 +263,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
     public String vrati_korisnika() throws IOException, JSONException {
-        String naziv = "prijava.json";
+        String naziv = "PodaciKorisnika.json";
         String korisnik = "";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
@@ -278,7 +278,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
-            String object = data.getJSONObject(i).getString("username");
+            String object = data.getJSONObject(i).getString("korisnik");
             korisnik = object;
             prijavaBuffer.append(object);
         }
