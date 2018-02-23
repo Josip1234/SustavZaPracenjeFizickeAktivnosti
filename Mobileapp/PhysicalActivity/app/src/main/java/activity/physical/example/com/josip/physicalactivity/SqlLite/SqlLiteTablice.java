@@ -30,7 +30,7 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-         sqLiteDatabase.delete(tablica_korisnik,null,null);
+
 
         sqLiteDatabase.execSQL(stvori_tablicu);
     }

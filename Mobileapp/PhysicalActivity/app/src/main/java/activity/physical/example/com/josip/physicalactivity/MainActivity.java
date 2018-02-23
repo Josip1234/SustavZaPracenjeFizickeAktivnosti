@@ -37,7 +37,7 @@ import activity.physical.example.com.josip.physicalactivity.model.WalkingActivit
 
 public class MainActivity extends AppCompatActivity implements PhysicalInterface {
     private TextView mfail;
-
+    private RegistrationDataSource registrationDataSource;
 
     public void prijava(View v) throws IOException, JSONException {
         boolean autoriziran = false;
@@ -97,9 +97,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         String userjson = "";
         String passjson = "";
         String naziv = "prijava.json";
-        RegistrationDataSource dataSource = new RegistrationDataSource(this);
 
-        dataSource.otvori();
 
 
         FileInputStream fis = openFileInput(naziv);
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             String pass = data.getJSONObject(i).getString("pass");
             prijavaBuffer.append(object + " " + pass);
             Registration registration = new Registration(object,pass);
-            dataSource.dodajKorisnika(registration);
+            registrationDataSource.dodajKorisnika(registration);
             //user.add(i,object);
             //user.add(i+1,pass);
 
@@ -154,17 +152,17 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
 
         }
-        dataSource.zatvori();
+
         found=autoriziraj(username,password);
 
         return found;
     };
     public boolean autoriziraj(String username,String password){
         boolean found=false;
-        RegistrationDataSource ds = new RegistrationDataSource(this);
-        ds.citaj();
-        found=ds.pronadjiKorisnika(username, password);
-        ds.zatvori();
+
+
+        found=registrationDataSource.pronadjiKorisnika(username, password);
+
         return found;
     };
 
@@ -172,8 +170,22 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        registrationDataSource=new RegistrationDataSource(this);
+        registrationDataSource.otvori();
+        registrationDataSource.izbrisiSve();
         new HttpReqTask().execute();
 
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        registrationDataSource.otvori();
+
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        registrationDataSource.zatvori();
     }
 
 
@@ -181,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     class HttpReqTask extends AsyncTask<Void,Void,Registration[]> {
 
         private final String uri="10.0.2.2";
+
         @Override
         protected Registration[] doInBackground(Void... voids) {
             try{
@@ -203,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             super.onPostExecute(registration);
             JSONArray array = new JSONArray();
             JSONObject object;
+
 
             for (Registration reg:registration
                  ) {
