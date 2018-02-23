@@ -86,8 +86,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private WalkingActivity walkingActivity;
 
 
-    public WalkingActivity procitajPodatke() throws IOException, JSONException {
-        WalkingActivity walkingActivity = new WalkingActivity();
+    /*public WalkingActivity procitajPodatke() throws IOException, JSONException {
+
         String userjson = "";
         String passjson = "";
         String naziv = "Walking.json";
@@ -123,7 +123,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         }
         return walkingActivity;
-    }
+    }*/
 
 
     public void dohvati_koordinate(double lat, double lon) {
@@ -378,6 +378,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
                 adr.setText(s+p+a);
+                if(adr==null){
+                    adr.setText("nema adrese");
+                }
                 try {
                     walk.put("adresa", s + p + a);
                     walk.put("longitude", loc4);
@@ -427,7 +430,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         mPosaljiPodatke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new SlanjePodatakaNaServer().execute(polje);
+                new SlanjePodatakaNaServer().execute();
             }
         });
 
@@ -634,6 +637,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         //HttpHeaders headers = new HttpHeaders();
         //headers.setContentType(MediaType.APPLICATION_JSON);
+        /*
 
         try {
             procitajPodatke();
@@ -642,20 +646,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+*/
 
     }
 
 
     protected void onResume() {
         super.onResume();
-        try {
-            walkingActivity=procitajPodatke();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
 
         mPosaljiPodatke.setClickable(true);
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
@@ -710,27 +708,66 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         };*/
 
 
-    private class SlanjePodatakaNaServer extends AsyncTask<JSONArray, Integer, WalkingActivity> {
+    private class SlanjePodatakaNaServer extends AsyncTask<WalkingActivity, Void, WalkingActivity> {
+        private WalkingActivity walkingActivity;
+        private List<WalkingActivity> walkingActivities;
         @Override
         protected void onPreExecute(){
           ImageButton ib = (ImageButton) findViewById(R.id.posaljiPodatke);
           ib.setClickable(false);
 
+          walkingActivity=new WalkingActivity();
+          walkingActivities=new ArrayList<WalkingActivity>();
+
+
+            try {
+                FileInputStream fileInputStream = openFileInput("Walking.json");
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+                StringBuffer stringBuffer = new StringBuffer();
+                while (bufferedInputStream.available() != 0){
+                    char znakovi = (char) bufferedInputStream.read();
+                    stringBuffer.append(znakovi);
+                }
+                bufferedInputStream.close();
+                fileInputStream.close();
+
+                try {
+                    JSONArray hodanje = new JSONArray(stringBuffer.toString());
+                    StringBuffer buffer = new StringBuffer();
+                    for(int i=0; i<hodanje.length();i++){
+                        double udaljenost = hodanje.getJSONObject(i).getDouble("udaljenost");
+                        String vrijemeAktivnosti = hodanje.getJSONObject(i).getString("vrijemeAktivnosti");
+                        int koraci = hodanje.getJSONObject(i).getInt("koraci");
+                        String adresa = hodanje.getJSONObject(i).getString("adresa");
+                        double longitude = hodanje.getJSONObject(i).getDouble("longitude");
+                        double latitude = hodanje.getJSONObject(i).getDouble("latitude");
+                        double brzinaUkm = hodanje.getJSONObject(i).getDouble("brzinaUkm");
+                        String korisnik = hodanje.getJSONObject(i).getString("korisnik");
+                        buffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + adresa + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik);
+                        walkingActivities.add(new WalkingActivity(udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,korisnik));
+                        walkingActivity.setUdaljenost(udaljenost);
+                        walkingActivity.setVrijemeAktivnosti(vrijemeAktivnosti);
+                        walkingActivity.setKoraci(koraci);
+                        walkingActivity.setAdresa(adresa);
+                        walkingActivity.setLongitude(longitude);
+                        walkingActivity.setLatitude(latitude);
+                        walkingActivity.setBrzinaUkm(brzinaUkm);
+                        walkingActivity.setKorisnik(korisnik);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
         }
 
         @Override
-        protected WalkingActivity doInBackground(JSONArray... params) {
+        protected WalkingActivity doInBackground(WalkingActivity... params) {
             Looper.prepare();
-            WalkActivity walk = new WalkActivity();
-            WalkingActivity walkingActivity = new WalkingActivity();
-            try {
-                walkingActivity=walk.procitajPodatke();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+
 
             //MultiValueMap<String, WalkingActivity> mapa = new LinkedMultiValueMap<String,WalkingActivity>();
             //mapa.add("kljuc",new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
@@ -740,8 +777,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-            mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.ALL));
+            mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
+            for (WalkingActivity walk:walkingActivities
+                 ) {
+                System.out.println(walk.getKorisnik());
+                walkingActivity = new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik());
+            }
             rest.postForLocation("http://10.0.2.2:8080/physical/walking",walkingActivity);
+
 
 
 
