@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2018 at 09:52 AM
+-- Generation Time: Feb 24, 2018 at 05:46 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -62,7 +62,10 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `OIB`, `ime`, `prezime`, `spol`, `datumr`, `email`, `sifra`) VALUES
-(1, '86052601428', 'Josip', 'Bošnjak', 'm', '1992-11-05', 'jbosnjak3@gmail.com', 'test');
+(1, '86052601428', 'Josip', 'Bošnjak', 'm', '1992-11-05', 'jbosnjak3@gmail.com', 'test'),
+(2, '45699988885', 'marko', 'markovic', 'm', '1997-01-30', 'mmarkovic32@gmail.com', '12345678'),
+(3, '14888896654', 'Walter', 'White', 'm', '1958-02-06', 'he@gmail.com ', 'test'),
+(4, '48975588966', 'Jesse', 'Pinkman', 'm', '1979-07-13', 'methaddict@gmail.com', 'sciencebitch');
 
 -- --------------------------------------------------------
 
@@ -117,7 +120,6 @@ ALTER TABLE `biking`
 --
 ALTER TABLE `registration`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `sifra` (`sifra`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `OIB` (`OIB`);
 
@@ -149,7 +151,7 @@ ALTER TABLE `biking`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `running`
