@@ -30,8 +30,11 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -364,6 +367,15 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
+                        if(cityName==null){
+                            cityName="Nema naziva grada";
+                        }
+                        if(stateName==null){
+                            stateName="Nema naziva države";
+                        }
+                        if(ad==null){
+                            ad="Nema adrese";
+                        }
 
 
                     }
@@ -378,9 +390,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
                 adr.setText(s+p+a);
-                if(adr==null){
-                    adr.setText("nema adrese");
-                }
+
                 try {
                     walk.put("adresa", s + p + a);
                     walk.put("longitude", loc4);
@@ -426,7 +436,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
         mPosaljiPodatke = (ImageButton) findViewById(R.id.posaljiPodatke);
-        mPosaljiPodatke.setClickable(false);
+
         mPosaljiPodatke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -622,7 +632,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             try {
                 os.write(text.getBytes());
                 os.close();
-                mPosaljiPodatke.setClickable(true);
+
 
 
             } catch (IOException e) {
@@ -773,7 +783,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             //mapa.add("kljuc",new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
             // WalkingActivity mapa = walk;
 
-            RestTemplate rest = new RestTemplate(true);
+            //RestTemplate rest = new RestTemplate(true);
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -783,7 +793,22 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 System.out.println(walk.getKorisnik());
                 walkingActivity = new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik());
             }
-            rest.postForLocation("http://10.0.2.2:8080/physical/walking",walkingActivity);
+            HttpHeaders requestHeaders = new HttpHeaders();
+            //rješavanje eof-a i korištenje starije verzije http veze
+            requestHeaders.set("Connection","Close");
+            requestHeaders.setContentType(new MediaType("application","json"));
+            HttpEntity<WalkingActivity> requestEntity= new HttpEntity<WalkingActivity>(walkingActivity,requestHeaders);
+
+            RestTemplate restTemplate = new RestTemplate();
+            //za rješavanje eof filea za starije android uređaje
+            restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+            MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter1 = new MappingJackson2HttpMessageConverter();
+            mappingJackson2HttpMessageConverter1.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
+            restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter1);
+            WalkingActivity activity = restTemplate.postForObject("http://10.0.2.2:8080/physical/walking",walkingActivity,WalkingActivity.class);
+
+
+            //rest.postForLocation("http://10.0.2.2:8080/physical/walking",walkingActivity);
 
 
 
@@ -794,8 +819,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
             //HttpEntity<MultiValueMap<String,WalkingActivity>> request = new HttpEntity<MultiValueMap<String, WalkingActivity>>(mapa,headers);
             //HttpEntity<WalkingActivity> request = new HttpEntity<WalkingActivity>(mapa,headers);
-            //MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-            //mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.ALL));
+
             //rest.getMessageConverters().add(mappingJackson2HttpMessageConverter);
             // rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
             //ResponseEntity<WalkingActivity> responseEntity = rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
