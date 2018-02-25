@@ -14,14 +14,7 @@ public class WalkingActivity {
     private double brzinaUkm;
     private String korisnik;
     public WalkingActivity(){
-        this.udaljenost=00.00;
-        this.vrijemeAktivnosti="0:00";
-        this.koraci=0;
-        this.adresa="";
-        this.longitude=00.00;
-        this.latitude=00.00;
-        this.brzinaUkm=00.00;
-        this.korisnik="";
+
 
     }
     public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik) {

@@ -13,16 +13,7 @@ private double longitude;
 private double latitude;
 private double brzinaUkm;
 private String korisnik;
-/**
- * @param udaljenost
- * @param vrijemeAktivnosti
- * @param koraci
- * @param adresa
- * @param longitude
- * @param latitude
- * @param brzinaUkm
- * @param korisnik
- */
+
 public WalkingActivity() {
 	
 }
@@ -85,10 +76,11 @@ public String getKorisnik() {
 public void setKorisnik(String korisnik) {
 	this.korisnik = korisnik;
 }
+/*
 @Override
 public String toString(){
 	
 	return udaljenost+vrijemeAktivnosti+koraci+adresa+longitude+latitude+brzinaUkm+korisnik;
 	
-}
+}*/
 }

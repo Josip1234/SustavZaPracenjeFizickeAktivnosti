@@ -48,18 +48,17 @@ public List<WalkingActivity> izslistajPoDatumuiKoracima(Date date, int koraci) {
 }
 
 @Override
-public WalkingActivity spremiPodatke(WalkingActivity wal) {
+public String spremiPodatke(WalkingActivity wal) {
 	
 	
-	Date date = new Date();
 	d=new SpringDataSource();
 	if(null!=d.getObj()) {
-		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,email,datum VALUES=(?,?,?,?,?,?,?,?,?)";
+		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,email) VALUES(?,?,?,?,?,?,?,?)";
 	
-		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getAdresa(),wal.getLongitude(),wal.getLatitude(),wal.getBrzinaUkm(),wal.getKorisnik(),date.getDate());
+		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getAdresa(),wal.getLongitude(),wal.getLatitude(),wal.getBrzinaUkm(),wal.getKorisnik());
 	
 	}
-	return wal;
+	return "spremljeno";
 }
 
 @Override

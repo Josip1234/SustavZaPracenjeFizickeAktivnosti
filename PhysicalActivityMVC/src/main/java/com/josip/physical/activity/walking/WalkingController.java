@@ -2,6 +2,8 @@ package com.josip.physical.activity.walking;
 
 import java.util.List;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -24,10 +26,11 @@ public String walking(Model model) {
 	model.addAttribute("hod",walkingRepository.res());
 	return "walking";
 }
-@RequestMapping(value= {"/walking"},method=RequestMethod.POST, consumes="application/json")
-public @ResponseBody WalkingActivity spremi(@RequestBody WalkingActivity wal) {
-	
-	return walkingRepository.spremiPodatke(wal);
+@RequestMapping(value= "/walking",method=RequestMethod.POST,produces="application/json",consumes="application/json")
+public @ResponseBody String spremi(@RequestBody WalkingActivity wal) {
+	String a="";
+	a=walkingRepository.spremiPodatke(wal);
+	return a;
 }
 
 }
