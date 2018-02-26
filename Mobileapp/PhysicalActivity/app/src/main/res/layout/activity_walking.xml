@@ -233,7 +233,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                         android:id="@+id/posaljiPodatke"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-
                         app:srcCompat="@android:drawable/ic_menu_send" />
 
 
