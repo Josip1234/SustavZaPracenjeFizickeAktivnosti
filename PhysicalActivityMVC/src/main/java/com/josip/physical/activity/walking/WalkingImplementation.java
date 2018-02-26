@@ -1,5 +1,6 @@
 package com.josip.physical.activity.walking;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ SpringDataSource d;
 @Override
 public List<WalkingActivity> res() {
 	List<WalkingActivity> activity=new ArrayList<WalkingActivity>();
+    Date date = new Date();
 	walk.setAdresa("Sveti rok 81");
 	walk.setBrzinaUkm(12.00);
 	walk.setKoraci(10);
@@ -25,7 +27,8 @@ public List<WalkingActivity> res() {
 	walk.setLongitude(25);
 	walk.setUdaljenost(1.547);
 	walk.setVrijemeAktivnosti("5 minuta");
-	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
+	walk.setDatumIvrijeme(String.valueOf(date.toString()));
+	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik(),walk.getDatumIvrijeme()));
 	return activity;
 }
 
@@ -48,17 +51,17 @@ public List<WalkingActivity> izslistajPoDatumuiKoracima(Date date, int koraci) {
 }
 
 @Override
-public String spremiPodatke(WalkingActivity wal) {
+public WalkingActivity spremiPodatke(WalkingActivity wal) {
 	
 	
 	d=new SpringDataSource();
 	if(null!=d.getObj()) {
-		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,email) VALUES(?,?,?,?,?,?,?,?)";
+		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,email,datum) VALUES(?,?,?,?,?,?,?,?,?)";
 	
-		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getAdresa(),wal.getLongitude(),wal.getLatitude(),wal.getBrzinaUkm(),wal.getKorisnik());
+		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getAdresa(),wal.getLongitude(),wal.getLatitude(),wal.getBrzinaUkm(),wal.getKorisnik(),wal.getDatumIvrijeme());
 	
 	}
-	return "spremljeno";
+	return wal;
 }
 
 @Override
@@ -73,11 +76,7 @@ public boolean izbrisiPoDatumu(Date date) {
 	return false;
 }
 
-@Override
-public boolean izbrisiPoKoracima(int koraci) {
-	// TODO Auto-generated method stub
-	return false;
-}
+
 
 @Override
 public boolean izbrisiPoDatumuIKoracima(Date date, int koraci) {

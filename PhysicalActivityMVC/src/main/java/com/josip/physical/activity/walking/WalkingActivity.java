@@ -1,5 +1,8 @@
 package com.josip.physical.activity.walking;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 
@@ -13,12 +16,12 @@ private double longitude;
 private double latitude;
 private double brzinaUkm;
 private String korisnik;
-
+private String datumIvrijeme;
 public WalkingActivity() {
 	
 }
 public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude,
-		double latitude, double brzinaUkm, String korisnik) {
+		double latitude, double brzinaUkm, String korisnik,String datumIvrijeme) {
 	this.udaljenost = udaljenost;
 	this.vrijemeAktivnosti = vrijemeAktivnosti;
 	this.koraci = koraci;
@@ -27,6 +30,13 @@ public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, 
 	this.latitude = latitude;
 	this.brzinaUkm = brzinaUkm;
 	this.korisnik = korisnik;
+	this.datumIvrijeme= datumIvrijeme;
+}
+public String getDatumIvrijeme() {
+	return datumIvrijeme;
+}
+public void setDatumIvrijeme(String datumIvrijeme) {
+	this.datumIvrijeme = datumIvrijeme;
 }
 public double getUdaljenost() {
 	return udaljenost;

@@ -16,12 +16,26 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
     public static final String korisnik="email";
     public static final String sifra="pass";
 
+    private static final int verzijaHodanja=1;
+    private static final String tablica_walking="walking.db";
+    public static final String brojStupca="brojStupca";
+    public static final String udaljenost="udaljenost";
+    public static final String vrijemeAktivnosti="vrijemeAktivnosti";
+    public static final String koraci="koraci";
+    public static final String adresa="adresa";
+    public static final String longituda="longituda";
+    public static final String latituda="latituda";
+    public static final String brzinaUkm="brzinaUkm";
+    public static final String datumIvrijeme="datumIvrijeme";
+
     private static final String stvori_tablicu =
             "CREATE TABLE " + tablica_korisnik + " (" +
                     id_stupca + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     korisnik + " TEXT, " +
                     sifra + " TEXT"+
                     ")";
+
+
 
 
     public SqlLiteTablice(Context context){

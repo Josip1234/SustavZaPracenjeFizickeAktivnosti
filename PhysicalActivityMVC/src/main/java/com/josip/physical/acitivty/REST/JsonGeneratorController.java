@@ -1,5 +1,6 @@
 package com.josip.physical.acitivty.REST;
 
+import java.net.URI;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,28 +10,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
+import com.josip.physical.activity.walking.WalkingActivity;
+import com.josip.physical.activity.walking.WalkingRepository;
 
 
-@Controller
+@RestController
 @RequestMapping({"/","/physical/","/1e2b3tzrUZcvn"})
 public class JsonGeneratorController {
-
+        @Autowired
+        WalkingRepository repository;
 		@Autowired
 		Registration rg;
 		@Autowired
 		RegistrationImpl impl;
 		@Autowired
 		SpringDataSource ds;
+		
 		@Bean
 		public MessageSource messageSource(){
 			ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -40,7 +50,7 @@ public class JsonGeneratorController {
 
 	    
 		@RequestMapping(value="/1e2b3tzrUZcvn")
-		@ResponseBody
+		
 		public List<Registration> korisnik(){
 		    List<Registration> rg=new ArrayList<Registration>();
 			ds=new SpringDataSource();
@@ -80,6 +90,12 @@ public class JsonGeneratorController {
 			
 		   model.addAttribute("lista",korisnik());
 	 		return "1e2b3tzrUZcvn";
+		}
+		@RequestMapping(value= "/1e2b3tzrUZcvn",method=RequestMethod.POST,consumes="application/json")
+		public ResponseEntity<WalkingActivity> spremi(WalkingActivity wal) {
+			WalkingActivity walking=repository.spremiPodatke(wal);
+			ResponseEntity<WalkingActivity> response = new ResponseEntity<WalkingActivity>(walking,HttpStatus.CREATED);
+			return response;
 		}
 	}
 

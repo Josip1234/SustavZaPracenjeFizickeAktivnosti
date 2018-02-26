@@ -90,53 +90,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private WalkingActivity walkingActivity;
 
 
-    public String posaljiPodatke(WalkingActivity walkingActivity){
-        String poslano="";
-        MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-        mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
 
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-        poslano= String.valueOf(restTemplate.postForObject("http://10.0.2.2/physical/walking",walkingActivity,WalkingActivity.class));
-        return poslano;
-    }
-    public void posalji(View view) throws IOException, JSONException {
-        FileInputStream fileInputStream = openFileInput("Walking.json");
-        BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        StringBuffer stringBuffer = new StringBuffer();
-        while (bufferedInputStream.available() != 0) {
-            char znakovi = (char) bufferedInputStream.read();
-            stringBuffer.append(znakovi);
-        }
-        bufferedInputStream.close();
-        fileInputStream.close();
-
-
-        JSONArray hodanje = new JSONArray(stringBuffer.toString());
-        StringBuffer buffer = new StringBuffer();
-        for (int i = 0; i < hodanje.length(); i++) {
-            double udaljenost = hodanje.getJSONObject(i).getDouble("udaljenost");
-            String vrijemeAktivnosti = hodanje.getJSONObject(i).getString("vrijemeAktivnosti");
-            int koraci = hodanje.getJSONObject(i).getInt("koraci");
-            String adresa = hodanje.getJSONObject(i).getString("adresa");
-            double longitude = hodanje.getJSONObject(i).getDouble("longitude");
-            double latitude = hodanje.getJSONObject(i).getDouble("latitude");
-            double brzinaUkm = hodanje.getJSONObject(i).getDouble("brzinaUkm");
-            String korisnik = hodanje.getJSONObject(i).getString("korisnik");
-            buffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + adresa + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik);
-
-            walkingActivity.setUdaljenost(udaljenost);
-            walkingActivity.setVrijemeAktivnosti(vrijemeAktivnosti);
-            walkingActivity.setKoraci(koraci);
-            walkingActivity.setAdresa(adresa);
-            walkingActivity.setLongitude(longitude);
-            walkingActivity.setLatitude(latitude);
-            walkingActivity.setBrzinaUkm(brzinaUkm);
-            walkingActivity.setKorisnik(korisnik);
-        }
-        posaljiPodatke(walkingActivity);
-    }
 
 
 
@@ -706,7 +660,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onResume();
 
 
-        mPosaljiPodatke.setClickable(true);
+
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {

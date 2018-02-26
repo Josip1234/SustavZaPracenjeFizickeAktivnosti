@@ -26,11 +26,6 @@ public String walking(Model model) {
 	model.addAttribute("hod",walkingRepository.res());
 	return "walking";
 }
-@RequestMapping(value= "/walking",method=RequestMethod.POST,produces="application/json",consumes="application/json")
-public @ResponseBody String spremi(@RequestBody WalkingActivity wal) {
-	String a="";
-	a=walkingRepository.spremiPodatke(wal);
-	return a;
-}
+
 
 }

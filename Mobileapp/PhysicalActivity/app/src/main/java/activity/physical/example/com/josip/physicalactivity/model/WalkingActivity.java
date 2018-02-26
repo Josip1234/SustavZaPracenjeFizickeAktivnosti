@@ -1,5 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity.model;
 
+import java.sql.Timestamp;
+
 /**
  * Created by Josip on 1.11.2017..
  */
@@ -13,11 +15,21 @@ public class WalkingActivity {
     private double latitude;
     private double brzinaUkm;
     private String korisnik;
+    private String datumIvrijeme;
     public WalkingActivity(){
 
 
     }
-    public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik) {
+
+    public String getDatumIvrijeme() {
+        return datumIvrijeme;
+    }
+
+    public void setDatumIvrijeme(String datumIvrijeme) {
+        this.datumIvrijeme = datumIvrijeme;
+    }
+
+    public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude, double latitude, double brzinaUkm, String korisnik, String datumIvrijeme) {
         this.udaljenost = udaljenost;
         this.vrijemeAktivnosti = vrijemeAktivnosti;
         this.koraci = koraci;
@@ -26,6 +38,8 @@ public class WalkingActivity {
         this.latitude = latitude;
         this.brzinaUkm = brzinaUkm;
         this.korisnik = korisnik;
+        this.datumIvrijeme=datumIvrijeme;
+
     }
 
     public double getUdaljenost() {

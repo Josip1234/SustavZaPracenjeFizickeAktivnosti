@@ -39,6 +39,7 @@ ${li.longitude } <br>
 ${li.latitude } <br>
 ${li.brzinaUkm } <br>
 ${li.korisnik } <br>
+${li.datumIvrijeme}
 </p>
 </c:forEach>
 </section>
