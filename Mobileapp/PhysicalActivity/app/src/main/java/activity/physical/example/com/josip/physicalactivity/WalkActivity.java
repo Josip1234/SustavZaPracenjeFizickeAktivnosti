@@ -44,8 +44,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -88,8 +90,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private ImageButton mPosaljiPodatke;
     private List<WalkingActivity> lista;
     private WalkingActivity walkingActivity;
-
-
+    private Date date;
+    private SimpleDateFormat sdf;
 
 
 
@@ -429,9 +431,12 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
 
+        date=new Date();
+        sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String vrijeme=sdf.format(date);
         lista = new ArrayList<WalkingActivity>();
 
-        WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,"nema",00.00,00.00,00.00,"");
+        WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,"nema",00.00,00.00,00.00,"",vrijeme);
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
@@ -445,6 +450,22 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         polje = new JSONArray();
         walk = new JSONObject();
+        try {
+            walk.put("udaljenost",walkingActivity.getUdaljenost());
+            walk.put("vrijemeAktivnosti",walkingActivity.getVrijemeAktivnosti());
+            walk.put("koraci",walkingActivity.getKoraci());
+            walk.put("adresa",walkingActivity.getAdresa());
+            walk.put("longitude",walkingActivity.getLongitude());
+            walk.put("latitude",walkingActivity.getLatitude());
+            walk.put("brzinaUkm",walkingActivity.getBrzinaUkm());
+            walk.put("korisnik",vrati_korisnika());
+            walk.put("datumIvrijeme",vrijeme);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         tLattitude = (TextView) findViewById(R.id.outputLat);
         tLattitude.setText(String.valueOf(walkingActivity.getLatitude()));

@@ -1,10 +1,12 @@
 package com.josip.physical.activity.walking;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.SpringDataSource;
@@ -27,7 +29,9 @@ public List<WalkingActivity> res() {
 	walk.setLongitude(25);
 	walk.setUdaljenost(1.547);
 	walk.setVrijemeAktivnosti("5 minuta");
-	walk.setDatumIvrijeme(String.valueOf(date.toString()));
+	SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	String vrijeme=sdf.format(date);
+	walk.setDatumIvrijeme(vrijeme);
 	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik(),walk.getDatumIvrijeme()));
 	return activity;
 }
