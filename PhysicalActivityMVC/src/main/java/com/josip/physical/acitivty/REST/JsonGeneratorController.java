@@ -26,6 +26,7 @@ import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
 import com.josip.physical.activity.walking.WalkingActivity;
+import com.josip.physical.activity.walking.WalkingImplementation;
 import com.josip.physical.activity.walking.WalkingRepository;
 
 
@@ -33,7 +34,7 @@ import com.josip.physical.activity.walking.WalkingRepository;
 @RequestMapping({"/","/physical/","/1e2b3tzrUZcvn"})
 public class JsonGeneratorController {
         @Autowired
-        WalkingRepository repository;
+        WalkingImplementation wk;
 		@Autowired
 		Registration rg;
 		@Autowired
@@ -91,10 +92,11 @@ public class JsonGeneratorController {
 		   model.addAttribute("lista",korisnik());
 	 		return "1e2b3tzrUZcvn";
 		}
-		@RequestMapping(value= "/1e2b3tzrUZcvn",method=RequestMethod.POST,consumes="application/json")
-		public ResponseEntity<WalkingActivity> spremi(WalkingActivity wal) {
-			WalkingActivity walking=repository.spremiPodatke(wal);
-			ResponseEntity<WalkingActivity> response = new ResponseEntity<WalkingActivity>(walking,HttpStatus.CREATED);
+		@RequestMapping(value= "/1e2b3tzrUZcvn",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		public @ResponseBody ResponseEntity<WalkingActivity> spremi(Model model,@RequestBody WalkingActivity wal) {
+			wk.spremiPodatke(wal);
+			ResponseEntity<WalkingActivity> response = new ResponseEntity<WalkingActivity>(wal,HttpStatus.CREATED);
+			model.addAttribute(wk);
 			return response;
 		}
 	}
