@@ -28,7 +28,7 @@
 </div>
 <section>
 <h2>Json lista</h2>
- ${lista}
+ 
  </section>
 </div>
 </body>

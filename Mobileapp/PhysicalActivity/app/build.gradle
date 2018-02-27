@@ -52,6 +52,8 @@ android {
         compile 'org.springframework.android:spring-android-core:1.0.1.RELEASE'
         compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
 
+
+
     }
     packagingOptions{
         exclude 'META-INF/NOTICE' // will not include NOTICE file

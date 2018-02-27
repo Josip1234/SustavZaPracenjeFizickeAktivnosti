@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -30,6 +31,8 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -38,6 +41,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedInputStream;
@@ -49,8 +54,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 
@@ -94,7 +103,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private Date date;
     private SimpleDateFormat sdf;
     private ImageButton image;
-
+    private Map<String,String> autorizacija;
 
 
 
@@ -139,6 +148,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         Thread thread = new Thread(new Runnable(){
             public void run() {
                 try {
+
+
+
+
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(new MediaType("application","json"));
                     HttpEntity<WalkingActivity> request= new HttpEntity<WalkingActivity>(walkingActivity,headers);
@@ -146,9 +159,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                     MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
                     converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
                     restTemplate.getMessageConverters().add(converter);
-                    ResponseEntity<WalkingActivity> response= restTemplate.exchange("http://10.0.2.2:8080/physical/1e2b3tzrUZcvn", HttpMethod.POST,request,WalkingActivity.class);
-                    WalkingActivity result=response.getBody();
-                    System.out.println(result.toString());
+                    try {
+                        ResponseEntity<WalkingActivity> response= restTemplate.exchange("http://10.0.2.2:8080/physical//1e2b3tzrUZcvn", HttpMethod.POST,request,WalkingActivity.class);
+                        WalkingActivity result=response.getBody();
+                        System.out.println(result.toString());
+                    } catch (HttpClientErrorException e) {
+                        e.printStackTrace();
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -294,6 +311,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         String time = cr.getText().toString();
         return time;
     }
+
+
 
 
     public String vrati_korisnika() throws IOException, JSONException {

@@ -18,11 +18,12 @@ import static android.content.Intent.getIntent;
 
 public class ListOfActivitiesActivity extends AppCompatActivity {
     private boolean unesen;
-    public boolean kreirajJsonDatoteku(String user) throws JSONException, IOException {
+    public boolean kreirajJsonDatoteku(String user,String pass) throws JSONException, IOException {
        JSONArray jsonArray = new JSONArray();
        JSONObject jsonObject;
        jsonObject=new JSONObject();
        jsonObject.put("korisnik",user);
+       jsonObject.put("sifra",pass);
        jsonArray.put(jsonObject);
        String tekst=jsonArray.toString();
        FileOutputStream stream = openFileOutput("PodaciKorisnika.json",MODE_PRIVATE);
@@ -42,7 +43,7 @@ public class ListOfActivitiesActivity extends AppCompatActivity {
             String ime=extras.getString("ime");
             String sifra=extras.getString("šifra");
             try {
-                unesen=kreirajJsonDatoteku(ime);
+                unesen=kreirajJsonDatoteku(ime,sifra);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
