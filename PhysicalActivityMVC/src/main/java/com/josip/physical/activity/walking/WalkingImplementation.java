@@ -36,23 +36,9 @@ public List<WalkingActivity> res() {
 	return activity;
 }
 
-@Override
-public List<WalkingActivity> izlistajPoBrojuKoraka(int koraci) {
-	// TODO Auto-generated method stub
-	return null;
-}
 
-@Override
-public List<WalkingActivity> izlistajPoDatumu(Date date) {
-	// TODO Auto-generated method stub
-	return null;
-}
 
-@Override
-public List<WalkingActivity> izslistajPoDatumuiKoracima(Date date, int koraci) {
-	// TODO Auto-generated method stub
-	return null;
-}
+
 
 @Override
 public WalkingActivity spremiPodatke(WalkingActivity wal) {
@@ -83,8 +69,18 @@ public boolean izbrisiPoDatumu(Date date) {
 
 
 @Override
-public boolean izbrisiPoDatumuIKoracima(Date date, int koraci) {
+public List<WalkingActivity> izlistajSve() {
 	// TODO Auto-generated method stub
-	return false;
+	return null;
+}
+
+
+
+
+
+@Override
+public List<WalkingActivity> izlistajPoDatumu(Date date) {
+	// TODO Auto-generated method stub
+	return null;
 }
 }

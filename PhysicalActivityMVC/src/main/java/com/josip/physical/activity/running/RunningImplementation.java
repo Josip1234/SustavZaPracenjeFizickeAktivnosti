@@ -30,7 +30,8 @@ public class RunningImplementation implements RunningRepository {
 	    		run.getLatitude(),
 	    		run.getLongitude(),
 	    		run.getVrijemeAktivnosti(),
-	    		run.getUdaljenost()
+	    		run.getUdaljenost(),
+	    		run.getDatum()
 	    		));
 	    
 		

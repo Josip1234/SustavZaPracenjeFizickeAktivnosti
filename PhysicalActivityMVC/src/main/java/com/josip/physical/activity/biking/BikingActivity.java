@@ -11,6 +11,7 @@ private double longitude;
 private double latitude;
 private String korisnik;
 private double udaljenost;
+private String datum;
 /**
  * @param vrijemeAktivnosti
  * @param brzinaUkm
@@ -24,7 +25,7 @@ public BikingActivity(){
 	
 }
 public BikingActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude,
-		String korisnik, double udaljenost) {
+		String korisnik, double udaljenost,String datum) {
 	this.vrijemeAktivnosti = vrijemeAktivnosti;
 	this.brzinaUkm = brzinaUkm;
 	this.lokacija = lokacija;
@@ -32,6 +33,13 @@ public BikingActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacij
 	this.latitude = latitude;
 	this.korisnik = korisnik;
 	this.udaljenost = udaljenost;
+	this.datum=datum;
+}
+public String getDatum() {
+	return datum;
+}
+public void setDatum(String datum) {
+	this.datum = datum;
 }
 public String getVrijemeAktivnosti() {
 	return vrijemeAktivnosti;

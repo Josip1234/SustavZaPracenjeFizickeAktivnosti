@@ -26,6 +26,7 @@ public class BikingImplementation implements BikingRepository {
 		bike.setLongitude(-16.57);
 		bike.setUdaljenost(1.058);
 		bike.setVrijemeAktivnosti("1.15");
+		bike.setDatum("");
 	    stuff.add(new BikingActivity(
 	    		bike.getVrijemeAktivnosti(),
 	    	    bike.getBrzinaUkm(),
@@ -33,7 +34,8 @@ public class BikingImplementation implements BikingRepository {
 	    		bike.getLongitude(),
 	    		bike.getLatitude(),
 	    		bike.getKorisnik(),
-	    		bike.getUdaljenost()
+	    		bike.getUdaljenost(),
+	    		bike.getDatum()
 	    		
 	    		
 	    		

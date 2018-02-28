@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SummaryImplementation implements SummaryRepository {
+public class SummaryImplementation  implements SummaryRepository{
+	
+
 @Autowired
 SummaryActivity summar;
 	@Override
@@ -17,9 +19,10 @@ SummaryActivity summar;
 		summar.setPrijedjeniKilometri(1.565);
 		summar.setProsjecnaBrzina(15);
 		summar.setUkupanBrojKoraka(15);
-		summar.setUkupnoVrijeme("10 minuta");
+		summar.setUkupnoVrijeme(10.00);
+		summar.setDatum("");
 		list.add(new SummaryActivity(
-				summar.getKorisnik(),summar.getUkupanBrojKoraka(),summar.getUkupnoVrijeme(),summar.getPrijedjeniKilometri(),summar.getProsjecnaBrzina()
+				summar.getKorisnik(),summar.getUkupanBrojKoraka(),summar.getUkupnoVrijeme(),summar.getPrijedjeniKilometri(),summar.getProsjecnaBrzina(),summar.getDatum()
 				
 				
 				));
