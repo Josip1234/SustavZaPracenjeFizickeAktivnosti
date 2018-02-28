@@ -1,5 +1,7 @@
 package com.josip.physical.activity.indeks_tjelesne_mase;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -8,7 +10,9 @@ import com.josip.physical.activity.regist.Registration;
 
 @Component("Indeks tjelesne mase")
 public class BMICalculator implements BMIReprository {
+	@NotNull
 	private int masa_u_kg;
+	@NotNull
 	private double visina_osobe_u_metrima;
 	private double rezultat;
     Registration rg;

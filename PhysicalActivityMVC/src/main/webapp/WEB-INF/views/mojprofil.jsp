@@ -56,19 +56,24 @@
 <form action="mojprofil" method="post">
 <h2>Ažuriranje profila</h2>
 <label>Oib:</label>
-<input type="text" name="OIB">
+<br>
+<input type="text" name="OIB" value="<c:out value="${korisnik.OIB}"  />">
 <br>
 <label>Ime:</label>
-<input type="text" name="ime">
+<br>
+<input type="text" name="ime" value="<c:out value="${korisnik.ime}" />">
 <br>
 <label>Prezime:</label>
-<input type="text" name="prezime">
+<br>
+<input type="text" name="prezime" value="<c:out value="${korisnik.prezime}" />">
 <br>
 <label>Email:</label>
-<input type="text" name="email">
+<br>
+<input type="text" name="email" value="<c:out value="${korisnik.email}" />">
 <br>
 <label>Sifra:</label>
-<input type="password" name="sifra"><br>
+<br>
+<input type="password" name="sifra" value="<c:out value="${korisnik.sifra}" />"><br>
 <input type="hidden" name="_csrf" value="${_csrf.token}" />
 <input type="submit" value="Ažuriraj">
 </form>

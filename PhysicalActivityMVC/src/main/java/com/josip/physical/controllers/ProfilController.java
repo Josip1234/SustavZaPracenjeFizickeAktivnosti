@@ -94,7 +94,8 @@ public class ProfilController {
 		System.out.println(oib);
 		System.out.println(up);
 		model.addAttribute("korisnik",kor);
-		return "mojprofil";
+		
+		return "home";
 	}
 	@RequestMapping(value="/home",method=POST)
 	public String delete() {

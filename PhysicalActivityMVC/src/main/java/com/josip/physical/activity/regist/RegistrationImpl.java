@@ -51,8 +51,12 @@ public class RegistrationImpl implements RegistrationRepository {
 			ds.setPassword("");
 			return ds;
 		}*/
+	    
 		public boolean Update(String oib,String ime,String prezime,String email,String sifra,String username) {
 			registar=new Registration(oib,ime,prezime,email,sifra);
+			Registration registration = new Registration();
+			registration=korisnik(email);
+			
 			source=new SpringDataSource();
 			String updateUs="UPDATE registration SET oib=?,ime=?,prezime=?,email=?,sifra=? WHERE email=?";
 			source.getObj().update(updateUs,oib,ime,prezime,email,sifra,username);
@@ -203,13 +207,14 @@ public class RegistrationImpl implements RegistrationRepository {
 		reg=db.listaKorisnika(email);
 		return reg;
 	}
+	/*
 	@Override
 	public boolean updateUser(String oib, String ime, String prezime, String email, String sifra) throws UnsupportedEncodingException {
 		List<Registration> registration = new ArrayList();
 		registration.add(new Registration(oib,ime,prezime,email,sifra));
 		db.update(registration);
 		return true;
-	}
+	}*/
 	@Override
 	public boolean deleteUser(String email) {
 		db.delete(email);
