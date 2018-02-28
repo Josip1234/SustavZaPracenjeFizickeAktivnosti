@@ -27,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -126,7 +127,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
-        for (int i = 0; i < data.length(); i++) {
+        for (int i = 0; i < data.length()-1; i++) {
             double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
             String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
             int koraci = data.getJSONObject(i).getInt("koraci");
@@ -278,7 +279,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public void start() {
+    public void startcr() {
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
@@ -478,6 +479,35 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                time = getTimeAfterStop();
+                try {
+                    date=new Date();
+                    sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String vrijeme=sdf.format(date);
+                    walk.put("datumIvrijeme",vrijeme);
+                    walk.put("vrijemeAktivnosti", time);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                polje.put(walk);
+                String text = polje.toString();
+                try {
+                    FileOutputStream os = openFileOutput("Walking.json", MODE_PRIVATE);
+                    try {
+                        os.write(text.getBytes());
+                        os.close();
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+
                 try {
                     procitajPodatke();
                 } catch (IOException e) {
@@ -522,6 +552,21 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         } catch (IOException e) {
             e.printStackTrace();
         }
+        polje.put(walk);
+        String text = polje.toString();
+        try {
+            FileOutputStream os = openFileOutput("Walking.json", MODE_PRIVATE);
+            try {
+                os.write(text.getBytes());
+                os.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
         tLattitude = (TextView) findViewById(R.id.outputLat);
@@ -544,13 +589,15 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                start();
+                startcr();
             }
         });
         mStop = (Button) findViewById(R.id.stop);
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 onclickedstopchronomethar();
 
 
@@ -689,6 +736,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
+
+    @Override
     protected void onPause() {
         super.onPause();
         senSensorManager.unregisterListener(this);
@@ -699,6 +748,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        /*
         polje.put(walk);
         String text = polje.toString();
         try {
@@ -714,7 +764,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
+*/
 
         //RestTemplate rest = new RestTemplate(true);
 
@@ -733,11 +783,25 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-
+    @Override
     protected void onResume() {
         super.onResume();
+        /*
+        polje.put(walk);
+        String text = polje.toString();
+        try {
+            FileOutputStream os = openFileOutput("Walking.json", MODE_PRIVATE);
+            try {
+                os.write(text.getBytes());
+                os.close();
 
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }*/
 
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -756,9 +820,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-
+    @Override
     protected void onStart() {
         super.onStart();
+        Toast.makeText(this, "Dobrodošli u aplikaciju", Toast.LENGTH_SHORT).show();
+
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -772,6 +838,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             return;
         }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
+
     }
 
 
