@@ -33,13 +33,16 @@
 <h2>Unos u kalkulator:</h2>
 <form action="BMICalc" method="post">
 <p>Visina osobe:</p><br>
-<input type="text" name="visina_osobe_u_metrima">
+
+<input type="text" name="visina_osobe_u_metrima" required="required">
 <br>
-<p>Masa u kg:</p>
-<input type="text" name="masa_u_kg">
+<p>Masa u kg:</p><br>
+
+<input type="text" name="masa_u_kg" required="required">
 <br>
 <input type="hidden" name="_csrf" value="${_csrf.token}" />
-<input type="submit" value="Izrčunaj">
+<br>
+<input type="submit" value="Izračunaj">
 </form><br>
 <p>Rezultat: ${rezultat}</p>
 <br>

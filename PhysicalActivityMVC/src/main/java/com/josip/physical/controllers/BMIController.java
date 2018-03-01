@@ -1,9 +1,12 @@
 package com.josip.physical.controllers;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,12 +22,13 @@ public class BMIController {
 		return "BMICalc";
 	}
 	@RequestMapping(value="/BMICalc",method=POST)
-	public void rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")int masa_u_kg,Model model){
+	public void rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")double masa_u_kg,Model model){
+		
 		String izraz="";
 		double rezultat=0.0;
 		String sp="";
 		String ind="";
-		int a=0;
+		double a=0.0;
 		double b=0.0;
 		a=masa_u_kg;
 		b=visina_osobe_u_metrima;
@@ -35,11 +39,7 @@ public class BMIController {
 		ind=bm.granica_BMI(rezultat,sp,izraz);
 		model.addAttribute("rezultat",rezultat+" "+ind);
 		izraz="";
-		
-		
-		
-		
-	}
+		}
 	
  
 

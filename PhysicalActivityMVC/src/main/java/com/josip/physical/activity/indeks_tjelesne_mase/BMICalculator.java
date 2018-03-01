@@ -10,20 +10,20 @@ import com.josip.physical.activity.regist.Registration;
 
 @Component("Indeks tjelesne mase")
 public class BMICalculator implements BMIReprository {
-	@NotNull
-	private int masa_u_kg;
-	@NotNull
+	
+	private double masa_u_kg;
+	
 	private double visina_osobe_u_metrima;
 	private double rezultat;
     Registration rg;
     
 	public BMICalculator(){
 	
-		this.masa_u_kg=67;
+		this.masa_u_kg=67.00;
 		this.visina_osobe_u_metrima=1.67;
 		
 	}
-	public BMICalculator(int masa,double visina){
+	public BMICalculator(double masa,double visina){
 		
 		this.masa_u_kg=masa;
 		this.visina_osobe_u_metrima=visina;
@@ -33,11 +33,11 @@ public class BMICalculator implements BMIReprository {
 	
   
 
-	public int getMasa_u_kg() {
+	public double getMasa_u_kg() {
 		return masa_u_kg;
 	}
 
-	public void setMasa_u_kg(int masa_u_kg) {
+	public void setMasa_u_kg(double masa_u_kg) {
 		this.masa_u_kg = masa_u_kg;
 	}
 
@@ -57,7 +57,7 @@ public class BMICalculator implements BMIReprository {
 		this.rezultat = rezultat;
 	}
     
-	public double izracunajBMI(int masa,double visina_osobe){
+	public double izracunajBMI(double masa,double visina_osobe){
 		
 		this.rezultat=masa/(visina_osobe*visina_osobe);
 		return this.rezultat;
