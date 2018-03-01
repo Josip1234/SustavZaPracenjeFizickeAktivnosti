@@ -88,8 +88,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private int numSteps;
     //private SeekBar seekBar;
     private int threshold;
-    private TextView tLattitude;
-    private TextView tLongittude;
+
 
     private TextView adr;
     private TextView tUdaljenost;
@@ -372,8 +371,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 float brzina = (float) (trenutna_brzina * 3.6);
 
 
-                tLattitude.setText(String.valueOf(trenutna_brzina));
-                tLongittude.setText(String.valueOf(brzina));
+
 
 
                 double distance = distance(loc1, loc2, loc3, loc4, "K");
@@ -569,10 +567,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         }
 
 
-        tLattitude = (TextView) findViewById(R.id.outputLat);
-        tLattitude.setText(String.valueOf(walkingActivity.getLatitude()));
-        tLongittude = (TextView) findViewById(R.id.outputLong);
-        tLongittude.setText(String.valueOf(walkingActivity.getLatitude()));
+
 
         adr = (TextView) findViewById(R.id.homead);
         adr.setText(walkingActivity.getAdresa());

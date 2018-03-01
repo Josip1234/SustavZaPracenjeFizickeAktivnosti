@@ -157,23 +157,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                         tools:ignore="HardcodedText" />
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:ignore="DuplicateIds">
-
-                    <TextView
-                        android:id="@+id/brzinaum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lattitude" />
-
-                    <TextView
-                        android:id="@+id/outputLat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dots" />
-                </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -185,11 +168,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                         android:layout_height="wrap_content"
                         android:text="@string/longitude" />
 
-                    <TextView
-                        android:id="@+id/outputLong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dots2" />
 
                 </TableRow>
 

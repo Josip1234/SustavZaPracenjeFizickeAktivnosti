@@ -9,7 +9,6 @@
     tools:context="activity.physical.example.com.josip.physicalactivity.Bicikliranje">
 
 
-
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
@@ -33,148 +32,172 @@
                 android:orientation="vertical"
                 tools:ignore="UselessParent">
 
+
                 <Chronometer
-                    android:id="@+id/chronometer4"
+                    android:id="@+id/chronometer2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:layout_marginEnd="80dp"
                     android:layout_marginStart="70dp"
                     android:paddingTop="15dp"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
-                <TableLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp"
-                    >
+                    android:layout_height="match_parent">
 
-                    <TableRow
+
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
+
+
+                        <TableLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:padding="5dp">
 
-                            <LinearLayout
+
+
+                            <TableRow
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
+                                android:layout_height="match_parent" >
 
-                                <Button
-                                    android:id="@+id/startch"
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:textSize="12sp"
-                                    android:layout_height="30dp"
-                                    android:text="@string/vrijemestart" />
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:baselineAligned="false">
 
-                                <Button
-                                    android:id="@+id/stopch"
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <Button
+                                            android:id="@+id/start"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="resetc"
+                                            android:text="@string/vrijemestart"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp,UnusedAttribute" />
+
+                                        <Button
+                                            android:id="@+id/stop"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="onclickedstopchronomethar"
+                                            android:text="@string/vrijemestop"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp"
+                                            tools:text="@string/vrijemestop" />
+
+                                        <Button
+                                            android:id="@+id/reset"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="resetc"
+                                            android:text="@string/reset"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp"
+                                            tools:text="@string/reset" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <TextView
+                                    android:id="@+id/udaljenost"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/udaljenost" />
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/brzinaukm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/longitude" />
+
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/homead"
                                     android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/homead"
 
-                                    android:textSize="12sp"
-                                    android:layout_height="30dp"
-                                    android:text="@string/vrijemestop" />
+                                    />
 
-                                <Button
-                                    android:id="@+id/resetch"
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/korisnik"
                                     android:layout_width="match_parent"
-                                    android:textSize="12sp"
+                                    android:layout_height="match_parent"
+
+
+                                    android:text="@string/korisnik" />
+                            </TableRow>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <ImageButton
+                                    android:id="@+id/posaljiPodatke"
+                                    android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:text="@string/reset" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/brzina"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/speed" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/brzinakm"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/kmnah" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/ulica"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ulica" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/postbrngr"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/gradpost" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/drzava"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/state" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/korisnik"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/korisnik" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <TextView
-                            android:id="@+id/udaljenost"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/udaljenost" />
-                    </TableRow>
+                                    app:srcCompat="@android:drawable/ic_menu_send" />
 
 
-                </TableLayout>
+
+                            </TableRow>
+
+
+
+
+
+
+                        </TableLayout>
+                    </HorizontalScrollView>
+                </ScrollView>
+
             </LinearLayout>
         </LinearLayout>
 
-    </FrameLayout>
 
+
+    </FrameLayout>
 
 </LinearLayout>

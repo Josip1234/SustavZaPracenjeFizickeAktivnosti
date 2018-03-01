@@ -39,13 +39,6 @@ public class TrcanjeActivity extends AppCompatActivity {
     private Chronometer cr;
 
     private TextView mtv1;
-    public int indeks = 0;
-    private Button map;
-    private double kilometri = 00.00;
-    private double[] kilometraza;
-    private float suma = 0;
-    private int brojPojavljivanjaKoordinata = 0;
-    private TextView mBrojPretrcanih;
     private Button mStart;
     private Button mStop;
     private Button mReset;

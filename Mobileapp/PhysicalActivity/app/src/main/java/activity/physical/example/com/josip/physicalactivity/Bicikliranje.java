@@ -2,6 +2,8 @@ package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,63 +17,71 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.model.BikingActivity;
+import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 
-public class Bicikliranje extends AppCompatActivity  {
-private Chronometer cron;
-private Button mStart;
-private Button mStop;
-private Button mReset;
-    private TextView mSpeed;
-    private TextView mSpeedkmH;
-    private TextView mUlica;
-    private TextView mPostaNaziv;
-    private TextView mDrzava;
-    private TextView mKorisnik;
-    private TextView mUdaljenost;
+public class Bicikliranje extends AppCompatActivity {
+    long timeWhenStopped = 0;
+    private Chronometer cr;
+
+    private static String time;
+
+    private TextView textViewSteps;
+
+    private TextView adr;
+    private TextView tUdaljenost;
+    private Button mReset;
+    private Button mStart;
+    private Button mStop;
+    private JSONArray polje;
+    private JSONObject bike;
+
+    private BikingActivity bikingActivity;
     private Date date;
-    private SimpleDateFormat dateFormat;
-    public void startcron(){
-        cron=(Chronometer) findViewById(R.id.chronometer4);
-        cron.start();
-    }
-    public String stopcron(){
-        cron=(Chronometer) findViewById(R.id.chronometer4);
-        cron.stop();
-        String time=cron.getText().toString();
+    private SimpleDateFormat sdf;
+    private ImageButton image;
 
-        System.out.println(time);
 
-        return time;
-    }
-    public void resetcron(){
-        cron=(Chronometer) findViewById(R.id.chronometer4);
-        cron.setBase(SystemClock.elapsedRealtime());
-        cron.stop();
-    }
-    public String vrati_korisnika() throws IOException,JSONException {
 
-        String naziv="prijava.json";
-        String korisnik="";
+    public BikingActivity procitajPodatke() throws IOException, JSONException {
+
+
+        String naziv = "Bicikliranje.json";
+
+
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -79,19 +89,118 @@ private Button mReset;
         fis.close();
 
         JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer= new StringBuffer();
-        for(int i=0;i<data.length();i++){
-            String object=data.getJSONObject(i).getString("username");
-            korisnik=object;
-            prijavaBuffer.append(object);
-        }
-        Log.i("poruka","pročitan json");
-        Log.i("korisnik",korisnik);
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length() - 1; i++) {
+            double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
+            String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
+            String lokacija = data.getJSONObject(i).getString("lokacija");
+            double longitude = data.getJSONObject(i).getDouble("longitude");
+            double latitude = data.getJSONObject(i).getDouble("latitude");
+            double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
+            String korisnik = data.getJSONObject(i).getString("korisnik");
+            String datum = data.getJSONObject(i).getString("datum");
+            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti  + "" + lokacija + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik + "" + datum);
+            bikingActivity = new BikingActivity(vrijemeAktivnosti, brzinaUkm, lokacija, longitude, latitude, korisnik, udaljenost, datum);
 
-        return korisnik;
+
+            Log.i("poruka", "pročitan json");
+
+
+        }
+
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                try {
+
+
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(new MediaType("application", "json"));
+                    HttpEntity<BikingActivity> request = new HttpEntity<BikingActivity>(bikingActivity, headers);
+                    RestTemplate restTemplate = new RestTemplate();
+                    MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+                    converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
+                    restTemplate.getMessageConverters().add(converter);
+                    try {
+                        ResponseEntity<BikingActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical//1e2b3tzrUZcvn", HttpMethod.POST, request, BikingActivity.class);
+                        BikingActivity result = response.getBody();
+                        System.out.println(result.toString());
+                    } catch (HttpClientErrorException e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+
+
+        return bikingActivity;
+    }
+
+
+    public void dohvati_koordinate(double lat, double lon) {
+
+
+        try {
+            kreiraj_prethodne_koordinate(lat, lon);
+            Log.i("poruka", "Uspješno spremljene koordinate");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void kreiraj_prethodne_koordinate(double lat, double lon) throws IOException, JSONException {
+
+        JSONArray array = new JSONArray();
+        JSONObject object;
+        object = new JSONObject();
+        object.put("koordinata", lat);
+        array.put(object);
+        object = new JSONObject();
+        object.put("koordinata", lon);
+        array.put(object);
+        String text = array.toString();
+        FileOutputStream fos = openFileOutput("koordinateBike.json", MODE_PRIVATE);
+        fos.write(text.getBytes());
+        fos.close();
+        Log.i("message", "succesfully written to json");
+    }
+
+
+    public String vrati_koordinate(int pozicija) throws IOException, JSONException {
+        String naziv = "koordinateBike.json";
+
+
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+
+
+        String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
+        prijavaBuffer.append(koordinata2);
+
+
+        Log.i("poruka", "pročitan json");
+
+        return prijavaBuffer.toString();
 
 
     }
+
     private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
         double theta = lon1 - lon2;
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
@@ -100,7 +209,6 @@ private Button mReset;
         dist = dist * 60 * 1.1515;
         if (unit == "K") {
             dist = dist * 1.609344;
-
         } else if (unit == "N") {
             dist = dist * 0.8684;
         }
@@ -122,32 +230,57 @@ private Button mReset;
         return (rad * 180 / Math.PI);
     }
 
-    public void kreiraj_prethodne_koordinate(double lat ,double lon) throws IOException,JSONException{
 
-        JSONArray array = new JSONArray();
-        JSONObject object;
-        object=new JSONObject();
-        object.put("koordinata",lat);
-        array.put(object);
-        object=new JSONObject();
-        object.put("koordinata",lon);
-        array.put(object);
-        String text = array.toString();
-        FileOutputStream fos = openFileOutput("koordinate.json",MODE_PRIVATE);
-        fos.write(text.getBytes());
-        fos.close();
-        Log.i("message","succesfully written to json");
+    public void resetc() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime());
+        timeWhenStopped = 0;
+        cr.stop();
     }
 
 
-    public String vrati_koordinate(int pozicija) throws IOException,JSONException {
-        String naziv="koordinate.json";
+    public void startcr() {
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+        cr.start();
+    }
+
+    public void onclickedstopchronomethar() {
+        String time = "";
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = getTimeAfterStop();
+        cr.setText(time);
+        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
+        cr.setBase(SystemClock.elapsedRealtime());
+
+        cr.stop();
 
 
+    }
+
+    public String getTimeAfterStop() {
+        String time;
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = cr.getText().toString();
+        return time;
+    }
+
+    public String getTime() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        String time = cr.getText().toString();
+        return time;
+    }
+
+
+    public String vrati_korisnika() throws IOException, JSONException {
+        String naziv = "PodaciKorisnika.json";
+        String korisnik = "";
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
-        while (bis.available() !=0){
+        while (bis.available() != 0) {
             char c = (char) bis.read();
             b.append(c);
         }
@@ -156,51 +289,26 @@ private Button mReset;
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
-
-
-        String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
-        prijavaBuffer.append(koordinata2);
-
-
-
-
-
-
-
-
-        Log.i("poruka","pročitan json");
-
-        return prijavaBuffer.toString();
-
-
-    }
-
-
-    public void dohvati_koordinate(double lat,double lon){
-
-
-        try {
-            kreiraj_prethodne_koordinate(lat,lon);
-            Log.i("poruka","Uspješno spremljene koordinate");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        for (int i = 0; i < data.length(); i++) {
+            String object = data.getJSONObject(i).getString("korisnik");
+            korisnik = object;
+            prijavaBuffer.append(object);
         }
+        Log.i("poruka", "pročitan json");
+        Log.i("korisnik", korisnik);
+
+        return korisnik;
+
+
     }
 
     LocationListener locListener = new LocationListener() {
         @Override
-        public void onLocationChanged(Location loca) {
-            if(loca!=null) {
-                mSpeed=(TextView) findViewById(R.id.brzina);
-                mSpeedkmH=(TextView) findViewById(R.id.brzinakm);
-                mUlica=(TextView) findViewById(R.id.ulica);
-                mPostaNaziv=(TextView) findViewById(R.id.postbrngr);
-                mDrzava=(TextView) findViewById(R.id.drzava);
+        public void onLocationChanged(Location loc) {
+            double lat = loc.getLatitude();
+            double lon = loc.getLongitude();
 
-                mUdaljenost=(TextView) findViewById(R.id.udaljenost);
-
+            if (loc != null) {
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -214,41 +322,34 @@ private Button mReset;
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                double loc3 =  loca.getLatitude();
-                double loc4 =  loca.getLongitude();
-                float trenutna_brzina = loca.getSpeed();
+                double loc3 = lat;
+                double loc4 = lon;
+
+
+                float trenutna_brzina = loc.getSpeed();
                 float brzina = (float) (trenutna_brzina * 3.6);
 
-                mSpeed.setText(String.valueOf(trenutna_brzina) + " m/s");
-                mSpeedkmH.setText(String.valueOf(brzina) + " km/h");
-                System.out.println(loc3);
-                System.out.println(loc4);
-                double distance = distance(loc1,loc2,loc3,loc4,"K");
 
-
-
-                System.out.println("Udaljenost do druge točke:" + String.valueOf(distance) + " kilometara");
+                double distance = distance(loc1, loc2, loc3, loc4, "K");
+                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                tUdaljenost.setText(String.valueOf(distance));
                 try {
-
-                    mUdaljenost.setText("Udaljenost:" + String.valueOf(distance) + "km");
-                } catch (Exception e) {
+                    bike.put("udaljenost", distance);
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
 
                 dohvati_koordinate(loc3, loc4);
                 String cityName = null;
                 String stateName = null;
                 String ad = null;
+
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
 
 
-
-
                 try {
-                    addresses = gcd.getFromLocation(loca.getLatitude(), loca.getLongitude(), 1);
+                    addresses = gcd.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
                     if (addresses.size() > 0) {
                         try {
                             Log.i("poruka", addresses.get(0).getLocality());
@@ -270,36 +371,41 @@ private Button mReset;
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
-
+                        if (cityName == null) {
+                            cityName = "Nema naziva grada";
+                        }
+                        if (stateName == null) {
+                            stateName = "Nema naziva države";
+                        }
+                        if (ad == null) {
+                            ad = "Nema adrese";
+                        }
 
 
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
                 String s =
                         cityName;
                 String p = stateName;
                 String a = ad;
 
 
-                mUlica.setText(a);
+                adr.setText(s + p + a);
 
-                mPostaNaziv.setText(s);
+                try {
+                    bike.put("lokacija", s + p + a);
+                    bike.put("longitude", loc4);
+                    bike.put("latitude", loc3);
+                    bike.put("brzinaUkm", brzina);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                mDrzava.setText(p);
-
-
-
-
-
-
-                loca.reset();
 
             }
-        };
+        }
 
         @Override
         public void onStatusChanged(String s, int i, Bundle bundle) {
@@ -317,48 +423,132 @@ private Button mReset;
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
-        date=new Date();
-        dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        BikingActivity bikingActivity = new BikingActivity(
-                "0:00",
-                0.00,
-                "nema adrese",
-                0.00,
-                0.00,
-                "",
-                0.00,
-                 dateFormat.format(date)
-        );
-
-
-        mStart=(Button) findViewById(R.id.startch);
-        mStart.setOnClickListener(new View.OnClickListener() {
+        image = (ImageButton) findViewById(R.id.posaljiPodatke);
+        image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startcron();
+                time = getTimeAfterStop();
+                try {
+                    date = new Date();
+                    sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    String vrijeme = sdf.format(date);
+                    bike.put("datum", vrijeme);
+                    bike.put("vrijemeAktivnosti", time);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                polje.put(bike);
+                String text = polje.toString();
+                try {
+                    FileOutputStream os = openFileOutput("Bicikliranje.json", MODE_PRIVATE);
+                    try {
+                        os.write(text.getBytes());
+                        os.close();
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
+                try {
+                    procitajPodatke();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
-        mStop=(Button) findViewById(R.id.stopch);
-        mStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopcron();
+        date = new Date();
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String vrijeme= sdf.format(date);
+
+
+        BikingActivity bikingActivity = new BikingActivity("0:00", 00.00, "nema lokacije", 00.00, 00.00, "korisnik",00.00,vrijeme );
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime());
+        cr.stop();
+
+
+
+        polje = new JSONArray();
+        bike = new JSONObject();
+        try {
+            bike.put("udaljenost", bikingActivity.getUdaljenost());
+            bike.put("vrijemeAktivnosti", bikingActivity.getVrijemeAktivnosti());
+            bike.put("lokacija", bikingActivity.getLokacija());
+            bike.put("longitude", bikingActivity.getLongitude());
+            bike.put("latitude", bikingActivity.getLatitude());
+            bike.put("brzinaUkm", bikingActivity.getBrzinaUkm());
+            bike.put("korisnik", vrati_korisnika());
+            bike.put("datum", vrijeme);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        polje.put(bike);
+        String text = polje.toString();
+        try {
+            FileOutputStream os = openFileOutput("Bicikliranje.json", MODE_PRIVATE);
+            try {
+                os.write(text.getBytes());
+                os.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-        mReset=(Button) findViewById(R.id.resetch);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        adr = (TextView) findViewById(R.id.homead);
+        adr.setText(bikingActivity.getLokacija());
+        tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+        tUdaljenost.setText(String.valueOf(bikingActivity.getUdaljenost()));
+        mReset = (Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetcron();
+                resetc();
+            }
+        });
+        mStart = (Button) findViewById(R.id.start);
+        mStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startcr();
+            }
+        });
+        mStop = (Button) findViewById(R.id.stop);
+        mStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                onclickedstopchronomethar();
+
+
             }
         });
 
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -369,37 +559,42 @@ private Button mReset;
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
-        mKorisnik=(TextView) findViewById(R.id.korisnik);
+        locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+
+        time = getTimeAfterStop();
         try {
-            mKorisnik.setText(vrati_korisnika());
-        } catch (IOException e) {
-            e.printStackTrace();
+            bike.put("vrijemeAktivnosti", time);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+
     }
 
-    public void posaljiPodatke(double lat ,double lon) throws IOException,JSONException{
-
-        JSONArray array = new JSONArray();
-        JSONObject object;
-        object=new JSONObject();
-        object.put("koordinata",lat);
-        array.put(object);
-        object=new JSONObject();
-        object.put("koordinata",lon);
-        array.put(object);
-        String text = array.toString();
-        FileOutputStream fos = openFileOutput("bicikliranje.json",MODE_PRIVATE);
-        fos.write(text.getBytes());
-        fos.close();
-        Log.i("message","succesfully written to json");
-    }
-
+    @Override
     protected void onResume() {
         super.onResume();
+
+
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -416,10 +611,12 @@ private Button mReset;
 
     }
 
-    ;
-
+    @Override
     protected void onStart() {
         super.onStart();
+        Toast.makeText(this, "Dobrodošli u bicikliranje", Toast.LENGTH_SHORT).show();
+
+
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -432,8 +629,7 @@ private Button mReset;
             return;
         }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
-    }
+
+    }}
 
 
-
-}
