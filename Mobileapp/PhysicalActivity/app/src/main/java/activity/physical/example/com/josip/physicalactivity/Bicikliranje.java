@@ -25,8 +25,12 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import activity.physical.example.com.josip.physicalactivity.model.BikingActivity;
 
 public class Bicikliranje extends AppCompatActivity  {
 private Chronometer cron;
@@ -40,8 +44,8 @@ private Button mReset;
     private TextView mDrzava;
     private TextView mKorisnik;
     private TextView mUdaljenost;
-    private List<activity.physical.example.com.josip.physicalactivity.model.BikingActivity> listaVrijednosti;
-    private activity.physical.example.com.josip.physicalactivity.model.BikingActivity bike;
+    private Date date;
+    private SimpleDateFormat dateFormat;
     public void startcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
         cron.start();
@@ -318,6 +322,18 @@ private Button mReset;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
+        date=new Date();
+        dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        BikingActivity bikingActivity = new BikingActivity(
+                "0:00",
+                0.00,
+                "nema adrese",
+                0.00,
+                0.00,
+                "",
+                0.00,
+                 dateFormat.format(date)
+        );
 
 
         mStart=(Button) findViewById(R.id.startch);
