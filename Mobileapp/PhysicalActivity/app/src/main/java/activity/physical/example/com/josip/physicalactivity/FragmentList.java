@@ -10,14 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.json.JSONException;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import static android.content.Intent.getIntent;
-
 /**
  * Created by Josip on 6.8.2017..
  */
@@ -66,7 +58,7 @@ public class FragmentList extends ListFragment {
             Intent intent = new Intent(v.getContext(),TrcanjeActivity.class);
             startActivityForResult(intent,1);
         }else if(position==2){
-            Intent intent = new Intent(v.getContext(),BikingActivity.class);
+            Intent intent = new Intent(v.getContext(),Bicikliranje.class);
             startActivityForResult(intent,2);
         }else if(position==3){
             Intent intent = new Intent(v.getContext(),RezultActivity.class);

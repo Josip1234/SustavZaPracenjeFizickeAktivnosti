@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/unipulogolat"
     android:orientation="vertical"
-    tools:context="activity.physical.example.com.josip.physicalactivity.BikingActivity">
+    tools:context="activity.physical.example.com.josip.physicalactivity.Bicikliranje">
 
 
 

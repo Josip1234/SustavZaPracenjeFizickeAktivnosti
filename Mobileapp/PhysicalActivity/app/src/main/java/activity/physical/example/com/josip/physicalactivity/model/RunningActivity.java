@@ -12,6 +12,16 @@ public class RunningActivity {
     private double latitude;
     private String korisnik;
     private double udaljenost;
+    private String datum;
+
+    public String getDatum() {
+        return datum;
+    }
+
+    public void setDatum(String datum) {
+        this.datum = datum;
+    }
+
     public RunningActivity(){
 
     }

@@ -27,10 +27,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-import java.util.ArrayList;
-import activity.physical.example.com.josip.physicalactivity.model.BikeActivity;
 
-public class BikingActivity extends AppCompatActivity  {
+public class Bicikliranje extends AppCompatActivity  {
 private Chronometer cron;
 private Button mStart;
 private Button mStop;
@@ -42,8 +40,8 @@ private Button mReset;
     private TextView mDrzava;
     private TextView mKorisnik;
     private TextView mUdaljenost;
-    private List<BikeActivity> listaVrijednosti;
-    private BikeActivity bike;
+    private List<activity.physical.example.com.josip.physicalactivity.model.BikingActivity> listaVrijednosti;
+    private activity.physical.example.com.josip.physicalactivity.model.BikingActivity bike;
     public void startcron(){
         cron=(Chronometer) findViewById(R.id.chronometer4);
         cron.start();

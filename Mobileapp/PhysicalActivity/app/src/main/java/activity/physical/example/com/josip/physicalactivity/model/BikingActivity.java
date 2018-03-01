@@ -4,7 +4,7 @@ package activity.physical.example.com.josip.physicalactivity.model;
  * Created by Josip on 1.11.2017..
  */
 
-public class BikeActivity {
+public class BikingActivity {
     private String vrijemeAktivnosti;
     private double brzinaUkm;
     private String lokacija;
@@ -12,13 +12,21 @@ public class BikeActivity {
     private double latitude;
     private String korisnik;
     private double udaljenost;
-
-    public BikeActivity(){
+    private String datum;
+    public BikingActivity(){
 
     }
 
 
-    public BikeActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude, String korisnik, double udaljenost) {
+    public String getDatum() {
+        return datum;
+    }
+
+    public void setDatum(String datum) {
+        this.datum = datum;
+    }
+
+    public BikingActivity(String vrijemeAktivnosti, double brzinaUkm, String lokacija, double longitude, double latitude, String korisnik, double udaljenost, String datum) {
         this.vrijemeAktivnosti = vrijemeAktivnosti;
         this.brzinaUkm = brzinaUkm;
         this.lokacija = lokacija;
@@ -26,6 +34,8 @@ public class BikeActivity {
         this.latitude = latitude;
         this.korisnik = korisnik;
         this.udaljenost = udaljenost;
+        this.datum=datum;
+
     }
 
     public String getVrijemeAktivnosti() {
