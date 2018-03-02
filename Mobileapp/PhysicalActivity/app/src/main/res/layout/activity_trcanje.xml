@@ -35,167 +35,169 @@
 
 
                 <Chronometer
-                    android:id="@+id/chronometer3"
+                    android:id="@+id/chronometer2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="80dp"
                     android:layout_marginStart="70dp"
-                    android:onClick="stop"
                     android:paddingTop="15dp"
                     android:textSize="18sp" />
 
-
-
-                <TableLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
+                    android:layout_height="match_parent">
 
-                    <TableRow
+
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="wrap_content">
 
-                        <LinearLayout
+
+
+                        <TableLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:baselineAligned="false">
+                            android:padding="5dp">
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
 
-                                <Button
-                                    android:id="@+id/start"
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:text="@string/vrijemestart"
-                                    android:textSize="10sp"
-                                    tools:ignore="SmallSp,UnusedAttribute" />
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal"
+                                    android:baselineAligned="false">
 
-                                <Button
-                                    android:id="@+id/stop"
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <Button
+                                            android:id="@+id/start"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="resetc"
+                                            android:text="@string/vrijemestart"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp,UnusedAttribute" />
+
+                                        <Button
+                                            android:id="@+id/stop"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="onclickedstopchronomethar"
+                                            android:text="@string/vrijemestop"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp"
+                                            tools:text="@string/vrijemestop" />
+
+                                        <Button
+                                            android:id="@+id/reset"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="30dp"
+                                            android:onClick="resetc"
+                                            android:text="@string/reset"
+                                            android:textSize="10sp"
+                                            tools:ignore="SmallSp"
+                                            tools:text="@string/reset" />
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <TextView
+                                    android:id="@+id/udaljenost"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/udaljenost" />
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/brzinaukm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/longitude" />
+
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/homead"
                                     android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:text="@string/vrijemestop"
-                                    android:textSize="10sp"
-                                    tools:ignore="SmallSp"
-                                    tools:text="@string/vrijemestop" />
+                                    android:layout_height="match_parent"
+                                    android:text="@string/homead"
 
-                                <Button
-                                    android:id="@+id/reset"
+                                    />
+
+
+                            </TableRow>
+
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/korisnik"
                                     android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+
+                                    android:text="@string/korisnik" />
+                            </TableRow>
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <ImageButton
+                                    android:id="@+id/posaljiPodatke"
+                                    android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:text="@string/reset"
-                                    android:textSize="10sp"
-                                    tools:ignore="SmallSp"
-                                    tools:text="@string/reset" />
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/kmh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/speed" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="DuplicateIds,UselessLeaf">
-
-                        <TextView
-                            android:id="@+id/kilometar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            tools:text="@string/kmnah" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="UselessLeaf">
-
-                        <TextView
-                            android:id="@+id/ulica"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ulica"
-                            tools:text="ulica" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="UselessLeaf">
+                                    app:srcCompat="@android:drawable/ic_menu_send" />
 
 
-                        <TextView
-                            android:id="@+id/pcity"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/gradpost"
-                            tools:text="@string/gradpost" />
-                    </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="UselessLeaf">
+                            </TableRow>
 
 
-                        <TextView
-                            android:id="@+id/state"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/st"
-                            tools:text="država" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:ignore="UselessLeaf">
-
-                        <TextView
-                            android:id="@+id/korisnik"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            tools:text="@string/korisnik"
-                            tools:ignore="HardcodedText" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
 
 
-                        <TextView
-                            android:id="@+id/dist"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/udaljenost"
-                            tools:text="@string/udaljenost" />
-                    </TableRow>
 
-                </TableLayout>
 
+                        </TableLayout>
+                    </HorizontalScrollView>
+                </ScrollView>
 
             </LinearLayout>
         </LinearLayout>
+
+
 
     </FrameLayout>
 

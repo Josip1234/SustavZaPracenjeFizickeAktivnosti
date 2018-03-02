@@ -93,9 +93,6 @@ public class Bicikliranje extends AppCompatActivity {
         for (int i = 0; i < data.length() - 1; i++) {
             double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
             String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
-            String lokacija = data.getJSONObject(i).getString("lokacija");
-            double longitude = data.getJSONObject(i).getDouble("longitude");
-            double latitude = data.getJSONObject(i).getDouble("latitude");
             double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
             String korisnik = data.getJSONObject(i).getString("korisnik");
             String datum = data.getJSONObject(i).getString("datum");
@@ -395,9 +392,7 @@ public class Bicikliranje extends AppCompatActivity {
                 adr.setText(s + p + a);
 
                 try {
-                    bike.put("lokacija", s + p + a);
-                    bike.put("longitude", loc4);
-                    bike.put("latitude", loc3);
+
                     bike.put("brzinaUkm", brzina);
                 } catch (JSONException e) {
                     e.printStackTrace();
