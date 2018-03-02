@@ -130,14 +130,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
             String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
             int koraci = data.getJSONObject(i).getInt("koraci");
-            String adresa = data.getJSONObject(i).getString("adresa");
-            double longitude = data.getJSONObject(i).getDouble("longitude");
-            double latitude = data.getJSONObject(i).getDouble("latitude");
             double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
             String korisnik = data.getJSONObject(i).getString("korisnik");
             String vrijeme=data.getJSONObject(i).getString("datumIvrijeme");
-            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + adresa + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik+""+vrijeme);
-            walkingActivity = new WalkingActivity(udaljenost, vrijemeAktivnosti, koraci, adresa, longitude, latitude, brzinaUkm, korisnik,vrijeme);
+            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + brzinaUkm + "" + korisnik+""+vrijeme);
+            walkingActivity = new WalkingActivity(udaljenost, vrijemeAktivnosti, koraci, brzinaUkm, korisnik,vrijeme);
             lista.add(i,walkingActivity);
 
             Log.i("poruka", "pročitan json");
@@ -416,15 +413,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
-                        if (cityName == null) {
-                            cityName = "Nema naziva grada";
-                        }
-                        if (stateName == null) {
-                            stateName = "Nema naziva države";
-                        }
-                        if (ad == null) {
-                            ad = "Nema adrese";
-                        }
+
 
 
                     }
@@ -521,7 +510,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         String vrijeme=sdf.format(date);
         lista = new ArrayList<WalkingActivity>();
 
-        WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,"nema",00.00,00.00,00.00,"",vrijeme);
+        WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,00.00,"",vrijeme);
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
@@ -539,9 +528,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             walk.put("udaljenost",walkingActivity.getUdaljenost());
             walk.put("vrijemeAktivnosti",walkingActivity.getVrijemeAktivnosti());
             walk.put("koraci",walkingActivity.getKoraci());
-            walk.put("adresa",walkingActivity.getAdresa());
-            walk.put("longitude",walkingActivity.getLongitude());
-            walk.put("latitude",walkingActivity.getLatitude());
+
             walk.put("brzinaUkm",walkingActivity.getBrzinaUkm());
             walk.put("korisnik",vrati_korisnika());
             walk.put("datumIvrijeme",vrijeme);
@@ -570,7 +557,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
         adr = (TextView) findViewById(R.id.homead);
-        adr.setText(walkingActivity.getAdresa());
+
         tUdaljenost = (TextView) findViewById(R.id.udaljenost);
         tUdaljenost.setText(String.valueOf(walkingActivity.getUdaljenost()));
         mReset = (Button) findViewById(R.id.reset);

@@ -36,9 +36,6 @@
 <br>
 ${li.brzinaUkm}
 <br>
-${li.lokacija}<br>
-${li.longitude }<br>
-${li.latitude } <br>
 ${li.korisnik }<br>
 ${li.udaljenost }
 </p>

@@ -21,18 +21,18 @@ SpringDataSource d;
 public List<WalkingActivity> res() {
 	List<WalkingActivity> activity=new ArrayList<WalkingActivity>();
     Date date = new Date();
-	walk.setAdresa("Sveti rok 81");
+	
 	walk.setBrzinaUkm(12.00);
 	walk.setKoraci(10);
 	walk.setKorisnik("jbosnjak3@gmail.com");
-	walk.setLatitude(-25);
-	walk.setLongitude(25);
+	
+	
 	walk.setUdaljenost(1.547);
 	walk.setVrijemeAktivnosti("5 minuta");
 	SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String vrijeme=sdf.format(date);
 	walk.setDatumIvrijeme(vrijeme);
-	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik(),walk.getDatumIvrijeme()));
+	activity.add(new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getBrzinaUkm(),walk.getKorisnik(),walk.getDatumIvrijeme()));
 	return activity;
 }
 
@@ -46,9 +46,9 @@ public WalkingActivity spremiPodatke(WalkingActivity wal) {
 	
 	d=new SpringDataSource();
 	if(null!=d.getObj()) {
-		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,adresa,longitude,latitude,brzinaUkm,email,datum) VALUES(?,?,?,?,?,?,?,?,?)";
+		String insert="INSERT INTO walking (udaljenost,vrijemeAktivnosti,koraci,brzinaUkm,email,datum) VALUES(?,?,?,?,?,?)";
 	
-		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getAdresa(),wal.getLongitude(),wal.getLatitude(),wal.getBrzinaUkm(),wal.getKorisnik(),wal.getDatumIvrijeme());
+		d.getObj().update(insert,wal.getUdaljenost(),wal.getVrijemeAktivnosti(),wal.getKoraci(),wal.getBrzinaUkm(),wal.getKorisnik(),wal.getDatumIvrijeme());
 	
 	}
 	return wal;

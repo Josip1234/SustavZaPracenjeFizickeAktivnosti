@@ -11,23 +11,16 @@ public class WalkingActivity {
 private double udaljenost;
 private String vrijemeAktivnosti;
 private int koraci;
-private String adresa;
-private double longitude;
-private double latitude;
 private double brzinaUkm;
 private String korisnik;
 private String datumIvrijeme;
 public WalkingActivity() {
 	
 }
-public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci, String adresa, double longitude,
-		double latitude, double brzinaUkm, String korisnik,String datumIvrijeme) {
+public WalkingActivity(double udaljenost, String vrijemeAktivnosti, int koraci,  double brzinaUkm, String korisnik,String datumIvrijeme) {
 	this.udaljenost = udaljenost;
 	this.vrijemeAktivnosti = vrijemeAktivnosti;
 	this.koraci = koraci;
-	this.adresa = adresa;
-	this.longitude = longitude;
-	this.latitude = latitude;
 	this.brzinaUkm = brzinaUkm;
 	this.korisnik = korisnik;
 	this.datumIvrijeme= datumIvrijeme;
@@ -56,24 +49,7 @@ public int getKoraci() {
 public void setKoraci(int koraci) {
 	this.koraci = koraci;
 }
-public String getAdresa() {
-	return adresa;
-}
-public void setAdresa(String adresa) {
-	this.adresa = adresa;
-}
-public double getLongitude() {
-	return longitude;
-}
-public void setLongitude(double longitude) {
-	this.longitude = longitude;
-}
-public double getLatitude() {
-	return latitude;
-}
-public void setLatitude(double latitude) {
-	this.latitude = latitude;
-}
+
 public double getBrzinaUkm() {
 	return brzinaUkm;
 }

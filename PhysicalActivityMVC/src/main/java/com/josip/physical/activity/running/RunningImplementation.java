@@ -18,17 +18,12 @@ public class RunningImplementation implements RunningRepository {
 		
 		run.setKorisnik("jbosnjak3@gmail.com");
 		run.setBrzinaUkm(20);
-		run.setLatitude(-15.64);
-		run.setLokacija("Franka Andrijasevica 16");
-		run.setLongitude(65.985);
+		
 		run.setUdaljenost(15.64);
 		run.setVrijemeAktivnosti("15 minuta");
 	    running.add(new RunningActivity(
 	    		run.getKorisnik(),
 	    		run.getBrzinaUkm(),
-	    		run.getLokacija(),
-	    		run.getLatitude(),
-	    		run.getLongitude(),
 	    		run.getVrijemeAktivnosti(),
 	    		run.getUdaljenost(),
 	    		run.getDatum()

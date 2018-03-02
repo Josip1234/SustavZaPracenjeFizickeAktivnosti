@@ -20,19 +20,16 @@ public class BikingImplementation implements BikingRepository {
 		List<BikingActivity> stuff=new ArrayList<BikingActivity>();
 		
 		bike.setKorisnik("jbosnjak3@gmail.com");
-		bike.setLokacija("Sveti rok 81");
+		
 		bike.setBrzinaUkm(12.65);
-		bike.setLatitude(12.656);
-		bike.setLongitude(-16.57);
+	
 		bike.setUdaljenost(1.058);
 		bike.setVrijemeAktivnosti("1.15");
 		bike.setDatum("");
 	    stuff.add(new BikingActivity(
 	    		bike.getVrijemeAktivnosti(),
 	    	    bike.getBrzinaUkm(),
-	    		bike.getLokacija(),
-	    		bike.getLongitude(),
-	    		bike.getLatitude(),
+	    
 	    		bike.getKorisnik(),
 	    		bike.getUdaljenost(),
 	    		bike.getDatum()

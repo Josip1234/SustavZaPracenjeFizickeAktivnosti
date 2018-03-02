@@ -99,8 +99,8 @@ public class Bicikliranje extends AppCompatActivity {
             double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
             String korisnik = data.getJSONObject(i).getString("korisnik");
             String datum = data.getJSONObject(i).getString("datum");
-            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti  + "" + lokacija + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik + "" + datum);
-            bikingActivity = new BikingActivity(vrijemeAktivnosti, brzinaUkm, lokacija, longitude, latitude, korisnik, udaljenost, datum);
+            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti  +  "" + brzinaUkm + "" + korisnik + "" + datum);
+            bikingActivity = new BikingActivity(vrijemeAktivnosti, brzinaUkm,  korisnik, udaljenost, datum);
 
 
             Log.i("poruka", "pročitan json");
@@ -474,7 +474,7 @@ public class Bicikliranje extends AppCompatActivity {
         String vrijeme= sdf.format(date);
 
 
-        BikingActivity bikingActivity = new BikingActivity("0:00", 00.00, "nema lokacije", 00.00, 00.00, "korisnik",00.00,vrijeme );
+        BikingActivity bikingActivity = new BikingActivity("0:00", 00.00, "korisnik",00.00,vrijeme );
 
         cr = (Chronometer) findViewById(R.id.chronometer2);
         cr.setBase(SystemClock.elapsedRealtime());
@@ -487,9 +487,7 @@ public class Bicikliranje extends AppCompatActivity {
         try {
             bike.put("udaljenost", bikingActivity.getUdaljenost());
             bike.put("vrijemeAktivnosti", bikingActivity.getVrijemeAktivnosti());
-            bike.put("lokacija", bikingActivity.getLokacija());
-            bike.put("longitude", bikingActivity.getLongitude());
-            bike.put("latitude", bikingActivity.getLatitude());
+
             bike.put("brzinaUkm", bikingActivity.getBrzinaUkm());
             bike.put("korisnik", vrati_korisnika());
             bike.put("datum", vrijeme);
@@ -516,7 +514,7 @@ public class Bicikliranje extends AppCompatActivity {
 
 
         adr = (TextView) findViewById(R.id.homead);
-        adr.setText(bikingActivity.getLokacija());
+
         tUdaljenost = (TextView) findViewById(R.id.udaljenost);
         tUdaljenost.setText(String.valueOf(bikingActivity.getUdaljenost()));
         mReset = (Button) findViewById(R.id.reset);

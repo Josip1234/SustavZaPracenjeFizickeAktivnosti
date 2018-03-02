@@ -30,7 +30,7 @@ android {
         androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
             exclude group: 'com.android.support', module: 'support-annotations'
         })
-        compile 'com.google.android.gms:play-services:11.0.4'
+        compile 'com.google.android.gms:play-services:11.8.0'
         compile 'com.android.support:multidex:1.0.1'
         //noinspection GradleCompatible
         compile 'com.android.support:appcompat-v7:26.1.0'
@@ -53,9 +53,8 @@ android {
         compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
 
 
-
     }
-    packagingOptions{
+    packagingOptions {
         exclude 'META-INF/NOTICE' // will not include NOTICE file
         exclude 'META-INF/LICENSE' // will not include LICENSE file
 // as noted by @Vishnuvathsan you may also need to include
@@ -67,6 +66,13 @@ android {
         exclude 'META-INF/license.txt'
     }
 
-    }
+}
+dependencies {
+
+    implementation 'com.google.android.gms:play-services-maps:+'
+    implementation 'com.android.support:appcompat-v7:26.+'
+    compile 'com.google.android.gms:play-services:11.8.0'
+}
+
 
 

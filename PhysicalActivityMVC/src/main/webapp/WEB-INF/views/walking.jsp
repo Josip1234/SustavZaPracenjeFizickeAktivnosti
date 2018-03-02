@@ -34,9 +34,7 @@
 ${li.vrijemeAktivnosti}
 <br>
 ${li.koraci}<br>
-${li.adresa }<br>
-${li.longitude } <br>
-${li.latitude } <br>
+
 ${li.brzinaUkm } <br>
 ${li.korisnik } <br>
 ${li.datumIvrijeme}
