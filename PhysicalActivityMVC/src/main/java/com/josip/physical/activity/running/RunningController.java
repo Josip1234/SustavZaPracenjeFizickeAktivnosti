@@ -23,7 +23,7 @@ public class RunningController {
 	@RequestMapping(value = {"/runningactivity"},method=RequestMethod.GET)
 	public String runningactivity(Model model) {
         model.addAttribute("run", runningRepository.results());
-      //dohvaæanje usera iz login forme
+      //dohvaï¿½anje usera iz login forme
         Authentication au=SecurityContextHolder.getContext().getAuthentication();
  	   String name=au.getName();
         System.out.println(name);

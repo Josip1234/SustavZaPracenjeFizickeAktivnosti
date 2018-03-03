@@ -104,7 +104,7 @@ public class Bicikliranje extends AppCompatActivity {
 
 
         }
-
+        //razdvojiti u drugu funkciju
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 try {
@@ -118,7 +118,7 @@ public class Bicikliranje extends AppCompatActivity {
                     converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
                     restTemplate.getMessageConverters().add(converter);
                     try {
-                        ResponseEntity<BikingActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical//1e2b3tzrUZcvn", HttpMethod.POST, request, BikingActivity.class);
+                        ResponseEntity<BikingActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical/1e2b3tzrUZcvn", HttpMethod.POST, request, BikingActivity.class);
                         BikingActivity result = response.getBody();
                         System.out.println(result.toString());
                     } catch (HttpClientErrorException e) {

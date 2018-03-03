@@ -7,11 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.biking.BikingActivity;
 @Component
 public class RunningImplementation implements RunningRepository {
     @Autowired
     RunningActivity run;
+    @Autowired
+    SpringDataSource data;
 	@Override
 	public List<RunningActivity> results() {
 	List<RunningActivity> running=new ArrayList<RunningActivity>();
@@ -33,9 +36,15 @@ public class RunningImplementation implements RunningRepository {
 		return running;
 	}
 	@Override
-	public boolean spremiPodatke(RunningActivity run) {
-		// TODO Auto-generated method stub
-		return false;
+	public RunningActivity spremiPodatke(RunningActivity run) {
+		data=new SpringDataSource();
+		if(null!=data.getObj()) {
+			String insert="INSERT INTO running (vrijemeAktivnosti,brzinaUkm,udaljenost,email,datum) VALUES(?,?,?,?,?)";
+		
+			data.getObj().update(insert,run.getVrijemeAktivnosti(),run.getBrzinaUkm(),run.getUdaljenost(),run.getKorisnik(),run.getDatum());
+		
+		}
+		return run;
 	}
 	@Override
 	public List<RunningActivity> pokaziPoDatumu(Date date) {

@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.regist.Registration;
 
 @Component
@@ -15,6 +16,8 @@ public class BikingImplementation implements BikingRepository {
 
 	@Autowired
 	BikingActivity bike;
+	@Autowired
+	SpringDataSource data;
 	@Override
 	public List<BikingActivity> izlistajSve() {
 		List<BikingActivity> stuff=new ArrayList<BikingActivity>();
@@ -42,9 +45,15 @@ public class BikingImplementation implements BikingRepository {
 		return stuff;
 	}
 	@Override
-	public boolean insert(BikingActivity bak) {
-		// TODO Auto-generated method stub
-		return false;
+	public BikingActivity insert(BikingActivity bak) {
+		data=new SpringDataSource();
+		if(null!=data.getObj()) {
+			String insert="INSERT INTO biking (vrijemeAktivnosti,brzinaUkm,udaljenost,email,datum) VALUES(?,?,?,?,?)";
+		
+			data.getObj().update(insert,bak.getVrijemeAktivnosti(),bak.getBrzinaUkm(),bak.getUdaljenost(),bak.getKorisnik(),bak.getDatum());
+		
+		}
+		return bak;
 	}
 	@Override
 	public boolean delete(BikingActivity bak) {

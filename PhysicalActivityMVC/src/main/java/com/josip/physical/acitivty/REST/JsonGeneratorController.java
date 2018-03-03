@@ -23,8 +23,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.josip.physical.activity.baza.SpringDataSource;
+import com.josip.physical.activity.biking.BikingActivity;
+import com.josip.physical.activity.biking.BikingImplementation;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
+import com.josip.physical.activity.running.RunningActivity;
+import com.josip.physical.activity.running.RunningImplementation;
 import com.josip.physical.activity.walking.WalkingActivity;
 import com.josip.physical.activity.walking.WalkingImplementation;
 import com.josip.physical.activity.walking.WalkingRepository;
@@ -35,6 +39,10 @@ import com.josip.physical.activity.walking.WalkingRepository;
 public class JsonGeneratorController {
         @Autowired
         WalkingImplementation wk;
+        @Autowired
+        BikingImplementation bk;
+        @Autowired
+        RunningImplementation rn;
 		@Autowired
 		Registration rg;
 		@Autowired
@@ -97,6 +105,20 @@ public class JsonGeneratorController {
 			wk.spremiPodatke(wal);
 			ResponseEntity<WalkingActivity> response = new ResponseEntity<WalkingActivity>(wal,HttpStatus.CREATED);
 			model.addAttribute(wk);
+			return response;
+		}
+		@RequestMapping(value= "/1e2b3tzrUZcvn/{id2}",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		public @ResponseBody ResponseEntity<BikingActivity> spremi(Model model,@RequestBody BikingActivity bik) {
+			bk.insert(bik);
+			ResponseEntity<BikingActivity> response = new ResponseEntity<BikingActivity>(bik,HttpStatus.CREATED);
+			model.addAttribute(bik);
+			return response;
+		}
+		@RequestMapping(value= "/1e2b3tzrUZcvn/{id}",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		public @ResponseBody ResponseEntity<RunningActivity> spremi(Model model,@RequestBody RunningActivity run) {
+			rn.spremiPodatke(run);
+			ResponseEntity<RunningActivity> response = new ResponseEntity<RunningActivity>(run,HttpStatus.CREATED);
+			model.addAttribute(run);
 			return response;
 		}
 	}

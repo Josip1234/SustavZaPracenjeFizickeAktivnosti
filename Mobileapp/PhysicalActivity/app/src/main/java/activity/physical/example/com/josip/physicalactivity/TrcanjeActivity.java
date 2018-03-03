@@ -118,7 +118,7 @@ public class TrcanjeActivity extends AppCompatActivity {
                     converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
                     restTemplate.getMessageConverters().add(converter);
                     try {
-                        ResponseEntity<RunningActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical//1e2b3tzrUZcvn", HttpMethod.POST, request, RunningActivity.class);
+                        ResponseEntity<RunningActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical/1e2b3tzrUZcvn", HttpMethod.POST, request, RunningActivity.class);
                         RunningActivity result = response.getBody();
                         System.out.println(result.toString());
                     } catch (HttpClientErrorException e) {
