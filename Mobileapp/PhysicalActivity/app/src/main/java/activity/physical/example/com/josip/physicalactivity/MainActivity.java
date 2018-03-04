@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -31,7 +33,8 @@ import activity.physical.example.com.josip.physicalactivity.model.Registration;
 public class MainActivity extends AppCompatActivity {
     private TextView mfail;
     private RegistrationDataSource registrationDataSource;
-
+    private ProgressBar progressBar;
+    private LinearLayout linearLayout;
     public void prijava(View v) throws IOException, JSONException {
         boolean autoriziran = false;
         EditText email;
@@ -163,11 +166,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        linearLayout=findViewById(R.id.container);
+        linearLayout.setVisibility(View.INVISIBLE);
         registrationDataSource=new RegistrationDataSource(this);
         registrationDataSource.otvori();
         registrationDataSource.izbrisiSve();
         registrationDataSource.zatvori();
         new HttpReqTask().execute();
+        progressBar.setVisibility(View.GONE);
+        linearLayout.setVisibility(View.VISIBLE);
 
     }
 
