@@ -22,20 +22,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.SqlLite.RegistrationDataSource;
-import activity.physical.example.com.josip.physicalactivity.SqlLite.SqlLiteTablice;
-import activity.physical.example.com.josip.physicalactivity.activity.physical.example.com.josip.physicalactivity.interfaces.PhysicalInterface;
 import activity.physical.example.com.josip.physicalactivity.model.Registration;
-import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 
 
-public class MainActivity extends AppCompatActivity implements PhysicalInterface {
+public class MainActivity extends AppCompatActivity {
     private TextView mfail;
     private RegistrationDataSource registrationDataSource;
 
@@ -54,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         Registration login = new Registration(em, ps);
         login.setSifra(ps);
         login.setEmail(em);
-        autoriziran = procitaj_json(login.getEmail(), login.getSifra());
+        autoriziran = prijavi(login.getEmail(), login.getSifra());
 
 
         if (autoriziran == true) {
@@ -68,13 +61,15 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         }
     }
 
-    public void kreiraj_json_polje(Registration[] registrations) throws IOException, JSONException {
+    /*public void kreiraj_json_polje(Registration[] registrations) throws IOException, JSONException {
 
         JSONArray array = new JSONArray();
         JSONObject object;
         object = new JSONObject();
         for (Registration reg : registrations
                 ) {
+
+
             object.put("username", reg.getEmail());
             object.put("pass", reg.getSifra());
 
@@ -88,18 +83,16 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         fos.close();
 
         Log.i("message", "succesfully written to json");
+    }*/
 
-
-    }
-
-    public boolean procitaj_json(String username, String password) throws IOException, JSONException {
+    public boolean prijavi(String username, String password) throws IOException, JSONException {
         boolean found = false;
-        String userjson = "";
-        String passjson = "";
-        String naziv = "prijava.json";
+       // String userjson = "";
+        //String passjson = "";
+        //String naziv = "prijava.json";
 
 
-
+/*
         FileInputStream fis = openFileInput(naziv);
         BufferedInputStream bis = new BufferedInputStream(fis);
         StringBuffer b = new StringBuffer();
@@ -143,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
             }
         }
-           */
+
 
             Log.i("poruka", "pročitan json");
 
@@ -151,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
 
 
 
-        }
+        }*/
 
         found=autoriziraj(username,password);
 
@@ -160,9 +153,9 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
     public boolean autoriziraj(String username,String password){
         boolean found=false;
 
-
+        registrationDataSource.citaj();
         found=registrationDataSource.pronadjiKorisnika(username, password);
-
+        registrationDataSource.zatvori();
         return found;
     };
 
@@ -173,20 +166,11 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         registrationDataSource=new RegistrationDataSource(this);
         registrationDataSource.otvori();
         registrationDataSource.izbrisiSve();
+        registrationDataSource.zatvori();
         new HttpReqTask().execute();
 
     }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        registrationDataSource.otvori();
 
-    }
-    @Override
-    protected void onPause(){
-        super.onPause();
-        registrationDataSource.zatvori();
-    }
 
 
 
@@ -214,32 +198,33 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
         @Override
         protected void onPostExecute(Registration[] registration){
             super.onPostExecute(registration);
-            JSONArray array = new JSONArray();
-            JSONObject object;
+            //JSONArray array = new JSONArray();
+            //JSONObject object;
 
-
+            registrationDataSource.otvori();
             for (Registration reg:registration
                  ) {
                 Log.i("email",String.valueOf(reg.getEmail()));
                 Log.i("sifra",String.valueOf(reg.getSifra()));
+                registrationDataSource.dodajKorisnika(reg);
 
-
-                try {
+                /*try {
                     object = new JSONObject();
                     object.put("username",String.valueOf(reg.getEmail()));
                     object.put("pass",String.valueOf(reg.getSifra()));
                     array.put(object);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
+                }*/
 
             }
+            registrationDataSource.zatvori();
 
-            String text = array.toString();
-            FileOutputStream fos = null;
-            try {
-                fos = openFileOutput("prijava.json", MODE_PRIVATE);
-            } catch (FileNotFoundException e) {
+           // String text = array.toString();
+            //FileOutputStream fos = null;
+            //try {
+                //fos = openFileOutput("prijava.json", MODE_PRIVATE);
+            /*} catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             try {
@@ -252,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements PhysicalInterface
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            */
 
             Log.i("poruka", "uspješno zapisano json");
 

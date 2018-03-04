@@ -17,7 +17,7 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
     public static final String sifra="pass";
 
     private static final int verzijaHodanja=1;
-    private static final String tablica_walking="walking.db";
+    private static final String tablica_walking="aktivnosti.db";
     public static final String brojStupca="brojStupca";
     public static final String udaljenost="udaljenost";
     public static final String vrijemeAktivnosti="vrijemeAktivnosti";
