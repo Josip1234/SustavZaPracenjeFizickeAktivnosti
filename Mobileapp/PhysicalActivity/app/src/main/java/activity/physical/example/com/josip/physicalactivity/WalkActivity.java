@@ -127,7 +127,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
-        for (int i = 0; i < data.length()-1; i++) {
+        for (int i = 0; i < data.length(); i++) {
             double udaljenost = data.getJSONObject(i).getDouble("udaljenost");
             String vrijemeAktivnosti = data.getJSONObject(i).getString("vrijemeAktivnosti");
             int koraci = data.getJSONObject(i).getInt("koraci");
@@ -572,7 +572,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         /*seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(10);
         seekBar.setOnSeekBarChangeListener(seekBarListener);*/
-        threshold = 15;
+        threshold = 4;
         textSensitive.setText(String.valueOf(threshold));
         previousY = 0;
         currentY = 0;
