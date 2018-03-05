@@ -48,9 +48,10 @@ import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.model.BikingActivity;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
 
 public class Bicikliranje extends AppCompatActivity {
-    long timeWhenStopped = 0;
+    long timeWhenStopped=0;
     private Chronometer cr;
 
     private static String time;
@@ -64,11 +65,55 @@ public class Bicikliranje extends AppCompatActivity {
     private Button mStop;
     private JSONArray polje;
     private JSONObject bike;
-
+    private  ChronoHelper chronoHelper;
     private BikingActivity bikingActivity;
     private Date date;
     private SimpleDateFormat sdf;
     private ImageButton image;
+
+
+
+    public void resetc() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime());
+        timeWhenStopped = 0;
+        cr.stop();
+    }
+
+
+    public void startcr() {
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+        cr.start();
+    }
+
+    public void onclickedstopchronomethar() {
+        String time = "";
+
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = getTimeAfterStop();
+        cr.setText(time);
+        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
+        cr.setBase(SystemClock.elapsedRealtime());
+
+        cr.stop();
+
+
+    }
+
+    public String getTimeAfterStop() {
+        String time;
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        time = cr.getText().toString();
+        return time;
+    }
+
+    public String getTime() {
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        String time = cr.getText().toString();
+        return time;
+    }
 
 
 
@@ -228,47 +273,6 @@ public class Bicikliranje extends AppCompatActivity {
     }
 
 
-    public void resetc() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-        cr.stop();
-    }
-
-
-    public void startcr() {
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-        cr.start();
-    }
-
-    public void onclickedstopchronomethar() {
-        String time = "";
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = getTimeAfterStop();
-        cr.setText(time);
-        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
-        cr.setBase(SystemClock.elapsedRealtime());
-
-        cr.stop();
-
-
-    }
-
-    public String getTimeAfterStop() {
-        String time;
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = cr.getText().toString();
-        return time;
-    }
-
-    public String getTime() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        String time = cr.getText().toString();
-        return time;
-    }
 
 
     public String vrati_korisnika() throws IOException, JSONException {
@@ -422,6 +426,8 @@ public class Bicikliranje extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
+        cr = (Chronometer) findViewById(R.id.chronometer2);
+        chronoHelper = new ChronoHelper(cr);
         image = (ImageButton) findViewById(R.id.posaljiPodatke);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -471,9 +477,7 @@ public class Bicikliranje extends AppCompatActivity {
 
         BikingActivity bikingActivity = new BikingActivity("0:00", 00.00, "korisnik",00.00,vrijeme );
 
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime());
-        cr.stop();
+
 
 
 
@@ -516,14 +520,19 @@ public class Bicikliranje extends AppCompatActivity {
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetc();
+
+                chronoHelper.resetc();
+
+
+
             }
         });
         mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startcr();
+
+                chronoHelper.startcr();
             }
         });
         mStop = (Button) findViewById(R.id.stop);
@@ -532,7 +541,8 @@ public class Bicikliranje extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                onclickedstopchronomethar();
+
+                chronoHelper.stopcr();
 
 
             }
