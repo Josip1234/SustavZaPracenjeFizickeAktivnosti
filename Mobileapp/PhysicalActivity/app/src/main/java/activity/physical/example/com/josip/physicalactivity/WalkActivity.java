@@ -63,6 +63,7 @@ import java.util.Map;
 import java.util.Set;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
 
 
 public class WalkActivity extends AppCompatActivity implements SensorEventListener {
@@ -88,7 +89,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private int numSteps;
     //private SeekBar seekBar;
     private int threshold;
-
+    private ChronoHelper chronoHelper;
 
     private TextView adr;
     private TextView tUdaljenost;
@@ -267,47 +268,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public void resetc() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-        cr.stop();
-    }
-
-
-    public void startcr() {
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-        cr.start();
-    }
-
-    public void onclickedstopchronomethar() {
-        String time = "";
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = getTimeAfterStop();
-        cr.setText(time);
-        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
-        cr.setBase(SystemClock.elapsedRealtime());
-
-        cr.stop();
-
-
-    }
-
-    public String getTimeAfterStop() {
-        String time;
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = cr.getText().toString();
-        return time;
-    }
-
-    public String getTime() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        String time = cr.getText().toString();
-        return time;
-    }
 
 
 
@@ -462,11 +422,15 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+
+        cr = (Chronometer) findViewById(R.id.chronometer4);
+        chronoHelper = new ChronoHelper(cr);
+
         image=(ImageButton) findViewById(R.id.posaljiPodatke);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                time = getTimeAfterStop();
+                time = chronoHelper.getTime();
                 try {
                     date=new Date();
                     sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -512,9 +476,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,00.00,"",vrijeme);
 
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime());
-        cr.stop();
+
 
 
 
@@ -564,14 +526,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetc();
+                chronoHelper.resetc();
             }
         });
         mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startcr();
+                chronoHelper.startcr();
             }
         });
         mStop = (Button) findViewById(R.id.stop);
@@ -580,7 +542,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             public void onClick(View view) {
 
 
-                onclickedstopchronomethar();
+                chronoHelper.stopcr();
 
 
             }
@@ -724,7 +686,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
         senSensorManager.unregisterListener(this);
 
-        time = getTimeAfterStop();
+        time = chronoHelper.getTime();
         try {
             walk.put("vrijemeAktivnosti", time);
         } catch (JSONException e) {

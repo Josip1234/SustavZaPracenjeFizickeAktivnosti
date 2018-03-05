@@ -3,7 +3,6 @@ package activity.physical.example.com.josip.physicalactivity.pomocneKlase;
 import android.os.SystemClock;
 import android.widget.Chronometer;
 
-import activity.physical.example.com.josip.physicalactivity.R;
 
 /**
  * Created by Korisnik on 5.3.2018..
@@ -68,8 +67,9 @@ public class ChronoHelper {
 
 
     public String getTime() {
-        String time="";
-        time = chronometer.getText().toString();
-        return time;
+
+        setVrijeme(getChronometer().getText().toString());
+        return getVrijeme();
+
     }
 }

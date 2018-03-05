@@ -73,47 +73,13 @@ public class Bicikliranje extends AppCompatActivity {
 
 
 
-    public void resetc() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-        cr.stop();
-    }
 
 
-    public void startcr() {
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        cr.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
-        cr.start();
-    }
-
-    public void onclickedstopchronomethar() {
-        String time = "";
-
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = getTimeAfterStop();
-        cr.setText(time);
-        timeWhenStopped = cr.getBase() - SystemClock.elapsedRealtime();
-        cr.setBase(SystemClock.elapsedRealtime());
-
-        cr.stop();
 
 
-    }
 
-    public String getTimeAfterStop() {
-        String time;
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        time = cr.getText().toString();
-        return time;
-    }
 
-    public String getTime() {
-        cr = (Chronometer) findViewById(R.id.chronometer2);
-        String time = cr.getText().toString();
-        return time;
-    }
+
 
 
 
@@ -426,13 +392,14 @@ public class Bicikliranje extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
+
         cr = (Chronometer) findViewById(R.id.chronometer2);
         chronoHelper = new ChronoHelper(cr);
         image = (ImageButton) findViewById(R.id.posaljiPodatke);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                time = getTimeAfterStop();
+                time = chronoHelper.getTime();
                 try {
                     date = new Date();
                     sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -583,7 +550,7 @@ public class Bicikliranje extends AppCompatActivity {
         super.onPause();
 
 
-        time = getTimeAfterStop();
+        time = chronoHelper.getTime();
         try {
             bike.put("vrijemeAktivnosti", time);
         } catch (JSONException e) {

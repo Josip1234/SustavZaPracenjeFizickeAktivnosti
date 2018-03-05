@@ -35,7 +35,7 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
 
 
             <Chronometer
-                android:id="@+id/chronometer2"
+                android:id="@+id/chronometer4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="80dp"
@@ -81,7 +81,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                                 android:id="@+id/start"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:onClick="resetc"
                                 android:text="@string/vrijemestart"
                                 android:textSize="10sp"
                                 tools:ignore="SmallSp,UnusedAttribute" />
@@ -90,7 +89,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                                 android:id="@+id/stop"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:onClick="onclickedstopchronomethar"
                                 android:text="@string/vrijemestop"
                                 android:textSize="10sp"
                                 tools:ignore="SmallSp"
@@ -100,7 +98,6 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                                 android:id="@+id/reset"
                                 android:layout_width="match_parent"
                                 android:layout_height="30dp"
-                                android:onClick="resetc"
                                 android:text="@string/reset"
                                 android:textSize="10sp"
                                 tools:ignore="SmallSp"
