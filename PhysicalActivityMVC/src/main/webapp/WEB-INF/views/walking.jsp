@@ -28,18 +28,43 @@
 <div class="pregledHodanja">
 <section>
 <h2>Pravila korištenja aplikacije:</h2>
-<c:forEach items="${hod}" var="li">
-<p> ${li.udaljenost}
-<br>
-${li.vrijemeAktivnosti}
-<br>
-${li.koraci}<br>
+<table>
+<thead>
+<tr><td>
+<b>Udaljenost:</b>
 
-${li.brzinaUkm } <br>
-${li.korisnik } <br>
-${li.datumIvrijeme}
-</p>
+</td><td>
+Vrijeme aktivnosti:
+
+</td>
+<td>
+Koraci:
+</td>
+<td>
+Brzina u kilometrima:
+</td>
+<td>
+Korisnik
+</td>
+<td>
+Datum i vrijeme:
+</td>
+</tr>
+</thead>
+<c:forEach items="${hod}" var="li">
+<tr>
+<td> ${li.udaljenost}</td>
+
+<td>${li.vrijemeAktivnosti}</td>
+
+<td>${li.koraci}</td>
+
+<td>${li.brzinaUkm } </td>
+<td>${li.korisnik }</td> 
+<td>${li.datumIvrijeme}</td>
+</tr>
 </c:forEach>
+</table>
 </section>
 </div>
 <a href="<c:url value="/home" />">Početna stranica</a> 

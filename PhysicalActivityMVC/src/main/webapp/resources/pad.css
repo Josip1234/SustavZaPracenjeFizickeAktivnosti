@@ -47,3 +47,12 @@ body{
  a:hover{
 	color:white;
 }
+table,table tr,table td {
+	
+	font-weight: bold;
+	border:groove;
+	border-radius:20px;
+}
+table thead,table thead tr,table thead td{
+	font-style: italic;
+}

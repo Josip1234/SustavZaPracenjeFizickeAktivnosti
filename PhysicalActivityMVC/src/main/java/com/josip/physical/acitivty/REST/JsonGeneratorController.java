@@ -35,7 +35,7 @@ import com.josip.physical.activity.walking.WalkingRepository;
 
 
 @RestController
-@RequestMapping({"/","/physical/","/1e2b3tzrUZcvn"})
+@RequestMapping({"/","/physical/","/1e2b3tzrUZcvn","/pGRHmge52511wwf","/15zuIOPPgrfef5"})
 public class JsonGeneratorController {
         @Autowired
         WalkingImplementation wk;
@@ -107,14 +107,14 @@ public class JsonGeneratorController {
 			model.addAttribute(wk);
 			return response;
 		}
-		@RequestMapping(value= "/1e2b3tzrUZcvn/{id2}",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		@RequestMapping(value= "/pGRHmge52511wwf",method=RequestMethod.POST,consumes="application/json",produces="application/json")
 		public @ResponseBody ResponseEntity<BikingActivity> spremi(Model model,@RequestBody BikingActivity bik) {
 			bk.insert(bik);
 			ResponseEntity<BikingActivity> response = new ResponseEntity<BikingActivity>(bik,HttpStatus.CREATED);
 			model.addAttribute(bik);
 			return response;
 		}
-		@RequestMapping(value= "/1e2b3tzrUZcvn/{id}",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		@RequestMapping(value= "/15zuIOPPgrfef5",method=RequestMethod.POST,consumes="application/json",produces="application/json")
 		public @ResponseBody ResponseEntity<RunningActivity> spremi(Model model,@RequestBody RunningActivity run) {
 			rn.spremiPodatke(run);
 			ResponseEntity<RunningActivity> response = new ResponseEntity<RunningActivity>(run,HttpStatus.CREATED);

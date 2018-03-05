@@ -26,7 +26,10 @@ public WalkingController(WalkingRepository walkingRepository) {
 }
 @RequestMapping(value= {"/walking"},method=RequestMethod.GET)
 public String walking(Model model) {
-	model.addAttribute("hod",walkingRepository.res());
+	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	String username = auth.getName();
+	Object credentials = auth.getCredentials();
+	model.addAttribute("hod",walkingRepository.res(username));
 	return "walking";
 }
 

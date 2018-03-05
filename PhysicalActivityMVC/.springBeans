@@ -9,7 +9,7 @@
 	<configs>
 	</configs>
 	<autoconfigs>
-		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
+		<config>java:com.josip.physical.acitivty.REST.JsonGeneratorController</config>
 		<config>java:com.josip.physical.activity.regist.RegistrationImpl</config>
 		<config>java:com.josip.physical.activity.running.RunningActivity</config>
 		<config>java:com.josip.physical.activity.running.RunningConfig</config>
@@ -19,6 +19,7 @@
 		<config>java:com.josip.physical.activity.login.LogConfig</config>
 		<config>java:com.josip.physical.activity.walking.WalkingImplementation</config>
 		<config>java:com.josip.physical.activity.summary.SummaryActivity</config>
+		<config>java:com.josip.physical.activity.baza.SpringDataSource</config>
 		<config>java:com.josip.physical.activity.regist.RegConfig</config>
 		<config>java:com.josip.physical.activity.walking.WalkingConfig</config>
 		<config>java:com.josip.physical.activity.biking.BikingImplementation</config>
