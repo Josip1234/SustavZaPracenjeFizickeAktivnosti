@@ -48,8 +48,9 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         AIzaSyA_JGORaL5yED-fDm_Z-ysNiDYuHH2StL4
+        <activity android:name=".PovijestKorakaActivity"></activity>
     </application>
 
 </manifest>
