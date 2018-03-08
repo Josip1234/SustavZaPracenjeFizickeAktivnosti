@@ -68,12 +68,7 @@ import activity.physical.example.com.josip.physicalactivity.pomocneKlase.Izracun
 
 
 public class WalkActivity extends AppCompatActivity implements SensorEventListener {
-    private SensorManager mSenzorMenadjer;
-    private Sensor mSensor;
-    private boolean jeLiSenzorPrisutan;
-    private TextView mBrojKorakaOdPaljenja;
-
-    /*long timeWhenStopped = 0;
+    long timeWhenStopped = 0;
     private Chronometer cr;
     private TextView atv;
     private SensorManager senSensorManager;
@@ -114,7 +109,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private Map<String,String> autorizacija;
     private long sistemTime;
 
-/*
+
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -395,23 +390,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         }
     };
-    */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
-        mBrojKorakaOdPaljenja=(TextView) findViewById(R.id.brojKorakaOdPaljenja);
-        mSenzorMenadjer=(SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
-        if(mSenzorMenadjer.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!=null){
-            mSensor=mSenzorMenadjer.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
-            jeLiSenzorPrisutan=true;
-        }else{
-            jeLiSenzorPrisutan=false;
-        }
-
-      /*  sistemTime=SystemClock.elapsedRealtime();
+        sistemTime=SystemClock.elapsedRealtime();
         cr = (Chronometer) findViewById(R.id.chronometer4);
         chronoHelper = new ChronoHelper(cr);
         mBrzina=(TextView) findViewById(R.id.brzinaukm);
@@ -560,7 +545,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         buttonReset = (Button) findViewById(R.id.buttonReset);
         /*seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(10);
-        seekBar.setOnSeekBarChangeListener(seekBarListener);*//*
+        seekBar.setOnSeekBarChangeListener(seekBarListener);*/
         threshold = 4;
         textSensitive.setText(String.valueOf(threshold));
         previousY = 0;
@@ -656,7 +641,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                     onclickedstopchronomethar();
                     time=getTimeAfterStop();
 
-                }*//*
+                }*/
 
 
             }
@@ -665,22 +650,22 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
-       */
+
     }
 
 
-/*
+
     @Override
     protected void onPause() {
         super.onPause();
-       /* senSensorManager.unregisterListener(this);
+        senSensorManager.unregisterListener(this);
 
         time = chronoHelper.getTime();
         try {
             walk.put("vrijemeAktivnosti", time);
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
+        }
         /*
         polje.put(walk);
         String text = polje.toString();
@@ -714,14 +699,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         }
 */
 
-//    }
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(jeLiSenzorPrisutan){
-            mSenzorMenadjer.registerListener(this,mSensor,SensorManager.SENSOR_DELAY_NORMAL);
-        }
         /*
         polje.put(walk);
         String text = polje.toString();
@@ -739,7 +721,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             e.printStackTrace();
         }*/
 
-        /*senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+        senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -753,20 +735,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
-*/
-    }
-    @Override
-    protected void onPause(){
-        super.onPause();
-        if(jeLiSenzorPrisutan){
-            mSenzorMenadjer.unregisterListener(this);
-        }
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        /*Toast.makeText(this, "Dobrodošli u aplikaciju", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dobrodošli u aplikaciju", Toast.LENGTH_SHORT).show();
 
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -800,23 +775,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         };*/
 }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-          mBrojKorakaOdPaljenja.setText("Napravljeni koraci:"+String.valueOf(event.values[0]));
-          Log.i("koraci",mBrojKorakaOdPaljenja.getText().toString());
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        mSenzorMenadjer=null;
-        mSensor=null;
-    }
 /*
 private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, WalkingActivity> {
     private WalkingActivity walkingActivity;
@@ -931,10 +889,10 @@ private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, WalkingActivi
 
 
     }
-*/
+
 }
 
-
+*/
 
 
 
