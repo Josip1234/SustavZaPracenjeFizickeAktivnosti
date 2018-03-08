@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
-
 /**
  * Created by Josip on 6.8.2017..
  */
@@ -20,7 +18,7 @@ import android.widget.ListView;
 
 public class FragmentList extends ListFragment {
     ListView listView;
-    String[] activities={"Hodanje","Trčanje","Bicikliranje","Rezultati","ITM"};
+    String[] activities={"Hodanje","Trčanje","Bicikliranje","Rezultati","ITM","MapsActivity"};
 
 
 
@@ -69,7 +67,9 @@ public class FragmentList extends ListFragment {
         else if(position==4){
             Intent intent = new Intent(v.getContext(),ITMActivity.class);
             startActivityForResult(intent,4);
-
+        }else if(position==5){
+            Intent intent = new Intent(v.getContext(),MapsActivity.class);
+            startActivityForResult(intent,5);
         }
     }
 
