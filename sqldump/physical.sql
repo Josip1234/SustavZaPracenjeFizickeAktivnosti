@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2018 at 05:50 PM
+-- Generation Time: Mar 05, 2018 at 11:49 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -32,13 +32,19 @@ CREATE TABLE `biking` (
   `id` int(11) NOT NULL,
   `vrijemeAktivnosti` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `brzinaUkm` double NOT NULL,
-  `lokacija` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `longitude` double NOT NULL,
-  `latitude` double NOT NULL,
   `udaljenost` double NOT NULL,
   `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `biking`
+--
+
+INSERT INTO `biking` (`id`, `vrijemeAktivnosti`, `brzinaUkm`, `udaljenost`, `email`, `datum`) VALUES
+(1, '0:47', 0, 18.443267355293663, 'jbosnjak3@gmail.com', '2018-03-05'),
+(2, '0:59', 0, 18.443267355293663, 'jbosnjak3@gmail.com', '2018-03-05'),
+(3, '0:59', 0, 18.443267355293663, 'jbosnjak3@gmail.com', '2018-03-05');
 
 -- --------------------------------------------------------
 
@@ -55,22 +61,6 @@ CREATE TABLE `bikingstatistika` (
   `prosjecnoVrijemeAktivnosti` double NOT NULL,
   `prosjecnaBrzinaUkm` double NOT NULL,
   `period` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mapiranje`
---
-
-CREATE TABLE `mapiranje` (
-  `id` int(11) NOT NULL,
-  `korisnik` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `longituda` double NOT NULL,
-  `latituda` double NOT NULL,
-  `adresa` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `datum` date NOT NULL,
-  `nazivRute` varchar(255) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 -- --------------------------------------------------------
@@ -110,13 +100,17 @@ CREATE TABLE `running` (
   `id` int(11) NOT NULL,
   `vrijemeAktivnosti` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `brzinaUkm` double NOT NULL,
-  `lokacija` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `longitude` double NOT NULL,
-  `latitude` double NOT NULL,
   `udaljenost` double NOT NULL,
   `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `datum` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `running`
+--
+
+INSERT INTO `running` (`id`, `vrijemeAktivnosti`, `brzinaUkm`, `udaljenost`, `email`, `datum`) VALUES
+(1, '0:31', 0, 0.010933943352007515, 'jbosnjak3@gmail.com', '2018-03-05');
 
 -- --------------------------------------------------------
 
@@ -160,9 +154,6 @@ CREATE TABLE `walking` (
   `udaljenost` double NOT NULL,
   `vrijemeAktivnosti` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `koraci` int(11) NOT NULL,
-  `adresa` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `longitude` double NOT NULL,
-  `latitude` double NOT NULL,
   `brzinaUkm` double NOT NULL,
   `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `datum` datetime DEFAULT CURRENT_TIMESTAMP
@@ -172,15 +163,21 @@ CREATE TABLE `walking` (
 -- Dumping data for table `walking`
 --
 
-INSERT INTO `walking` (`id`, `udaljenost`, `vrijemeAktivnosti`, `koraci`, `adresa`, `longitude`, `latitude`, `brzinaUkm`, `email`, `datum`) VALUES
-(1, 0, '0:00', 0, 'nema', 0, 0, 0, 'jbosnjak3@gmail.com', '2018-02-27 14:01:27'),
-(2, 0, '0:00', 0, 'nema', 0, 0, 0, 'jbosnjak3@gmail.com', '2018-02-27 15:32:08'),
-(3, 0, '0:18', 0, 'nullnullnull', 15.427776666666666, 81.53999833333334, 0, 'jbosnjak3@gmail.com', '2018-02-27 17:46:15'),
-(4, 0, '0:00', 0, 'nema', 0, 0, 0, 'jbosnjak3@gmail.com', '2018-02-28 08:36:55'),
-(5, 111.18957696002943, '1:53', 0, 'nullnullnull', 15.613888333333334, -19.540000000000003, 0, 'he@gmail.com ', '2018-02-28 08:52:48'),
-(6, 0, '0:00', 0, 'nema', 0, 0, 0, 'jbosnjak3@gmail.com', '2018-02-28 09:01:22'),
-(7, 0, '0:00', 0, 'nema', 0, 0, 0, 'he@gmail.com ', '2018-02-28 09:02:38'),
-(8, 0, '0:00', 0, 'nullnullnull', 15.614398333333334, -19.539998333333333, 0, 'jbosnjak3@gmail.com', '2018-03-01 16:38:22');
+INSERT INTO `walking` (`id`, `udaljenost`, `vrijemeAktivnosti`, `koraci`, `brzinaUkm`, `email`, `datum`) VALUES
+(1, 12, '1:75', 20, 12.56, 'jbosnjak3@gmail.com', '2018-03-02 00:21:15'),
+(2, 0, '0:01', 0, 0, 'jbosnjak3@gmail.com', '2018-03-01 23:33:57'),
+(3, 1.5602117239441733, '0:47', 0, 0, 'jbosnjak3@gmail.com', '2018-03-02 09:18:44'),
+(4, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-02 09:20:36'),
+(5, 0, '1:39', 0, 0, 'jbosnjak3@gmail.com', NULL),
+(6, 0, '2:02', 0, 0, 'jbosnjak3@gmail.com', NULL),
+(7, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-02 16:27:02'),
+(8, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-02 16:27:24'),
+(9, 4600.179347937722, '0:00', 0, 0, 'he@gmail.com ', '2018-03-04 19:32:48'),
+(10, 0, '0:20', 0, 0, 'jbosnjak3@gmail.com', NULL),
+(11, 0.010933943352007515, '0:58', 0, 0, 'jbosnjak3@gmail.com', '2018-03-05 15:31:59'),
+(12, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-05 22:37:56'),
+(13, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-05 22:40:23'),
+(14, 0, '0:00', 0, 0, 'jbosnjak3@gmail.com', '2018-03-05 22:40:24');
 
 -- --------------------------------------------------------
 
@@ -218,13 +215,6 @@ ALTER TABLE `biking`
 ALTER TABLE `bikingstatistika`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bikeKorisnik` (`korisnikBike`);
-
---
--- Indexes for table `mapiranje`
---
-ALTER TABLE `mapiranje`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `mapa` (`korisnik`);
 
 --
 -- Indexes for table `registration`
@@ -277,18 +267,12 @@ ALTER TABLE `walkingstatistika`
 -- AUTO_INCREMENT for table `biking`
 --
 ALTER TABLE `biking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `bikingstatistika`
 --
 ALTER TABLE `bikingstatistika`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mapiranje`
---
-ALTER TABLE `mapiranje`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -301,7 +285,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `running`
 --
 ALTER TABLE `running`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `runningstatistika`
@@ -319,7 +303,7 @@ ALTER TABLE `summarystatistika`
 -- AUTO_INCREMENT for table `walking`
 --
 ALTER TABLE `walking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `walkingstatistika`
@@ -342,12 +326,6 @@ ALTER TABLE `biking`
 --
 ALTER TABLE `bikingstatistika`
   ADD CONSTRAINT `korisnikBike` FOREIGN KEY (`korisnikBike`) REFERENCES `registration` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `mapiranje`
---
-ALTER TABLE `mapiranje`
-  ADD CONSTRAINT `mapa` FOREIGN KEY (`korisnik`) REFERENCES `registration` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `running`
