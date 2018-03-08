@@ -686,7 +686,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
         senSensorManager.unregisterListener(this);
 
-        time = chronoHelper.getTime();
+        time = chronoHelper.dohvatiRealnoVrijeme();
         try {
             walk.put("vrijemeAktivnosti", time);
         } catch (JSONException e) {

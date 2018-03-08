@@ -1,6 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Intent;
+import android.net.Network;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,8 @@ public class StartingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting);
     }
     public void pokreniAktivnost(View view){
+
+        //idi na prijavu
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }

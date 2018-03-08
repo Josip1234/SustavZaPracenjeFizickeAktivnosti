@@ -7,22 +7,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.json.JSONArray;
+
 import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -33,8 +31,8 @@ import activity.physical.example.com.josip.physicalactivity.model.Registration;
 public class MainActivity extends AppCompatActivity {
     private TextView mfail;
     private RegistrationDataSource registrationDataSource;
-    private ProgressBar progressBar;
-    private LinearLayout linearLayout;
+
+    private Button mButton;
     public void prijava(View v) throws IOException, JSONException {
         boolean autoriziran = false;
         EditText email;
@@ -166,17 +164,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        linearLayout=findViewById(R.id.container);
-        linearLayout.setVisibility(View.INVISIBLE);
+        mButton=(Button) findViewById(R.id.Loginbutton);
+        mButton.setVisibility(View.INVISIBLE);
+
         registrationDataSource=new RegistrationDataSource(this);
         registrationDataSource.otvori();
         registrationDataSource.izbrisiSve();
         registrationDataSource.zatvori();
         new HttpReqTask().execute();
-        progressBar.setVisibility(View.GONE);
-        linearLayout.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -249,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
             */
 
             Log.i("poruka", "uspješno zapisano json");
-
+            mButton.setVisibility(View.VISIBLE);
 
         }
     }
