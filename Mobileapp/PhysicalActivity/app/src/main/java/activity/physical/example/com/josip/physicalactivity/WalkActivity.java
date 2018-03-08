@@ -64,6 +64,7 @@ import java.util.Set;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunBrzine;
 
 
 public class WalkActivity extends AppCompatActivity implements SensorEventListener {
@@ -82,6 +83,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private TextView textSensitive;
     private TextView textViewSteps;
     private TextView mKorisnik;
+    private TextView mBrzina;
     private Button buttonReset;
     private float acceleration;
     private float previousY;
@@ -105,7 +107,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private SimpleDateFormat sdf;
     private ImageButton image;
     private Map<String,String> autorizacija;
-
+    private long sistemTime;
 
 
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
@@ -238,39 +240,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
-        if (unit == "K") {
-            dist = dist * 1.609344;
-        } else if (unit == "N") {
-            dist = dist * 0.8684;
-        }
-
-        return (dist);
-    }
-
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	/*::	This function converts decimal degrees to radians						 :*/
-	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    private static double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	/*::	This function converts radians to decimal degrees						 :*/
-	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    private static double rad2deg(double rad) {
-        return (rad * 180 / Math.PI);
-    }
-
-
-
-
-
 
     public String vrati_korisnika() throws IOException, JSONException {
         String naziv = "PodaciKorisnika.json";
@@ -323,15 +292,20 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 double loc3 = lat;
                 double loc4 = lon;
 
+                IzracunBrzine izracun=new IzracunBrzine(loc1,loc2,loc3,loc4);
+                double distance=izracun.geografska_udaljenost(loc1, loc2, loc3, loc4)/1000;
+                double brzina = loc.getSpeed();
+                if(brzina==0.0){
+                    sistemTime=SystemClock.elapsedRealtime();
+                    double vrijeme=sistemTime;
 
-                float trenutna_brzina = loc.getSpeed();
-                float brzina = (float) (trenutna_brzina * 3.6);
+                    brzina=izracun.izracunajBrzinu(vrijeme);
+                    mBrzina.setText(String.valueOf(brzina));
+
+                }
+                //float brzina = (float) (trenutna_brzina * 3.6);
 
 
-
-
-
-                double distance = distance(loc1, loc2, loc3, loc4, "K");
                 tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
                 try {
@@ -422,10 +396,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
-
+        sistemTime=SystemClock.elapsedRealtime();
         cr = (Chronometer) findViewById(R.id.chronometer4);
         chronoHelper = new ChronoHelper(cr);
-
+        mBrzina=(TextView) findViewById(R.id.brzinaukm);
         image=(ImageButton) findViewById(R.id.posaljiPodatke);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
