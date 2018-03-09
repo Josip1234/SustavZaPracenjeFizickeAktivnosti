@@ -149,7 +149,8 @@ tools:context="activity.physical.example.com.josip.physicalactivity.MainActivity
                     <SeekBar
                         android:id="@+id/seekBar"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:max="7" />
 
                     <TextView
                         android:id="@+id/textSensitive"

@@ -804,10 +804,66 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         @Override
         public void onDestroy(){
             super.onDestroy();
+
+
+
+                int vrijednost=0;
+                String userjson = "";
+                String passjson = "";
+                String naziv = "sumaKoraka.json";
+
+
+            try {
+                FileInputStream fis = openFileInput(naziv);
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                StringBuffer b = new StringBuffer();
+                while (bis.available() != 0) {
+                    char c = (char) bis.read();
+                    b.append(c);
+                }
+                bis.close();
+                fis.close();
+
+                JSONArray data = new JSONArray(b.toString());
+                StringBuffer prijavaBuffer = new StringBuffer();
+                for (int i = 0; i < data.length(); i++) {
+                    vrijednost += data.getJSONObject(i).getInt("izracun");
+                    brojKoraka.add(vrijednost);
+
+                    Log.i("poruka", "pročitan json");
+
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
             textViewSteps=(TextView) findViewById(R.id.textSteps);
             brojKoraka.add(Integer.parseInt(String.valueOf(textViewSteps.getText())));
             StatistickiIzracuni statistickiIzracuni = new StatistickiIzracuni();
             statistickiIzracuni.izracunajUkupanBrojKoraka(brojKoraka);
+            int suma=statistickiIzracuni.getUkupanBrojKoraka();
+
+
+            try {
+                JSONArray array = new JSONArray();
+                JSONObject object;
+                object = new JSONObject();
+                object.put("izracun",suma);
+                array.put(object);
+                String text = array.toString();
+                FileOutputStream fos = openFileOutput("sumaKoraka.json", MODE_PRIVATE);
+                fos.write(text.getBytes());
+                fos.close();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
         }
 }

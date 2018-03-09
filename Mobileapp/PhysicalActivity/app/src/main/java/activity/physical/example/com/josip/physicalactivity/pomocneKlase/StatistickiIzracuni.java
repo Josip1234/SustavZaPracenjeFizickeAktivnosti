@@ -1,6 +1,16 @@
 package activity.physical.example.com.josip.physicalactivity.pomocneKlase;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+
+import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 
 /**
  * Created by Korisnik on 9.3.2018..
@@ -28,4 +38,6 @@ public class StatistickiIzracuni {
         setUkupanBrojKoraka(sum);
 
     }
-}
+
+
+    }
