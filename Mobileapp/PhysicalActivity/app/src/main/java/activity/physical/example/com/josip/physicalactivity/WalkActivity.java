@@ -64,6 +64,7 @@ import java.util.Set;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 
 public class WalkActivity extends AppCompatActivity implements SensorEventListener {
@@ -87,7 +88,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private float previousY;
     private float currentY;
     private int numSteps;
-    //private SeekBar seekBar;
+    private SeekBar seekBar;
     private int threshold;
     private ChronoHelper chronoHelper;
 
@@ -105,7 +106,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private SimpleDateFormat sdf;
     private ImageButton image;
     private Map<String,String> autorizacija;
-
+    private List<Integer> brojKoraka;
 
 
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
@@ -158,7 +159,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                     converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
                     restTemplate.getMessageConverters().add(converter);
                     try {
-                        ResponseEntity<WalkingActivity> response= restTemplate.exchange("http://10.0.2.2:8080/physical//1e2b3tzrUZcvn", HttpMethod.POST,request,WalkingActivity.class);
+                        ResponseEntity<WalkingActivity> response= restTemplate.exchange("http://10.0.2.2:8080/physical/1e2b3tzrUZcvn", HttpMethod.POST,request,WalkingActivity.class);
                         WalkingActivity result=response.getBody();
                         System.out.println(result.toString());
                     } catch (HttpClientErrorException e) {
@@ -422,7 +423,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
-
+        brojKoraka=new ArrayList<Integer>();
         cr = (Chronometer) findViewById(R.id.chronometer4);
         chronoHelper = new ChronoHelper(cr);
 
@@ -569,11 +570,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         textViewSteps = (TextView) findViewById(R.id.textSteps);
         textSensitive = (TextView) findViewById(R.id.textSensitive);
         buttonReset = (Button) findViewById(R.id.buttonReset);
-        /*seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setProgress(10);
-        seekBar.setOnSeekBarChangeListener(seekBarListener);*/
-        threshold = 4;
-        textSensitive.setText(String.valueOf(threshold));
+        seekBar.setOnSeekBarChangeListener(seekBarListener);
+
+
         previousY = 0;
         currentY = 0;
         numSteps = 0;
@@ -800,6 +801,15 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             tv3.setText(Float.toString(last_z));
 
         };*/
+        @Override
+        public void onDestroy(){
+            super.onDestroy();
+            textViewSteps=(TextView) findViewById(R.id.textSteps);
+            brojKoraka.add(Integer.parseInt(String.valueOf(textViewSteps.getText())));
+            StatistickiIzracuni statistickiIzracuni = new StatistickiIzracuni();
+            statistickiIzracuni.izracunajUkupanBrojKoraka(brojKoraka);
+
+        }
 }
 /*
 private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, WalkingActivity> {

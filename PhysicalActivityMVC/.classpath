@@ -108,7 +108,7 @@
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/jboss-common-jdbc-wrapper-src.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/mysql-connector-java-5.1.45/src/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/com.mysql.jdbc_5.1.5.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -117,5 +117,13 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Korisnik/.m2/repository/org/springframework/spring-jdbc/4.0.3.RELEASE/spring-jdbc-4.0.3.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/commons-codec-1.10.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/httpclient-4.5.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jcommon-1.0.23.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jfreechart-1.0.19-swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jfreesvg-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/orsoncharts-1.4-eval-nofx.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/orsonpdf-1.6-eval.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/swtgraphics2d.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jfreechart-1.0.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/xampp/tomcat/lib/jfreechart-1.0.19-experimental.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
