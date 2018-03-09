@@ -5,15 +5,15 @@ package activity.physical.example.com.josip.physicalactivity.model;
  */
 
 public class SummaryActivity {
-    private String aktivnost;
+
     private String korisnik;
     private int ukupanBrojKoraka;
     private String ukupnoVrijeme;
     private double prijedjeniKilometri;
     private double prosjecnaBrzina;
 
-    public SummaryActivity(String aktivnost, String korisnik, int ukupanBrojKoraka, String ukupnoVrijeme, double prijedjeniKilometri, double prosjecnaBrzina) {
-        this.aktivnost = aktivnost;
+    public SummaryActivity( String korisnik, int ukupanBrojKoraka, String ukupnoVrijeme, double prijedjeniKilometri, double prosjecnaBrzina) {
+
         this.korisnik = korisnik;
         this.ukupanBrojKoraka = ukupanBrojKoraka;
         this.ukupnoVrijeme = ukupnoVrijeme;
@@ -21,13 +21,7 @@ public class SummaryActivity {
         this.prosjecnaBrzina = prosjecnaBrzina;
     }
 
-    public String getAktivnost() {
-        return aktivnost;
-    }
 
-    public void setAktivnost(String aktivnost) {
-        this.aktivnost = aktivnost;
-    }
 
     public String getKorisnik() {
         return korisnik;

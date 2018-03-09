@@ -73,6 +73,7 @@ public class ChronoHelper {
 
     }
     public String dohvatiRealnoVrijeme(){
-        return String.valueOf(getVrijemeZaustavljanja());
+        return String.valueOf(Math.abs(getVrijemeZaustavljanja()));
     }
+
 }

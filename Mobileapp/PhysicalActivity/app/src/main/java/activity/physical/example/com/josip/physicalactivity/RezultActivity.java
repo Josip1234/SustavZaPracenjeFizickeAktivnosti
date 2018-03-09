@@ -16,17 +16,18 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import activity.physical.example.com.josip.physicalactivity.model.SummaryActivity;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 public class RezultActivity extends AppCompatActivity {
 
     private TextView mUkupanBrojKoraka;
-
+    private TextView mVus;
 
     public int procitajSumu() throws IOException, JSONException {
         int vrijednost=0;
-        String userjson = "";
-        String passjson = "";
+        String vrijeme="";
+
         String naziv = "sumaKoraka.json";
 
 
@@ -44,7 +45,7 @@ public class RezultActivity extends AppCompatActivity {
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
             vrijednost = data.getJSONObject(i).getInt("izracun");
-
+            vrijeme=data.getJSONObject(i).getString("vrijeme");
 
             Log.i("poruka", "pročitan json");
 
@@ -52,6 +53,8 @@ public class RezultActivity extends AppCompatActivity {
         }
         return vrijednost;
     }
+
+
 
 
     @Override
@@ -70,6 +73,7 @@ public class RezultActivity extends AppCompatActivity {
         mUkupanBrojKoraka=(TextView) findViewById(R.id.ukbk);
         mUkupanBrojKoraka.setText(String.valueOf(rezultat));
 
+        mVus=(TextView) findViewById(R.id.vus);
 
 
 

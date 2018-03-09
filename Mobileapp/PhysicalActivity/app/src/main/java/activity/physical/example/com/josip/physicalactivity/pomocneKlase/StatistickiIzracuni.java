@@ -18,6 +18,24 @@ import activity.physical.example.com.josip.physicalactivity.model.WalkingActivit
 
 public class StatistickiIzracuni {
     private int ukupanBrojKoraka;
+    private double kilometri;
+    private double prosjecnaBrzina;
+
+    public double getProsjecnaBrzina() {
+        return prosjecnaBrzina;
+    }
+
+    public void setProsjecnaBrzina(double prosjecnaBrzina) {
+        this.prosjecnaBrzina = prosjecnaBrzina;
+    }
+
+    public double getKilometri() {
+        return kilometri;
+    }
+
+    public void setKilometri(double kilometri) {
+        this.kilometri = kilometri;
+    }
 
     public int getUkupanBrojKoraka() {
         return ukupanBrojKoraka;
@@ -37,6 +55,27 @@ public class StatistickiIzracuni {
         }
         setUkupanBrojKoraka(sum);
 
+    }
+    public void izracunajUkupnoPrijedjenjeKilometre(List<Double> kilometri){
+        double sum=0.0;
+        for (double kilometar:kilometri
+             ) {
+            sum+=kilometar;
+        }
+        setKilometri(sum);
+
+    }
+
+    public void izracunajprosjecnuBrzinu(List<Double> brzina){
+        int velicinaListe=brzina.size();
+        double prosjek=0.00;
+        double suma=0.00;
+        for (Double brzin:brzina
+             ) {
+            suma+=brzin;
+        }
+        prosjek=suma/velicinaListe;
+        setProsjecnaBrzina(prosjek);
     }
 
 

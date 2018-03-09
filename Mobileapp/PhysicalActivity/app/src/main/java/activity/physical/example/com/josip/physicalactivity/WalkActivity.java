@@ -107,7 +107,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private ImageButton image;
     private Map<String,String> autorizacija;
     private List<Integer> brojKoraka;
-
+    private List<Double> kilometri;
+    private List<Double> prosjecnaBrzina;
 
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
@@ -325,14 +326,17 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 double loc4 = lon;
 
 
-                float trenutna_brzina = loc.getSpeed();
-                float brzina = (float) (trenutna_brzina * 3.6);
+                double trenutna_brzina = loc.getSpeed();
+                double brzina =  trenutna_brzina * 3.6;
 
+                prosjecnaBrzina.add(brzina);
 
 
 
 
                 double distance = distance(loc1, loc2, loc3, loc4, "K");
+                kilometri.add(distance);
+
                 tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
                 try {
@@ -424,6 +428,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
         brojKoraka=new ArrayList<Integer>();
+        prosjecnaBrzina=new ArrayList<Double>();
+        kilometri=new ArrayList<Double>();
         cr = (Chronometer) findViewById(R.id.chronometer4);
         chronoHelper = new ChronoHelper(cr);
 
@@ -846,7 +852,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             StatistickiIzracuni statistickiIzracuni = new StatistickiIzracuni();
             statistickiIzracuni.izracunajUkupanBrojKoraka(brojKoraka);
             int suma=statistickiIzracuni.getUkupanBrojKoraka();
+            //zaustavljamo kronometar kako bi se dobilo vrijeme vrijeme se dobiva u milisekundama
 
+            chronoHelper.stopcr();
+            String vrijeme=chronoHelper.dohvatiRealnoVrijeme();
+            statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina);
+            statistickiIzracuni.izracunajUkupnoPrijedjenjeKilometre(kilometri);
+            System.out.println(statistickiIzracuni.getKilometri()+" "+statistickiIzracuni.getProsjecnaBrzina());
 
             try {
                 JSONArray array = new JSONArray();
@@ -854,6 +866,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 object = new JSONObject();
                 object.put("izracun",suma);
                 array.put(object);
+
                 String text = array.toString();
                 FileOutputStream fos = openFileOutput("sumaKoraka.json", MODE_PRIVATE);
                 fos.write(text.getBytes());

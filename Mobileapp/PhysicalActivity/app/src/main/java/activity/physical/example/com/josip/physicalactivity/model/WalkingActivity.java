@@ -13,6 +13,7 @@ public class WalkingActivity {
     private double brzinaUkm;
     private String korisnik;
     private String datumIvrijeme;
+
     public WalkingActivity(){
 
 
