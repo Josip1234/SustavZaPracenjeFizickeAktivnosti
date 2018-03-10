@@ -63,6 +63,7 @@ import java.util.Map;
 import java.util.Set;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.Brzina;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
@@ -91,7 +92,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private SeekBar seekBar;
     private int threshold;
     private ChronoHelper chronoHelper;
-
+    private TextView mBrzina;
     private TextView adr;
     private TextView tUdaljenost;
     private Button mReset;
@@ -307,7 +308,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         public void onLocationChanged(Location loc) {
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-
+            double trenutna_brzina = loc.getSpeed();
+            Brzina brzi=new Brzina();
+            long vrijeme=SystemClock.elapsedRealtime();
             if (loc != null) {
                 double loc1 = 00.00;
                 double loc2 = 00.00;
@@ -326,15 +329,24 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 double loc4 = lon;
 
 
-                double trenutna_brzina = loc.getSpeed();
+
                 double brzina =  trenutna_brzina * 3.6;
 
-                prosjecnaBrzina.add(brzina);
+
 
 
 
 
                 double distance = distance(loc1, loc2, loc3, loc4, "K");
+                if(brzina==0.0){
+
+                    brzina=brzi.izracunajBrzinu(distance,vrijeme);
+                    mBrzina.setText("Brzina u kkm/h "+String.valueOf(brzina));
+                    prosjecnaBrzina.add(brzina);
+                }else{
+                    mBrzina.setText("Brzina u kkm/h "+String.valueOf(brzina));
+                    prosjecnaBrzina.add(brzina);
+                }
                 kilometri.add(distance);
 
                 tUdaljenost = (TextView) findViewById(R.id.udaljenost);
@@ -432,7 +444,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         kilometri=new ArrayList<Double>();
         cr = (Chronometer) findViewById(R.id.chronometer4);
         chronoHelper = new ChronoHelper(cr);
-
+        mBrzina=(TextView) findViewById(R.id.brzinaukm);
         image=(ImageButton) findViewById(R.id.posaljiPodatke);
         image.setOnClickListener(new View.OnClickListener() {
             @Override
