@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         login.setSifra(ps);
         login.setEmail(em);
         autoriziran = prijavi(login.getEmail(), login.getSifra());
-
+        //autoriziran=true;
 
         if (autoriziran == true) {
             Intent intent = new Intent(MainActivity.this, ListOfActivitiesActivity.class);
