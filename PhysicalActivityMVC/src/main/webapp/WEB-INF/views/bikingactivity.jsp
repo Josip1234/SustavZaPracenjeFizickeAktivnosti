@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Rezultati biciklističkih aktivnosti</title>
 	<link rel="stylesheet" href="resources/pad.css">
-
+    <script src="resources/js.js" type="text/javascript"></script>
 </head>
-<body>
+<body onLoad="sakrijRezultateBicikliranja()">
 
 <div id="con">	
 <header>
@@ -30,7 +30,8 @@
 </div>
 <section>
 <h2>Rezultati:</h2>
-<div class="pregledBicikliranja">
+<input type="button" id="gumb" value="pokaziRezultate" onClick="pokaziRezultate()"><br>
+<div class="pregledBicikliranja" id="rezultati">
 <c:forEach items="${bike}" var="li">
 <p> ${li.vrijemeAktivnosti}
 <br>
@@ -40,7 +41,8 @@ ${li.korisnik }<br>
 ${li.udaljenost }
 </p>
 </c:forEach>
-</div>
+<input type="button" id="gumb2" value="sakrijRezultate" onClick="sakrijRezultateBicikliranja()">
+</div><br>
 <a href="<c:url value="/home" />">Početna stranica</a> 
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button></form>
