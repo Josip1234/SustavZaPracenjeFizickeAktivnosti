@@ -6,12 +6,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.josip.physical.activity.baza.SpringDataSource;
+
 @Component
 public class SummaryImplementation  implements SummaryRepository{
 	
 
 @Autowired
 SummaryActivity summar;
+@Autowired
+SpringDataSource data;
+@Autowired
+SummaryBiking sumb;
+
 	@Override
 	public List<SummaryActivity> show() {
 		List<SummaryActivity> list=new ArrayList<SummaryActivity>();
@@ -28,6 +35,18 @@ SummaryActivity summar;
 				));
 		
 		return list;
+	}
+	@Override
+	public boolean dodajStatistiku(SummaryBiking sumBike) {
+		data=new SpringDataSource();
+		if(null!=data.getObj()) {
+			String insert="INSERT INTO bikingstatistika (korisnikBike,ukupnaUdaljenost,prosjecnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period) VALUES(?,?,?,?,?,?,?)";
+		
+			data.getObj().update(insert,sumBike.getKorisnik(),sumBike.getUkupnaUdaljenost(),sumBike.getProsjecnaUdaljenost(),sumBike.getUkupnoVrijemeAktivnosti(),sumBike.getProsjecnoVrijemeAktivnosti(),sumBike.getProsjecnaBrzinaUkm(),sumBike.getPeriod());
+		
+		}
+		
+		return true;
 	}
 
 }
