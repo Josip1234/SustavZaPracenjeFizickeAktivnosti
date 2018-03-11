@@ -33,7 +33,11 @@
 <h2>Unos u kalkulator:</h2>
 <form action="BMICalc" method="post">
 <p>Visina osobe:</p><br>
-
+<p>Odaberi spol:</p>
+<select id="spol" name="spol">
+<option value="m">Muško</option>
+<option value="f">Žensko</option>
+</select><br>
 <input type="text" name="visina_osobe_u_metrima" required="required">
 <br>
 <p>Masa u kg:</p><br>

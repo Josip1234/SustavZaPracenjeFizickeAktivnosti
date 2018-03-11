@@ -22,8 +22,8 @@ public class BMIController {
 		return "BMICalc";
 	}
 	@RequestMapping(value="/BMICalc",method=POST)
-	public void rezultat(@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")double masa_u_kg,Model model){
-		
+	public void rezultat(@RequestParam("spol")char spol,@RequestParam("visina_osobe_u_metrima")double visina_osobe_u_metrima,@RequestParam("masa_u_kg")double masa_u_kg,Model model){
+		char sex=spol;
 		String izraz="";
 		double rezultat=0.0;
 		String sp="";
@@ -33,10 +33,10 @@ public class BMIController {
 		a=masa_u_kg;
 		b=visina_osobe_u_metrima;
 		sp="m";
-		BMICalculator bm = new BMICalculator(a,b);
+		BMICalculator bm = new BMICalculator(sex,a,b);
 		rezultat=bm.izracunajBMI(bm.getMasa_u_kg(),bm.getVisina_osobe());
 		bm.setRezultat(rezultat);
-		ind=bm.granica_BMI(rezultat,sp,izraz);
+		ind=bm.granica_BMI(bm.getSpol(),rezultat,izraz);
 		model.addAttribute("rezultat",rezultat+" "+ind);
 		izraz="";
 		}
