@@ -7,10 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;">
 	<link rel="stylesheet" href="resources/pad.css">
+	    <script src="resources/js.js" type="text/javascript"></script>
+	
 
 <title>Korisnikovi podaci</title>
 </head>
-<body>
+<body onLoad="sakrijKorisnickePodatke(),sakrijUpdateProfila()">
 <div id="con">	
 <header>
 	<h1>
@@ -30,6 +32,7 @@
 </div>
 <section>
 <h2>Podaci korisnika:</h2>
+<p><input type="button" id="pokazi" value="Pokaži" onClick="pokaziKorisnickePodatke()"></p>
 <div id="userCredentials">
 
 <h2>Korisnički podaci</h2>
@@ -50,8 +53,10 @@
 <c:out value="${korisnik.sifra}" />
 
 
+<p><input type="button" id="sakrij" value="Sakrij" onClick="sakrijKorisnickePodatke()"></p>
 
 </div>
+<p><input type="button" id="update" value="Ažuriraj profil" onClick="pokaziUpdateProfila()"></p>
 <div id="forma">
 <form action="mojprofil" method="post">
 <h2>Ažuriranje profila</h2>
@@ -77,6 +82,7 @@
 <input type="hidden" name="_csrf" value="${_csrf.token}" />
 <input type="submit" value="Ažuriraj">
 </form>
+<p><input type="button" id="SakrijUp" value="Sakrij ažuriranje" onClick="sakrijUpdateProfila()"></p>
 </div>
 <div id="forma">
 <form action="home" method="post">

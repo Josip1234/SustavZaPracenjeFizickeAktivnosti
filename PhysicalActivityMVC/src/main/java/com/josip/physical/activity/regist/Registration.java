@@ -23,10 +23,10 @@ public class Registration  {
 @Size(min=11,max=11,message="{OIB.size}")
 private String OIB;
 @NotNull
-@Size(max=50,message="{ime.size}")
+@Size(min=1,max=50,message="{ime.size}")
 private String ime;
 @NotNull
-@Size(max=50,message="{prezime.size}")
+@Size(min=1,max=50,message="{prezime.size}")
 private String prezime;
 @NotNull
 private String spol;

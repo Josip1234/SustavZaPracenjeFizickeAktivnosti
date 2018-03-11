@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Rezultati hodanja</title>	<link rel="stylesheet" href="resources/pad.css">
-
+ <script src="resources/js.js" type="text/javascript"></script>
 </head>
-<body>
+<body onLoad="sakrijHodanje()">
 <div id="con">	
 <header>
 	<h1>
@@ -26,8 +26,9 @@
 
 </div>
 <div class="pregledHodanja">
-<section>
-<h2>Pravila korištenja aplikacije:</h2>
+<p><input type="button" value="Pokaži" onClick="pokaziHodanje()"></p>
+<section id="hodanje">
+<h2>Pregled rezultata hodanja:</h2>
 <table>
 <thead>
 <tr><td>
@@ -65,6 +66,7 @@ Datum i vrijeme:
 </tr>
 </c:forEach>
 </table>
+<p><input type="button" value="Sakrij" onClick="sakrijHodanje()"></p>
 </section>
 </div>
 <a href="<c:url value="/home" />">Početna stranica</a> 
