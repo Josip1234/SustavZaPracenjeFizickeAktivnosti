@@ -52,6 +52,7 @@ import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenosti;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 
@@ -228,35 +229,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    private static double distance(double lat1, double lon1, double lat2, double lon2, String unit) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515;
-        if (unit == "K") {
-            dist = dist * 1.609344;
-        } else if (unit == "N") {
-            dist = dist * 0.8684;
-        }
-
-        return (dist);
-    }
-
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	/*::	This function converts decimal degrees to radians						 :*/
-	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    private static double deg2rad(double deg) {
-        return (deg * Math.PI / 180.0);
-    }
-
-    /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-	/*::	This function converts radians to decimal degrees						 :*/
-	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
-    private static double rad2deg(double rad) {
-        return (rad * 180 / Math.PI);
-    }
-
 
 
 
@@ -295,10 +267,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         public void onLocationChanged(Location loc) {
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-            double trenutna_brzina = loc.getSpeed();
+
 
 
             if (loc != null) {
+                double trenutna_brzina = loc.getSpeed();
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -320,11 +293,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 double brzina =  trenutna_brzina * 3.6;
 
 
+                IzracunUdaljenosti izracunUdaljenosti = new IzracunUdaljenosti();
+                izracunUdaljenosti.setLat1(loc1);
+                izracunUdaljenosti.setLon1(loc2);
+                izracunUdaljenosti.setLat2(loc3);
+                izracunUdaljenosti.setLon2(loc4);
+                izracunUdaljenosti.setUnit("K");
 
-
-
-
-                double distance = distance(loc1, loc2, loc3, loc4, "K");
+                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2(),izracunUdaljenosti.getUnit());
 
                     mBrzina.setText("Brzina u kkm/h "+String.valueOf(brzina));
                     prosjecnaBrzina.add(brzina);
@@ -852,7 +828,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             String vrijeme=chronoHelper.dohvatiRealnoVrijeme();
             statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina);
             statistickiIzracuni.izracunajUkupnoPrijedjenjeKilometre(kilometri);
-            System.out.println(statistickiIzracuni.getKilometri()+" "+statistickiIzracuni.getProsjecnaBrzina());
+            System.out.println(statistickiIzracuni.getKilometri()+" "+statistickiIzracuni.getProsjecnaBrzina()+" Vrijeme:"+vrijeme);
 
             try {
                 JSONArray array = new JSONArray();
