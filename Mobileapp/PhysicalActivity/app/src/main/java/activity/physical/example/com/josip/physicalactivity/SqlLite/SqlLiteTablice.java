@@ -18,12 +18,15 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
 
 
 
+
+
     private static final String stvori_tablicu =
             "CREATE TABLE " + tablica_korisnik + " (" +
                     id_stupca + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     korisnik + " TEXT, " +
                     sifra + " TEXT"+
                     ")";
+
 
 
 
