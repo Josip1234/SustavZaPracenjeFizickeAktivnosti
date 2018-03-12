@@ -4,23 +4,46 @@ package activity.physical.example.com.josip.physicalactivity.pomocneKlase;
  * Created by Korisnik on 12.3.2018..
  */
 
-public class IzracunUdaljenosti {
+public class IzracunUdaljenostiiBrzine {
     private double lat1;
     private double lon1;
+    private long vrijeme1;
     private double lat2;
     private double lon2;
-    private String unit;
+    private long vrijeme2;
 
-    public IzracunUdaljenosti() {
-    }
-
-    public IzracunUdaljenosti(double lat1, double lon1, double lat2, double lon2, String unit) {
+    public IzracunUdaljenostiiBrzine(double lat1, double lon1, long vrijeme1, double lat2, double lon2, long vrijeme2, String unit) {
         this.lat1 = lat1;
         this.lon1 = lon1;
+        this.vrijeme1 = vrijeme1;
         this.lat2 = lat2;
         this.lon2 = lon2;
+        this.vrijeme2 = vrijeme2;
         this.unit = unit;
     }
+
+    public long getVrijeme1() {
+        return vrijeme1;
+    }
+
+    public void setVrijeme1(long vrijeme1) {
+        this.vrijeme1 = vrijeme1;
+    }
+
+    public long getVrijeme2() {
+        return vrijeme2;
+    }
+
+    public void setVrijeme2(long vrijeme2) {
+        this.vrijeme2 = vrijeme2;
+    }
+
+    private String unit;
+
+    public IzracunUdaljenostiiBrzine() {
+    }
+
+
 
     public double getLat1() {
         return lat1;
@@ -91,5 +114,11 @@ public class IzracunUdaljenosti {
         return (rad * 180 / Math.PI);
     }
 
+    public double izracunajBrzinuUkm(double udaljenost){
+        return udaljenost/(vrijemeIzmedjuTocaka(getVrijeme1(),getVrijeme2())*3600);
+    }
+    public double vrijemeIzmedjuTocaka(long vrijeme1,long vrijeme2){
+        return (vrijeme2-vrijeme1)/1000;
+    }
 
 }

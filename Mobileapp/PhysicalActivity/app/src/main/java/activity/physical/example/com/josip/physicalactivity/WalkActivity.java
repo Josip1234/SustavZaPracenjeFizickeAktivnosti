@@ -52,7 +52,7 @@ import java.util.Map;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
-import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenosti;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenostiiBrzine;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 
@@ -98,7 +98,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Integer> brojKoraka;
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
-
+    private long vrijeme1;
+    private long vrijeme2;
+    private double vrijemeTocaka;
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -267,7 +269,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         public void onLocationChanged(Location loc) {
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-
+            vrijeme1= SystemClock.elapsedRealtime();
 
 
             if (loc != null) {
@@ -293,18 +295,26 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 double brzina =  trenutna_brzina * 3.6;
 
 
-                IzracunUdaljenosti izracunUdaljenosti = new IzracunUdaljenosti();
+                IzracunUdaljenostiiBrzine izracunUdaljenosti = new IzracunUdaljenostiiBrzine();
                 izracunUdaljenosti.setLat1(loc1);
                 izracunUdaljenosti.setLon1(loc2);
                 izracunUdaljenosti.setLat2(loc3);
                 izracunUdaljenosti.setLon2(loc4);
                 izracunUdaljenosti.setUnit("K");
-
+                izracunUdaljenosti.setVrijeme1(vrijeme1);
                 double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2(),izracunUdaljenosti.getUnit());
 
-                    mBrzina.setText("Brzina u kkm/h "+String.valueOf(brzina));
+                if(brzina==0.00 || brzina==00.00){
+
+                    brzina=izracunUdaljenosti.izracunajBrzinuUkm(distance);
+                    mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
                     prosjecnaBrzina.add(brzina);
 
+                }else {
+
+                    mBrzina.setText("Brzina u km/h " + String.valueOf(brzina));
+                    prosjecnaBrzina.add(brzina);
+                }
                 kilometri.add(distance);
 
                 tUdaljenost = (TextView) findViewById(R.id.udaljenost);
@@ -314,7 +324,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                vrijeme2=SystemClock.elapsedRealtime();
+                izracunUdaljenosti.setVrijeme2(vrijeme2);
                 dohvati_koordinate(loc3, loc4);
                 String cityName = null;
                 String stateName = null;
