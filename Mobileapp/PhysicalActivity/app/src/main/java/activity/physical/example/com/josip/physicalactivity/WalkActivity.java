@@ -99,9 +99,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Integer> brojKoraka;
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
-
+    private IzracunUdaljenostiiBrzine izracun;
     private double vrijemeTocaka;
     private int count=0;
+    private long vrijemePrvihKoordinata;
+    private long vrijemeDrugeKoordinate;
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -171,69 +173,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public void dohvati_koordinate(double lat, double lon) {
-
-
-        try {
-            kreiraj_prethodne_koordinate(lat, lon);
-            Log.i("poruka", "Uspješno spremljene koordinate");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void kreiraj_prethodne_koordinate(double lat, double lon) throws IOException, JSONException {
-
-        JSONArray array = new JSONArray();
-        JSONObject object;
-        object = new JSONObject();
-        object.put("koordinata", lat);
-        array.put(object);
-        object = new JSONObject();
-        object.put("koordinata", lon);
-        array.put(object);
-        String text = array.toString();
-        FileOutputStream fos = openFileOutput("koordinate.json", MODE_PRIVATE);
-        fos.write(text.getBytes());
-        fos.close();
-        Log.i("message", "succesfully written to json");
-    }
-
-
-    public String vrati_koordinate(int pozicija) throws IOException, JSONException {
-        String naziv = "koordinate.json";
-
-
-        FileInputStream fis = openFileInput(naziv);
-        BufferedInputStream bis = new BufferedInputStream(fis);
-        StringBuffer b = new StringBuffer();
-        while (bis.available() != 0) {
-            char c = (char) bis.read();
-            b.append(c);
-        }
-        bis.close();
-        fis.close();
-
-        JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer = new StringBuffer();
-
-
-        String koordinata2 = data.getJSONObject(pozicija).getString("koordinata");
-        prijavaBuffer.append(koordinata2);
-
-
-        Log.i("poruka", "pročitan json");
-
-        return prijavaBuffer.toString();
-
-
-    }
-
-
-
 
 
 
@@ -269,51 +208,73 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         @Override
         public void onLocationChanged(Location loc) {
             count+=1;
-            double lat = loc.getLatitude();
-            double lon = loc.getLongitude();
-
-
 
             if (loc != null) {
-                double trenutna_brzina = loc.getSpeed();
-                double loc1 = 00.00;
-                double loc2 = 00.00;
-                try {
-                    loc1 = Double.parseDouble(vrati_koordinate(0));
-                    loc2 = Double.parseDouble(vrati_koordinate(1));
-                    System.out.println(loc1);
-                    System.out.println(loc2);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(count%2==0){
+                    boolean nu=false;
+                    //vrijeme stvaranja prve koordinate
+                    vrijemePrvihKoordinata=SystemClock.elapsedRealtime();
+                    izracun.setVrijeme1(vrijemePrvihKoordinata);
+                    izracun.setLat2(loc.getLatitude());
+                    izracun.setLon2(loc.getLatitude());
+                     //dohvati latitudu i longitudu druge točke
+                    nu=izracun.provjeriJesuLiSveTockePopunjene(izracun.getLat1(),izracun.getLon1(),izracun.getLat2(),izracun.getLon2());
+                    if(nu==true){
+
+
+                        double udaljenost=izracun.distance(izracun.getLat1(),izracun.getLon1(),izracun.getLat2(),izracun.getLon2());
+                        kilometri.add(udaljenost);
+                        tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                        tUdaljenost.setText(String.valueOf(udaljenost));
+
+                        try {
+                            walk.put("udaljenost",udaljenost);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        double trenutna_brzina = loc.getSpeed();
+                        double brzina =  trenutna_brzina * 3.6;
+                        //ako je brzina dohvaćena sa gps om nula računaj formulom
+                        if((brzina==0.00 || brzina==00.00) && count>1){
+
+                            brzina=izracun.izracunajBrzinuUkm(udaljenost);
+                            mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
+                            prosjecnaBrzina.add(brzina);
+                            try {
+                                walk.put("brzinaUkm", brzina);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }else {
+
+                            mBrzina.setText("Brzina u km/h " + String.valueOf(brzina));
+                            prosjecnaBrzina.add(brzina);
+                            try {
+                                walk.put("brzinaUkm", brzina);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+
+                }else{
+                    //prethodna koordinata -1 null ponter iznimka pojavljuje se ako nema ništa tj nikakve koordinate prije
+                    vrijemeDrugeKoordinate= SystemClock.elapsedRealtime();
+                    try {
+                        izracun.setLat1(loc.getLatitude());
+                        izracun.setLon1(loc.getLongitude());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
-                double loc3 = lat;
-                double loc4 = lon;
+                //povećavaj broj promijene lokacije
+                count+=1;
 
-
-
-                double brzina =  trenutna_brzina * 3.6;
-
-
-                IzracunUdaljenostiiBrzine izracunUdaljenosti = new IzracunUdaljenostiiBrzine();
-                izracunUdaljenosti.setLat1(loc1);
-                izracunUdaljenosti.setLon1(loc2);
-                izracunUdaljenosti.setLat2(loc3);
-                izracunUdaljenosti.setLon2(loc4);
-                izracunUdaljenosti.setUnit("K");
-                izracunUdaljenosti.setVrijeme2(SystemClock.elapsedRealtime());
-
-                //u bazu je potrebno spremiti koordinate i njihovo trenutno vrijeme kad su kreirani a i za potrebe optimizacije koda.
-                //tako bi se iz baze izvlačile koordinate prema promijeni i mjerila bi se brzina na temelju točaka, kao i udaljenost
-                //između njih
-
-
-
-
-                dohvati_koordinate(loc3, loc4);
-                izracunUdaljenosti.setVrijeme1(SystemClock.elapsedRealtime());
                 String cityName = null;
                 String stateName = null;
                 String ad = null;
@@ -321,29 +282,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 String posta = null;
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
-                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2());
 
-                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-                tUdaljenost.setText(String.valueOf(distance));
 
-                if((brzina==0.00 || brzina==00.00) && count>1){
 
-                    brzina=izracunUdaljenosti.izracunajBrzinuUkm(distance);
-                    mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
 
-                }else {
-
-                    mBrzina.setText("Brzina u km/h " + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
-                }
-                kilometri.add(distance);
-
-                try {
-                    walk.put("udaljenost", distance);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
 
                 try {
@@ -386,9 +328,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
                 try {
                     walk.put("adresa", s + p + a);
-                    walk.put("longitude", loc4);
-                    walk.put("latitude", loc3);
-                    walk.put("brzinaUkm", brzina);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -418,7 +358,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
-
+        IzracunUdaljenostiiBrzine izracun = new IzracunUdaljenostiiBrzine();
         brojKoraka=new ArrayList<Integer>();
         prosjecnaBrzina=new ArrayList<Double>();
         kilometri=new ArrayList<Double>();
@@ -872,124 +812,6 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
         }
 }
-/*
-private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, WalkingActivity> {
-    private WalkingActivity walkingActivity;
-    private List<WalkingActivity> walkingActivities;
-
-    @Override
-    protected void onPreExecute() {
-        walkingActivity = new WalkingActivity();
-        walkingActivities = new ArrayList<WalkingActivity>();
-        try {
-            FileInputStream fileInputStream = openFileInput("Walking.json");
-            BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-            StringBuffer stringBuffer = new StringBuffer();
-            while (bufferedInputStream.available() != 0) {
-                char znakovi = (char) bufferedInputStream.read();
-                stringBuffer.append(znakovi);
-            }
-            bufferedInputStream.close();
-            fileInputStream.close();
-
-            try {
-                JSONArray hodanje = new JSONArray(stringBuffer.toString());
-                StringBuffer buffer = new StringBuffer();
-                for (int i = 0; i < hodanje.length(); i++) {
-                    double udaljenost = hodanje.getJSONObject(i).getDouble("udaljenost");
-                    String vrijemeAktivnosti = hodanje.getJSONObject(i).getString("vrijemeAktivnosti");
-                    int koraci = hodanje.getJSONObject(i).getInt("koraci");
-                    String adresa = hodanje.getJSONObject(i).getString("adresa");
-                    double longitude = hodanje.getJSONObject(i).getDouble("longitude");
-                    double latitude = hodanje.getJSONObject(i).getDouble("latitude");
-                    double brzinaUkm = hodanje.getJSONObject(i).getDouble("brzinaUkm");
-                    String korisnik = hodanje.getJSONObject(i).getString("korisnik");
-                    String vrijeme = hodanje.getJSONObject(i).getString("datumIvrijeme");
-                    buffer.append(udaljenost + "" + vrijemeAktivnosti + "" + koraci + "" + adresa + "" + longitude + "" + latitude + "" + brzinaUkm + "" + korisnik + " " + vrijeme);
-                    walkingActivities.add(new WalkingActivity(udaljenost, vrijemeAktivnosti, koraci, adresa, longitude, latitude, brzinaUkm, korisnik, vrijeme));
-                    walkingActivity.setUdaljenost(udaljenost);
-                    walkingActivity.setVrijemeAktivnosti(vrijemeAktivnosti);
-                    walkingActivity.setKoraci(koraci);
-                    walkingActivity.setAdresa(adresa);
-                    walkingActivity.setLongitude(longitude);
-                    walkingActivity.setLatitude(latitude);
-                    walkingActivity.setBrzinaUkm(brzinaUkm);
-                    walkingActivity.setKorisnik(korisnik);
-                    walkingActivity.setDatumIvrijeme(vrijeme);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    @Override
-    protected WalkingActivity doInBackground(Void... params) {
-        //Looper.prepare();
-
-
-        //MultiValueMap<String, WalkingActivity> mapa = new LinkedMultiValueMap<String,WalkingActivity>();
-        //mapa.add("kljuc",new WalkingActivity(walk.getUdaljenost(),walk.getVrijemeAktivnosti(),walk.getKoraci(),walk.getAdresa(),walk.getLongitude(),walk.getLatitude(),walk.getBrzinaUkm(),walk.getKorisnik()));
-        // WalkingActivity mapa = walk;
-
-        //RestTemplate rest = new RestTemplate(true);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
-        mappingJackson2HttpMessageConverter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
-        for (WalkingActivity walk : walkingActivities
-                ) {
-            System.out.println(walk.getKorisnik());
-            walkingActivity = new WalkingActivity(walk.getUdaljenost(), walk.getVrijemeAktivnosti(), walk.getKoraci(), walk.getAdresa(), walk.getLongitude(), walk.getLatitude(), walk.getBrzinaUkm(), walk.getKorisnik(), walk.getDatumIvrijeme());
-        }
-        HttpHeaders requestHeaders = new HttpHeaders();
-        //rješavanje eof-a i korištenje starije verzije http veze
-        //requestHeaders.set("Connection","Close");
-        requestHeaders.setContentType(new MediaType("application", "json"));
-        HttpEntity<WalkingActivity> requestEntity = new HttpEntity<WalkingActivity>(walkingActivity, requestHeaders);
-
-        RestTemplate restTemplate = new RestTemplate(true);
-        //za rješavanje eof filea za starije android uređaje
-        // restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
-        //MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter1 = new MappingJackson2HttpMessageConverter();
-        //mappingJackson2HttpMessageConverter1.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
-        restTemplate.getMessageConverters().add(mappingJackson2HttpMessageConverter);
-        restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-
-        walkingActivity = restTemplate.postForObject("http://10.0.2.2:8080/physical/walking", walkingActivity, WalkingActivity.class);
-
-
-        //restTemplate.postForLocation("http://10.0.2.2:8080/physical/walking",walkingActivity);
-
-
-        //HttpEntity<MultiValueMap<String,WalkingActivity>> request = new HttpEntity<MultiValueMap<String, WalkingActivity>>(mapa,headers);
-        //HttpEntity<WalkingActivity> request = new HttpEntity<WalkingActivity>(mapa,headers);
-
-        //rest.getMessageConverters().add(mappingJackson2HttpMessageConverter);
-        // rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
-        //ResponseEntity<WalkingActivity> responseEntity = rest.postForEntity("http://10.0.2.2:8080/physical/walking",walk,WalkingActivity.class);
-        //rest.postForLocation("http://10.0.2.2:8080/physical/walking",walk);
-        //System.out.println("response header:"+responseEntity.getHeaders().toString());
-        //System.out.println("response body:"+responseEntity.getBody().toString());
-
-
-        return walkingActivity;
-    }
-
-    @Override
-    protected void onPostExecute(WalkingActivity res) {
-        System.out.println(res.toString());
-
-
-    }
-
-}
-
-*/
 
 
 

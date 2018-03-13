@@ -86,7 +86,34 @@ public class IzracunUdaljenostiiBrzine {
     }
 
 
-    public static double distance(double lat1, double lon1, double lat2, double lon2) {
+    public boolean provjeriJesuLiSveTockePopunjene(double lat1, double lon1, double lat2, double lon2){
+
+        if(lat1!=0.00 || lat1!=00.00){
+            if(lon1!=0.00 || lon1!=00.00){
+                if(lat2!=0.00 || lat2!=00.00){
+                    if(lon2!=0.00 || lon2!=00.00){
+                          return true;
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+
+
+
+
+    }
+
+    public  double distance(double lat1, double lon1, double lat2, double lon2) {
         final double R = 6371; // In kilometers
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
