@@ -303,8 +303,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 izracunUdaljenosti.setLat2(loc3);
                 izracunUdaljenosti.setLon2(loc4);
                 izracunUdaljenosti.setUnit("K");
-                izracunUdaljenosti.setVrijeme2(SystemClock.elapsedRealtime());
-
+                //za potrebe simulacije zaustavljamo kronometar
+                chronoHelper.stopcr();
+                izracunUdaljenosti.setVrijeme1(chronoHelper.getVrijemeZaustavljanja());
+                chronoHelper.startcr();
                 //u bazu je potrebno spremiti koordinate i njihovo trenutno vrijeme kad su kreirani a i za potrebe optimizacije koda.
                 //tako bi se iz baze izvlačile koordinate prema promijeni i mjerila bi se brzina na temelju točaka, kao i udaljenost
                 //između njih
@@ -313,7 +315,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
                 dohvati_koordinate(loc3, loc4);
-                izracunUdaljenosti.setVrijeme1(SystemClock.elapsedRealtime());
+                chronoHelper.stopcr();
+                izracunUdaljenosti.setVrijeme2(chronoHelper.getVrijemeZaustavljanja());
+                chronoHelper.startcr();
                 String cityName = null;
                 String stateName = null;
                 String ad = null;
