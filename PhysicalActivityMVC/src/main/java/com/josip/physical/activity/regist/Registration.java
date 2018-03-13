@@ -1,21 +1,14 @@
 package com.josip.physical.activity.regist;
 
 import org.hibernate.validator.constraints.Email;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
-import com.josip.physical.activity.baza.PhysicalActivityDatabase;
 
-import java.io.UnsupportedEncodingException;
-import java.sql.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Component;
 
 @Component("Registracija")
 public class Registration  {
@@ -74,20 +67,12 @@ public void setOIB(String OIB) {
 	this.OIB = OIB;
 }
 public void setIme(String ime) {
-	try {
-		this.ime = new String(ime.getBytes ("iso-8859-1"), "UTF-8");
-	} catch (UnsupportedEncodingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+	
+		this.ime = ime;
+	
 }
 public void setPrezime(String prezime) {
-	 try {
-		this.prezime = new String(prezime.getBytes ("iso-8859-1"), "UTF-8");
-	} catch (UnsupportedEncodingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+   this.prezime=prezime;
 }
 public void setSpol(String spol) {
 	this.spol = spol;
@@ -101,12 +86,9 @@ public void setEmail(String email) {
 	this.email = email;
 }
 public void setSifra(String sifra) {
-	 try {
-			this.sifra = new String(sifra.getBytes ("iso-8859-1"), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+			this.sifra = sifra;
+	
 }
 
 

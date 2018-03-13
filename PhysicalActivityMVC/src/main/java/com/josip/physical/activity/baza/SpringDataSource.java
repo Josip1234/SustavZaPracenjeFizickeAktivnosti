@@ -13,7 +13,7 @@ public class SpringDataSource {
 	    static SimpleDriverDataSource ds;
 	    static String DB_USERNAME="root";
 	    static String DB_PASSWORD ="";
-	    static String DB_URL = "jdbc:mysql://localhost:3306/physical";
+	    static String DB_URL = "jdbc:mysql://localhost:3306/?useUnicode=true&characterEncoding=UTF-8";
 	   
 	    public SpringDataSource() {
 	    	this.DB_USERNAME="root";

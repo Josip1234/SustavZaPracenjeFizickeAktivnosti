@@ -45,7 +45,7 @@ public class RezultActivity extends AppCompatActivity {
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
             vrijednost = data.getJSONObject(i).getInt("izracun");
-            vrijeme=data.getJSONObject(i).getString("vrijeme");
+
 
             Log.i("poruka", "pročitan json");
 

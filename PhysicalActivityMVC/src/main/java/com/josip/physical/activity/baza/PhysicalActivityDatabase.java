@@ -346,7 +346,7 @@ public boolean delete(String email){
 
 public List<Registration> update(List<Registration> reg) throws UnsupportedEncodingException {
 	
-	List<Registration> regist = new ArrayList();
+	List<Registration> regist = new ArrayList<Registration>();
 	
 	regist=reg;
 	

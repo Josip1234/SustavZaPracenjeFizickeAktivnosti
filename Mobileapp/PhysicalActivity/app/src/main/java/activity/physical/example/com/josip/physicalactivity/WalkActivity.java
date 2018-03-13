@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.SystemClock;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,9 +99,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Integer> brojKoraka;
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
-    private long vrijeme1;
-    private long vrijeme2;
+
     private double vrijemeTocaka;
+    private int count=0;
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -267,9 +268,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location loc) {
+            count+=1;
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-            vrijeme1= SystemClock.elapsedRealtime();
+
 
 
             if (loc != null) {
@@ -301,10 +303,30 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 izracunUdaljenosti.setLat2(loc3);
                 izracunUdaljenosti.setLon2(loc4);
                 izracunUdaljenosti.setUnit("K");
-                izracunUdaljenosti.setVrijeme1(vrijeme1);
-                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2(),izracunUdaljenosti.getUnit());
+                izracunUdaljenosti.setVrijeme2(SystemClock.elapsedRealtime());
 
-                if(brzina==0.00 || brzina==00.00){
+                //u bazu je potrebno spremiti koordinate i njihovo trenutno vrijeme kad su kreirani a i za potrebe optimizacije koda.
+                //tako bi se iz baze izvlačile koordinate prema promijeni i mjerila bi se brzina na temelju točaka, kao i udaljenost
+                //između njih
+
+
+
+
+                dohvati_koordinate(loc3, loc4);
+                izracunUdaljenosti.setVrijeme1(SystemClock.elapsedRealtime());
+                String cityName = null;
+                String stateName = null;
+                String ad = null;
+                String ad2 = null;
+                String posta = null;
+                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+                List<Address> addresses;
+                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2());
+
+                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                tUdaljenost.setText(String.valueOf(distance));
+
+                if((brzina==0.00 || brzina==00.00) && count>1){
 
                     brzina=izracunUdaljenosti.izracunajBrzinuUkm(distance);
                     mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
@@ -317,23 +339,11 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 }
                 kilometri.add(distance);
 
-                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-                tUdaljenost.setText(String.valueOf(distance));
                 try {
                     walk.put("udaljenost", distance);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                vrijeme2=SystemClock.elapsedRealtime();
-                izracunUdaljenosti.setVrijeme2(vrijeme2);
-                dohvati_koordinate(loc3, loc4);
-                String cityName = null;
-                String stateName = null;
-                String ad = null;
-                String ad2 = null;
-                String posta = null;
-                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-                List<Address> addresses;
 
 
                 try {
@@ -408,6 +418,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+
         brojKoraka=new ArrayList<Integer>();
         prosjecnaBrzina=new ArrayList<Double>();
         kilometri=new ArrayList<Double>();
