@@ -46,19 +46,19 @@ public class RezultActivity extends AppCompatActivity {
         }
         bis.close();
         fis.close();
-
+        double ukupno=0.00;
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
             String korisnik=data.getJSONObject(i).getString("korisnik");
-            double ukupnaUdaljenost=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
+             ukupno=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
             double ukupnoVrijemeAktivnosti=data.getJSONObject(i).getDouble("ukupnoVrijemeAktivnosti");
             double prosjecnaBrzinaUkilometrima=data.getJSONObject(i).getDouble("prosjecnaBrzina");
             String datum=data.getJSONObject(i).getString("datum");
             int ukupanBrojKoraka=data.getJSONObject(i).getInt("ukupanBrojKoraka");
-
+            prijavaBuffer.append(korisnik + "" + ukupno + "" + ukupnoVrijemeAktivnosti+ "" + prosjecnaBrzinaUkilometrima + "" + datum+" "+ukupanBrojKoraka);
             stats.setUkupanBrojKoraka(ukupanBrojKoraka);
-            stats.setUkupnaUdaljenost(ukupnaUdaljenost);
+            stats.setUkupnaUdaljenost(ukupno);
             stats.setUkupnoVrijemeAktivnosti(ukupnoVrijemeAktivnosti);
             stats.setProsjecnaBrzinaUkm(prosjecnaBrzinaUkilometrima);
             stats.setEmail(korisnik);

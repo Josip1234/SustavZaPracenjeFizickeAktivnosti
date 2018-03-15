@@ -193,7 +193,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
     public void kreiraj_prethodne_koordinate(double lat, double lon) throws IOException, JSONException {
-
+//pogrešan json format popraviti
         JSONArray array = new JSONArray();
         JSONObject object;
         object = new JSONObject();
@@ -880,30 +880,30 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
              WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), vrij, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka());
 
             try {
-                JSONArray array = new JSONArray();
-                JSONObject object;
-                object = new JSONObject();
-                object.put("korisnik",statistika.getEmail());
-                array.put(object);
-                object = new JSONObject();
-                object.put("ukupnaUdaljenost",statistika.getUkupnaUdaljenost());
-                array.put(object);
+                JSONArray polje = new JSONArray();
+                JSONObject ob = new JSONObject();
 
-                object=new JSONObject();
-                object.put("ukupnoVrijemeAktivnosti",statistika.getUkupnoVrijemeAktivnosti());
-                array.put(object);
+                ob.put("korisnik",statistika.getEmail());
 
-                object=new JSONObject();
-                object.put("prosjecnaBrzina",statistika.getProsjecnaBrzinaUkm());
-                array.put(object);
-                object = new JSONObject();
-                object.put("datum",statistika.getPeriod());
-                array.put(object);
-                object=new JSONObject();
-                object.put("ukupanBrojKoraka",statistika.getUkupanBrojKoraka());
-                array.put(object);
+                ob.put("ukupnaUdaljenost",statistika.getUkupnaUdaljenost());
 
-                String text = array.toString();
+
+                ob.put("ukupnoVrijemeAktivnosti",statistika.getUkupnoVrijemeAktivnosti());
+
+
+
+                ob.put("prosjecnaBrzina",statistika.getProsjecnaBrzinaUkm());
+
+
+
+                ob.put("datum",statistika.getPeriod());
+
+
+
+                ob.put("ukupanBrojKoraka",statistika.getUkupanBrojKoraka());
+
+                polje.put(ob);
+                String text = polje.toString();
                 FileOutputStream fos = openFileOutput("UkupnoHodanja.json", MODE_PRIVATE);
                 fos.write(text.getBytes());
                 fos.close();
