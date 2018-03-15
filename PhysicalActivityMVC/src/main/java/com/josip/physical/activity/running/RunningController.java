@@ -22,10 +22,11 @@ public class RunningController {
 	   
 	@RequestMapping(value = {"/runningactivity"},method=RequestMethod.GET)
 	public String runningactivity(Model model) {
-        model.addAttribute("run", runningRepository.results());
+		Authentication au=SecurityContextHolder.getContext().getAuthentication();
+	 	   String name=au.getName();
+        model.addAttribute("run", runningRepository.results(name));
       //dohva�anje usera iz login forme
-        Authentication au=SecurityContextHolder.getContext().getAuthentication();
- 	   String name=au.getName();
+        
         System.out.println(name);
 		return "runningactivity";
 	}

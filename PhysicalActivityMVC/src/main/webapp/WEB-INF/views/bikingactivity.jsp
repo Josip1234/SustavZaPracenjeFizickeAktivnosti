@@ -32,15 +32,39 @@
 <h2>Rezultati:</h2>
 <input type="button" id="gumb" value="pokaziRezultate" onClick="pokaziRezultate()"><br>
 <div class="pregledBicikliranja" id="rezultati">
+<table>
+<thead>
+<tr><td>
+<b>Vrijeme aktivnosti::</b>
+
+</td><td>
+Brzina u kilometrima::
+
+</td>
+<td>
+Korisnik:
+</td>
+<td>
+Udaljenost:
+</td>
+<td>Datum:</td>
+</tr>
+</thead>
 <c:forEach items="${bike}" var="li">
-<p> ${li.vrijemeAktivnosti}
-<br>
-${li.brzinaUkm}
-<br>
-${li.korisnik }<br>
-${li.udaljenost }
-</p>
+<tr>
+
+
+<td>${li.vrijemeAktivnosti}</td>
+
+<td>${li.brzinaUkm}</td>
+
+<td>${li.korisnik }</td> 
+<td>${li.udaljenost}</td>
+<td>${li.datum}</td>
+</tr>
 </c:forEach>
+</table>
+
 <input type="button" id="gumb2" value="sakrijRezultate" onClick="sakrijRezultateBicikliranja()">
 </div><br>
 <a href="<c:url value="/home" />">Početna stranica</a> 

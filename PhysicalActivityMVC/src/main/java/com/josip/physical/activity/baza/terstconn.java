@@ -20,7 +20,7 @@ import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
 import com.josip.physical.activity.regist.RegistrationRepository;
 import com.josip.physical.activity.summary.SummaryImplementation;
-import com.josip.physical.activity.walkingSummary.WalkingStatistika;
+
 
 public class terstconn {
     

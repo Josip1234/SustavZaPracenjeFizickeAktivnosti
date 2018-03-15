@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.SpringDataSource;
-import com.josip.physical.activity.walkingSummary.WalkingStatistika;
+
 
 @Component
 public class SummaryImplementation  implements SummaryRepository{

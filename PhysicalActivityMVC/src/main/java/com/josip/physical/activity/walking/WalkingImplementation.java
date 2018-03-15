@@ -74,33 +74,6 @@ public WalkingActivity spremiPodatke(WalkingActivity wal) {
 	return wal;
 }
 
-@Override
-public boolean izbrisiSve() {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-@Override
-public boolean izbrisiPoDatumu(Date date) {
-	// TODO Auto-generated method stub
-	return false;
-}
 
 
-
-@Override
-public List<WalkingActivity> izlistajSve() {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-
-
-
-
-@Override
-public List<WalkingActivity> izlistajPoDatumu(Date date) {
-	// TODO Auto-generated method stub
-	return null;
-}
 }

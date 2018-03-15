@@ -1,14 +1,18 @@
 package com.josip.physical.activity.running;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.biking.BikingActivity;
+import com.josip.physical.activity.walking.WalkingActivity;
 @Component
 public class RunningImplementation implements RunningRepository {
     @Autowired
@@ -16,24 +20,38 @@ public class RunningImplementation implements RunningRepository {
     @Autowired
     SpringDataSource data;
 	@Override
-	public List<RunningActivity> results() {
-	List<RunningActivity> running=new ArrayList<RunningActivity>();
+	public List<RunningActivity> results(String username) {
+		List<RunningActivity> activity=new ArrayList<RunningActivity>();
 		
-		run.setKorisnik("jbosnjak3@gmail.com");
-		run.setBrzinaUkm(20);
 		
-		run.setUdaljenost(15.64);
-		run.setVrijemeAktivnosti("15 minuta");
-	    running.add(new RunningActivity(
-	    		run.getKorisnik(),
-	    		run.getBrzinaUkm(),
-	    		run.getVrijemeAktivnosti(),
-	    		run.getUdaljenost(),
-	    		run.getDatum()
-	    		));
-	    
+		data=new SpringDataSource();
 		
-		return running;
+		if(null != data.getObj()) {
+			String select="SELECT vrijemeAktivnosti,brzinaUkm,udaljenost,email,datum FROM `running` WHERE email='"+username+"'";
+			List<RunningActivity> run=data.getObj().query(select,new RowMapper() {
+				public RunningActivity mapRow(final ResultSet result,final int rowNum) throws SQLException{
+					RunningActivity run=new RunningActivity();
+					run.setBrzinaUkm(result.getDouble("brzinaUkm"));
+					run.setDatum(result.getString("datum"));
+					
+					run.setKorisnik(result.getString("email"));
+					run.setUdaljenost(result.getDouble("udaljenost"));
+					run.setVrijemeAktivnosti(result.getString("vrijemeAktivnosti"));
+					
+					return run;
+					
+				}});
+				
+			for (RunningActivity runningActivity : run) {
+				activity.add(runningActivity);
+			}
+				
+			}
+			
+		
+		
+		
+		return activity;
 	}
 	@Override
 	public RunningActivity spremiPodatke(RunningActivity run) {
@@ -46,20 +64,6 @@ public class RunningImplementation implements RunningRepository {
 		}
 		return run;
 	}
-	@Override
-	public List<RunningActivity> pokaziPoDatumu(Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public boolean izbrisi() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean izbrisiPoDatumu(Date date) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 }

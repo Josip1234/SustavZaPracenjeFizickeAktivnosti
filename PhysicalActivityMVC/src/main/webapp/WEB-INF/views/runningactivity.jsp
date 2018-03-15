@@ -31,15 +31,40 @@
 <section>
 <h2>Lista rezultata::</h2>
 <div class="pregledBicikliranja">
+<h2>Pregled rezultata hodanja:</h2>
+<table>
+<thead>
+<tr><td>
+<b>Vrijeme aktivnosti::</b>
+
+</td><td>
+Brzina u kilometrima::
+
+</td>
+<td>
+Korisnik:
+</td>
+<td>
+Udaljenost:
+</td>
+<td>Datum:</td>
+</tr>
+</thead>
 <c:forEach items="${run}" var="li">
-<p> ${li.vrijemeAktivnosti}
-<br>
-${li.brzinaUkm}
-<br>
-${li.korisnik }<br>
-${li.udaljenost }
-</p>
+<tr>
+
+
+<td>${li.vrijemeAktivnosti}</td>
+
+<td>${li.brzinaUkm}</td>
+
+<td>${li.korisnik }</td> 
+<td>${li.udaljenost}</td>
+<td>${li.datum}</td>
+</tr>
 </c:forEach>
+</table>
+
 </div>
 <a href="<c:url value="/home" />">Početna stranica</a> 
 <div id="odjava">

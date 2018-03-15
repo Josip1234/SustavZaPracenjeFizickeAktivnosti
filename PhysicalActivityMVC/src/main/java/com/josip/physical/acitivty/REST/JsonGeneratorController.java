@@ -33,8 +33,7 @@ import com.josip.physical.activity.summary.SummaryImplementation;
 import com.josip.physical.activity.walking.WalkingActivity;
 import com.josip.physical.activity.walking.WalkingImplementation;
 import com.josip.physical.activity.walking.WalkingRepository;
-import com.josip.physical.activity.walkingSummary.WalSumImplementation;
-import com.josip.physical.activity.walkingSummary.WalkingStatistika;
+
 
 
 @RestController
@@ -52,8 +51,7 @@ public class JsonGeneratorController {
 		RegistrationImpl impl;
 		@Autowired
 		SpringDataSource ds;
-		@Autowired
-		WalSumImplementation implementation;
+		
 		@Bean
 		public MessageSource messageSource(){
 			ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -125,12 +123,5 @@ public class JsonGeneratorController {
 			model.addAttribute(run);
 			return response;
 		}
-		@RequestMapping(value= "/summaryWalking",method=RequestMethod.POST,consumes="application/json",produces="application/json")
-		public @ResponseBody ResponseEntity<WalkingStatistika> spremi(Model model,@RequestBody WalkingStatistika statistika) {
-			implementation.dodajStatistiku(statistika);
-			ResponseEntity<WalkingStatistika> response = new ResponseEntity<WalkingStatistika>(statistika,HttpStatus.CREATED);
-			model.addAttribute(statistika);
-			return response;
 		}
-	}
 

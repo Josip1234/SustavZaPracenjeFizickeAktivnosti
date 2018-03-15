@@ -9,11 +9,15 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>
 		<config>java:com.josip.physical.acitivty.REST.JsonGeneratorController</config>
 		<config>java:com.josip.physical.activity.regist.RegistrationImpl</config>
 		<config>java:com.josip.physical.activity.running.RunningActivity</config>
 		<config>java:com.josip.physical.activity.running.RunningConfig</config>
+		<config>java:com.josip.physical.activity.walkingSummary.WalSumConfig</config>
 		<config>java:com.josip.physical.activity.regist.Registration</config>
+		<config>java:com.josip.physical.activity.summary.SummaryRunning</config>
+		<config>java:com.josip.physical.activity.walkingSummary.WalkingStatistika</config>
 		<config>java:com.josip.physical.activity.baza.PhysicalActivityDatabase</config>
 		<config>java:com.josip.physical.activity.web.RootConfig</config>
 		<config>java:com.josip.physical.activity.login.LogConfig</config>
@@ -23,6 +27,7 @@
 		<config>java:com.josip.physical.activity.regist.RegConfig</config>
 		<config>java:com.josip.physical.activity.walking.WalkingConfig</config>
 		<config>java:com.josip.physical.activity.biking.BikingImplementation</config>
+		<config>java:com.josip.physical.activity.walkingSummary.WalSumImplementation</config>
 		<config>java:com.josip.physical.activity.login.LoginWrapper</config>
 		<config>java:com.josip.physical.activity.walking.WalkingActivity</config>
 		<config>java:com.josip.physical.activity.summary.SummaryConfig</config>
