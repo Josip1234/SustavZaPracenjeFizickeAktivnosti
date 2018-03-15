@@ -102,11 +102,12 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Integer> brojKoraka;
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
+    private long vrijemeAktivnosti;
 
     private double vrijemeTocaka;
     private int count=0;
     private int brojMjerenja=0;
-
+    private int brojBrzine=0;
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -276,7 +277,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             count+=1;
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-
+            brojBrzine+=1;
 
             if (loc != null) {
                 double trenutna_brzina = loc.getSpeed();
@@ -337,7 +338,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
                 if((brzina==0.00 || brzina==00.00) && count>1){
                     Random random = new Random();
-                    brzina=random.nextInt(15);
+                    brzina=random.nextInt(10);
                     mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
                     prosjecnaBrzina.add(brzina);
 
@@ -427,6 +428,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+        vrijemeAktivnosti=0;
 
 
 
@@ -483,7 +485,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         });
         date=new Date();
         sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String vrijeme=sdf.format(date);
+        final String vrijeme=sdf.format(date);
         lista = new ArrayList<WalkingActivity>();
 
         WalkingActivity walkingActivity = new WalkingActivity(00.00,"0:00",0,00.00,"",vrijeme);
@@ -539,6 +541,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View view) {
                 chronoHelper.resetc();
+                vrijemeAktivnosti=0;
             }
         });
         mStart = (Button) findViewById(R.id.start);
@@ -546,6 +549,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void onClick(View view) {
                 chronoHelper.startcr();
+                vrijemeAktivnosti=SystemClock.elapsedRealtime();
             }
         });
         mStop = (Button) findViewById(R.id.stop);
@@ -555,6 +559,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
                 chronoHelper.stopcr();
+                vrijemeAktivnosti=chronoHelper.getVrijemeZaustavljanja();
 
 
             }
@@ -860,10 +865,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             int suma=statistickiIzracuni.getUkupanBrojKoraka();
             //zaustavljamo kronometar kako bi se dobilo vrijeme vrijeme se dobiva u milisekundama
 
-
+            chronoHelper.stopcr();
             String vrijeme=chronoHelper.dohvatiRealnoVrijeme();
-            double vrij=chronoHelper.getVrijemeZaustavljanja();
-            statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina);
+            double vrij=Math.abs(chronoHelper.getVrijemeZaustavljanja());
+            statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina,brojBrzine);
             statistickiIzracuni.izracunajUkupnoPrijedjenjeKilometre(kilometri);
             System.out.println(statistickiIzracuni.getKilometri()+" "+statistickiIzracuni.getProsjecnaBrzina()+" Vrijeme:"+vrijeme);
             date=new Date();
@@ -871,30 +876,34 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             String time="";
             time=sdf.format(date);
             double pv=vrij/brojMjerenja;
-            final WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), statistickiIzracuni.getProsjecnaUdaljenost(), vrij, pv, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka(), statistickiIzracuni.getProsjekKoraka());
-
-
-
-
-
-
-
-
-
-
-
-
-
+            final WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), vrij, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka());
 
             try {
                 JSONArray array = new JSONArray();
                 JSONObject object;
                 object = new JSONObject();
-                object.put("izracun",suma);
+                object.put("korisnik",statistika.getEmail());
+                array.put(object);
+                object = new JSONObject();
+                object.put("ukupnaUdaljenost",statistika.getUkupnaUdaljenost());
+                array.put(object);
+
+                object=new JSONObject();
+                object.put("ukupnoVrijemeAktivnosti",statistika.getUkupnoVrijemeAktivnosti());
+                array.put(object);
+
+                object=new JSONObject();
+                object.put("prosjecnaBrzina",statistika.getProsjecnaBrzinaUkm());
+                array.put(object);
+                object = new JSONObject();
+                object.put("datum",statistika.getPeriod());
+                array.put(object);
+                object=new JSONObject();
+                object.put("ukupanBrojKoraka",statistika.getUkupanBrojKoraka());
                 array.put(object);
 
                 String text = array.toString();
-                FileOutputStream fos = openFileOutput("sumaKoraka.json", MODE_PRIVATE);
+                FileOutputStream fos = openFileOutput("UkupnoHodanja.json", MODE_PRIVATE);
                 fos.write(text.getBytes());
                 fos.close();
             } catch (JSONException e) {

@@ -7,28 +7,25 @@ package activity.physical.example.com.josip.physicalactivity.model;
 public class WalkingStatistika {
     private String email;
     private double ukupnaUdaljenost;
-    private double prosjecnaUdaljenost;
     private double ukupnoVrijemeAktivnosti;
-    private double prosjecnoVrijemeAktivnosti;
     private double prosjecnaBrzinaUkm;
     private String period;
     private int ukupanBrojKoraka;
-    private double prosjecanBrojKoraka;
+
 
     public WalkingStatistika() {
 
     }
 
-    public WalkingStatistika(String email, double ukupnaUdaljenost, double prosjecnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, String period, int ukupanBrojKoraka, double prosjecanBrojKoraka) {
+    public WalkingStatistika(String email, double ukupnaUdaljenost,  double ukupnoVrijemeAktivnosti,  double prosjecnaBrzinaUkm, String period, int ukupanBrojKoraka ) {
         this.email = email;
         this.ukupnaUdaljenost = ukupnaUdaljenost;
-        this.prosjecnaUdaljenost = prosjecnaUdaljenost;
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
-        this.prosjecnoVrijemeAktivnosti = prosjecnoVrijemeAktivnosti;
+
         this.prosjecnaBrzinaUkm = prosjecnaBrzinaUkm;
         this.period = period;
         this.ukupanBrojKoraka = ukupanBrojKoraka;
-        this.prosjecanBrojKoraka = prosjecanBrojKoraka;
+
     }
 
     public String getEmail() {
@@ -47,13 +44,7 @@ public class WalkingStatistika {
         this.ukupnaUdaljenost = ukupnaUdaljenost;
     }
 
-    public double getProsjecnaUdaljenost() {
-        return prosjecnaUdaljenost;
-    }
 
-    public void setProsjecnaUdaljenost(double prosjecnaUdaljenost) {
-        this.prosjecnaUdaljenost = prosjecnaUdaljenost;
-    }
 
     public double getUkupnoVrijemeAktivnosti() {
         return ukupnoVrijemeAktivnosti;
@@ -63,13 +54,8 @@ public class WalkingStatistika {
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
     }
 
-    public double getProsjecnoVrijemeAktivnosti() {
-        return prosjecnoVrijemeAktivnosti;
-    }
 
-    public void setProsjecnoVrijemeAktivnosti(double prosjecnoVrijemeAktivnosti) {
-        this.prosjecnoVrijemeAktivnosti = prosjecnoVrijemeAktivnosti;
-    }
+
 
     public double getProsjecnaBrzinaUkm() {
         return prosjecnaBrzinaUkm;
@@ -95,12 +81,6 @@ public class WalkingStatistika {
         this.ukupanBrojKoraka = ukupanBrojKoraka;
     }
 
-    public double getProsjecanBrojKoraka() {
-        return prosjecanBrojKoraka;
-    }
 
-    public void setProsjecanBrojKoraka(double prosjecanBrojKoraka) {
-        this.prosjecanBrojKoraka = prosjecanBrojKoraka;
-    }
 
 }

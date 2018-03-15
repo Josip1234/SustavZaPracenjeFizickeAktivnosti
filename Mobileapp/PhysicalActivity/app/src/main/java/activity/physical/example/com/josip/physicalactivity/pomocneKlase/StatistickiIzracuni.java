@@ -85,19 +85,19 @@ public class StatistickiIzracuni {
         }
 
         setKilometri(sum);
-        setProsjecnaUdaljenost(sum/getKilometri());
+        setProsjecnaUdaljenost(sum/velicina);
 
     }
 
-    public void izracunajprosjecnuBrzinu(List<Double> brzina){
-        int velicinaListe=brzina.size();
+    public void izracunajprosjecnuBrzinu(List<Double> brzina, int brojMjerenja){
+
         double prosjek=0.00;
         double suma=0.00;
         for (Double brzin:brzina
              ) {
             suma+=brzin;
         }
-        prosjek=suma/velicinaListe;
+        prosjek=suma/brojMjerenja;
         setProsjecnaBrzina(prosjek);
     }
 
