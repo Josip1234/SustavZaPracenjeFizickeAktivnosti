@@ -53,6 +53,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
+import activity.physical.example.com.josip.physicalactivity.SqlLite.RegistrationDataSource;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
@@ -876,7 +877,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             String time="";
             time=sdf.format(date);
             double pv=vrij/brojMjerenja;
-            final WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), vrij, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka());
+             WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), vrij, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka());
 
             try {
                 JSONArray array = new JSONArray();

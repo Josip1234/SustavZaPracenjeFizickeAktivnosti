@@ -15,20 +15,26 @@ import org.json.JSONException;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.model.SummaryActivity;
+import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 public class RezultActivity extends AppCompatActivity {
 
     private TextView mUkupanBrojKoraka;
     private TextView mVus;
+    private TextView mkilom;
+    private WalkingStatistika stats;
+    private TextView mProsjecnaBrzina;
 
-    public int procitajSumu() throws IOException, JSONException {
+    public WalkingStatistika procitajPodatke(WalkingStatistika stats) throws IOException, JSONException {
+
         int vrijednost=0;
         String vrijeme="";
 
-        String naziv = "sumaKoraka.json";
+        String naziv = "UkupnoHodanja.json";
 
 
         FileInputStream fis = openFileInput(naziv);
@@ -44,17 +50,32 @@ public class RezultActivity extends AppCompatActivity {
         JSONArray data = new JSONArray(b.toString());
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
-            vrijednost = data.getJSONObject(i).getInt("izracun");
+            String korisnik=data.getJSONObject(i).getString("korisnik");
+            double ukupnaUdaljenost=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
+            double ukupnoVrijemeAktivnosti=data.getJSONObject(i).getDouble("ukupnoVrijemeAktivnosti");
+            double prosjecnaBrzinaUkilometrima=data.getJSONObject(i).getDouble("prosjecnaBrzina");
+            String datum=data.getJSONObject(i).getString("datum");
+            int ukupanBrojKoraka=data.getJSONObject(i).getInt("ukupanBrojKoraka");
 
-
+            stats.setUkupanBrojKoraka(ukupanBrojKoraka);
+            stats.setUkupnaUdaljenost(ukupnaUdaljenost);
+            stats.setUkupnoVrijemeAktivnosti(ukupnoVrijemeAktivnosti);
+            stats.setProsjecnaBrzinaUkm(prosjecnaBrzinaUkilometrima);
+            stats.setEmail(korisnik);
+            stats.setPeriod(datum);
             Log.i("poruka", "pročitan json");
 
 
         }
-        return vrijednost;
+        return stats;
     }
 
+    public String pretvoriUminute(double vrijeme){
+        double sekunde=vrijeme/1000;
+        double minute=sekunde/60;
+        return String.valueOf(minute);
 
+    }
 
 
     @Override
@@ -62,18 +83,25 @@ public class RezultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rezult);
         int rezultat=0;
-
+        stats=new WalkingStatistika();
         try {
-            rezultat=procitajSumu();
+            stats=procitajPodatke(stats);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
         mUkupanBrojKoraka=(TextView) findViewById(R.id.ukbk);
-        mUkupanBrojKoraka.setText(String.valueOf(rezultat));
+        mUkupanBrojKoraka.setText(String.valueOf(stats.getUkupanBrojKoraka()));
 
         mVus=(TextView) findViewById(R.id.vus);
+        mVus.setText(pretvoriUminute(stats.getUkupnoVrijemeAktivnosti()));
+
+        mkilom=(TextView) findViewById(R.id.pk);
+        mkilom.setText(String.valueOf(stats.getUkupnaUdaljenost()));
+
+        mProsjecnaBrzina=(TextView) findViewById(R.id.pb);
+        mProsjecnaBrzina.setText(String.valueOf(stats.getProsjecnaBrzinaUkm()));
 
 
 

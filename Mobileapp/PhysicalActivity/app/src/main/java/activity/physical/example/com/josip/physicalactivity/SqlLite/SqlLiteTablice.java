@@ -18,8 +18,6 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
 
 
 
-
-
     private static final String stvori_tablicu =
             "CREATE TABLE " + tablica_korisnik + " (" +
                     id_stupca + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -39,6 +37,7 @@ public class SqlLiteTablice extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL(stvori_tablicu);
+
     }
 
     @Override

@@ -136,6 +136,7 @@ public class RegistrationDataSource {
         values.put(SqlLiteTablice.sifra,registration.getSifra());
         database.insert(SqlLiteTablice.tablica_korisnik,null,values);
     }
+
     public void izbrisiSve(){
 
         String DELETE_STATEMENT= "DELETE FROM" + SqlLiteTablice.tablica_korisnik;
