@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequestMapping(value= {"/","/physical","/walking"})
-public class WalkingController {
+public class WalkingController{
 	
 private WalkingRepository walkingRepository;
 public WalkingController(WalkingRepository walkingRepository) {

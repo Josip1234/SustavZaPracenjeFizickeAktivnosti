@@ -1,8 +1,8 @@
-package com.josip.physical.activity.summary;
+package com.josip.physical.activity.walkingSummary;
 
 import org.springframework.stereotype.Component;
-
-@Component("StatistikaZaŠetače")
+//napraviti slicno kao i prijasnje klase
+@Component("Statistika")
 public class WalkingStatistika {
 	private String email;
 	private double ukupnaUdaljenost;

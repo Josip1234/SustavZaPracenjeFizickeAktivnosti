@@ -11,6 +11,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -50,8 +51,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
+import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenostiiBrzine;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
@@ -102,6 +105,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
     private double vrijemeTocaka;
     private int count=0;
+    private int brojMjerenja=0;
+
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
         String userjson = "";
@@ -273,9 +278,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             double lon = loc.getLongitude();
 
 
-
             if (loc != null) {
                 double trenutna_brzina = loc.getSpeed();
+
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -304,9 +309,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 izracunUdaljenosti.setLon2(loc4);
                 izracunUdaljenosti.setUnit("K");
                 //za potrebe simulacije zaustavljamo kronometar
-                chronoHelper.stopcr();
+
                 izracunUdaljenosti.setVrijeme1(chronoHelper.getVrijemeZaustavljanja());
-                chronoHelper.startcr();
+
                 //u bazu je potrebno spremiti koordinate i njihovo trenutno vrijeme kad su kreirani a i za potrebe optimizacije koda.
                 //tako bi se iz baze izvlačile koordinate prema promijeni i mjerila bi se brzina na temelju točaka, kao i udaljenost
                 //između njih
@@ -315,9 +320,9 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
                 dohvati_koordinate(loc3, loc4);
-                chronoHelper.stopcr();
-                izracunUdaljenosti.setVrijeme2(chronoHelper.getVrijemeZaustavljanja());
-                chronoHelper.startcr();
+
+
+
                 String cityName = null;
                 String stateName = null;
                 String ad = null;
@@ -331,8 +336,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 tUdaljenost.setText(String.valueOf(distance));
 
                 if((brzina==0.00 || brzina==00.00) && count>1){
-
-                    brzina=izracunUdaljenosti.izracunajBrzinuUkm(distance);
+                    Random random = new Random();
+                    brzina=random.nextInt(15);
                     mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
                     prosjecnaBrzina.add(brzina);
 
@@ -422,6 +427,10 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking);
+
+
+
+
 
         brojKoraka=new ArrayList<Integer>();
         prosjecnaBrzina=new ArrayList<Double>();
@@ -806,7 +815,8 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
         @Override
         public void onDestroy(){
             super.onDestroy();
-
+             String korisnik=mKorisnik.getText().toString();
+             brojMjerenja+=1;
 
 
                 int vrijednost=0;
@@ -850,11 +860,31 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
             int suma=statistickiIzracuni.getUkupanBrojKoraka();
             //zaustavljamo kronometar kako bi se dobilo vrijeme vrijeme se dobiva u milisekundama
 
-            chronoHelper.stopcr();
+
             String vrijeme=chronoHelper.dohvatiRealnoVrijeme();
+            double vrij=chronoHelper.getVrijemeZaustavljanja();
             statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina);
             statistickiIzracuni.izracunajUkupnoPrijedjenjeKilometre(kilometri);
             System.out.println(statistickiIzracuni.getKilometri()+" "+statistickiIzracuni.getProsjecnaBrzina()+" Vrijeme:"+vrijeme);
+            date=new Date();
+            sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time="";
+            time=sdf.format(date);
+            double pv=vrij/brojMjerenja;
+            final WalkingStatistika statistika = new WalkingStatistika(korisnik, statistickiIzracuni.getKilometri(), statistickiIzracuni.getProsjecnaUdaljenost(), vrij, pv, statistickiIzracuni.getProsjecnaBrzina(), time, statistickiIzracuni.getUkupanBrojKoraka(), statistickiIzracuni.getProsjekKoraka());
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             try {
                 JSONArray array = new JSONArray();
@@ -873,9 +903,15 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 e.printStackTrace();
             }
 
+        }
+
+
+
+
+
 
         }
-}
+
 /*
 private class SlanjePodatakaNaServer extends AsyncTask<Void, Void, WalkingActivity> {
     private WalkingActivity walkingActivity;

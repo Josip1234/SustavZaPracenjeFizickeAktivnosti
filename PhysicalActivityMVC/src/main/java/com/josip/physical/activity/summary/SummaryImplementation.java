@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.SpringDataSource;
+import com.josip.physical.activity.walkingSummary.WalkingStatistika;
 
 @Component
 public class SummaryImplementation  implements SummaryRepository{
@@ -16,7 +17,7 @@ public class SummaryImplementation  implements SummaryRepository{
 SummaryActivity summar;
 
 @Autowired
-SpringDataSource data;
+SpringDataSource dat;
 
 
 	@Override
@@ -36,7 +37,7 @@ SpringDataSource data;
 		
 		return list;
 	}
-	@Override
+	/*@Override
 	public boolean dodajStatistiku(SummaryBiking sumBike) {
 		data=new SpringDataSource();
 		if(null!=data.getObj()) {
@@ -47,8 +48,8 @@ SpringDataSource data;
 		}
 		
 		return true;
-	}
-	@Override
+	}*/
+	/*@Override
 	public boolean dodajStatistiku(SummaryRunning sumRun) {
 		data=new SpringDataSource();
 		if(null!=data.getObj()) {
@@ -59,18 +60,6 @@ SpringDataSource data;
 		}
 		
 		return true;
-	}
-	@Override
-	public boolean dodajStatistiku(WalkingStatistika walkStat) {
-		data=new SpringDataSource();
-		if(null!=data.getObj()) {
-			String insert="INSERT INTO walkingstatistika (email,ukupnaUdaljenost,prosjecnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period,ukupanBrojKoraka,prosjecanBrojKoraka) VALUES(?,?,?,?,?,?,?,?,?)";
-		
-			data.getObj().update(insert,walkStat.getEmail(),walkStat.getUkupnaUdaljenost(),walkStat.getProsjecnaUdaljenost(),walkStat.getUkupnoVrijemeAktivnosti(),walkStat.getProsjecnoVrijemeAktivnosti(),walkStat.getProsjecnaBrzinaUkm(),walkStat.getPeriod(),walkStat.getUkupanBrojKoraka(),walkStat.getProsjecanBrojKoraka());
-		
-		}
-		
-		return true;
-	}
+	}*/
 
 }

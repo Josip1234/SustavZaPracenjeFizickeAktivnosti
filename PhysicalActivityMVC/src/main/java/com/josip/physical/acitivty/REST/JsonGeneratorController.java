@@ -29,13 +29,16 @@ import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
 import com.josip.physical.activity.running.RunningActivity;
 import com.josip.physical.activity.running.RunningImplementation;
+import com.josip.physical.activity.summary.SummaryImplementation;
 import com.josip.physical.activity.walking.WalkingActivity;
 import com.josip.physical.activity.walking.WalkingImplementation;
 import com.josip.physical.activity.walking.WalkingRepository;
+import com.josip.physical.activity.walkingSummary.WalSumImplementation;
+import com.josip.physical.activity.walkingSummary.WalkingStatistika;
 
 
 @RestController
-@RequestMapping({"/","/physical/","/1e2b3tzrUZcvn","/pGRHmge52511wwf","/15zuIOPPgrfef5"})
+@RequestMapping({"/","/physical/","/1e2b3tzrUZcvn","/pGRHmge52511wwf","/15zuIOPPgrfef5","/summaryWalking"})
 public class JsonGeneratorController {
         @Autowired
         WalkingImplementation wk;
@@ -49,7 +52,8 @@ public class JsonGeneratorController {
 		RegistrationImpl impl;
 		@Autowired
 		SpringDataSource ds;
-		
+		@Autowired
+		WalSumImplementation implementation;
 		@Bean
 		public MessageSource messageSource(){
 			ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
@@ -119,6 +123,13 @@ public class JsonGeneratorController {
 			rn.spremiPodatke(run);
 			ResponseEntity<RunningActivity> response = new ResponseEntity<RunningActivity>(run,HttpStatus.CREATED);
 			model.addAttribute(run);
+			return response;
+		}
+		@RequestMapping(value= "/summaryWalking",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		public @ResponseBody ResponseEntity<WalkingStatistika> spremi(Model model,@RequestBody WalkingStatistika statistika) {
+			implementation.dodajStatistiku(statistika);
+			ResponseEntity<WalkingStatistika> response = new ResponseEntity<WalkingStatistika>(statistika,HttpStatus.CREATED);
+			model.addAttribute(statistika);
 			return response;
 		}
 	}

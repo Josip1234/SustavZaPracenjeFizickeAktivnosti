@@ -32,7 +32,7 @@ private String vrsta_baze;
 private String Driver;
 private String encoding;
 
-public int broji=0;
+
 
 
 public PhysicalActivityDatabase(){
@@ -59,9 +59,7 @@ public void setUser(String user) {
 	this.user = user;
 }
 
-public void setBroji(int broji) {
-	this.broji = broji;
-}
+
 
 public String getEncoding() {
 	return encoding;
@@ -238,10 +236,8 @@ public String getUser() {
 	return user;
 }
 
-public int getBroji() {
-	return broji;
-}
 
+/*
 public List<Registration> listaKorisnika(String email){
 	List<Registration> registracija = new ArrayList<Registration>();
 	PhysicalActivityDatabase db = new PhysicalActivityDatabase();
@@ -304,7 +300,7 @@ public List<Registration> listaKorisnika(String email){
 	
 	return registracija;
 }
-
+*/
 
 
 public boolean delete(String email){
@@ -343,7 +339,7 @@ public boolean delete(String email){
 	
 	return true;
 }
-
+/*
 public List<Registration> update(List<Registration> reg) throws UnsupportedEncodingException {
 	
 	List<Registration> regist = new ArrayList<Registration>();
@@ -382,8 +378,8 @@ public List<Registration> update(List<Registration> reg) throws UnsupportedEncod
 	
 	return regist;
 }
-
-
+*/
+/*
 public String dohvatiOib(String email){
 	String oib="";
 	try{
@@ -435,7 +431,7 @@ public String dohvatiOib(String email){
 	
 	return oib;
 }
-
+*/
 
 
 

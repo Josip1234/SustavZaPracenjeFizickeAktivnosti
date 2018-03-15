@@ -19,9 +19,7 @@ public class WalkingStatistika {
 
     }
 
-    public WalkingStatistika(String email, double ukupnaUdaljenost, double prosjecnaUdaljenost,
-                             double ukupnoVrijemeAktivnosti, double prosjecnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, String period,
-                             int ukupanBrojKoraka, double prosjecanBrojKoraka) {
+    public WalkingStatistika(String email, double ukupnaUdaljenost, double prosjecnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, String period, int ukupanBrojKoraka, double prosjecanBrojKoraka) {
         this.email = email;
         this.ukupnaUdaljenost = ukupnaUdaljenost;
         this.prosjecnaUdaljenost = prosjecnaUdaljenost;

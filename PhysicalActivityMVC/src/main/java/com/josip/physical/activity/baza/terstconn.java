@@ -19,6 +19,8 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.regist.RegistrationImpl;
 import com.josip.physical.activity.regist.RegistrationRepository;
+import com.josip.physical.activity.summary.SummaryImplementation;
+import com.josip.physical.activity.walkingSummary.WalkingStatistika;
 
 public class terstconn {
     
@@ -38,11 +40,13 @@ public class terstconn {
 		return ds;
 	}
 	
-	
-	
+
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
-		String username="jbosnjak3@gmail.com";
+		//WalkingStatistika statistika = new WalkingStatistika("jbosnjak3@gmail.com",0,0,0,0,0,"1992-05-05",0,0);
+		//SummaryImplementation implementation = new SummaryImplementation();
+		//implementation.dodajStatistiku(statistika);
+		/*String username="jbosnjak3@gmail.com";
 		obj=new JdbcTemplate(getConn());
 		if(null != obj) {
 			String select="SELECT OIB,ime,prezime,spol,datumr,email,sifra FROM `registration` WHERE email='"+username+"'";

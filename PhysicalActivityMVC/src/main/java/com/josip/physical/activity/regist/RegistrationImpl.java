@@ -201,12 +201,12 @@ public class RegistrationImpl implements RegistrationRepository {
 		return korisnik;
 		
 	}*/
-	@Override
+	/*@Override
 	public List<Registration> ListUser(String email) {
 		List<Registration> reg=new ArrayList<Registration>();
 		reg=db.listaKorisnika(email);
 		return reg;
-	}
+	}*/
 	/*
 	@Override
 	public boolean updateUser(String oib, String ime, String prezime, String email, String sifra) throws UnsupportedEncodingException {
@@ -219,12 +219,6 @@ public class RegistrationImpl implements RegistrationRepository {
 	public boolean deleteUser(String email) {
 		db.delete(email);
 		return false;
-	}
-	@Override
-	public String pronadjiOib(String email) {
-		String oib="";
-		oib=db.dohvatiOib(email);
-		return oib;
 	}
 
 		
