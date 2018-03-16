@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.model.SummaryActivity;
+import activity.physical.example.com.josip.physicalactivity.model.SummaryBiking;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
@@ -28,7 +29,10 @@ public class RezultActivity extends AppCompatActivity {
     private TextView mkilom;
     private WalkingStatistika stats;
     private TextView mProsjecnaBrzina;
-
+    private SummaryBiking sumBike;
+    private TextView vrijemeBicikliranja;
+    private TextView prijedjenjiKilometri;
+    private TextView mProsjekBrzine;
     public WalkingStatistika procitajPodatke(WalkingStatistika stats) throws IOException, JSONException {
 
         int vrijednost=0;
@@ -51,7 +55,7 @@ public class RezultActivity extends AppCompatActivity {
         StringBuffer prijavaBuffer = new StringBuffer();
         for (int i = 0; i < data.length(); i++) {
             String korisnik=data.getJSONObject(i).getString("korisnik");
-             ukupno=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
+            ukupno=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
             double ukupnoVrijemeAktivnosti=data.getJSONObject(i).getDouble("ukupnoVrijemeAktivnosti");
             double prosjecnaBrzinaUkilometrima=data.getJSONObject(i).getDouble("prosjecnaBrzina");
             String datum=data.getJSONObject(i).getString("datum");
@@ -69,6 +73,51 @@ public class RezultActivity extends AppCompatActivity {
         }
         return stats;
     }
+
+    public SummaryBiking procitajPodatke(SummaryBiking stats) throws IOException, JSONException {
+
+        int vrijednost=0;
+        String vrijeme="";
+
+        String naziv = "UkupnoBicikliranja.json";
+
+
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+        double ukupno=0.00;
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            String korisnik=data.getJSONObject(i).getString("korisnik");
+            ukupno=data.getJSONObject(i).getDouble("ukupnaUdaljenost");
+            double ukupnoVrijemeAktivnosti=data.getJSONObject(i).getDouble("ukupnoVrijemeAktivnosti");
+            double prosjecnaBrzinaUkilometrima=data.getJSONObject(i).getDouble("prosjecnaBrzina");
+            String datum=data.getJSONObject(i).getString("datum");
+
+            prijavaBuffer.append(korisnik + "" + ukupno + "" + ukupnoVrijemeAktivnosti+ "" + prosjecnaBrzinaUkilometrima + "" + datum+" ");
+
+            stats.setUkupnaUdaljenost(ukupno);
+            stats.setUkupnoVrijemeAktivnosti(ukupnoVrijemeAktivnosti);
+            stats.setProsjecnaBrzinaUkm(prosjecnaBrzinaUkilometrima);
+            stats.setKorisnik(korisnik);
+            stats.setPeriod(datum);
+            Log.i("poruka", "pročitan json");
+
+
+        }
+        return stats;
+    }
+
+
+
+
 
     public String pretvoriUminute(double vrijeme){
         double sekunde=vrijeme/1000;
@@ -103,8 +152,22 @@ public class RezultActivity extends AppCompatActivity {
         mProsjecnaBrzina=(TextView) findViewById(R.id.pb);
         mProsjecnaBrzina.setText(String.valueOf(stats.getProsjecnaBrzinaUkm()));
 
+        sumBike=new SummaryBiking();
+        try {
+            sumBike=procitajPodatke(sumBike);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        vrijemeBicikliranja=(TextView) findViewById(R.id.vrbic);
+        vrijemeBicikliranja.setText(String.valueOf(sumBike.getUkupnoVrijemeAktivnosti()));
 
+        prijedjenjiKilometri=(TextView) findViewById(R.id.prkmubic);
+        prijedjenjiKilometri.setText(String.valueOf(sumBike.getUkupnaUdaljenost()));
 
+        mProsjekBrzine=(TextView) findViewById(R.id.prbrubic);
+        mProsjekBrzine.setText(String.valueOf(sumBike.getProsjecnaBrzinaUkm()));
 
     }
 }
