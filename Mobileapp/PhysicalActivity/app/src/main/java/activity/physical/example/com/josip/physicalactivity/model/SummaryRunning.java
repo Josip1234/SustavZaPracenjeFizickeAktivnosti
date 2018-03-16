@@ -7,14 +7,21 @@ package activity.physical.example.com.josip.physicalactivity.model;
 public class SummaryRunning {
     public String korisnik;
     public double ukupnaUdaljenost;
-    public double prosjecnaUdaljenost;
     public double ukupnoVrijemeAktivnosti;
-    public double prosjecnoVrijemeAktivnosti;
     public double prosjecnaBrzinaUkm;
     public double period;
     public SummaryRunning() {
 
     }
+
+    public SummaryRunning(String korisnik, double ukupnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, double period) {
+        this.korisnik = korisnik;
+        this.ukupnaUdaljenost = ukupnaUdaljenost;
+        this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
+        this.prosjecnaBrzinaUkm = prosjecnaBrzinaUkm;
+        this.period = period;
+    }
+
     public String getKorisnik() {
         return korisnik;
     }
@@ -27,24 +34,16 @@ public class SummaryRunning {
     public void setUkupnaUdaljenost(double ukupnaUdaljenost) {
         this.ukupnaUdaljenost = ukupnaUdaljenost;
     }
-    public double getProsjecnaUdaljenost() {
-        return prosjecnaUdaljenost;
-    }
-    public void setProsjecnaUdaljenost(double prosjecnaUdaljenost) {
-        this.prosjecnaUdaljenost = prosjecnaUdaljenost;
-    }
+
+
     public double getUkupnoVrijemeAktivnosti() {
         return ukupnoVrijemeAktivnosti;
     }
     public void setUkupnoVrijemeAktivnosti(double ukupnoVrijemeAktivnosti) {
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
     }
-    public double getProsjecnoVrijemeAktivnosti() {
-        return prosjecnoVrijemeAktivnosti;
-    }
-    public void setProsjecnoVrijemeAktivnosti(double prosjecnoVrijemeAktivnosti) {
-        this.prosjecnoVrijemeAktivnosti = prosjecnoVrijemeAktivnosti;
-    }
+
+
     public double getProsjecnaBrzinaUkm() {
         return prosjecnaBrzinaUkm;
     }

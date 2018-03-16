@@ -7,24 +7,18 @@ package activity.physical.example.com.josip.physicalactivity.model;
 public class SummaryBiking {
     public String korisnik;
     public double ukupnaUdaljenost;
-    public double prosjecnaUdaljenost;
     public double ukupnoVrijemeAktivnosti;
-    public double prosjecnoVrijemeAktivnosti;
     public double prosjecnaBrzinaUkm;
-    public double period;
+    public String period;
 
     public SummaryBiking() {
 
     }
 
-    public SummaryBiking(String korisnik, double ukupnaUdaljenost, double prosjecnaUdaljenost,
-                         double ukupnoVrijemeAktivnosti, double prosjecnoVrijemeAktivnosti, double prosjecnaBrzinaUkm,
-                         double period) {
+    public SummaryBiking(String korisnik, double ukupnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, String period) {
         this.korisnik = korisnik;
         this.ukupnaUdaljenost = ukupnaUdaljenost;
-        this.prosjecnaUdaljenost = prosjecnaUdaljenost;
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
-        this.prosjecnoVrijemeAktivnosti = prosjecnoVrijemeAktivnosti;
         this.prosjecnaBrzinaUkm = prosjecnaBrzinaUkm;
         this.period = period;
     }
@@ -45,13 +39,7 @@ public class SummaryBiking {
         this.ukupnaUdaljenost = ukupnaUdaljenost;
     }
 
-    public double getProsjecnaUdaljenost() {
-        return prosjecnaUdaljenost;
-    }
 
-    public void setProsjecnaUdaljenost(double prosjecnaUdaljenost) {
-        this.prosjecnaUdaljenost = prosjecnaUdaljenost;
-    }
 
     public double getUkupnoVrijemeAktivnosti() {
         return ukupnoVrijemeAktivnosti;
@@ -61,13 +49,9 @@ public class SummaryBiking {
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
     }
 
-    public double getProsjecnoVrijemeAktivnosti() {
-        return prosjecnoVrijemeAktivnosti;
-    }
 
-    public void setProsjecnoVrijemeAktivnosti(double prosjecnoVrijemeAktivnosti) {
-        this.prosjecnoVrijemeAktivnosti = prosjecnoVrijemeAktivnosti;
-    }
+
+
 
     public double getProsjecnaBrzinaUkm() {
         return prosjecnaBrzinaUkm;
@@ -77,11 +61,11 @@ public class SummaryBiking {
         this.prosjecnaBrzinaUkm = prosjecnaBrzinaUkm;
     }
 
-    public double getPeriod() {
+    public String getPeriod() {
         return period;
     }
 
-    public void setPeriod(double period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 
