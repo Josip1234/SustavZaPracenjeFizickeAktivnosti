@@ -245,7 +245,7 @@ public class Bicikliranje extends AppCompatActivity {
             brojBrzine+=1;
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
-            brojBrzine += 1;
+
 
             if (loc != null) {
                 double trenutna_brzina = loc.getSpeed();

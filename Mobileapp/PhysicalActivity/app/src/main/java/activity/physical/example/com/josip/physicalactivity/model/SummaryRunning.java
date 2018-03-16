@@ -9,12 +9,12 @@ public class SummaryRunning {
     public double ukupnaUdaljenost;
     public double ukupnoVrijemeAktivnosti;
     public double prosjecnaBrzinaUkm;
-    public double period;
+    public String period;
     public SummaryRunning() {
 
     }
 
-    public SummaryRunning(String korisnik, double ukupnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, double period) {
+    public SummaryRunning(String korisnik, double ukupnaUdaljenost, double ukupnoVrijemeAktivnosti, double prosjecnaBrzinaUkm, String period) {
         this.korisnik = korisnik;
         this.ukupnaUdaljenost = ukupnaUdaljenost;
         this.ukupnoVrijemeAktivnosti = ukupnoVrijemeAktivnosti;
@@ -50,10 +50,10 @@ public class SummaryRunning {
     public void setProsjecnaBrzinaUkm(double prosjecnaBrzinaUkm) {
         this.prosjecnaBrzinaUkm = prosjecnaBrzinaUkm;
     }
-    public double getPeriod() {
+    public String getPeriod() {
         return period;
     }
-    public void setPeriod(double period) {
+    public void setPeriod(String period) {
         this.period = period;
     }
 }

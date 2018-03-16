@@ -45,10 +45,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import activity.physical.example.com.josip.physicalactivity.model.BikingActivity;
 import activity.physical.example.com.josip.physicalactivity.model.RunningActivity;
+import activity.physical.example.com.josip.physicalactivity.model.SummaryBiking;
+import activity.physical.example.com.josip.physicalactivity.model.SummaryRunning;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenostiiBrzine;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 
 public class TrcanjeActivity extends AppCompatActivity {
     long timeWhenStopped = 0;
@@ -71,6 +76,13 @@ public class TrcanjeActivity extends AppCompatActivity {
     private SimpleDateFormat sdf;
     private ImageButton image;
 
+    private int broj = 0;
+    private int brojBrzine = 0;
+    private int brojMjerenja = 0;
+    private List<Double> kilometri;
+    private List<Double> prosjecnaBrzina;
+    private TextView mKorisnik;
+    private TextView brzinaUkm;
 
 
     public RunningActivity procitajPodatke() throws IOException, JSONException {
@@ -97,8 +109,8 @@ public class TrcanjeActivity extends AppCompatActivity {
             double brzinaUkm = data.getJSONObject(i).getDouble("brzinaUkm");
             String korisnik = data.getJSONObject(i).getString("korisnik");
             String datum = data.getJSONObject(i).getString("datum");
-            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti  +  "" + brzinaUkm + "" + korisnik + "" + datum);
-            runningActivity = new RunningActivity(vrijemeAktivnosti, brzinaUkm,  korisnik, udaljenost, datum);
+            prijavaBuffer.append(udaljenost + "" + vrijemeAktivnosti + "" + brzinaUkm + "" + korisnik + "" + datum);
+            runningActivity = new RunningActivity(vrijemeAktivnosti, brzinaUkm, korisnik, udaljenost, datum);
 
 
             Log.i("poruka", "pročitan json");
@@ -229,14 +241,6 @@ public class TrcanjeActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
     public String vrati_korisnika() throws IOException, JSONException {
         String naziv = "PodaciKorisnika.json";
         String korisnik = "";
@@ -268,10 +272,15 @@ public class TrcanjeActivity extends AppCompatActivity {
     LocationListener locListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location loc) {
+            broj += 1;
+            brojBrzine += 1;
             double lat = loc.getLatitude();
             double lon = loc.getLongitude();
 
+
             if (loc != null) {
+                double trenutna_brzina = loc.getSpeed();
+
                 double loc1 = 00.00;
                 double loc2 = 00.00;
                 try {
@@ -289,26 +298,57 @@ public class TrcanjeActivity extends AppCompatActivity {
                 double loc4 = lon;
 
 
-                float trenutna_brzina = loc.getSpeed();
-                float brzina = (float) (trenutna_brzina * 3.6);
+                double brzina = trenutna_brzina * 3.6;
 
 
-                double distance = distance(loc1, loc2, loc3, loc4, "K");
+                IzracunUdaljenostiiBrzine izracunUdaljenosti = new IzracunUdaljenostiiBrzine();
+                izracunUdaljenosti.setLat1(loc1);
+                izracunUdaljenosti.setLon1(loc2);
+                izracunUdaljenosti.setLat2(loc3);
+                izracunUdaljenosti.setLon2(loc4);
+                izracunUdaljenosti.setUnit("K");
+                //za potrebe simulacije zaustavljamo kronometar
+
+
+                //u bazu je potrebno spremiti koordinate i njihovo trenutno vrijeme kad su kreirani a i za potrebe optimizacije koda.
+                //tako bi se iz baze izvlačile koordinate prema promijeni i mjerila bi se brzina na temelju točaka, kao i udaljenost
+                //između njih
+
+
+                dohvati_koordinate(loc3, loc4);
+
+
+                String cityName = null;
+                String stateName = null;
+                String ad = null;
+                String ad2 = null;
+                String posta = null;
+                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+                List<Address> addresses;
+                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
+
                 tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                 tUdaljenost.setText(String.valueOf(distance));
+
+                if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
+
+                    Random random = new Random();
+                    brzina = random.nextInt(30);
+                    brzinaUkm.setText("Brzina u km/h:" + String.valueOf(brzina));
+                    prosjecnaBrzina.add(brzina);
+
+                } else {
+
+                    brzinaUkm.setText("Brzina u km/h " + String.valueOf(brzina));
+                    prosjecnaBrzina.add(brzina);
+                }
+                kilometri.add(distance);
+
                 try {
                     run.put("udaljenost", distance);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-                dohvati_koordinate(loc3, loc4);
-                String cityName = null;
-                String stateName = null;
-                String ad = null;
-
-                Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
-                List<Address> addresses;
 
 
                 try {
@@ -334,15 +374,6 @@ public class TrcanjeActivity extends AppCompatActivity {
                         cityName = addresses.get(0).getLocality();
                         stateName = addresses.get(0).getCountryName();
                         ad = addresses.get(0).getAddressLine(0);
-                        if (cityName == null) {
-                            cityName = "Nema naziva grada";
-                        }
-                        if (stateName == null) {
-                            stateName = "Nema naziva države";
-                        }
-                        if (ad == null) {
-                            ad = "Nema adrese";
-                        }
 
 
                     }
@@ -358,9 +389,8 @@ public class TrcanjeActivity extends AppCompatActivity {
                 adr.setText(s + p + a);
 
                 try {
-                    run.put("lokacija", s + p + a);
-                    run.put("longitude", loc4);
-                    run.put("latitude", loc3);
+                    run.put("adresa", s + p + a);
+
                     run.put("brzinaUkm", brzina);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -390,6 +420,21 @@ public class TrcanjeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trcanje);
+        prosjecnaBrzina = new ArrayList<Double>();
+        kilometri = new ArrayList<Double>();
+
+        mKorisnik = (TextView) findViewById(R.id.korisnik);
+        brzinaUkm = (TextView) findViewById(R.id.brzinaukm);
+        String kor = "";
+        try {
+            kor = vrati_korisnika();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        mKorisnik.setText(kor);
+
         cr = (Chronometer) findViewById(R.id.chronometer3);
         chronoHelper = new ChronoHelper(cr);
         image = (ImageButton) findViewById(R.id.posaljiPodatke);
@@ -436,22 +481,19 @@ public class TrcanjeActivity extends AppCompatActivity {
         });
         date = new Date();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String vrijeme= sdf.format(date);
+        String vrijeme = sdf.format(date);
 
 
-        RunningActivity bikingActivity = new RunningActivity("0:00", 00.00, "korisnik",00.00,vrijeme );
-
-
-
+        RunningActivity runningActivity = new RunningActivity("0:00", 00.00, "korisnik", 00.00, vrijeme);
 
 
         polje = new JSONArray();
         run = new JSONObject();
         try {
-            run.put("udaljenost", bikingActivity.getUdaljenost());
-            run.put("vrijemeAktivnosti", bikingActivity.getVrijemeAktivnosti());
+            run.put("udaljenost", runningActivity.getUdaljenost());
+            run.put("vrijemeAktivnosti", runningActivity.getVrijemeAktivnosti());
 
-            run.put("brzinaUkm", bikingActivity.getBrzinaUkm());
+            run.put("brzinaUkm", runningActivity.getBrzinaUkm());
             run.put("korisnik", vrati_korisnika());
             run.put("datum", vrijeme);
         } catch (JSONException e) {
@@ -479,7 +521,7 @@ public class TrcanjeActivity extends AppCompatActivity {
         adr = (TextView) findViewById(R.id.homead);
 
         tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-        tUdaljenost.setText(String.valueOf(bikingActivity.getUdaljenost()));
+        tUdaljenost.setText(String.valueOf(runningActivity.getUdaljenost()));
         mReset = (Button) findViewById(R.id.reset);
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -523,9 +565,8 @@ public class TrcanjeActivity extends AppCompatActivity {
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
 
-
-
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -581,4 +622,63 @@ public class TrcanjeActivity extends AppCompatActivity {
         }
         locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10, 10, locListener);
 
-    }}
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        String korisnik = mKorisnik.getText().toString();
+
+
+        int vrijednost = 0;
+        String userjson = "";
+        String passjson = "";
+
+
+        StatistickiIzracuni statistickiIzracuni = new StatistickiIzracuni();
+
+
+        chronoHelper.stopcr();
+        String vrijeme = chronoHelper.dohvatiRealnoVrijeme();
+        double vrij = Math.abs(chronoHelper.getVrijemeZaustavljanja());
+        statistickiIzracuni.izracunajprosjecnuBrzinu(prosjecnaBrzina, brojBrzine);
+        statistickiIzracuni.izracunajUkupnoPrijedjenjeKilometre(kilometri);
+        System.out.println(statistickiIzracuni.getKilometri() + " " + statistickiIzracuni.getProsjecnaBrzina() + " Vrijeme:" + vrijeme);
+        date = new Date();
+        sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = "";
+        time = sdf.format(date);
+
+        SummaryRunning statistika = new SummaryRunning(korisnik, statistickiIzracuni.getKilometri(), vrij, statistickiIzracuni.getProsjecnaBrzina(), time);
+
+        try {
+            JSONArray polje = new JSONArray();
+            JSONObject ob = new JSONObject();
+
+            ob.put("korisnik", statistika.getKorisnik());
+
+            ob.put("ukupnaUdaljenost", statistika.getUkupnaUdaljenost());
+
+
+            ob.put("ukupnoVrijemeAktivnosti", statistika.getUkupnoVrijemeAktivnosti());
+
+
+            ob.put("prosjecnaBrzina", statistika.getProsjecnaBrzinaUkm());
+
+
+            ob.put("datum", statistika.getPeriod());
+
+
+            polje.put(ob);
+            String text = polje.toString();
+            FileOutputStream fos = openFileOutput("UkupnoTrcanja.json", MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
