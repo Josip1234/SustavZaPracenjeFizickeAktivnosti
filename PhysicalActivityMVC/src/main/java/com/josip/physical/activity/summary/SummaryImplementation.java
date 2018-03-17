@@ -1,12 +1,16 @@
 package com.josip.physical.activity.summary;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.josip.physical.activity.baza.SpringDataSource;
+import com.josip.physical.activity.running.RunningActivity;
 
 
 @Component
@@ -21,19 +25,35 @@ SpringDataSource dat;
 
 
 	@Override
-	public List<SummaryActivity> show() {
+	public List<SummaryActivity> show(String name) {
 		List<SummaryActivity> list=new ArrayList<SummaryActivity>();
-		summar.setKorisnik("jbosnjak3@gmail.com");
-		summar.setPrijedjeniKilometri(1.565);
-		summar.setProsjecnaBrzina(15);
-		summar.setUkupanBrojKoraka(15);
-		summar.setUkupnoVrijeme(10.00);
-		summar.setDatum("");
-		list.add(new SummaryActivity(
-				summar.getKorisnik(),summar.getUkupanBrojKoraka(),summar.getUkupnoVrijeme(),summar.getPrijedjeniKilometri(),summar.getProsjecnaBrzina(),summar.getDatum()
+	dat=new SpringDataSource();
+		
+		if(null != dat.getObj()) {
+			String select="SELECT korisnikSum,ukupanBrojKoraka,ukupnoVrijemeAktivnosti,ukupnaPrijedjenaUdaljenost,prosjecnaBrzina,datum FROM `summarystatistika` WHERE korisnikSum='"+name+"'";
+			List<SummaryActivity> sum=dat.getObj().query(select,new RowMapper() {
+				public SummaryActivity mapRow(final ResultSet result,final int rowNum) throws SQLException{
+					SummaryActivity suma=new SummaryActivity();
+					suma.setKorisnik(result.getString("korisnikSum"));
+					suma.setUkupanBrojKoraka(result.getInt("ukupanBrojKoraka"));
+					suma.setUkupnoVrijeme(result.getDouble("ukupnoVrijemeAktivnosti"));
+					suma.setPrijedjeniKilometri(result.getDouble("ukupnaPrijedjenaUdaljenost"));
+					suma.setProsjecnaBrzina(result.getDouble("prosjecnaBrzina"));
+					suma.setDatum(result.getString("datum"));
+					
+					return suma;
+					
+				}});
 				
+			for (SummaryActivity summaryActivity : sum) {
+				list.add(summaryActivity);
+			}
 				
-				));
+			}
+			
+		
+		
+		
 		
 		return list;
 	}

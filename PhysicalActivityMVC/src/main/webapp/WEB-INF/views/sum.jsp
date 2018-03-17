@@ -30,17 +30,54 @@
 <section>
 <h2>Ukupno:</h2>
 <div class="pregledUkupnog">
-<c:forEach items="${sum}" var="li">
-<p> ${li.korisnik}
-<br>
-${li.ukupanBrojKoraka}
-<br>
-${li.ukupnoVrijeme}<br>
-${li.prijedjeniKilometri }<br>
-${li.prosjecnaBrzina } <br>
 
-</p>
+
+
+<table>
+<thead>
+<tr><td>
+<b>Korisnik:</b>
+
+</td><td>
+Ukupan broj koraka::
+
+</td>
+<td>
+Ukupno vrijeme:
+</td>
+<td>
+Prijedjeni kilometri:
+</td>
+<td>
+Prosjecna brzina:
+</td>
+<td>
+Datum i vrijeme:
+</td>
+</tr>
+</thead>
+<c:forEach items="${sum}" var="li">
+<tr>
+<td> ${li.korisnik}</td>
+
+<td>${li.ukupanBrojKoraka}</td>
+
+<td>${li.ukupnoVrijeme}</td>
+
+<td>${li.prijedjeniKilometri } </td>
+<td>${li.prosjecnaBrzina }</td> 
+<td>${li.datum}</td>
+</tr>
 </c:forEach>
+</table>
+
+
+
+
+
+
+
+
 </div>
 <a href="<c:url value="/home" />">Početna stranica</a> 
 <div id="odjava">

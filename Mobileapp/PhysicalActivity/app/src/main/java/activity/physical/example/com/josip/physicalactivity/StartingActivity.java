@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -29,14 +30,91 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
+
         try {
-            JSONArray array = new JSONArray();
-            JSONObject object;
-            object = new JSONObject();
-            object.put("izracun",0);
-            array.put(object);
-            String text = array.toString();
-            FileOutputStream fos = openFileOutput("sumaKoraka.json", MODE_PRIVATE);
+            JSONArray polje = new JSONArray();
+            JSONObject ob = new JSONObject();
+
+            ob.put("korisnik", "");
+
+            ob.put("ukupnaUdaljenost", 00.00);
+
+
+            ob.put("ukupnoVrijemeAktivnosti", "");
+
+
+            ob.put("prosjecnaBrzina", 00.00);
+
+
+            ob.put("datum", "");
+
+
+            polje.put(ob);
+            String text = polje.toString();
+            FileOutputStream fos = openFileOutput("UkupnoBicikliranja.json", MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONArray polje = new JSONArray();
+            JSONObject ob = new JSONObject();
+
+            ob.put("korisnik", "");
+
+            ob.put("ukupnaUdaljenost", 00.00);
+
+
+            ob.put("ukupnoVrijemeAktivnosti", 00.00);
+
+
+            ob.put("prosjecnaBrzina", 00.00);
+
+
+            ob.put("datum", "");
+
+
+            polje.put(ob);
+            String text = polje.toString();
+            FileOutputStream fos = openFileOutput("UkupnoTrcanja.json", MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            JSONArray polje = new JSONArray();
+            JSONObject ob = new JSONObject();
+
+            ob.put("korisnik","");
+
+            ob.put("ukupnaUdaljenost",00.00);
+
+
+            ob.put("ukupnoVrijemeAktivnosti",00.00);
+
+
+
+            ob.put("prosjecnaBrzina",00.00);
+
+
+
+            ob.put("datum","");
+
+
+
+            ob.put("ukupanBrojKoraka",0);
+
+            polje.put(ob);
+            String text = polje.toString();
+            FileOutputStream fos = openFileOutput("UkupnoHodanja.json", MODE_PRIVATE);
             fos.write(text.getBytes());
             fos.close();
         } catch (JSONException e) {
@@ -46,4 +124,9 @@ public class StartingActivity extends AppCompatActivity {
         }
 
     }
-}
+
+    }
+
+
+
+
