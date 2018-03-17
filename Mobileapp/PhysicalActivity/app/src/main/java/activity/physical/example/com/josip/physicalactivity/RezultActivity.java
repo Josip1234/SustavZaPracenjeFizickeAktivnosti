@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.model.SummaryActivity;
@@ -23,6 +24,7 @@ import activity.physical.example.com.josip.physicalactivity.model.SummaryBiking;
 import activity.physical.example.com.josip.physicalactivity.model.SummaryRunning;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
+import activity.physical.example.com.josip.physicalactivity.pomocneKlase.UkupniRezultati;
 
 public class RezultActivity extends AppCompatActivity {
 
@@ -39,6 +41,13 @@ public class RezultActivity extends AppCompatActivity {
     private TextView mVrijemeTrcanja;
     private TextView mKilo;
     private TextView mProsjek;
+    private UkupniRezultati ukupniRezultati;
+    private SummaryActivity summaryActivity;
+    private TextView ukKorakAkt;
+    private TextView ukVrijemeAkt;
+    private TextView ukUdaljenostAkt;
+    private TextView ukProsjekBrzinaAkti;
+
     public WalkingStatistika procitajPodatke(WalkingStatistika stats) throws IOException, JSONException {
 
         int vrijednost=0;
@@ -229,6 +238,25 @@ public class RezultActivity extends AppCompatActivity {
         mKilo.setText(String.valueOf(summaryRunning.getUkupnaUdaljenost()));
         mProsjek=(TextView) findViewById(R.id.probrztrc);
         mProsjek.setText(String.valueOf(summaryRunning.getProsjecnaBrzinaUkm()));
+
+
+        ukupniRezultati=new UkupniRezultati();
+        summaryActivity=new SummaryActivity();
+        summaryActivity=ukupniRezultati.ukupniRezultati(stats,summaryRunning,sumBike);
+
+
+        ukKorakAkt = (TextView) findViewById(R.id.ukKorakAkt);
+        ukKorakAkt.setText(String.valueOf(summaryActivity.getUkupanBrojKoraka()));
+
+        ukVrijemeAkt=(TextView) findViewById(R.id.ukVrijemeAkt);
+        ukVrijemeAkt.setText(pretvoriUminute(summaryActivity.getUkupnoVrijeme()));
+
+        ukUdaljenostAkt = (TextView) findViewById(R.id.ukUdaljenostAkt);
+        ukUdaljenostAkt.setText(String.valueOf(summaryActivity.getPrijedjeniKilometri()));
+
+        ukProsjekBrzinaAkti= (TextView) findViewById(R.id.ukProsjekBrzinaAkti);
+        ukProsjekBrzinaAkti.setText(String.valueOf(summaryActivity.getProsjecnaBrzina()));
+
 
     }
 }

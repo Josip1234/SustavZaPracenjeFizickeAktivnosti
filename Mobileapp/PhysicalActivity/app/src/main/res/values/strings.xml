@@ -49,4 +49,9 @@
     <string name="bicikliranje">Bicikliranje</string>
     <string name="vrijeme_u_bicikliranju">Vrijeme u bicikliranju</string>
     <string name="adresa">Adresa</string>
+    <string name="ukupni">Ukupni rezultati:</string>
+    <string name="ukupno_koraka">Ukupno koraka:</string>
+    <string name="ukupnovrijeme">UkupnoVrijeme</string>
+    <string name="ukupna_udaljenost">Ukupna udaljenost:</string>
+    <string name="ukupno_prosjecna_brzina">Ukupno prosjecna brzina</string>
 </resources>
