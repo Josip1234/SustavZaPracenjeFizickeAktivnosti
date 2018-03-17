@@ -5,7 +5,8 @@ import java.util.List;
 
 public interface SummaryRepository {
 public List<SummaryActivity> show();
-//public boolean dodajStatistiku(SummaryBiking sumBike);
-//public boolean dodajStatistiku(SummaryRunning sumRun);
-
+public SummaryActivity dodajUkupno(SummaryActivity summary);
+public SummaryBiking dodaj(SummaryBiking bike);
+public SummaryRunning dodaj(SummaryRunning run);
+public WalkingStatistika dodaj(WalkingStatistika walk);
 }

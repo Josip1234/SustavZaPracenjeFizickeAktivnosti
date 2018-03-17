@@ -37,6 +37,18 @@ SpringDataSource dat;
 		
 		return list;
 	}
+	@Override
+	public SummaryActivity dodajUkupno(SummaryActivity summary) {
+		dat=new SpringDataSource();
+		if(null!=dat.getObj()) {
+			String insert="INSERT INTO summarystatistika (korisnikSum,ukupanBrojKoraka,ukupnoVrijemeAktivnosti,ukupnaPrijedjenaUdaljenost,prosjecnaBrzina,datum) VALUES(?,?,?,?,?,?)";
+		
+			dat.getObj().update(insert,summary.getKorisnik(),summary.getUkupanBrojKoraka(),summary.getUkupnoVrijeme(),summary.getPrijedjeniKilometri(),summary.getProsjecnaBrzina(),summary.getDatum());
+		
+		}
+		
+		return summary;
+	}
 	/*@Override
 	public boolean dodajStatistiku(SummaryBiking sumBike) {
 		data=new SpringDataSource();
@@ -61,5 +73,39 @@ SpringDataSource dat;
 		
 		return true;
 	}*/
+	@Override
+	public SummaryBiking dodaj(SummaryBiking bike) {
+		dat=new SpringDataSource();
+		if(null!=dat.getObj()) {
+			String insert="INSERT INTO bikingstatistika (korisnikBike,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period) VALUES(?,?,?,?,?)";
+		
+			dat.getObj().update(insert,bike.getKorisnik(),bike.getUkupnaUdaljenost(),bike.getUkupnoVrijemeAktivnosti(),bike.getProsjecnaBrzinaUkm(),bike.getPeriod());
+		
+		}
+		
+		return bike;
+	}
+	@Override
+	public SummaryRunning dodaj(SummaryRunning run) {
+		dat=new SpringDataSource();
+		if(null!=dat.getObj()) {
+			String insert="INSERT INTO runningstatistika (korisnikRun,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period) VALUES(?,?,?,?,?)";
+		
+			dat.getObj().update(insert,run.getKorisnik(),run.getUkupnaUdaljenost(),run.getUkupnoVrijemeAktivnosti(),run.getProsjecnaBrzinaUkm(),run.getPeriod());
+		
+		}
+		return run;
+	}
+	@Override
+	public WalkingStatistika dodaj(WalkingStatistika walk) {
+		dat=new SpringDataSource();
+		if(null!=dat.getObj()) {
+			String insert="INSERT INTO walkingstatistika (email,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period,ukupanBrojKoraka) VALUES(?,?,?,?,?,?)";
+		
+			dat.getObj().update(insert,walk.getEmail(),walk.getUkupnaUdaljenost(),walk.getUkupnoVrijemeAktivnosti(),walk.getProsjecnaBrzinaUkm(),walk.getPeriod(),walk.getUkupanBrojKoraka());
+		
+		}
+		return walk;
+	}
 
 }
