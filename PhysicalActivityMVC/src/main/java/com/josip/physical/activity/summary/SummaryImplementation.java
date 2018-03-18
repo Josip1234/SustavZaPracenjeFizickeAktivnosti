@@ -69,30 +69,7 @@ SpringDataSource dat;
 		
 		return summary;
 	}
-	/*@Override
-	public boolean dodajStatistiku(SummaryBiking sumBike) {
-		data=new SpringDataSource();
-		if(null!=data.getObj()) {
-			String insert="INSERT INTO bikingstatistika (korisnikBike,ukupnaUdaljenost,prosjecnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period) VALUES(?,?,?,?,?,?,?)";
-		
-			data.getObj().update(insert,sumBike.getKorisnik(),sumBike.getUkupnaUdaljenost(),sumBike.getProsjecnaUdaljenost(),sumBike.getUkupnoVrijemeAktivnosti(),sumBike.getProsjecnoVrijemeAktivnosti(),sumBike.getProsjecnaBrzinaUkm(),sumBike.getPeriod());
-		
-		}
-		
-		return true;
-	}*/
-	/*@Override
-	public boolean dodajStatistiku(SummaryRunning sumRun) {
-		data=new SpringDataSource();
-		if(null!=data.getObj()) {
-			String insert="INSERT INTO runningstatistika (korisnikRun,ukupnaUdaljenost,prosjecnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period) VALUES(?,?,?,?,?,?,?)";
-		
-			data.getObj().update(insert,sumRun.getKorisnik(),sumRun.getUkupnaUdaljenost(),sumRun.getProsjecnaUdaljenost(),sumRun.getUkupnoVrijemeAktivnosti(),sumRun.getProsjecnoVrijemeAktivnosti(),sumRun.getProsjecnaBrzinaUkm(),sumRun.getPeriod());
-		
-		}
-		
-		return true;
-	}*/
+
 	@Override
 	public SummaryBiking dodaj(SummaryBiking bike) {
 		dat=new SpringDataSource();
@@ -105,6 +82,40 @@ SpringDataSource dat;
 		
 		return bike;
 	}
+	public List<SummaryBiking> izlistaj(String username) {
+		List<SummaryBiking> list=new ArrayList<SummaryBiking>();
+	dat=new SpringDataSource();
+		
+		if(null != dat.getObj()) {
+			String select="SELECT korisnikBike,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period FROM `bikingstatistika` WHERE korisnikBike='"+username+"'";
+			List<SummaryBiking> sumarybik=dat.getObj().query(select,new RowMapper() {
+				public SummaryBiking mapRow(final ResultSet result,final int rowNum) throws SQLException{
+					SummaryBiking bik=new SummaryBiking();
+					bik.setKorisnik(result.getString("korisnikBike"));
+					bik.setUkupnaUdaljenost(result.getDouble("ukupnaUdaljenost"));
+					bik.setUkupnoVrijemeAktivnosti(result.getDouble("ukupnoVrijemeAktivnosti"));
+					bik.setProsjecnaBrzinaUkm(result.getDouble("prosjecnaBrzinaUkm"));
+					bik.setPeriod(result.getString("period"));
+					
+					
+					return bik;
+					
+				}});
+				
+			for (SummaryBiking summaryBiking : sumarybik) {
+				list.add(summaryBiking);
+			}
+				
+			}
+			
+		
+		
+		
+		
+		return list;
+		
+	}
+
 	@Override
 	public SummaryRunning dodaj(SummaryRunning run) {
 		dat=new SpringDataSource();
@@ -115,6 +126,38 @@ SpringDataSource dat;
 		
 		}
 		return run;
+	}
+	public List<SummaryRunning> lista(String username){
+		List<SummaryRunning> list=new ArrayList<SummaryRunning>();
+		dat=new SpringDataSource();
+			
+			if(null != dat.getObj()) {
+				String select="SELECT korisnikRun,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period FROM `runningstatistika` WHERE korisnikRun='"+username+"'";
+				List<SummaryRunning> sumaryrun=dat.getObj().query(select,new RowMapper() {
+					public SummaryRunning mapRow(final ResultSet result,final int rowNum) throws SQLException{
+						SummaryRunning run=new SummaryRunning();
+						run.setKorisnik(result.getString("korisnikRun"));
+						run.setUkupnaUdaljenost(result.getDouble("ukupnaUdaljenost"));
+						run.setUkupnoVrijemeAktivnosti(result.getDouble("ukupnoVrijemeAktivnosti"));
+						run.setProsjecnaBrzinaUkm(result.getDouble("prosjecnaBrzinaUkm"));
+						run.setPeriod(result.getString("period"));
+						
+						
+						return run;
+						
+					}});
+					
+				for (SummaryRunning summaryRunning : sumaryrun) {
+					list.add(summaryRunning);
+				}
+					
+				}
+				
+			
+			
+			
+			
+			return list;
 	}
 	@Override
 	public WalkingStatistika dodaj(WalkingStatistika walk) {
@@ -127,5 +170,39 @@ SpringDataSource dat;
 		}
 		return walk;
 	}
+	
+	public List<WalkingStatistika> izlistajHod(String username){
+		List<WalkingStatistika> list=new ArrayList<WalkingStatistika>();
+		dat=new SpringDataSource();
+			
+			if(null != dat.getObj()) {
+				String select="SELECT email,ukupnaUdaljenost,ukupnoVrijemeAktivnosti,prosjecnaBrzinaUkm,period,ukupanBrojKoraka FROM `walkingstatistika` WHERE email='"+username+"'";
+				List<WalkingStatistika> sumarywalk=dat.getObj().query(select,new RowMapper() {
+					public WalkingStatistika mapRow(final ResultSet result,final int rowNum) throws SQLException{
+						WalkingStatistika walk=new WalkingStatistika();
+						walk.setEmail(result.getString("email"));
+						walk.setUkupnaUdaljenost(result.getDouble("ukupnaUdaljenost"));
+						walk.setUkupnoVrijemeAktivnosti(result.getDouble("ukupnoVrijemeAktivnosti"));
+						walk.setProsjecnaBrzinaUkm(result.getDouble("prosjecnaBrzinaUkm"));
+						walk.setPeriod(result.getString("period"));
+						walk.setUkupanBrojKoraka(result.getInt("ukupanBrojKoraka"));
+						
+						return walk;
+						
+					}});
+					
+				for (WalkingStatistika summaryWalking : sumarywalk) {
+					list.add(summaryWalking);
+				}
+					
+				}
+				
+			
+			
+			
+			
+			return list;
+	}
+	
 
 }

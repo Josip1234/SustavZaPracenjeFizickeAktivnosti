@@ -21,6 +21,9 @@ public String sum(Model model) {
 	Authentication au=SecurityContextHolder.getContext().getAuthentication();
 	   String name=au.getName();
 	model.addAttribute("sum",summaryRepository.show(name));
+	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
+	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
+	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
 	return "sum";
 }
 }

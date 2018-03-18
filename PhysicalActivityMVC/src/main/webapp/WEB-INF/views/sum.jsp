@@ -36,9 +36,6 @@
 <table>
 <thead>
 <tr><td>
-<b>Korisnik:</b>
-
-</td><td>
 Ukupan broj koraka::
 
 </td>
@@ -58,7 +55,7 @@ Datum i vrijeme:
 </thead>
 <c:forEach items="${sum}" var="li">
 <tr>
-<td> ${li.korisnik}</td>
+
 
 <td>${li.ukupanBrojKoraka}</td>
 
@@ -72,10 +69,126 @@ Datum i vrijeme:
 </table>
 
 
+<section id="ukupnoBicikliranja">
+<h2>Ukupno po bicikliranju</h2>
+<table>
+<thead>
+<tr><td>
+<b>Ukupna udaljenost:</b>
+
+</td><td>
+Ukupno vrijeme aktivnosti:
+
+</td>
+<td>
+Prosjecna brzina
+</td>
+
+<td>
+Datum i vrijeme
+</td>
+</tr>
+</thead>
+<c:forEach items="${ukupnoBicikliranja}" var="li">
+<tr>
+<td> ${li.ukupnaUdaljenost}</td>
+
+<td>${li.ukupnoVrijemeAktivnosti}</td>
+
+<td>${li.prosjecnaBrzinaUkm}</td>
+
+<td>${li.period } </td>
+
+</tr>
+</c:forEach>
+</table>
 
 
 
 
+</section>
+
+<section id="ukupnoTrcanje">
+<h2>Ukupno trcanja</h2>
+<table>
+<thead>
+<tr><td>
+<b>Ukupna udaljenost:</b>
+
+</td><td>
+Ukupno vrijeme aktivnosti:
+
+</td>
+<td>
+Prosjecna brzina
+</td>
+
+<td>
+Datum i vrijeme
+</td>
+</tr>
+</thead>
+<c:forEach items="${ukupnoTrcanje}" var="li">
+<tr>
+<td> ${li.ukupnaUdaljenost}</td>
+
+<td>${li.ukupnoVrijemeAktivnosti}</td>
+
+<td>${li.prosjecnaBrzinaUkm}</td>
+
+<td>${li.period } </td>
+
+</tr>
+</c:forEach>
+</table>
+
+
+
+
+</section>
+<section id="ukupnoHodanja">
+<h2>Ukupno hodanja:</h2>
+
+<table>
+<thead>
+<tr><td>
+<b>Ukupna udaljenost:</b>
+
+</td><td>
+Ukupno vrijeme aktivnosti:
+
+</td>
+<td>
+Prosjecna brzina
+</td>
+
+<td>
+Datum i vrijeme
+</td>
+<td>
+Ukupan broj koraka
+</td>
+</tr>
+</thead>
+<c:forEach items="${ukupnoHodanja}" var="li">
+<tr>
+<td> ${li.ukupnaUdaljenost}</td>
+
+<td>${li.ukupnoVrijemeAktivnosti}</td>
+
+<td>${li.prosjecnaBrzinaUkm}</td>
+
+<td>${li.period } </td>
+<td>${li.ukupanBrojKoraka } </td>
+</tr>
+</c:forEach>
+</table>
+
+
+
+
+
+</section>
 
 
 </div>
