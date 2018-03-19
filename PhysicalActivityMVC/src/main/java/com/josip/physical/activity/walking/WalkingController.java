@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping(value= {"/","/physical","/walking"})
+//@Controller
+//@RequestMapping(value= {"/","/physical","/walking"})
 public class WalkingController{
-	
+	/*
 private WalkingRepository walkingRepository;
 public WalkingController(WalkingRepository walkingRepository) {
 	this.walkingRepository=walkingRepository;
@@ -32,7 +32,7 @@ public String walking(Model model) {
 	model.addAttribute("hod",walkingRepository.res(username));
 	return "walking";
 }
-
+*/
 
 
 }

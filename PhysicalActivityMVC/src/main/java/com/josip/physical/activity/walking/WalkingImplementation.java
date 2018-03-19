@@ -15,9 +15,9 @@ import org.springframework.stereotype.Component;
 import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.regist.Registration;
 
-@Component
-public class WalkingImplementation implements WalkingRepository {
-@Autowired
+//@Component
+public class WalkingImplementation /*implements WalkingRepository*/ {
+/*@Autowired
 WalkingActivity walk;
 @Autowired
 SpringDataSource d;
@@ -73,7 +73,7 @@ public WalkingActivity spremiPodatke(WalkingActivity wal) {
 	}
 	return wal;
 }
-
+*/
 
 
 }

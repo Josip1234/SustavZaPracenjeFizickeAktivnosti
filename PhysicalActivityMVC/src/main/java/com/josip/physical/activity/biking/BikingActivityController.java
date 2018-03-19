@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+/*
 @Controller
-@RequestMapping(value={"/","/physical","/bikingactivity"})
+@RequestMapping(value={"/","/physical","/bikingactivity"})*/
 public class BikingActivityController {
-	private BikingRepository bikingRepository;
+/*	private BikingRepository bikingRepository;
 	@Autowired
 	 public BikingActivityController(BikingRepository bikingRepository) {
 		this.bikingRepository=bikingRepository;
@@ -29,5 +29,5 @@ public String bikingactivity(Model model){
 	model.addAttribute("bike",bikingRepository.izlistajSve(name));
 	return "bikingactivity";
 }
-
+*/
 }

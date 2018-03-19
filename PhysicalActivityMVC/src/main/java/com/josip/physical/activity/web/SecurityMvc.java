@@ -49,10 +49,7 @@ public class SecurityMvc extends WebSecurityConfigurerAdapter{
 		
 		http.formLogin().and().rememberMe().tokenValiditySeconds(2419200).and().logout().logoutSuccessUrl("/").and()
 		.authorizeRequests()
-		 .antMatchers("/bikingactivity").hasRole("USER")
 		 .antMatchers("/mojprofil").hasRole("USER")
-		 .antMatchers("/runningactivity").hasRole("USER")
-		 .antMatchers("/walking").hasRole("USER")
 		 .antMatchers("/sum").hasRole("USER")
 		 .anyRequest().permitAll().and().csrf().disable();
 		 

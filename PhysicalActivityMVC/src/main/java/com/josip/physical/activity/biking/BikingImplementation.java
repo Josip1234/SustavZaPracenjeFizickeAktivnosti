@@ -15,9 +15,9 @@ import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.regist.Registration;
 import com.josip.physical.activity.walking.WalkingActivity;
 
-@Component
-public class BikingImplementation implements BikingRepository {
-
+//@Component
+public class BikingImplementation /*implements BikingRepository*/ {
+/*
 	@Autowired
 	BikingActivity bike;
 	@Autowired
@@ -66,6 +66,6 @@ public class BikingImplementation implements BikingRepository {
 		}
 		return bak;
 	}
-
+*/
 
 }

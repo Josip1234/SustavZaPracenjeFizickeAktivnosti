@@ -9,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-@RequestMapping(value={"/","/physical","/runningactivity"})
+//@Controller
+//@RequestMapping(value={"/","/physical","/runningactivity"})
 public class RunningController {
-	private RunningRepository runningRepository;
+	/*private RunningRepository runningRepository;
 	@Autowired
 	public RunningController(RunningRepository runningRepository) {
 		this.runningRepository=runningRepository;
@@ -30,4 +30,5 @@ public class RunningController {
         System.out.println(name);
 		return "runningactivity";
 	}
+	*/
 }

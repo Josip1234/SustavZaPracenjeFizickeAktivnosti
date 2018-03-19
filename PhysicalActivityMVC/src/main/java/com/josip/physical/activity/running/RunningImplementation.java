@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 import com.josip.physical.activity.baza.SpringDataSource;
 import com.josip.physical.activity.biking.BikingActivity;
 import com.josip.physical.activity.walking.WalkingActivity;
-@Component
-public class RunningImplementation implements RunningRepository {
-    @Autowired
+//@Component
+public class RunningImplementation  {
+   /* @Autowired
     RunningActivity run;
     @Autowired
     SpringDataSource data;
@@ -65,5 +65,5 @@ public class RunningImplementation implements RunningRepository {
 		return run;
 	}
 
-
+*/
 }

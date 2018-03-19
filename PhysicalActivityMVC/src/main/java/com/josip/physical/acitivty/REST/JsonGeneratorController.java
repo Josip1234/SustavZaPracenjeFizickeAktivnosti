@@ -41,14 +41,9 @@ import com.josip.physical.activity.walking.WalkingRepository;
 
 
 @RestController
-@RequestMapping({"/","/physical/","/1e2b3tzrUZcvn","/pGRHmge52511wwf","/15zuIOPPgrfef5","/sumary","/bike","/run","/walk"})
+@RequestMapping({"/","/physical/","/sumary","/bike","/run","/walk"})
 public class JsonGeneratorController {
-        @Autowired
-        WalkingImplementation wk;
-        @Autowired
-        BikingImplementation bk;
-        @Autowired
-        RunningImplementation rn;
+     
         @Autowired
         SummaryImplementation sumimp;
 		@Autowired
@@ -108,7 +103,7 @@ public class JsonGeneratorController {
 		   model.addAttribute("lista",korisnik());
 	 		return "1e2b3tzrUZcvn";
 		}
-		@RequestMapping(value= "/1e2b3tzrUZcvn",method=RequestMethod.POST,consumes="application/json",produces="application/json")
+		/*@RequestMapping(value= "/1e2b3tzrUZcvn",method=RequestMethod.POST,consumes="application/json",produces="application/json")
 		public @ResponseBody ResponseEntity<WalkingActivity> spremi(Model model,@RequestBody WalkingActivity wal) {
 			wk.spremiPodatke(wal);
 			ResponseEntity<WalkingActivity> response = new ResponseEntity<WalkingActivity>(wal,HttpStatus.CREATED);
@@ -128,7 +123,7 @@ public class JsonGeneratorController {
 			ResponseEntity<RunningActivity> response = new ResponseEntity<RunningActivity>(run,HttpStatus.CREATED);
 			model.addAttribute(run);
 			return response;
-		}
+		}*/
 		@RequestMapping(value= "/sumary",method=RequestMethod.POST,consumes="application/json",produces="application/json")
 		public @ResponseBody ResponseEntity<SummaryActivity> spremi(Model model,@RequestBody SummaryActivity sumact) {
 			sumimp.dodajUkupno(sumact);

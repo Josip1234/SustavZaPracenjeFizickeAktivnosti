@@ -1,10 +1,10 @@
 package com.josip.physical.activity.biking;
 
 import org.springframework.stereotype.Component;
-
-@Component("Bicikliranje")
+/*
+@Component("Bicikliranje")*/
 public class BikingActivity {
-private String vrijemeAktivnosti;
+/*private String vrijemeAktivnosti;
 private double brzinaUkm;
 private String korisnik;
 private double udaljenost;
@@ -17,7 +17,7 @@ private String datum;
  * @param latitude
  * @param korisnik
  * @param udaljenost
- */
+ 
 public BikingActivity(){
 	
 }
@@ -66,4 +66,5 @@ public String toString(){
 	return vrijemeAktivnosti+","+brzinaUkm+","+","+korisnik+","+udaljenost+"";
 	
 }
+*/
 }

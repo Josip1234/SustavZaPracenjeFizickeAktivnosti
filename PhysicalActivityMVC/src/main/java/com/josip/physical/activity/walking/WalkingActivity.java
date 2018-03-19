@@ -6,9 +6,9 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 
-@Component("walking")
+//@Component("walking")
 public class WalkingActivity {
-private double udaljenost;
+/*private double udaljenost;
 private String vrijemeAktivnosti;
 private int koraci;
 private double brzinaUkm;
