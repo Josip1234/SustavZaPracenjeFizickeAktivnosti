@@ -29,6 +29,10 @@
 </div>
 <section>
 <h2>Ukupno:</h2>
+
+
+
+
 <div class="pregledUkupnog">
 
 
@@ -192,7 +196,10 @@ Ukupan broj koraka
 
 
 </div>
+<footer>
+<form action="<c:url value="/sum"/>" method="post"><input type="submit" value="Stvori linijski graf" /></form>
 <a href="<c:url value="/home" />">Početna stranica</a> 
+</footer>
 <div id="odjava">
 <form action="<c:url value="/logout"/>" method="post"><input type="hidden" name="_csrf" value="${_csrf.token}" /><button>Odjava</button></form>
 </div>

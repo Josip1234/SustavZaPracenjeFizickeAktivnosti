@@ -12,4 +12,5 @@ public SummaryRunning dodaj(SummaryRunning run);
 public List<SummaryRunning> lista(String username);
 public WalkingStatistika dodaj(WalkingStatistika walk);
 public List<WalkingStatistika> izlistajHod(String username);
+
 }
