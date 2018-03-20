@@ -53,7 +53,7 @@ public String kreirajGraf(Model model) throws IOException {
 	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
 	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
 	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
-	model.addAttribute(lineChart.generate());
+	model.addAttribute(lineChart.generate(0));
 	return "sum";
 }
 }
