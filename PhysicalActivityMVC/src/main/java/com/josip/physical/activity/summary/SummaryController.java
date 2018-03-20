@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SummaryController {
 private SummaryRepository summaryRepository;
 
+@Autowired
+LineChart lineChart;
 
 @Autowired
 public SummaryController(SummaryRepository summaryRepository) {
@@ -42,7 +44,7 @@ public String sum(Model model) {
 public String kreirajGraf(Model model) throws IOException {
     
     
-			LineChart lineChart = new LineChart();
+
 			
 			
 	Authentication au=SecurityContextHolder.getContext().getAuthentication();

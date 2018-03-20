@@ -8,7 +8,8 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-
+import org.springframework.stereotype.Component;
+@Component("Linijski grafikon")
 public class LineChart {
 
 	public LineChart() {
@@ -30,7 +31,7 @@ public class LineChart {
     	true,true,false);
     	int width = 640; /* Width of the image */
     	int height = 480; /* Height of the image */
-    	File lineChart = new File( "LineChart.jpeg" );
+    	File lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width, height);
     	return lineChart;
     }
