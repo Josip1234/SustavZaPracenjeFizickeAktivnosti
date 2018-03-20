@@ -5,6 +5,7 @@ import android.net.Network;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,14 +16,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class StartingActivity extends AppCompatActivity {
-
+    //broji broj puta koliko se aplikacija koristi
+    private int brojKoristenja=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
+        //uvecavaj broj koristenja
+        brojKoristenja+=1;
+        if(brojKoristenja==1){
+            Toast.makeText(this, R.string.Starting, Toast.LENGTH_LONG).show();
+        }
+
     }
     public void pokreniAktivnost(View view){
-
+         //funkcija za pokretanje aktivnosti
         //idi na prijavu
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
@@ -30,7 +38,7 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-
+        //isprazni json datoteke nakon uništenja aplikacije
         try {
             JSONArray polje = new JSONArray();
             JSONObject ob = new JSONObject();

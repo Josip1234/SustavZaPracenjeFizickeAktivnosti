@@ -25,7 +25,7 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Created by Korisnik on 21.2.2018..
  */
-
+//pomocna klasa za unos podataka u sql lite bazu te stvaranje upita na bazu
 public class RegistrationDataSource {
     SQLiteOpenHelper dbhelper;
     SQLiteDatabase database;
@@ -53,70 +53,45 @@ public class RegistrationDataSource {
         dbhelper.close();
 
     }
-
-    /*public Registration stvori(Registration registration){
-        ContentValues values = new ContentValues();
-        values.put(SqlLiteTablice.korisnik,registration.getEmail());
-        values.put(SqlLiteTablice.sifra,registration.getSifra());
-        long umetniId=database.insert(SqlLiteTablice.tablica_korisnik,null,values);
-        registration.setId(umetniId);
-        return registration;
-    }*/
+    //funkcija za pronalaženje korisnika
     public boolean pronadjiKorisnika(String username,String password){
-        JSONArray JSONpolje = new JSONArray();
-        JSONObject JSONobjekt;
 
+        //stvori listu korisnika
         List<Registration> listaKorisnika=new ArrayList<Registration>();
+        //upit na bazu selektiraj
         String[] result_col={SqlLiteTablice.korisnik,SqlLiteTablice.sifra};
+        //uvjet za selekciju stupac u tablici
         String where = SqlLiteTablice.korisnik+"=?";
+        //uvjet
         String[] where_args=new String[]{username};
         boolean found=false;
 
-        //String[] res={SqlLiteTablice.korisnik,SqlLiteTablice.sifra};
-        //String queryDb="SELECT * FROM"+SqlLiteTablice.tablica_korisnik+";";//WHERE"+SqlLiteTablice.korisnik+"="+username+"AND"+SqlLiteTablice.sifra+"="+password;
-        //Cursor cursor = database.query()
+        //kursor za kretanje po bazi
          Cursor cursor = database.query(SqlLiteTablice.tablica_korisnik,result_col,where,where_args,null,null,null);
          if(cursor.getCount()>0){
+             //dok je kursor veći od nule
              while (cursor.moveToNext()){
+                 //miči kursor do sljedećeg podatka
+                 //stvori objekt korisnika
                  Registration korisnik=new Registration();
                  int indeksKorisnika=cursor.getColumnIndex(SqlLiteTablice.korisnik);
                  korisnik.setEmail(cursor.getString(indeksKorisnika));
                  int indeksSIfre=cursor.getColumnIndex(SqlLiteTablice.sifra);
                  korisnik.setSifra(cursor.getString(indeksSIfre));
+                 //dohvati korisnika i spremi kao objekt
                  System.out.println(korisnik.getEmail()+korisnik.getSifra());
+                 //dodaj u listu korisničke podatke
                  listaKorisnika.add(new Registration(korisnik.getEmail(),korisnik.getSifra()));
              }
          }
-         //
-       /* try {
-            if(cursor!=null){
-                cursor.moveToFirst();
-                try {
-                    System.out.println(new Registration(cursor.getString(0),cursor.getString(1)).toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if(cursor.getString(0).contentEquals(username)){
-                    if(cursor.getString(1).contentEquals(password)){
-                        found=true;
-                    }else{
-                        found=false;
-                    }
-                }else{
-                    found=false;
-                }
-            }else{
-                found=false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-         */
+         //za svaki element u listi
         for (Registration registration:listaKorisnika
              ) {
+             //provjeri korisnicko ime
              if(username.equals(registration.getEmail())){
+                 //ako korisnicko ime postoji provjeri sifru
                  if(password.equals(registration.getSifra())){
-
+                      //ako je korisnicko ime ispravno i sifra je ispravna vrati true inače vrati false
                      found=true;
                  }else{
                      found=false;
@@ -124,19 +99,21 @@ public class RegistrationDataSource {
 
              }else{
                  found=false;
+                 //vrati već false ako nema korisnika u bazi
              }
 
         }
 
         return found;
     }
+    //funkcija za dodavanje korisnika u sql lite
     public void dodajKorisnika(Registration registration){
         ContentValues values = new ContentValues();
         values.put(SqlLiteTablice.korisnik,registration.getEmail());
         values.put(SqlLiteTablice.sifra,registration.getSifra());
         database.insert(SqlLiteTablice.tablica_korisnik,null,values);
     }
-
+    //funkcija za brisanje podataka iz baze
     public void izbrisiSve(){
 
         String DELETE_STATEMENT= "DELETE FROM" + SqlLiteTablice.tablica_korisnik;

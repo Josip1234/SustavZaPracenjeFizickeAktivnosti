@@ -54,4 +54,11 @@
     <string name="ukupnovrijeme">UkupnoVrijeme</string>
     <string name="ukupna_udaljenost">Ukupna udaljenost:</string>
     <string name="ukupno_prosjecna_brzina">Ukupno prosjecna brzina</string>
+    <string name="Starting">Dobrodošli u aplikaciju. Aplikaciju koristite prvi put, pa će vam trebati
+        određena pomoć kako da koristite tu aplikaciju. Za početak, kliknite pokreni kako biste se prijavili u aplikaciju.
+    </string>
+    <string name="nijeAutoriziran">Korisnik nije autentificiran. Vjerojatno nije niti registriran u bazi. Molimo vas, registrirajte se
+    da biste mogli koristiti aplikaciju.</string>
+    <string name="prijava">Da biste se prijavili, unesite korisnicko ime i lozinku, prije toga pricekajte da se pojavi gumb za prijavu.
+    Nakon toga, mozete kliknuti gumb za prijavu, naravno sa unesenim korisnickim imenom i lozinkom.</string>
 </resources>

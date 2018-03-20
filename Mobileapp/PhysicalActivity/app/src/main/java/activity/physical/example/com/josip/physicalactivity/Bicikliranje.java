@@ -2,14 +2,11 @@ package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,13 +41,10 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
 import activity.physical.example.com.josip.physicalactivity.model.BikingActivity;
 import activity.physical.example.com.josip.physicalactivity.model.SummaryBiking;
-import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
-import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.ChronoHelper;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.IzracunUdaljenostiiBrzine;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;

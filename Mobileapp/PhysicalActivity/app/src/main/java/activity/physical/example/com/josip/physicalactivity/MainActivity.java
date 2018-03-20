@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import org.json.JSONException;
@@ -29,134 +30,66 @@ import activity.physical.example.com.josip.physicalactivity.model.Registration;
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView mfail;
-    private RegistrationDataSource registrationDataSource;
 
+    private RegistrationDataSource registrationDataSource;
+    private int brojKoristenja=0;
     private Button mButton;
+    private final String uri="10.0.2.2";
+    private String url="http://"+uri+":8080/physical/1e2b3tzrUZcvn";
+    //funkcija za prijavu u sustav
     public void prijava(View v) throws IOException, JSONException {
+        //nije autoriziran
         boolean autoriziran = false;
         EditText email;
         EditText sifra;
-        TextView tv;
+
         String em, ps;
         email = (EditText) findViewById(R.id.email);
         sifra = (EditText) findViewById(R.id.sifra);
-        tv = (TextView) findViewById(R.id.txt);
+
+        //dohvati uneseno korisnicko ime  i lozinku
         em = email.getText().toString();
         ps = sifra.getText().toString();
-        tv.setText(em + ps);
+
+        //krairaj instancu login a
         Registration login = new Registration(em, ps);
         login.setSifra(ps);
         login.setEmail(em);
+        //pozovi funkciju za prijavu
         autoriziran = prijavi(login.getEmail(), login.getSifra());
         //autoriziran=true;
-
+         //ako je korisnika autetificiran autoriziraj mu korištenja aplikacije i pošalji ime i šifru prema listi
         if (autoriziran == true) {
             Intent intent = new Intent(MainActivity.this, ListOfActivitiesActivity.class);
             intent.putExtra("ime", em);
             intent.putExtra("šifra", ps);
             startActivity(intent);
         } else {
-            mfail = (TextView) findViewById(R.id.fail);
-            mfail.setText("Nema korisnika ne možete dalje");
+            Toast.makeText(this, R.string.nijeAutoriziran, Toast.LENGTH_LONG).show();
         }
+        //ako nije autoriziran odgovori da nema korisnika i da ne može dalje korisnik ići bez registracije nja bazu
     }
 
-    /*public void kreiraj_json_polje(Registration[] registrations) throws IOException, JSONException {
 
-        JSONArray array = new JSONArray();
-        JSONObject object;
-        object = new JSONObject();
-        for (Registration reg : registrations
-                ) {
-
-
-            object.put("username", reg.getEmail());
-            object.put("pass", reg.getSifra());
-
-        }
-
-
-        array.put(object);
-        String text = array.toString();
-        FileOutputStream fos = openFileOutput("prijava.json", MODE_PRIVATE);
-        fos.write(text.getBytes());
-        fos.close();
-
-        Log.i("message", "succesfully written to json");
-    }*/
-
+    //funkcija koja vraća true ako je korisnik prijavljen ako nije vraća false
     public boolean prijavi(String username, String password) throws IOException, JSONException {
         boolean found = false;
-       // String userjson = "";
-        //String passjson = "";
-        //String naziv = "prijava.json";
 
-
-/*
-        FileInputStream fis = openFileInput(naziv);
-        BufferedInputStream bis = new BufferedInputStream(fis);
-        StringBuffer b = new StringBuffer();
-        while (bis.available() != 0) {
-            char c = (char) bis.read();
-            b.append(c);
-        }
-        bis.close();
-        fis.close();
-
-        JSONArray data = new JSONArray(b.toString());
-        StringBuffer prijavaBuffer = new StringBuffer();
-        for (int i = 0; i < data.length(); i++) {
-            String object = data.getJSONObject(i).getString("username");
-            String pass = data.getJSONObject(i).getString("pass");
-            prijavaBuffer.append(object + " " + pass);
-            Registration registration = new Registration(object,pass);
-            registrationDataSource.dodajKorisnika(registration);
-            //user.add(i,object);
-            //user.add(i+1,pass);
-
-            //ovo treba ići poslije
-            /*
-            if (object.contentEquals(username)) {
-                if (pass.contentEquals(password)) {
-                    found=true;
-                    break;
-
-
-
-                }else {
-
-                    continue;
-
-
-                }
-            } else {
-                found=false;
-                continue;
-
-
-            }
-        }
-
-
-            Log.i("poruka", "pročitan json");
-
-
-
-
-
-        }*/
 
         found=autoriziraj(username,password);
 
         return found;
     };
+    //funkcija za autentifikaciju
     public boolean autoriziraj(String username,String password){
         boolean found=false;
-
+        //otvori sql lite baze
         registrationDataSource.citaj();
+        //napravi upit na bazu sa korisnickim imenom i lozinkom
         found=registrationDataSource.pronadjiKorisnika(username, password);
+        //zatvori bazu
         registrationDataSource.zatvori();
+        //vrati rezultat
         return found;
     };
 
@@ -166,11 +99,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mButton=(Button) findViewById(R.id.Loginbutton);
         mButton.setVisibility(View.INVISIBLE);
-
+        //broji broj korištenja aplikacije
+        brojKoristenja+=1;
+        //ako se aplikacija koristi prvi put
+        if(brojKoristenja==1){
+            Toast.makeText(this, R.string.prijava, Toast.LENGTH_LONG).show();
+        }
+        //stvori registracijski izbor podataka
         registrationDataSource=new RegistrationDataSource(this);
+        //otvori bazu
         registrationDataSource.otvori();
+        //izbrisi sve iz baze
         registrationDataSource.izbrisiSve();
+        //zatvori bazu
         registrationDataSource.zatvori();
+        //provjera dali postoji internet veza
+
+
         new HttpReqTask().execute();
 
 
@@ -178,14 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+//asinkroni task koji prima podatke sa web poslužitelja
     class HttpReqTask extends AsyncTask<Void,Void,Registration[]> {
-
+        //lokacija za lokalni pristup na web preko mobilne aplikacije
         private final String uri="10.0.2.2";
 
         @Override
         protected Registration[] doInBackground(Void... voids) {
             try{
+                //registracija convertera za pretvaranje jsona u polje te prihvat podataka sa servera
                 String url="http://"+uri+":8080/physical/1e2b3tzrUZcvn";
                 RestTemplate restTemplate = new RestTemplate();
                 MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
@@ -200,51 +146,30 @@ public class MainActivity extends AppCompatActivity {
             return null;
 
         }
+        //unos primljenih podataka u sql lite bazu
         @Override
         protected void onPostExecute(Registration[] registration){
             super.onPostExecute(registration);
-            //JSONArray array = new JSONArray();
-            //JSONObject object;
 
+            //otvori bazu
             registrationDataSource.otvori();
             for (Registration reg:registration
                  ) {
                 Log.i("email",String.valueOf(reg.getEmail()));
                 Log.i("sifra",String.valueOf(reg.getSifra()));
+                //dodaj korisnicko ime i lozinku dohvaćenih sa weba
                 registrationDataSource.dodajKorisnika(reg);
 
-                /*try {
-                    object = new JSONObject();
-                    object.put("username",String.valueOf(reg.getEmail()));
-                    object.put("pass",String.valueOf(reg.getSifra()));
-                    array.put(object);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }*/
+
 
             }
+            //zatvori bazu
             registrationDataSource.zatvori();
 
-           // String text = array.toString();
-            //FileOutputStream fos = null;
-            //try {
-                //fos = openFileOutput("prijava.json", MODE_PRIVATE);
-            /*} catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            try {
-                fos.write(text.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
+
 
             Log.i("poruka", "uspješno zapisano json");
+            //pokazi button za  prijavu na vidljivoj poziciji nakon što završiš radnje
             mButton.setVisibility(View.VISIBLE);
 
         }

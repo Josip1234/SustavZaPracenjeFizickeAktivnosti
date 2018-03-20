@@ -3,38 +3,20 @@ package activity.physical.example.com.josip.physicalactivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-import org.w3c.dom.Text;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import activity.physical.example.com.josip.physicalactivity.model.SummaryActivity;
 import activity.physical.example.com.josip.physicalactivity.model.SummaryBiking;
 import activity.physical.example.com.josip.physicalactivity.model.SummaryRunning;
-import activity.physical.example.com.josip.physicalactivity.model.WalkingActivity;
 import activity.physical.example.com.josip.physicalactivity.model.WalkingStatistika;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.PosaljiUkupnePodatke;
-import activity.physical.example.com.josip.physicalactivity.pomocneKlase.StatistickiIzracuni;
 import activity.physical.example.com.josip.physicalactivity.pomocneKlase.UkupniRezultati;
 
 public class RezultActivity extends AppCompatActivity {
