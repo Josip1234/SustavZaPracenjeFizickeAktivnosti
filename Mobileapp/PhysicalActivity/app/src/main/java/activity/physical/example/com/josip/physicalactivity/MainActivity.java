@@ -1,6 +1,7 @@
 package activity.physical.example.com.josip.physicalactivity;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -36,6 +37,20 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private final String uri="10.0.2.2";
     private String url="http://"+uri+":8080/physical/1e2b3tzrUZcvn";
+
+
+   //funkcija za provjeru internet veze
+    private boolean vezaPremaMrezi() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+        boolean isNetworkAvailable = cm.getActiveNetworkInfo() != null;
+        boolean isNetworkConnected = isNetworkAvailable &&
+                cm.getActiveNetworkInfo().isConnected();
+        return isNetworkConnected;
+    }
+
+
+
     //funkcija za prijavu u sustav
     public void prijava(View v) throws IOException, JSONException {
         //nije autoriziran
@@ -97,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean provjeriMrezu=false;
         mButton=(Button) findViewById(R.id.Loginbutton);
         mButton.setVisibility(View.INVISIBLE);
         //broji broj korištenja aplikacije
@@ -116,7 +132,18 @@ public class MainActivity extends AppCompatActivity {
         //provjera dali postoji internet veza
 
 
-        new HttpReqTask().execute();
+
+
+        //ako ima interneta izvrši asinkroni task ako ne vrati se u ptehodnu aktivnost a prije toga pokaži obavijset
+        provjeriMrezu=vezaPremaMrezi();
+        if(provjeriMrezu==true){
+            new HttpReqTask().execute();
+        }else{
+            Intent intent = new Intent(this,StartingActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, R.string.internetVeza, Toast.LENGTH_LONG).show();
+        }
+
 
 
     }
@@ -124,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //asinkroni task koji prima podatke sa web poslužitelja
-    class HttpReqTask extends AsyncTask<Void,Void,Registration[]> {
+    class HttpReqTask extends AsyncTask<Void,Void,Registration[]>  {
         //lokacija za lokalni pristup na web preko mobilne aplikacije
         private final String uri="10.0.2.2";
 
@@ -148,27 +175,31 @@ public class MainActivity extends AppCompatActivity {
         }
         //unos primljenih podataka u sql lite bazu
         @Override
-        protected void onPostExecute(Registration[] registration){
+        protected void onPostExecute(Registration[] registration) {
             super.onPostExecute(registration);
 
             //otvori bazu
             registrationDataSource.otvori();
-            for (Registration reg:registration
-                 ) {
-                Log.i("email",String.valueOf(reg.getEmail()));
-                Log.i("sifra",String.valueOf(reg.getSifra()));
-                //dodaj korisnicko ime i lozinku dohvaćenih sa weba
-                registrationDataSource.dodajKorisnika(reg);
+            try {
+                for (Registration reg:registration
+                     ) {
+                    //ako je null objekt izađi iz petlje
 
-
-
+                        Log.i("email", String.valueOf(reg.getEmail()));
+                        Log.i("sifra", String.valueOf(reg.getSifra()));
+                        //dodaj korisnicko ime i lozinku dohvaćenih sa weba
+                        registrationDataSource.dodajKorisnika(reg);
+                    }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+
+
             //zatvori bazu
             registrationDataSource.zatvori();
 
 
 
-            Log.i("poruka", "uspješno zapisano json");
             //pokazi button za  prijavu na vidljivoj poziciji nakon što završiš radnje
             mButton.setVisibility(View.VISIBLE);
 

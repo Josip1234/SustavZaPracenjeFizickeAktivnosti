@@ -61,4 +61,5 @@
     da biste mogli koristiti aplikaciju.</string>
     <string name="prijava">Da biste se prijavili, unesite korisnicko ime i lozinku, prije toga pricekajte da se pojavi gumb za prijavu.
     Nakon toga, mozete kliknuti gumb za prijavu, naravno sa unesenim korisnickim imenom i lozinkom.</string>
+    <string name="internetVeza">Ne postoji internet veza. Ne možete dalje.</string>
 </resources>
