@@ -43,14 +43,17 @@ public class LineChart {
     	
     		String datum1=summaryActivity.getDatum().trim();
     		String datum2=datum1.substring(8,11);
-    		line_chart_dataset.addValue( summaryActivity.getUkupnoVrijeme() , "vrijeme" , datum2);
+    		double sekunde=summaryActivity.getUkupnoVrijeme()/1000;
+    		double minute=sekunde/60;
+    		
+    		line_chart_dataset.addValue( minute , "vrijeme" , datum2);
     	
 		}
         indeks+=broj;
         broj=0;
     	JFreeChart lineChartObject = ChartFactory.createLineChart(
     	"Mjesecna aktivnost","Dan",
-    	"Vrijeme u milisekundama",
+    	"Vrijeme u minutama",
     	line_chart_dataset,PlotOrientation.VERTICAL,
     	true,true,false);
     	int width = 1366; /* Width of the image */

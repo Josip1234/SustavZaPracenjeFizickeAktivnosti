@@ -194,7 +194,7 @@ Ukupan broj koraka
 </section>
 <section id="grafovi">
 <section id="grafoviUkupnih">
-<h2>Graf broj 1</h2>
+<h2>Graf broj 1 za ukupne razultate</h2>
 <p>Graf koji prikazuje mjesečnu aktivnost možete vidjeti ovdje: <a href="<c:url value='resources/LineChart.jpeg'/>">Aktivnost tijekom mjeseca</a></p>
 </section>
 </section>
