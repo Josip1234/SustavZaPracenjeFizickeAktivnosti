@@ -67,7 +67,7 @@ public class Bicikliranje extends AppCompatActivity {
     private BikingActivity bikingActivity;
     private Date date;
     private SimpleDateFormat sdf;
-    private ImageButton image;
+
     private int broj = 0;
     private int brojBrzine = 0;
     private int brojMjerenja = 0;
@@ -109,33 +109,7 @@ public class Bicikliranje extends AppCompatActivity {
 
 
         }
-        //razdvojiti u drugu funkciju
-        Thread thread = new Thread(new Runnable() {
-            public void run() {
-                try {
 
-
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.setContentType(new MediaType("application", "json"));
-                    HttpEntity<BikingActivity> request = new HttpEntity<BikingActivity>(bikingActivity, headers);
-                    RestTemplate restTemplate = new RestTemplate();
-                    MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-                    converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
-                    restTemplate.getMessageConverters().add(converter);
-                    try {
-                        ResponseEntity<BikingActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical/pGRHmge52511wwf", HttpMethod.POST, request, BikingActivity.class);
-                        BikingActivity result = response.getBody();
-                        System.out.println(result.toString());
-                    } catch (HttpClientErrorException e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
 
 
         return bikingActivity;
@@ -403,48 +377,7 @@ public class Bicikliranje extends AppCompatActivity {
         mKorisnik.setText(kor);
         cr = (Chronometer) findViewById(R.id.chronometer2);
         chronoHelper = new ChronoHelper(cr);
-        image = (ImageButton) findViewById(R.id.posaljiPodatke);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                time = chronoHelper.getTime();
-                try {
-                    date = new Date();
-                    sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String vrijeme = sdf.format(date);
-                    bike.put("datum", vrijeme);
-                    bike.put("vrijemeAktivnosti", time);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                polje.put(bike);
-                String text = polje.toString();
-                try {
-                    FileOutputStream os = openFileOutput("Bicikliranje.json", MODE_PRIVATE);
-                    try {
-                        os.write(text.getBytes());
-                        os.close();
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-
-                try {
-                    procitajPodatke();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
+        chronoHelper.startcr();
         date = new Date();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String vrijeme = sdf.format(date);
@@ -577,7 +510,7 @@ public class Bicikliranje extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "Dobrodošli u bicikliranje", Toast.LENGTH_SHORT).show();
+
 
 
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

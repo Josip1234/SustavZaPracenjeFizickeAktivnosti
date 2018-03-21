@@ -25,6 +25,7 @@ public class UkupniRezultati {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String vrijeme=sdf.format(date);
         summaryActivity.setDatum(vrijeme);
+        //izračunaj ukupne kilometre napravljene tijekom jedne sesije, te izračunaj prosječne brzine te ukupno vrijeme
         summaryActivity.setPrijedjeniKilometri((walk.getUkupnaUdaljenost()+run.getUkupnaUdaljenost()+bike.getUkupnaUdaljenost()));
         summaryActivity.setProsjecnaBrzina(((walk.getProsjecnaBrzinaUkm()+run.getProsjecnaBrzinaUkm()+bike.getProsjecnaBrzinaUkm())/3));
         summaryActivity.setUkupanBrojKoraka(walk.getUkupanBrojKoraka());

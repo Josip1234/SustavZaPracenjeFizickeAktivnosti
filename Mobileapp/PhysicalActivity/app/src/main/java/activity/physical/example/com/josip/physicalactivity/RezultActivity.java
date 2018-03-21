@@ -40,7 +40,7 @@ public class RezultActivity extends AppCompatActivity {
     private TextView ukVrijemeAkt;
     private TextView ukUdaljenostAkt;
     private TextView ukProsjekBrzinaAkti;
-
+    //pročitaj podatke statistike iz šetnje
     public WalkingStatistika procitajPodatke(WalkingStatistika stats) throws IOException, JSONException {
 
         int vrijednost=0;
@@ -81,7 +81,7 @@ public class RezultActivity extends AppCompatActivity {
         }
         return stats;
     }
-
+    //pročitaj podatke za bicikliranje
     public SummaryBiking procitajPodatke(SummaryBiking stats) throws IOException, JSONException {
 
         int vrijednost=0;
@@ -122,7 +122,7 @@ public class RezultActivity extends AppCompatActivity {
         }
         return stats;
     }
-
+    //pročitaj podatke za trčanje
     public SummaryRunning procitajPodatke(SummaryRunning stats) throws IOException, JSONException {
 
         int vrijednost=0;
@@ -166,7 +166,7 @@ public class RezultActivity extends AppCompatActivity {
 
 
 
-
+    //pretvori u minute
     public String pretvoriUminute(double vrijeme){
         double sekunde=vrijeme/1000;
         double minute=sekunde/60;
@@ -180,14 +180,17 @@ public class RezultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rezult);
         int rezultat=0;
+        //inicijaliziraj objekt
         stats=new WalkingStatistika();
         try {
+            //dodaj objektu pročitane podatke
             stats=procitajPodatke(stats);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        //stavi pročitane podatke na text view
         mUkupanBrojKoraka=(TextView) findViewById(R.id.ukbk);
         mUkupanBrojKoraka.setText(String.valueOf(stats.getUkupanBrojKoraka()));
 
@@ -238,11 +241,6 @@ public class RezultActivity extends AppCompatActivity {
         summaryActivity=ukupniRezultati.ukupniRezultati(stats,summaryRunning,sumBike);
 
 
-        PosaljiUkupnePodatke posaljiUkupnePodatke = new PosaljiUkupnePodatke();
-        posaljiUkupnePodatke.posalji(summaryActivity);
-        posaljiUkupnePodatke.posalji(sumBike);
-        posaljiUkupnePodatke.posalji(stats);
-        posaljiUkupnePodatke.posalji(summaryRunning);
 
         ukKorakAkt = (TextView) findViewById(R.id.ukKorakAkt);
         ukKorakAkt.setText(String.valueOf(summaryActivity.getUkupanBrojKoraka()));
@@ -257,5 +255,16 @@ public class RezultActivity extends AppCompatActivity {
         ukProsjekBrzinaAkti.setText(String.valueOf(summaryActivity.getProsjecnaBrzina()));
 
 
+    }
+    //nakon uništenja aktivnosti pošalji podatke
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        //čitaj podatke i šalji na web
+        PosaljiUkupnePodatke posaljiUkupnePodatke = new PosaljiUkupnePodatke();
+        posaljiUkupnePodatke.posalji(summaryActivity);
+        posaljiUkupnePodatke.posalji(sumBike);
+        posaljiUkupnePodatke.posalji(stats);
+        posaljiUkupnePodatke.posalji(summaryRunning);
     }
 }

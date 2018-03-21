@@ -74,7 +74,7 @@ public class TrcanjeActivity extends AppCompatActivity {
     private RunningActivity runningActivity;
     private Date date;
     private SimpleDateFormat sdf;
-    private ImageButton image;
+
 
     private int broj = 0;
     private int brojBrzine = 0;
@@ -117,33 +117,6 @@ public class TrcanjeActivity extends AppCompatActivity {
 
 
         }
-
-        Thread thread = new Thread(new Runnable() {
-            public void run() {
-                try {
-
-
-                    HttpHeaders headers = new HttpHeaders();
-                    headers.setContentType(new MediaType("application", "json"));
-                    HttpEntity<RunningActivity> request = new HttpEntity<RunningActivity>(runningActivity, headers);
-                    RestTemplate restTemplate = new RestTemplate();
-                    MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-                    converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
-                    restTemplate.getMessageConverters().add(converter);
-                    try {
-                        ResponseEntity<RunningActivity> response = restTemplate.exchange("http://10.0.2.2:8080/physical/15zuIOPPgrfef5", HttpMethod.POST, request, RunningActivity.class);
-                        RunningActivity result = response.getBody();
-                        System.out.println(result.toString());
-                    } catch (HttpClientErrorException e) {
-                        e.printStackTrace();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
 
 
         return runningActivity;
@@ -410,48 +383,8 @@ public class TrcanjeActivity extends AppCompatActivity {
 
         cr = (Chronometer) findViewById(R.id.chronometer3);
         chronoHelper = new ChronoHelper(cr);
-        image = (ImageButton) findViewById(R.id.posaljiPodatke);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                time = chronoHelper.getTime();
-                try {
-                    date = new Date();
-                    sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String vrijeme = sdf.format(date);
-                    run.put("datum", vrijeme);
-                    run.put("vrijemeAktivnosti", time);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        chronoHelper.startcr();
 
-                polje.put(run);
-                String text = polje.toString();
-                try {
-                    FileOutputStream os = openFileOutput("Trcanje.json", MODE_PRIVATE);
-                    try {
-                        os.write(text.getBytes());
-                        os.close();
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-
-                try {
-                    procitajPodatke();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
         date = new Date();
         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String vrijeme = sdf.format(date);
@@ -579,7 +512,7 @@ public class TrcanjeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "Dobrodošli na trcanje", Toast.LENGTH_SHORT).show();
+
 
 
         LocationManager locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
