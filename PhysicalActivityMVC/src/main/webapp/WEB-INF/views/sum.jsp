@@ -194,8 +194,11 @@ Ukupan broj koraka
 </section>
 <section id="grafovi">
 <section id="grafoviUkupnih">
-<h2>Graf broj 1 za ukupne razultate</h2>
-<p>Graf koji prikazuje mjesečnu aktivnost možete vidjeti ovdje: <a href="<c:url value='resources/LineChart.jpeg'/>">Aktivnost tijekom mjeseca</a></p>
+<h2>Graf za prikaz ukupne udaljenosti</h2>
+<p><a href="<c:url value='resources/LineChart.jpeg'/>">Aktivnost tijekom mjeseca</a></p>
+<h2>Graf koji prikazuje ukupnu prijeđenu udaljenost </h2>
+<p> <a href="<c:url value='resources/LineChart2.jpeg'/>">Prijeđena udaljenost po danu</a></p>
+<p></p>
 </section>
 </section>
 
