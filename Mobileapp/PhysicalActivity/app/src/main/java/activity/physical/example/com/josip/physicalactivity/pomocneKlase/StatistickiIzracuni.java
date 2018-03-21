@@ -53,7 +53,7 @@ public class StatistickiIzracuni {
         this.ukupanBrojKoraka = ukupanBrojKoraka;
     }
 
-   
+   //primi listu izračunaj sumu i postavi rezultat
     public void izracunajUkupanBrojKoraka(List<Integer> koraci){
         int sum=0;
         int velicina=koraci.size();
@@ -66,6 +66,7 @@ public class StatistickiIzracuni {
         setProsjekKoraka(sum/velicina);
 
     }
+    //izračunaj udaljenost, postavi rezultat
     public void izracunajUkupnoPrijedjenjeKilometre(List<Double> kilometri){
         double sum=0.0;
         int velicina=kilometri.size();
@@ -78,7 +79,7 @@ public class StatistickiIzracuni {
         setProsjecnaUdaljenost(sum/velicina);
 
     }
-
+    //izračunaj prosječnu brzinu i postavi rezultat
     public void izracunajprosjecnuBrzinu(List<Double> brzina, int brojMjerenja){
 
         double prosjek=0.00;

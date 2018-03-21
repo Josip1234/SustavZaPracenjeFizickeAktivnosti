@@ -62,4 +62,8 @@
     <string name="prijava">Da biste se prijavili, unesite korisnicko ime i lozinku, prije toga pricekajte da se pojavi gumb za prijavu.
     Nakon toga, mozete kliknuti gumb za prijavu, naravno sa unesenim korisnickim imenom i lozinkom.</string>
     <string name="internetVeza">Ne postoji internet veza. Ne možete dalje.</string>
+    <string name="lista">Kako biste pokrenuli pojedinu aktivnost, kliknite na neki od ponuđenih elemenata. Nakon toga otvara se aktivnost.</string>
+    <string name="walkingTutor">Da biste mjerirli korake, moguće je poboljšavati osjetljivost na seek baru. Kada se poboljša, možete
+    mjeriti svoje korake. Za kronometar imate tri mogućnosti za pokretanje resetiranje i pauziranje. Senzor poslije registrira pokret i mjeri korake, a
+    senzori mjere i brzinu i udaljenost.</string>
 </resources>

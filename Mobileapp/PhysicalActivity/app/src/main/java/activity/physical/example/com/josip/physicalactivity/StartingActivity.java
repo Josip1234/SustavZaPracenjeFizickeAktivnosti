@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Network;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,6 +12,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -39,6 +42,32 @@ public class StartingActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         //isprazni json datoteke nakon uništenja aplikacije
+
+        //iz jsona izvadi broj koraka
+        String naziv = "sumaKoraka.json";
+
+         int vrijednost=0;
+         //postavi vrijednost izracuna na nulu
+        try {
+            JSONArray polje = new JSONArray();
+            JSONObject ob = new JSONObject();
+
+            ob.put("izracun", vrijednost);
+
+
+
+            polje.put(ob);
+            String text = polje.toString();
+            FileOutputStream fos = openFileOutput(naziv, MODE_PRIVATE);
+            fos.write(text.getBytes());
+            fos.close();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         try {
             JSONArray polje = new JSONArray();
             JSONObject ob = new JSONObject();

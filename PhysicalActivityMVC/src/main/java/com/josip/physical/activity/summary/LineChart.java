@@ -1,5 +1,7 @@
 package com.josip.physical.activity.summary;
 
+import static org.mockito.Mockito.RETURNS_DEFAULTS;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class LineChart {
     	int length=dataset.size();
     	//stvori kategorije dataseta
     	DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+    	DefaultCategoryDataset lnd=new DefaultCategoryDataset();
     	indeks+=indeks;
     	//crtaj graf
     	int broj=0;
@@ -47,12 +50,13 @@ public class LineChart {
     		double minute=sekunde/60;
     		
     		line_chart_dataset.addValue( minute , "vrijeme" , datum2);
+    		lnd.addValue(summaryActivity.getPrijedjeniKilometri(), "vrijeme", datum2);
     	
 		}
         indeks+=broj;
         broj=0;
     	JFreeChart lineChartObject = ChartFactory.createLineChart(
-    	"Mjesecna aktivnost","Dan",
+    	"Ukupna aktivnost","Dan",
     	"Vrijeme u minutama",
     	line_chart_dataset,PlotOrientation.VERTICAL,
     	true,true,false);
@@ -61,6 +65,11 @@ public class LineChart {
     	File lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width, height);
     	
+    	JFreeChart lnch=ChartFactory.createLineChart("Udaljenost u kilometrima","Dan","Ukupna prijeđena udaljensot",lnd,PlotOrientation.VERTICAL,true,true,false);
+    	width = 1366; /* Width of the image */
+    	height = 768; /* Height of the image */
+    	lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart2.jpeg" );
+    	ChartUtilities.saveChartAsJPEG(lineChart ,lnch, width, height);
     		return lineChart;
     
 }

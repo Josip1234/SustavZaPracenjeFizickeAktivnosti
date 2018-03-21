@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +19,7 @@ import static android.content.Intent.getIntent;
 
 public class ListOfActivitiesActivity extends AppCompatActivity {
     private boolean unesen;
+    private int brojKoristenjaAplikacije=0;
     public boolean kreirajJsonDatoteku(String user,String pass) throws JSONException, IOException {
        JSONArray jsonArray = new JSONArray();
        JSONObject jsonObject;
@@ -37,12 +39,18 @@ public class ListOfActivitiesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_activities);
+        brojKoristenjaAplikacije+=1;
+        if(brojKoristenjaAplikacije==1){
+            Toast.makeText(this, R.string.lista, Toast.LENGTH_LONG).show();
+        }
         unesen=false;
+        //dohvati podatke poslane sa prethodne aktivnosti
         Bundle extras=getIntent().getExtras();
         if(extras!=null){
             String ime=extras.getString("ime");
             String sifra=extras.getString("šifra");
             try {
+                //stavi ih u json
                 unesen=kreirajJsonDatoteku(ime,sifra);
             } catch (JSONException e) {
                 e.printStackTrace();

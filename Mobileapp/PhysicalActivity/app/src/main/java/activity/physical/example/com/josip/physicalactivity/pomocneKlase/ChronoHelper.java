@@ -9,6 +9,7 @@ import android.widget.Chronometer;
  */
 
 public class ChronoHelper {
+    //pamti vrijeme kada je kronometar zaustavljen
    private long vrijemeZaustavljanja;
     private Chronometer chronometer;
     public String vrijeme="";
@@ -45,17 +46,21 @@ public class ChronoHelper {
     public void setVrijeme(String vrijeme) {
         this.vrijeme = vrijeme;
     }
+    //resetiraj kronometar
     public void resetc() {
         getChronometer().setBase(SystemClock.elapsedRealtime());
+        //postavi vrijeme zaustavljanja
         setVrijemeZaustavljanja(0);
         getChronometer().stop();
     }
     public void startcr() {
+        //pri pokretanju zborji vrijeme zaustavljanja
         getChronometer().setBase(SystemClock.elapsedRealtime() + getVrijemeZaustavljanja());
         getChronometer().start();
     }
 
     public String stopcr() {
+        //pri zaustavljanju oduzmi početak kronometra od trenutnog vremena to će biti vrijeme zaustavljanja
         String time = "";
         setVrijemeZaustavljanja(getChronometer().getBase() - SystemClock.elapsedRealtime());
         getChronometer().setBase(SystemClock.elapsedRealtime());

@@ -5,6 +5,7 @@ package activity.physical.example.com.josip.physicalactivity.pomocneKlase;
  */
 
 public class IzracunUdaljenostiiBrzine {
+    //za potrebe izračuna udaljenosti, koristimo formulu za izračun, u stvarnosti bi se koristile ugrađene funkcije
     private double lat1;
     private double lon1;
     private long vrijeme1;
@@ -85,7 +86,7 @@ public class IzracunUdaljenostiiBrzine {
         this.unit = unit;
     }
 
-
+    //izračun udaljenosti u kilometrima
     public static double distance(double lat1, double lon1, double lat2, double lon2) {
         final double R = 6371; // In kilometers
         double dLat = Math.toRadians(lat2 - lat1);
@@ -100,16 +101,6 @@ public class IzracunUdaljenostiiBrzine {
 
 
 
-    public double izracunajBrzinuUkm(double udaljenost){
-        return udaljenost/(vrijemeIzmedjuTocaka(getVrijeme1(),getVrijeme2()));
-    }
-    public double vrijemeIzmedjuTocaka(long vrijeme1,long vrijeme2){
-        if(vrijeme2>vrijeme1){
-            return (vrijeme2-vrijeme1)/1000;
-        }else{
-            return (vrijeme1-vrijeme2)/1000;
-        }
 
-    }
 
 }
