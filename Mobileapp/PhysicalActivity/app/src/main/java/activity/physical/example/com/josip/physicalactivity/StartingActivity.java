@@ -226,6 +226,18 @@ public class StartingActivity extends AppCompatActivity {
             mButton.setVisibility(View.GONE);
             Toast.makeText(this, R.string.Starting, Toast.LENGTH_LONG).show();
 
+
+
+        }else{
+            //ako se aplikacija ne koristi prvi put
+            Button mButton = (Button) findViewById(R.id.brisi);
+            mButton.setVisibility(View.VISIBLE);
+        }
+
+        }
+        @Override
+        protected void onDestroy(){
+        super.onDestroy();
             brojKoristenja += 1;
 
             JSONArray polje = new JSONArray();
@@ -256,12 +268,6 @@ public class StartingActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else{
-            //ako se aplikacija ne koristi prvi put
-            Button mButton = (Button) findViewById(R.id.brisi);
-            mButton.setVisibility(View.VISIBLE);
-        }
-
         }
 
     }

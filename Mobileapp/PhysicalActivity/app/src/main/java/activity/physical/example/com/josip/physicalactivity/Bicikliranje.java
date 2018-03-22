@@ -67,7 +67,7 @@ public class Bicikliranje extends AppCompatActivity {
     private BikingActivity bikingActivity;
     private Date date;
     private SimpleDateFormat sdf;
-    private double distance=0;
+
     private int broj = 0;
     private int brojBrzine = 0;
     private int brojMjerenja = 0;
@@ -290,31 +290,31 @@ public class Bicikliranje extends AppCompatActivity {
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
                 if(brojKoristenja>0) {
-                    distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
+                    double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
 
                     tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                     tUdaljenost.setText(String.valueOf(distance));
+
+                    if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
+
+                        Random random = new Random();
+                        brzina = random.nextInt(30);
+                        brzinaUkm.setText("Brzina u km/h:" + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
+
+                    } else {
+
+                        brzinaUkm.setText("Brzina u km/h " + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
+                    }
+                    kilometri.add(distance);
+
+                    try {
+                        bike.put("udaljenost", distance);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-                if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
-
-                    Random random = new Random();
-                    brzina = random.nextInt(30);
-                    brzinaUkm.setText("Brzina u km/h:" + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
-
-                } else {
-
-                    brzinaUkm.setText("Brzina u km/h " + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
-                }
-                kilometri.add(distance);
-
-                try {
-                    bike.put("udaljenost", distance);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
 
                 try {
                     addresses = gcd.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
@@ -361,7 +361,7 @@ public class Bicikliranje extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
+              brojKoristenja+=1;
             }
         }
 

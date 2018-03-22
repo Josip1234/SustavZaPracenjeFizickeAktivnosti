@@ -75,7 +75,7 @@ public class TrcanjeActivity extends AppCompatActivity {
     private Date date;
     private SimpleDateFormat sdf;
 
-    private double distance=0;
+
     private int broj = 0;
     private int brojBrzine = 0;
     private int brojMjerenja = 0;
@@ -302,29 +302,30 @@ public class TrcanjeActivity extends AppCompatActivity {
                 List<Address> addresses;
                 //ako se aplikacija ne koristi prvi put
                 if(brojKoristenja>0) {
-                    distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
-                }
-                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-                tUdaljenost.setText(String.valueOf(distance));
+                    double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
 
-                if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
+                    tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                    tUdaljenost.setText(String.valueOf(distance));
 
-                    Random random = new Random();
-                    brzina = random.nextInt(30);
-                    brzinaUkm.setText("Brzina u km/h:" + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
+                    if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
 
-                } else {
+                        Random random = new Random();
+                        brzina = random.nextInt(30);
+                        brzinaUkm.setText("Brzina u km/h:" + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
 
-                    brzinaUkm.setText("Brzina u km/h " + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
-                }
-                kilometri.add(distance);
+                    } else {
 
-                try {
-                    run.put("udaljenost", distance);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                        brzinaUkm.setText("Brzina u km/h " + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
+                    }
+                    kilometri.add(distance);
+
+                    try {
+                        run.put("udaljenost", distance);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
 
@@ -374,6 +375,7 @@ public class TrcanjeActivity extends AppCompatActivity {
                 }
 
 
+                brojKoristenja+=1;
             }
         }
 

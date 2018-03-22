@@ -94,7 +94,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
     private long vrijemeAktivnosti;
-    private double distance=0;
+
     private double vrijemeTocaka;
     private int count=0;
     private int brojMjerenja=0;
@@ -331,31 +331,33 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 List<Address> addresses;
                 //izračunaj udaljenost
                 if(brojKoristenja>0) {
-                    distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
+                    double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
 
 
                     tUdaljenost = (TextView) findViewById(R.id.udaljenost);
                     tUdaljenost.setText(String.valueOf(distance));
-                }
-                 //ako nema brzine
-                if((brzina==0.00 || brzina==00.00) && count>1){
-                    //za potrebe simulacije, brzina je postavljena kao randomn broj između 0 i 10
-                    Random random = new Random();
-                    brzina=random.nextInt(10);
-                    mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
+                    kilometri.add(distance);
 
-                }else {
-                    //ako je brzina dostupna, uzmi iz gotove funkcije
-                    mBrzina.setText("Brzina u km/h " + String.valueOf(brzina));
-                    prosjecnaBrzina.add(brzina);
-                }
-                kilometri.add(distance);
-                //spremi udaljenost u json
-                try {
-                    walk.put("udaljenost", distance);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    //ako nema brzine
+                    if ((brzina == 0.00 || brzina == 00.00) && count > 1) {
+                        //za potrebe simulacije, brzina je postavljena kao randomn broj između 0 i 10
+                        Random random = new Random();
+                        brzina = random.nextInt(10);
+                        mBrzina.setText("Brzina u km/h:" + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
+
+                    } else {
+                        //ako je brzina dostupna, uzmi iz gotove funkcije
+                        mBrzina.setText("Brzina u km/h " + String.valueOf(brzina));
+                        prosjecnaBrzina.add(brzina);
+                    }
+
+                    //spremi udaljenost u json
+                    try {
+                        walk.put("udaljenost", distance);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 //dohvati adrese
@@ -406,7 +408,7 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                     e.printStackTrace();
                 }
 
-
+              brojKoristenja+=1;
             }
         }
 
