@@ -11,6 +11,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,6 +22,33 @@ import static android.content.Intent.getIntent;
 public class ListOfActivitiesActivity extends AppCompatActivity {
     private boolean unesen;
     private int brojKoristenjaAplikacije=0;
+    private String naziv="brojKoristenja.json";
+
+    public int dohvatiBrojKoristenja() throws IOException,JSONException{
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+        int brojKoristenja = 0;
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            brojKoristenja += data.getJSONObject(i).getInt("brojKoristenja");
+
+            Log.i("poruka", "pročitan json");
+
+
+        }
+
+
+        return brojKoristenja;
+    }
+
     public boolean kreirajJsonDatoteku(String user,String pass) throws JSONException, IOException {
        JSONArray jsonArray = new JSONArray();
        JSONObject jsonObject;
@@ -39,8 +68,14 @@ public class ListOfActivitiesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_activities);
-        brojKoristenjaAplikacije+=1;
-        if(brojKoristenjaAplikacije==1){
+        try {
+            brojKoristenjaAplikacije+=dohvatiBrojKoristenja();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(brojKoristenjaAplikacije==0){
             Toast.makeText(this, R.string.lista, Toast.LENGTH_LONG).show();
         }
         unesen=false;

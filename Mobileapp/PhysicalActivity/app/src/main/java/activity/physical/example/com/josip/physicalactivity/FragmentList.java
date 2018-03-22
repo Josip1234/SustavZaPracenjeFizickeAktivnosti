@@ -20,7 +20,7 @@ public class FragmentList extends ListFragment {
     //lista koja se nalazi na posebnom xml-u
     ListView listView;
     //lista aktivnosti
-    String[] activities={"Hodanje","Trčanje","Bicikliranje","Rezultati","ITM","MapsActivity"};
+    String[] activities={"Hodanje","Trčanje","Bicikliranje","Rezultati","Indeks tjelesne mase","Mape"};
 
 
 

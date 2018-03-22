@@ -67,7 +67,7 @@ public class Bicikliranje extends AppCompatActivity {
     private BikingActivity bikingActivity;
     private Date date;
     private SimpleDateFormat sdf;
-
+    private double distance=0;
     private int broj = 0;
     private int brojBrzine = 0;
     private int brojMjerenja = 0;
@@ -75,6 +75,33 @@ public class Bicikliranje extends AppCompatActivity {
     private List<Double> prosjecnaBrzina;
     private TextView mKorisnik;
     private TextView brzinaUkm;
+    private String naziv="brojKoristenja.json";
+    private int brojKoristenja=0;
+
+    public int dohvatiBrojKoristenja() throws IOException,JSONException{
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+        int brojKoristenja = 0;
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            brojKoristenja += data.getJSONObject(i).getInt("brojKoristenja");
+
+            Log.i("poruka", "pročitan json");
+
+
+        }
+
+
+        return brojKoristenja;
+    }
 
 
     public BikingActivity procitajPodatke() throws IOException, JSONException {
@@ -262,11 +289,12 @@ public class Bicikliranje extends AppCompatActivity {
                 String posta = null;
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
-                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
+                if(brojKoristenja>0) {
+                    distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
 
-                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-                tUdaljenost.setText(String.valueOf(distance));
-
+                    tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                    tUdaljenost.setText(String.valueOf(distance));
+                }
                 if ((brzina == 0.00 || brzina == 00.00) && broj > 1) {
 
                     Random random = new Random();
@@ -359,6 +387,13 @@ public class Bicikliranje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biking);
 
+        try {
+            brojKoristenja+=dohvatiBrojKoristenja();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         prosjecnaBrzina=new ArrayList<Double>();
         kilometri=new ArrayList<Double>();

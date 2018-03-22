@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import org.json.JSONArray;
 import org.json.JSONException;
 
 import org.springframework.http.MediaType;
@@ -23,6 +24,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private final String uri="10.0.2.2";
     private String url="http://"+uri+":8080/physical/1e2b3tzrUZcvn";
-
+    private String naziv="brojKoristenja.json";
 
    //funkcija za provjeru internet veze
     private boolean vezaPremaMrezi() {
@@ -107,6 +110,32 @@ public class MainActivity extends AppCompatActivity {
         //vrati rezultat
         return found;
     };
+    //dohvati broj korištenja aplikacije
+    public int dohvatiBrojKoristenja() throws IOException,JSONException{
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+        int brojKoristenja = 0;
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            brojKoristenja += data.getJSONObject(i).getInt("brojKoristenja");
+
+            Log.i("poruka", "pročitan json");
+
+
+        }
+
+
+        return brojKoristenja;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +145,15 @@ public class MainActivity extends AppCompatActivity {
         mButton=(Button) findViewById(R.id.Loginbutton);
         mButton.setVisibility(View.INVISIBLE);
         //broji broj korištenja aplikacije
-        brojKoristenja+=1;
+        try {
+            brojKoristenja+=dohvatiBrojKoristenja();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         //ako se aplikacija koristi prvi put
-        if(brojKoristenja==1){
+        if(brojKoristenja==0){
             Toast.makeText(this, R.string.prijava, Toast.LENGTH_LONG).show();
         }
         //stvori registracijski izbor podataka

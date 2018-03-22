@@ -19,6 +19,13 @@
         android:background="@color/colorPrimary"
         android:clipToPadding="false">
 
+        <Button
+            android:id="@+id/Start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="pokreniAktivnost"
+            android:text="@string/pokreni" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,14 +48,27 @@
 
                     <TableRow
                         android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/Pocetna"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Pocetna"
+                            tools:text="@string/Pocetna" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:minHeight="0dp">
 
                         <Button
-                            android:id="@+id/Start"
+                            android:id="@+id/brisi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/pokreni" android:onClick="pokreniAktivnost" />
+                            android:onClick="izbrisiPrethodnePodatke"
+                            android:text="@string/izbrisi_podatke" />
                     </TableRow>
 
 

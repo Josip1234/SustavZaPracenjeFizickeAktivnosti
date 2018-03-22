@@ -94,11 +94,38 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
     private List<Double> kilometri;
     private List<Double> prosjecnaBrzina;
     private long vrijemeAktivnosti;
-
+    private double distance=0;
     private double vrijemeTocaka;
     private int count=0;
     private int brojMjerenja=0;
     private int brojBrzine=0;
+    private int brojKoristenja=0;
+    private String naziv="brojKoristenja.json";
+    public int dohvatiBrojKoristenja() throws IOException,JSONException{
+        FileInputStream fis = openFileInput(naziv);
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        StringBuffer b = new StringBuffer();
+        while (bis.available() != 0) {
+            char c = (char) bis.read();
+            b.append(c);
+        }
+        bis.close();
+        fis.close();
+        int brojKoristenja = 0;
+        JSONArray data = new JSONArray(b.toString());
+        StringBuffer prijavaBuffer = new StringBuffer();
+        for (int i = 0; i < data.length(); i++) {
+            brojKoristenja += data.getJSONObject(i).getInt("brojKoristenja");
+
+            Log.i("poruka", "pročitan json");
+
+
+        }
+
+
+        return brojKoristenja;
+    }
+
     //čitaj podatke iz jsona
     public WalkingActivity procitajPodatke() throws IOException, JSONException {
 
@@ -303,10 +330,13 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
                 Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
                 List<Address> addresses;
                 //izračunaj udaljenost
-                double distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(),izracunUdaljenosti.getLon1(),izracunUdaljenosti.getLat2(),izracunUdaljenosti.getLon2());
+                if(brojKoristenja>0) {
+                    distance = izracunUdaljenosti.distance(izracunUdaljenosti.getLat1(), izracunUdaljenosti.getLon1(), izracunUdaljenosti.getLat2(), izracunUdaljenosti.getLon2());
 
-                tUdaljenost = (TextView) findViewById(R.id.udaljenost);
-                tUdaljenost.setText(String.valueOf(distance));
+
+                    tUdaljenost = (TextView) findViewById(R.id.udaljenost);
+                    tUdaljenost.setText(String.valueOf(distance));
+                }
                  //ako nema brzine
                 if((brzina==0.00 || brzina==00.00) && count>1){
                     //za potrebe simulacije, brzina je postavljena kao randomn broj između 0 i 10
@@ -447,8 +477,14 @@ public class WalkActivity extends AppCompatActivity implements SensorEventListen
 
 
 //ovdje citati json i dodati u listu prethodne korake
-       brojKoristenjaAplikacije+=1;
-       if(brojKoristenjaAplikacije==1){
+        try {
+            brojKoristenjaAplikacije+=dohvatiBrojKoristenja();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(brojKoristenjaAplikacije==0){
            Toast.makeText(this, R.string.walkingTutor, Toast.LENGTH_LONG).show();
        }
 

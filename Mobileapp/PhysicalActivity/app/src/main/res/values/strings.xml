@@ -66,4 +66,6 @@
     <string name="walkingTutor">Da biste mjerirli korake, moguće je poboljšavati osjetljivost na seek baru. Kada se poboljša, možete
     mjeriti svoje korake. Za kronometar imate tri mogućnosti za pokretanje resetiranje i pauziranje. Senzor poslije registrira pokret i mjeri korake, a
     senzori mjere i brzinu i udaljenost.</string>
+    <string name="Pocetna">Dobrodošli u aplikaciju za praćenje fizičke aktivnosti. Osobni podaci služe u aplikaciji samo korisniku. Preporuča se da korisnik ne koristi šifru za aplikaciju koju ima za neki drugi račun kako bi se korisnikovi podaci zaštitili. Korisnički podaci se u ni kojem slučaju ne prosljeđuju. Klikom na gumb pokreni, korisnik se slaže sa uvjetima i prihvaća korištenje aplikacije uz svoje dane podatke. Autor ove aplikacije neće zloupotrijebiti korisnikove podatke niti u kojem slučaju prosljeđivati podatke drugima.</string>
+    <string name="izbrisi_podatke">Izbrisi podatke</string>
 </resources>
