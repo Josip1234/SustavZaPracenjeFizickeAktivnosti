@@ -32,13 +32,7 @@
                 android:orientation="vertical"
                 tools:ignore="UselessParent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription=""
-                    app:srcCompat="@drawable/mr_media_play_light"
-                    tools:ignore="ContentDescription" />
+
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -57,20 +51,8 @@
                             android:text="@string/pokreni" android:onClick="pokreniAktivnost" />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
 
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="50dp"
-                            android:layout_marginStart="85dp"
-                            app:srcCompat="@drawable/mr_media_play_light"
-                            android:contentDescription=""
-                            tools:ignore="ContentDescription" />
-                    </TableRow>
+
                 </TableLayout>
             </LinearLayout>
         </LinearLayout>
