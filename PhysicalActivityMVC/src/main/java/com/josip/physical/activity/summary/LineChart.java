@@ -26,7 +26,7 @@ public class LineChart {
 		
 		
 	}
-    public File generate() throws IOException {
+    public void generate() throws IOException {
     	//stvori listu
     	List<SummaryActivity> dataset= new ArrayList<SummaryActivity>();
     	//upit za korisnika
@@ -70,10 +70,10 @@ public class LineChart {
     	height = 768; /* Height of the image */
     	lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart2.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lnch, width, height);
-    		return lineChart;
+    		
     
 }
-    public File generirajFiltriranp(String datum1,String datum2) throws IOException {
+    public void generirajFiltriranp(String datum1,String datum2) throws IOException {
     	//stvori listu
     	List<SummaryActivity> dataset= new ArrayList<SummaryActivity>();
     	//upit za korisnika
@@ -90,14 +90,14 @@ public class LineChart {
     	//crtaj graf
     	int broj=0;
     	for (SummaryActivity summaryActivity : dataset) {
-    	
+    
     		String datum12=summaryActivity.getDatum().trim();
-    		String datum23=datum1.substring(8,11);
+    		
     		double sekunde=summaryActivity.getUkupnoVrijeme()/1000;
     		double minute=sekunde/60;
     		
-    		line_chart_dataset.addValue( minute , "vrijeme" , datum23);
-    		lnd.addValue(summaryActivity.getPrijedjeniKilometri(), "Broj prijedjenih kilometara", datum23);
+    		line_chart_dataset.addValue( minute , "vrijeme" , datum12);
+    		lnd.addValue(summaryActivity.getPrijedjeniKilometri(), "Broj prijedjenih kilometara", datum12);
     	
 		}
        
@@ -117,7 +117,7 @@ public class LineChart {
     	height = 768; /* Height of the image */
     	lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart2.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lnch, width, height);
-    		return lineChart;
+    		
     
 }    
 }

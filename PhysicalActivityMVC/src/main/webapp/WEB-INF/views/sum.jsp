@@ -217,7 +217,7 @@ trajanja aktivnosti</a></p>
 <br>
 <label>Unesi drugi datum:</label>
 <br>
-<input type="date" name="datum2"  />
+<input type="date" name="datum2" />
 <br>
 
 <input type="submit" value="Filtriraj">

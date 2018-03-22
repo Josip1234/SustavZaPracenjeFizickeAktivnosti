@@ -40,8 +40,9 @@ public String sum(Model model) throws IOException {
 	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
 	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
 	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
-    model.addAttribute(lineChart.generate());
-    model.addAttribute(histogram.generirajHistogram());
+	lineChart.generate();
+	histogram.generirajHistogram();
+   
 	
 	return "sum";
 }
@@ -50,8 +51,9 @@ public String filter(@RequestParam("datum1")String Datum1,@RequestParam("datum2"
 	Authentication au=SecurityContextHolder.getContext().getAuthentication();
 	   String name=au.getName();
 	model.addAttribute("sum",summaryRepository.filtriraj(name, Datum1, Datum2));
-    model.addAttribute(lineChart.generirajFiltriranp(Datum1, Datum2));
-    model.addAttribute(histogram.generirajHistogram(Datum1,Datum2));
+	lineChart.generirajFiltriranp(Datum1, Datum2);
+    
+    histogram.generirajHistogram(Datum1,Datum2);
 	
 	return "sum";
 }
