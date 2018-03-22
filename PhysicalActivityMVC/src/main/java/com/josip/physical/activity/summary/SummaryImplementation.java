@@ -203,6 +203,39 @@ SpringDataSource dat;
 			
 			return list;
 	}
+	@Override
+	public List<SummaryActivity> filtriraj(String name,String datum1, String datum2) {
+		List<SummaryActivity> list=new ArrayList<SummaryActivity>();
+		dat=new SpringDataSource();
+			
+			if(null != dat.getObj()) {
+				String select="SELECT korisnikSum,ukupanBrojKoraka,ukupnoVrijemeAktivnosti,ukupnaPrijedjenaUdaljenost,prosjecnaBrzina,datum FROM `summarystatistika` WHERE (korisnikSum='"+name+"') AND (datum>='"+datum1+"' AND datum <'"+datum2+"')";
+				List<SummaryActivity> sum=dat.getObj().query(select,new RowMapper() {
+					public SummaryActivity mapRow(final ResultSet result,final int rowNum) throws SQLException{
+						SummaryActivity suma=new SummaryActivity();
+						suma.setKorisnik(result.getString("korisnikSum"));
+						suma.setUkupanBrojKoraka(result.getInt("ukupanBrojKoraka"));
+						suma.setUkupnoVrijeme(result.getDouble("ukupnoVrijemeAktivnosti"));
+						suma.setPrijedjeniKilometri(result.getDouble("ukupnaPrijedjenaUdaljenost"));
+						suma.setProsjecnaBrzina(result.getDouble("prosjecnaBrzina"));
+						suma.setDatum(result.getString("datum"));
+						
+						return suma;
+						
+					}});
+					
+				for (SummaryActivity summaryActivity : sum) {
+					list.add(summaryActivity);
+				}
+					
+				}
+				
+			
+			
+			
+			
+			return list;
+	}
 	
 
 }

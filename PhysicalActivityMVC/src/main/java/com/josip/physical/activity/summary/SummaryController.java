@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value= {"/","/physical","/sum"})
@@ -39,8 +40,18 @@ public String sum(Model model) throws IOException {
 	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
 	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
 	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
-    model.addAttribute(lineChart.generate(0));
+    model.addAttribute(lineChart.generate());
     model.addAttribute(histogram.generirajHistogram());
+	
+	return "sum";
+}
+@RequestMapping(value= {"/sum"},method=RequestMethod.POST)
+public String filter(@RequestParam("datum1")String Datum1,@RequestParam("datum2")String Datum2,Model model) throws IOException {
+	Authentication au=SecurityContextHolder.getContext().getAuthentication();
+	   String name=au.getName();
+	model.addAttribute("sum",summaryRepository.filtriraj(name, Datum1, Datum2));
+    model.addAttribute(lineChart.generirajFiltriranp(Datum1, Datum2));
+    model.addAttribute(histogram.generirajHistogram(Datum1,Datum2));
 	
 	return "sum";
 }

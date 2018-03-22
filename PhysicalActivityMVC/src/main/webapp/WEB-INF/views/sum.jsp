@@ -207,7 +207,22 @@ trajanja aktivnosti</a></p>
 
 </section>
 </section>
+<section id="filtriranje">
+<h2>Filtiranje ukupnih rezultata po datumu</h2>
+<form action="sum" method="post">
 
+<label>Unesi prvi datum:</label>
+<br>
+<input type="date" name="datum1" />
+<br>
+<label>Unesi drugi datum:</label>
+<br>
+<input type="date" name="datum2"  />
+<br>
+
+<input type="submit" value="Filtriraj">
+</form>
+</section>
 </div>
 <footer>
 
