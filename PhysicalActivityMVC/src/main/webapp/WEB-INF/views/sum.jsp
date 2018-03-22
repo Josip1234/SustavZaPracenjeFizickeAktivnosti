@@ -196,15 +196,21 @@ Ukupan broj koraka
 <section id="grafoviUkupnih">
 <h2>Graf za prikaz ukupne udaljenosti</h2>
 <p><a href="<c:url value='resources/LineChart.jpeg'/>">Aktivnost tijekom mjeseca</a></p>
+<p>Graf na lijevoj strani sadrži prijeđeno vrijeme u minutama. Na x koordinati su prikazani dani. 
+Graf prikazuje koliko je vremena korisnik bio aktivan tijekom pojedinog dana u mjesecu.</p>
 <h2>Graf koji prikazuje ukupnu prijeđenu udaljenost </h2>
 <p> <a href="<c:url value='resources/LineChart2.jpeg'/>">Prijeđena udaljenost po danu</a></p>
-<p></p>
+<p>Graf prikazuje broj prijeđenih kilometara po danu.</p>
+<h2>Hostogram ukupne aktivnosti</h2>
+<p> <a href="<c:url value='resources/Histogram.jpeg'/>">Ukupna aktivnost korisnika tijekom mjeseca i vremena 
+trajanja aktivnosti</a></p>
+
 </section>
 </section>
 
 </div>
 <footer>
-<form action="<c:url value="/sum"/>" method="post"><input type="submit" value="Stvori linijski graf" /></form>
+
 <a href="<c:url value="/home" />">Početna stranica</a> 
 </footer>
 <div id="odjava">

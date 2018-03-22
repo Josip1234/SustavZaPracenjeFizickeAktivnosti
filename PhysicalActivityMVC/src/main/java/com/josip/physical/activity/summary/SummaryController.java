@@ -24,36 +24,25 @@ private SummaryRepository summaryRepository;
 
 @Autowired
 LineChart lineChart;
-
+@Autowired
+Histogram histogram;
 @Autowired
 public SummaryController(SummaryRepository summaryRepository) {
 	this.summaryRepository=summaryRepository;
 	
 }
 @RequestMapping(value= {"/sum"},method=RequestMethod.GET)
-public String sum(Model model) {
+public String sum(Model model) throws IOException {
 	Authentication au=SecurityContextHolder.getContext().getAuthentication();
 	   String name=au.getName();
 	model.addAttribute("sum",summaryRepository.show(name));
 	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
 	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
 	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
+    model.addAttribute(lineChart.generate(0));
+    model.addAttribute(histogram.generirajHistogram());
+	
 	return "sum";
 }
-@RequestMapping(value= {"/sum"},method=RequestMethod.POST)
-public String kreirajGraf(Model model) throws IOException {
-    
-    
 
-			
-			
-	Authentication au=SecurityContextHolder.getContext().getAuthentication();
-			   String name=au.getName();
-	model.addAttribute("sum",summaryRepository.show(name));
-	model.addAttribute("ukupnoBicikliranja",summaryRepository.izlistaj(name));
-	model.addAttribute("ukupnoTrcanje",summaryRepository.lista(name));
-	model.addAttribute("ukupnoHodanja",summaryRepository.izlistajHod(name));
-	model.addAttribute(lineChart.generate(0));
-	return "sum";
-}
 }
