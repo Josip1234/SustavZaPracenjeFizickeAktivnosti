@@ -23,6 +23,9 @@
             android:id="@+id/Start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contextClickable="true"
+            android:cursorVisible="true"
+            android:focusable="auto"
             android:onClick="pokreniAktivnost"
             android:text="@string/pokreni" />
 
@@ -63,12 +66,19 @@
                         android:layout_height="match_parent"
                         android:minHeight="0dp">
 
+
                         <Button
                             android:id="@+id/brisi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:contextClickable="true"
+                            android:cursorVisible="true"
+                            android:elevation="0dp"
+                            android:focusable="auto"
                             android:onClick="izbrisiPrethodnePodatke"
                             android:text="@string/izbrisi_podatke" />
+
+
                     </TableRow>
 
 
