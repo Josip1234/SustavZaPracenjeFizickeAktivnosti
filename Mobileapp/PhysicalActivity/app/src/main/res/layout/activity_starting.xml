@@ -19,15 +19,7 @@
         android:background="@color/colorPrimary"
         android:clipToPadding="false">
 
-        <Button
-            android:id="@+id/Start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contextClickable="true"
-            android:cursorVisible="true"
-            android:focusable="auto"
-            android:onClick="pokreniAktivnost"
-            android:text="@string/pokreni" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,12 +34,16 @@
                 android:orientation="vertical"
                 tools:ignore="UselessParent">
 
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
 
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1">
+
 
                     <TableRow
                         android:layout_width="match_parent"
@@ -80,10 +76,25 @@
 
 
                     </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:minHeight="0dp">
+                    <Button
+                        android:id="@+id/Start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contextClickable="true"
+                        android:cursorVisible="true"
+                        android:focusable="auto"
+                        android:onClick="pokreniAktivnost"
+                        android:text="@string/pokreni" />
+                    </TableRow>
 
 
 
                 </TableLayout>
+                </ScrollView>
             </LinearLayout>
         </LinearLayout>
 
