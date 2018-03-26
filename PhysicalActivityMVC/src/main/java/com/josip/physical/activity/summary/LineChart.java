@@ -64,13 +64,15 @@ public class LineChart {
     	int height = 768; /* Height of the image */
     	File lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width, height);
-    	
+    	lineChart=new File("C:/xampp/tomcat/wtpwebapps/PhysicalActivityMVC/resources/LineChart.jpeg" );
+    	ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width, height);
     	JFreeChart lnch=ChartFactory.createLineChart("Udaljenost u kilometrima","Dan","Ukupna prijeđena udaljensot",lnd,PlotOrientation.VERTICAL,true,true,true);
     	width = 1366; /* Width of the image */
     	height = 768; /* Height of the image */
     	lineChart = new File( "C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/LineChart2.jpeg" );
     	ChartUtilities.saveChartAsJPEG(lineChart ,lnch, width, height);
-    		
+    	lineChart=new File("C:/xampp/tomcat/wtpwebapps/PhysicalActivityMVC/resources/LineChart2.jpeg" );
+    	ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width, height);
     
 }
     public void generirajFiltriranp(String datum1,String datum2) throws IOException {

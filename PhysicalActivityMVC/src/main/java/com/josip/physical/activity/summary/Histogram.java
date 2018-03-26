@@ -55,8 +55,9 @@ public class Histogram {
 		int width=1366;
 		int height=768;
 		File histogram=new File("C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/Histogram.jpeg");
+		File histogram2=new File("C:/xampp/tomcat/wtpwebapps/PhysicalActivityMVC/resources/Histogram.jpeg");
 		ChartUtilities.saveChartAsJPEG(histogram, barChart, width, height);
-		
+		ChartUtilities.saveChartAsJPEG(histogram2, barChart, width, height);
 	}
 	
 	public void generirajHistogram(String datum1,String datum2) throws IOException {
@@ -81,8 +82,9 @@ public class Histogram {
 		int width=1366;
 		int height=768;
 		File histogram=new File("C:/xampp/htdocs/SustavZaPracenjeFizickeAktivnosti/PhysicalActivityMVC/src/main/webapp/resources/Histogram.jpeg");
+		File histogram2=new File("C:/xampp/tomcat/wtpwebapps/PhysicalActivityMVC/resources/Histogram.jpeg");
 		ChartUtilities.saveChartAsJPEG(histogram, barChart, width, height);
-		
+		ChartUtilities.saveChartAsJPEG(histogram2, barChart, width, height);
 	}
 
 
