@@ -1,0 +1,12 @@
+com.josip.physical
+com.josip.physical.acitivty.REST
+com.josip.physical.activity.baza
+com.josip.physical.activity.biking
+com.josip.physical.activity.indeks_tjelesne_mase
+com.josip.physical.activity.login
+com.josip.physical.activity.regist
+com.josip.physical.activity.running
+com.josip.physical.activity.summary
+com.josip.physical.activity.walking
+com.josip.physical.activity.web
+com.josip.physical.controllers
