@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2018 at 05:56 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Jul 06, 2025 at 01:23 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bikingstatistika` (
   `id` int(11) NOT NULL,
-  `korisnikBike` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `korisnikBike` varchar(255) NOT NULL,
   `ukupnaUdaljenost` double NOT NULL,
   `ukupnoVrijemeAktivnosti` double NOT NULL,
   `prosjecnaBrzinaUkm` double NOT NULL,
@@ -57,13 +56,13 @@ INSERT INTO `bikingstatistika` (`id`, `korisnikBike`, `ukupnaUdaljenost`, `ukupn
 
 CREATE TABLE `registration` (
   `id` int(11) NOT NULL,
-  `OIB` varchar(11) COLLATE utf8_croatian_ci NOT NULL,
-  `ime` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `prezime` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `spol` varchar(1) COLLATE utf8_croatian_ci NOT NULL,
+  `OIB` varchar(11) NOT NULL,
+  `ime` varchar(255) NOT NULL,
+  `prezime` varchar(255) NOT NULL,
+  `spol` varchar(1) NOT NULL,
   `datumr` date NOT NULL,
-  `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `sifra` varchar(255) COLLATE utf8_croatian_ci NOT NULL
+  `email` varchar(255) NOT NULL,
+  `sifra` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci ROW_FORMAT=COMPACT;
 
 --
@@ -84,7 +83,7 @@ INSERT INTO `registration` (`id`, `OIB`, `ime`, `prezime`, `spol`, `datumr`, `em
 
 CREATE TABLE `runningstatistika` (
   `id` int(11) NOT NULL,
-  `korisnikRun` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `korisnikRun` varchar(255) NOT NULL,
   `ukupnaUdaljenost` double NOT NULL,
   `ukupnoVrijemeAktivnosti` double NOT NULL,
   `prosjecnaBrzinaUkm` double NOT NULL,
@@ -111,7 +110,7 @@ INSERT INTO `runningstatistika` (`id`, `korisnikRun`, `ukupnaUdaljenost`, `ukupn
 
 CREATE TABLE `summarystatistika` (
   `id` int(11) NOT NULL,
-  `korisnikSum` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `korisnikSum` varchar(255) NOT NULL,
   `ukupanBrojKoraka` int(11) NOT NULL,
   `ukupnoVrijemeAktivnosti` double NOT NULL,
   `ukupnaPrijedjenaUdaljenost` double NOT NULL,
@@ -144,7 +143,7 @@ INSERT INTO `summarystatistika` (`id`, `korisnikSum`, `ukupanBrojKoraka`, `ukupn
 
 CREATE TABLE `walkingstatistika` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
   `ukupnaUdaljenost` double NOT NULL,
   `ukupnoVrijemeAktivnosti` double NOT NULL,
   `prosjecnaBrzinaUkm` int(11) NOT NULL,
@@ -170,6 +169,32 @@ INSERT INTO `walkingstatistika` (`id`, `email`, `ukupnaUdaljenost`, `ukupnoVrije
 (11, 'jbosnjak3@gmail.com', 0, 9027, 0, '2018-03-17 20:20:06', 7),
 (12, 'jbosnjak3@gmail.com', 0, 5979, 0, '2018-03-17 20:20:17', 1),
 (13, 'jbosnjak3@gmail.com', 1.7767600472443834, 61765, 4, '2018-03-18 09:09:14', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `weight_daily_stats`
+--
+
+CREATE TABLE `weight_daily_stats` (
+  `id` int(11) NOT NULL,
+  `date_time` datetime NOT NULL,
+  `weight` float NOT NULL,
+  `difference` double NOT NULL,
+  `trend` enum('growing','falling','neutral') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `weight_daily_stats`
+--
+
+INSERT INTO `weight_daily_stats` (`id`, `date_time`, `weight`, `difference`, `trend`) VALUES
+(1, '2025-07-04 21:02:00', 91.3, 0, 'neutral'),
+(2, '2025-07-05 08:35:00', 90.7, 0.6, 'falling'),
+(3, '2025-07-05 15:39:00', 91, 0.3, 'growing'),
+(4, '2025-07-05 23:04:00', 91, 0, 'neutral'),
+(5, '2025-07-06 07:56:00', 90.1, 0.9, 'falling'),
+(6, '2025-07-06 09:54:00', 89.8, 0.3, 'falling');
 
 --
 -- Indexes for dumped tables
@@ -212,6 +237,12 @@ ALTER TABLE `walkingstatistika`
   ADD KEY `korisnik` (`email`);
 
 --
+-- Indexes for table `weight_daily_stats`
+--
+ALTER TABLE `weight_daily_stats`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -244,6 +275,12 @@ ALTER TABLE `summarystatistika`
 --
 ALTER TABLE `walkingstatistika`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `weight_daily_stats`
+--
+ALTER TABLE `weight_daily_stats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
