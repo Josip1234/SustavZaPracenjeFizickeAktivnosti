@@ -14,6 +14,14 @@
                  <div class="row">
                             <div class="col">
                                 <h2>Obrazac za unos težine</h2>
+                                <form action='<?php  echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method='post'>
+                                  <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+
+                                </form>
                             </div>
                  </div>
         </div>
