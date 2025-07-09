@@ -61,18 +61,46 @@ class Weight_stat
     function setImgDependingOnTrend()
     {
         $img = "";
-        $growingImgUrl = "icons/arrow_negative_trend.png";
-        $neutralImgUrl = "icons/arrow_neutral_trend.png";
-        $arrowPositiveTrend = "icons/arrow_positive_trend.png";
+        $arrowNegativeTrend = Image::OPEN_IMAGE_SRC."icons/arrow_negative_trend.png";
+        $arrowNeutralTrend = Image::OPEN_IMAGE_SRC."icons/arrow_neutral_trend.png";
+        $arrowPositiveTrend = Image::OPEN_IMAGE_SRC."icons/arrow_positive_trend.png";
 
         if ($this->getTrend() == "growing") {
-            $img = $growingImgUrl;
+            $img .= $arrowNegativeTrend;
+            $img .= Image::ADD_ALT_IMG;
+            $img .= "growing";
+            $img .= Image::SET_CLASS;
+            $img .= Image::CLOSE_IMG;
         } else if ($this->getTrend() == "neutral") {
-            $img = $neutralImgUrl;
+            $img = $arrowNeutralTrend;
+            $img .= Image::ADD_ALT_IMG;
+            $img .= "neutral";
+            $img .= Image::SET_CLASS;
+            $img .= Image::CLOSE_IMG;
         } else if ($this->getTrend() == "falling") {
             $img = $arrowPositiveTrend;
+            $img .= Image::ADD_ALT_IMG;
+            $img .= "falling";
+            $img .= Image::SET_CLASS;
+            $img .= Image::CLOSE_IMG;
         }
         return $img;
+    }
+
+    /**
+     * This function will be used to determine trend between inserted new value, and last known record in our database.
+     *  function will be used to set trend pictures when records is being printed
+     */
+    function determine_trend($last_record,$new_value){
+           $trend="";
+           if($last_record>$new_value){
+            $trend="growing";
+           }else if($last_record<$new_value){
+            $trend="falling";
+           }else{
+            $trend="neutral";
+           }
+           return $trend;
     }
 
 	public function getDateTime() {return $this->date_time;}

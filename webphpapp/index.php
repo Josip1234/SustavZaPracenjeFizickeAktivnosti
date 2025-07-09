@@ -34,20 +34,30 @@ include("classes/physical.php");
 include("classes/dbconn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
+    //postavi novu unesenu vrijednost
     $wstat=new Weight_stat($_POST["weight"]);
+    //ispiši novu unesenu vrijednost
     echo "Težina: ".$wstat->getWeight();
     echo "<br>";
+    //poveži se na bazu
     $conn=new DatabaseConnection();
     $conn->connectToDatabase();
     //izvlači se iz baze zanji zapis
-    $new_value=$conn->select_last_record_from_database("weight","weight_daily_stats");
-    echo "Zadnja poznata težina: ".$new_value;
+    $last_record=$conn->select_last_record_from_database("weight","weight_daily_stats");
+    echo "Zadnja poznata težina: ".$last_record;
      echo "<br>";
-    $razlika=$wstat->countDifference($new_value);
-    echo "Razlika u težini: ".$razlika;
+     //izračunaj razliku koja će se spremati u bazu
+    $razlika=$wstat->countDifference($last_record);
     $wstat->setDifference($razlika);
+    echo "Razlika u težini: ".$wstat->getDifference();
     echo "<br>";
-    
+    //odredi koji je trend trenutno ako je nova vrijednost veća od stare
+    //trend je rastući ako je manji trend je padajući ako je jednak onda je trend neutralan
+    $determinet=$wstat->determine_trend($wstat->getWeight(),$last_record);
+    $wstat->setTrend($determinet);
+    //postavi sliku ovisno o trendu.
+    echo $wstat->setImgDependingOnTrend();
+    //zatvori bazu
     $conn->close_database();
 
 }
