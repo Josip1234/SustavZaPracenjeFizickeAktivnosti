@@ -34,6 +34,9 @@ include("classes/physical.php");
 include("classes/dbconn.php");
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
+    if(empty($_POST["weight"])){
+        echo "NE postoji podatak za unos.";
+    }else{
     //postavi novu unesenu vrijednost
     $wstat=new Weight_stat($_POST["weight"]);
     //ispiši novu unesenu vrijednost
@@ -57,8 +60,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $wstat->setTrend($determinet);
     //postavi sliku ovisno o trendu.
     echo $wstat->setImgDependingOnTrend();
-    //zatvori bazu
+    //unesi podatke u bazu preko prepare statment-a
+    $query="INSERT INTO `weight_daily_stats` (`weight`, `difference`, `trend`) VALUES (?, ?, ?)";
+    $statement=$conn->getDbconn()->prepare($query);
+    //dohvati vrijednosti
+    $weight=$wstat->getWeight();
+    $difference=$wstat->getDifference();
+    $trend=$wstat->getTrend();
+    //bindaj parametre
+    $statement->bind_param('dds',$weight,$difference,$trend);
+    //ako je sve uspješno završilo javi poruku da je uspješno spremljen zapis u bazu
+    //ako nije javi da zapis nije spremljen.
+    if($statement->execute()){
+        header("Location: http://localhost/SustavZaPracenjeFizickeAktivnosti/webphpapp/index.php");
+         echo "Uspješno unesen zapis";
+    }else{
+        echo "Neuspješno unesen zapis";
+    }
     $conn->close_database();
+}
 
 }
 //echo Image::OPEN_IMAGE_SRC.'icons/arrow_neutral_trend.png'.Image::ADD_ALT_IMG.'neutral'.Image::SET_CLASS.Image::CLOSE_IMG;

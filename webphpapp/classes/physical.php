@@ -11,6 +11,11 @@ class Weight_stat
     {
         $this->weight = $weight;
     }
+      
+    public function __destruct()
+    {
+        $this->weight = "";
+    }
 
 
     public function getWeight()
