@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2025 at 12:45 PM
+-- Generation Time: Jul 09, 2025 at 09:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -200,7 +200,8 @@ INSERT INTO `weight_daily_stats` (`id`, `date_time`, `weight`, `difference`, `tr
 (9, '2025-07-08 07:35:10', 91.1, 0.1, 'falling'),
 (10, '2025-07-08 09:36:31', 90.5, 0.6, 'falling'),
 (11, '2025-07-08 13:31:02', 91.3, 0.8, 'growing'),
-(12, '2025-07-09 07:39:39', 91.6, 0.3, 'growing');
+(12, '2025-07-09 07:39:39', 91.6, 0.3, 'growing'),
+(13, '2025-07-09 21:56:01', 92.4, 0.8, 'growing');
 
 --
 -- Indexes for dumped tables
@@ -286,7 +287,7 @@ ALTER TABLE `walkingstatistika`
 -- AUTO_INCREMENT for table `weight_daily_stats`
 --
 ALTER TABLE `weight_daily_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
