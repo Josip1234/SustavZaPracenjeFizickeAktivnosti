@@ -47,7 +47,33 @@ class DatabaseConnection{
         $result=$execute_query->fetch_column();
         return $result;
     }
-
+    //return array of results as a result
+    public function select_number_of_records_desc_sort($what_to_select,$table,$order_by,$limit){
+        $array_result=array();
+        $sql_query="SELECT ";
+        //for any of the value of given array concatinate to sql query 
+        //they are values from tables which we want to get
+        //need to check last element in the field 
+        //we need a index to increase it if index equal end of array do not concatinate ,
+        $size_of_array=sizeof($what_to_select);
+        $index=1;
+        foreach ($what_to_select as $value) {
+            if($index==$size_of_array){
+                $sql_query .= "".$value."";
+            }else if($index<$size_of_array){
+                $sql_query .= "".$value.",";
+            }
+            $index++;
+        }
+        $sql_query .= " FROM $table ORDER BY $order_by DESC LIMIT $limit;";
+        $exe=mysqli_query($this->getDbconn(),$sql_query);
+        while($res=mysqli_fetch_array($exe)){
+            for($i=0;$i<$size_of_array;$i++){
+                $array_result[]=$res[$i];
+            }
+        }
+        return $array_result;
+    }
 	
 
 }

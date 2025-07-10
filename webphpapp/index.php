@@ -9,10 +9,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles/physical.css">
-<script src="script/physical.js"></script>
+
 </head>
 <body>
+<?php 
+include("classes/physical.php");
+include("classes/dbconn.php");
 
+?>
         <div class="container">
                  <div class="row">
                             <div class="col">
@@ -27,15 +31,17 @@
 </div>
                                 </form>
                             </div>
+                               <div class="col">
+                        <h2>Posljednjih 10 zapisa</h2>
+                        <?php print_data(); ?>
+                    </div>
                  </div>
-        </div>
-<?php 
-include("classes/physical.php");
-include("classes/dbconn.php");
+             
+                 <?php 
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($_POST["weight"])){
-        echo "NE postoji podatak za unos.";
+        echo "<div class='row'><div class='col'>Ne postoji podatak za unos.</div></div>";
     }else{
     //postavi novu unesenu vrijednost
     $wstat=new Weight_stat($_POST["weight"]);
@@ -72,18 +78,70 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     //ako je sve uspješno završilo javi poruku da je uspješno spremljen zapis u bazu
     //ako nije javi da zapis nije spremljen.
     if($statement->execute()){
-        header("Location: http://localhost/SustavZaPracenjeFizickeAktivnosti/webphpapp/index.php");
-         echo "Uspješno unesen zapis";
+        
+         echo "<div class='row'><div class='col'>Uspješno unesen zapis</div></div>";
     }else{
-        echo "Neuspješno unesen zapis";
+        echo "<div class='row'><div class='col'>Neuspješno unesen zapis</div></div>";
     }
     $conn->close_database();
 }
 
+}else{
+    
 }
 //echo Image::OPEN_IMAGE_SRC.'icons/arrow_neutral_trend.png'.Image::ADD_ALT_IMG.'neutral'.Image::SET_CLASS.Image::CLOSE_IMG;
 
 
+function print_data(){
+$data=array();
+$dbc=new DatabaseConnection();
+$dbc->connectToDatabase();
+//we will select last 10 values    
+$select_this_values=array('date_time','weight','difference','trend');
+$from_this_table="weight_daily_stats";
+$order_by_this_column="date_time";
+$limit_data=10;
+$data=$dbc->select_number_of_records_desc_sort($select_this_values,$from_this_table,$order_by_this_column,$limit_data);
+$index=0;
+echo "<table class='table table-striped'>
+    <thead>
+        <tr>
+            <th scope='col'>Datum i vrijeme</th>
+            <th scope='col'>Težina</th>
+            <th scope='col'>Razlika</th>
+             <th scope='col'>Trend</th>
+        </tr>
+    </thead>
+    <tbody>";
+    //need 10 rows, and 4 columns data per row
+    for ($row=0; $row < $limit_data; $row++) { 
+        //field of rows
+        echo "<tr>";  
+  
+        for($col=0;$col<sizeof($select_this_values);$col++){
+                 
+                 echo "<td>".$data[$index]."</td>";
+                 $index++;
+              
+              
+        }
+        echo "</tr>";
+    }
+       
+   echo "</tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>";
+$dbc->close_database();
+}
+
 ?>
+
+                
+        </div>
+
 </body>
 </html>
