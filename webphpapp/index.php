@@ -24,10 +24,10 @@ include("classes/dbconn.php");
                                 <form action='<?php  echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method='post'>
                                   <div class="input-group mb-3">
   <span class="input-group-text" id="weight">Unesi svoju trenutnu težinu:</span>
-  <input type="number" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1">
+  <input type="number" id="weight" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1" value="0.0" min="0.0">
 </div>
                          <div class="input-group mb-3">
-               <input type="submit" class="btn btn-light" value="Unesi svoju težinu">
+               <input type="submit" class="btn btn-light" value="Unesi svoju težinu" onclick="enable_button()">
 </div>
                                 </form>
                             </div>
@@ -40,32 +40,32 @@ include("classes/dbconn.php");
                  <?php 
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-    if(empty($_POST["weight"])){
+    if($_POST["weight"]==0.0){
         echo "<div class='row'><div class='col'>Ne postoji podatak za unos.</div></div>";
     }else{
     //postavi novu unesenu vrijednost
     $wstat=new Weight_stat($_POST["weight"]);
     //ispiši novu unesenu vrijednost
-    echo "Težina: ".$wstat->getWeight();
-    echo "<br>";
+    //echo "Težina: ".$wstat->getWeight();
+    //echo "<br>";
     //poveži se na bazu
     $conn=new DatabaseConnection();
     $conn->connectToDatabase();
     //izvlači se iz baze zanji zapis
     $last_record=$conn->select_last_record_from_database("weight","weight_daily_stats");
-    echo "Zadnja poznata težina: ".$last_record;
-     echo "<br>";
+    //echo "Zadnja poznata težina: ".$last_record;
+     //echo "<br>";
      //izračunaj razliku koja će se spremati u bazu
     $razlika=$wstat->countDifference($last_record);
     $wstat->setDifference($razlika);
-    echo "Razlika u težini: ".$wstat->getDifference();
-    echo "<br>";
+    //echo "Razlika u težini: ".$wstat->getDifference();
+    //echo "<br>";
     //odredi koji je trend trenutno ako je nova vrijednost veća od stare
     //trend je rastući ako je manji trend je padajući ako je jednak onda je trend neutralan
     $determinet=$wstat->determine_trend($wstat->getWeight(),$last_record);
     $wstat->setTrend($determinet);
     //postavi sliku ovisno o trendu.
-    echo $wstat->setImgDependingOnTrend();
+    //echo $wstat->setImgDependingOnTrend();
     //unesi podatke u bazu preko prepare statment-a
     $query="INSERT INTO `weight_daily_stats` (`weight`, `difference`, `trend`) VALUES (?, ?, ?)";
     $statement=$conn->getDbconn()->prepare($query);
@@ -79,7 +79,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     //ako nije javi da zapis nije spremljen.
     if($statement->execute()){
         
+         
+         $wstat->setWeight("");
+         $wstat->setDifference(0.0);
+         $wstat->setTrend("");
+         $wstat->setDateTime("");
+         $_POST["weight"]=0.0;
+         header('Location: index.php');
          echo "<div class='row'><div class='col'>Uspješno unesen zapis</div></div>";
+
     }else{
         echo "<div class='row'><div class='col'>Neuspješno unesen zapis</div></div>";
     }
@@ -129,11 +137,6 @@ echo "<table class='table table-striped'>
     }
        
    echo "</tbody>
-    <tfoot>
-        <tr>
-            <td><button id='reload' onclick='reload_page()' class='btn btn-light'>Osvježi stranicu</button></td>
-        </tr>
-    </tfoot>
 </table>";
 $dbc->close_database();
 }
