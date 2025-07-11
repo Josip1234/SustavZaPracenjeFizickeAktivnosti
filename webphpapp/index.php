@@ -15,7 +15,7 @@
 <?php 
 include("classes/physical.php");
 include("classes/dbconn.php");
-
+include("classes/message.php");
 ?>
         <div class="container">
                  <div class="row">
@@ -38,6 +38,9 @@ include("classes/dbconn.php");
                  </div>
              
                  <?php 
+                 if(isset($_GET["message"])){
+                   echo "<div class='row'><div class='col'>Uspješno unesen zapis</div></div>";
+                 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if($_POST["weight"]==0.0){
@@ -77,6 +80,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $statement->bind_param('dds',$weight,$difference,$trend);
     //ako je sve uspješno završilo javi poruku da je uspješno spremljen zapis u bazu
     //ako nije javi da zapis nije spremljen.
+    
     if($statement->execute()){
         
          
@@ -85,8 +89,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
          $wstat->setTrend("");
          $wstat->setDateTime("");
          $_POST["weight"]=0.0;
-         header('Location: index.php');
-         echo "<div class='row'><div class='col'>Uspješno unesen zapis</div></div>";
+         header('Location: index.php?message=success');
+       
+        
 
     }else{
         echo "<div class='row'><div class='col'>Neuspješno unesen zapis</div></div>";
