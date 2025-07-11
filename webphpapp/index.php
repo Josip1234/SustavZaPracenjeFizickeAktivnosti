@@ -9,7 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles/physical.css">
-
+<script src="script/physical.js"></script>
 </head>
 <body>
 <?php 
@@ -27,7 +27,7 @@ include("classes/dbconn.php");
   <input type="number" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1">
 </div>
                          <div class="input-group mb-3">
-               <input type="submit" class="btn btn btn-light" value="Unesi svoju težinu">
+               <input type="submit" class="btn btn-light" value="Unesi svoju težinu">
 </div>
                                 </form>
                             </div>
@@ -131,7 +131,7 @@ echo "<table class='table table-striped'>
    echo "</tbody>
     <tfoot>
         <tr>
-            <td></td>
+            <td><button id='reload' onclick='reload_page()' class='btn btn-light'>Osvježi stranicu</button></td>
         </tr>
     </tfoot>
 </table>";
