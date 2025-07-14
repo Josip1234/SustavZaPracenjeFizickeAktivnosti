@@ -119,10 +119,10 @@ $index=0;
 echo "<table class='table table-striped'>
     <thead>
         <tr>
-            <th scope='col'>Datum i vrijeme</th>
-            <th scope='col'>Težina</th>
-            <th scope='col'>Razlika</th>
-             <th scope='col'>Trend</th>
+            <th scope='col' class='change_font'>Datum i vrijeme</th>
+            <th scope='col' class='change_font' >Težina</th>
+            <th scope='col' class='change_font'>Razlika</th>
+             <th scope='col' class='change_font'>Trend</th>
         </tr>
     </thead>
     <tbody>";
@@ -132,8 +132,15 @@ echo "<table class='table table-striped'>
         echo "<tr>";  
   
         for($col=0;$col<sizeof($select_this_values);$col++){
-                 
-                 echo "<td>".$data[$index]."</td>";
+                 $trend=new Weight_stat(0.0);
+                 if($data[$index]==$trend->trend_from_database($data[$index])){
+                    $trend->setTrend($data[$index]);
+                    $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
+                    echo "<td class='change_font'>".$img."</td>";
+                 }else{
+                    echo "<td class='change_font'>".$data[$index]."</td>";
+                 }
+                
                  $index++;
               
               

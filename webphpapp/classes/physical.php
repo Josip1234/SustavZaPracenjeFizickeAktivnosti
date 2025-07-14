@@ -6,6 +6,10 @@ class Weight_stat
     private $difference;
     private $trend;
     private $date_time;
+    const GROWING="growing";
+    const FALLING="falling";
+    const NEUTRAL="neutral";
+    const IMAGE_SMALL_SIZE="small";
 
     public function __construct($weight)
     {
@@ -63,12 +67,19 @@ class Weight_stat
     //this function will set picture trend if trend is growing then arrow will be growing arrow
     //negative trend in our case is weight grow, positive is weight fall, neutral there is no difference between 
     //two values
-    function setImgDependingOnTrend()
+    function setImgDependingOnTrend($image_size)
     {
         $img = "";
+        if($image_size==Weight_stat::IMAGE_SMALL_SIZE){
+       $arrowNegativeTrend = Image::OPEN_IMAGE_SRC."icons/arrow_negative_trend_small.png";
+        $arrowNeutralTrend = Image::OPEN_IMAGE_SRC."icons/arrow_neutral_trend_small.png";
+        $arrowPositiveTrend = Image::OPEN_IMAGE_SRC."icons/arrow_positive_trend_small.png";
+        }else{
         $arrowNegativeTrend = Image::OPEN_IMAGE_SRC."icons/arrow_negative_trend.png";
         $arrowNeutralTrend = Image::OPEN_IMAGE_SRC."icons/arrow_neutral_trend.png";
         $arrowPositiveTrend = Image::OPEN_IMAGE_SRC."icons/arrow_positive_trend.png";
+        }
+       
 
         if ($this->getTrend() == "growing") {
             $img .= $arrowNegativeTrend;
@@ -107,6 +118,22 @@ class Weight_stat
            }
            return $trend;
     }
+
+    //additional function will return trend depending on valuse from database
+    function trend_from_database($value_from_database){
+           $trend="";
+           if($value_from_database==Weight_stat::GROWING){
+            $trend=Weight_stat::GROWING;
+           }else if($value_from_database==Weight_stat::FALLING){
+            $trend=Weight_stat::FALLING;
+           }else{
+            $trend=Weight_stat::NEUTRAL;
+           }
+           return $trend;
+    }
+
+
+
 
 	public function getDateTime() {return $this->date_time;}
 

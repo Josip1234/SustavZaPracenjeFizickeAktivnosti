@@ -1,4 +1,16 @@
 .neutral{
-    width: 3%;
+    white-space: nowrap;
+    width: 100%;
     height: auto;
+    white-space: nowrap;
+    
 }
+.change_font{
+    font-size: 100%;
+     white-space: nowrap;
+}
+table{
+    width: 50%;
+    white-space: nowrap;
+}
+
