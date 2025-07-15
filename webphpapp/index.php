@@ -23,7 +23,7 @@ include("classes/message.php");
                                 <h2>Obrazac za unos težine</h2>
                                 <form action='<?php  echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>' method='post'>
                                   <div class="input-group mb-3">
-  <span class="input-group-text" id="weight">Unesi svoju trenutnu težinu:</span>
+  <span class="input-group-text">Unesi svoju trenutnu težinu:</span>
   <input type="number" id="weight" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1" value="0.0" min="0.0">
 </div>
                          <div class="input-group mb-3">
@@ -38,14 +38,19 @@ include("classes/message.php");
                  </div>
              
                  <?php 
-                 if(isset($_GET["message"])){
-                   echo "<div class='row'><div class='col'>Uspješno unesen zapis</div></div>";
-                 }
-
+           
+$message=new Message("");
+$message->setMessageValue("<div class='row'><div class='col'>Uspješno unesen zapis</div></div>");
+    if(isset($_GET["message"])){
+echo $message->getMessageValue();
+    }else{
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if($_POST["weight"]==0.0){
         echo "<div class='row'><div class='col'>Ne postoji podatak za unos.</div></div>";
     }else{
+        if($message->getMessageValue()!=""){
+            echo $message->getMessageValue();
+        }
     //postavi novu unesenu vrijednost
     $wstat=new Weight_stat($_POST["weight"]);
     //ispiši novu unesenu vrijednost
@@ -80,27 +85,22 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $statement->bind_param('dds',$weight,$difference,$trend);
     //ako je sve uspješno završilo javi poruku da je uspješno spremljen zapis u bazu
     //ako nije javi da zapis nije spremljen.
-    
     if($statement->execute()){
-        
-         
-         $wstat->setWeight("");
+        //location.replace does not have option to get back to old documet it replaces current document
+       echo "<script type='text/javascript'> location.replace('index.php?message=success'); </script>";
+        $wstat->setWeight("");
          $wstat->setDifference(0.0);
          $wstat->setTrend("");
          $wstat->setDateTime("");
          $_POST["weight"]=0.0;
-         header('Location: index.php?message=success');
-       
-        
-
+         $conn->close_database();
     }else{
         echo "<div class='row'><div class='col'>Neuspješno unesen zapis</div></div>";
+          $conn->close_database();
     }
-    $conn->close_database();
+  
 }
-
-}else{
-    
+}
 }
 //echo Image::OPEN_IMAGE_SRC.'icons/arrow_neutral_trend.png'.Image::ADD_ALT_IMG.'neutral'.Image::SET_CLASS.Image::CLOSE_IMG;
 
