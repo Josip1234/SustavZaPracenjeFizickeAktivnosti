@@ -137,8 +137,10 @@ echo "<table class='table table-striped'>
                     $trend->setTrend($data[$index]);
                     $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
                     echo "<td class='change_font'>".$img."</td>";
+                     echo "<td><button class='btn btn-light'>Izbriši vrijednost</button></td>";
                  }else{
                     echo "<td class='change_font'>".$data[$index]."</td>";
+                   
                  }
                 
                  $index++;
