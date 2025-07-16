@@ -139,31 +139,7 @@ echo "<table class='table table-striped'>
                     $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
                     echo "<td class='change_font'>".$img."</td>";
                      echo "<td><button class='btn btn-light'>Izbriši vrijednost</button></td>";
-                 }else if($index==0){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }else if($index==5){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }else if($index==10){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }else if($index==15){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==20){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==25){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==30){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==35){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==40){
-                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
-                 }
-                 else if($index==45){
+                 }else if($index%5==0){
                       echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
                  }
                  else{
