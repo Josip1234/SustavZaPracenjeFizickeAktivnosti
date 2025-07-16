@@ -131,15 +131,20 @@ echo "<table class='table table-striped'>
     for ($row=0; $row < $limit_data; $row++) { 
         //field of rows
         echo "<tr>";  
-  
+        //print every 5th id variable
+        $print_every_fifth=0;
         for($col=0;$col<sizeof($select_this_values);$col++){
                  $trend=new Weight_stat(0,0.0);
                  if($data[$index]==$trend->trend_from_database($data[$index])){
                     $trend->setTrend($data[$index]);
                     $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
                     echo "<td class='change_font'>".$img."</td>";
-                     echo "<td><button class='btn btn-light'>Izbriši vrijednost</button></td>";
+                    
+                        echo "<td><button class='btn btn-light' onclick='fetchIdForDeletion(".'"'.$data[$print_every_fifth].'"'.")'>Izbriši vrijednost</button></td>";
+                     
+                   
                  }else if($index%5==0){
+                    $print_every_fifth=$index;
                       echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
                  }
                  else{

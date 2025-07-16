@@ -10,3 +10,6 @@ function reload_page(){
 function enable_button(){
      document.getElementById('Button').disabled=false;
 }
+function fetchIdForDeletion(id){
+     alert(id);
+}
