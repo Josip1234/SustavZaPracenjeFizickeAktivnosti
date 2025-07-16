@@ -2,6 +2,7 @@
 include("classes/images.php");
 class Weight_stat
 {
+    private $id;
     private $weight;
     private $difference;
     private $trend;
@@ -11,14 +12,19 @@ class Weight_stat
     const NEUTRAL="neutral";
     const IMAGE_SMALL_SIZE="small";
 
-    public function __construct($weight)
+    public function __construct($id,$weight)
     {
+        $this->id=$id;
         $this->weight = $weight;
-    }
-      
+    }  
+
     public function __destruct()
     {
         $this->weight = "";
+    }
+
+    public function getId(){
+        return $this->id;
     }
 
 
@@ -50,6 +56,9 @@ class Weight_stat
     public function setTrend($trend)
     {
         $this->trend = $trend;
+    }
+    public function setId($id){
+        $this->id=$id;
     }
 
     //as difference weight, it will count last value and previous weight value 

@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             echo $message->getMessageValue();
         }
     //postavi novu unesenu vrijednost
-    $wstat=new Weight_stat($_POST["weight"]);
+    $wstat=new Weight_stat(0,$_POST["weight"]);
     //ispiši novu unesenu vrijednost
     //echo "Težina: ".$wstat->getWeight();
     //echo "<br>";
@@ -110,7 +110,7 @@ $data=array();
 $dbc=new DatabaseConnection();
 $dbc->connectToDatabase();
 //we will select last 10 values    
-$select_this_values=array('date_time','weight','difference','trend');
+$select_this_values=array('id','date_time','weight','difference','trend');
 $from_this_table="weight_daily_stats";
 $order_by_this_column="date_time";
 $limit_data=10;
@@ -119,6 +119,7 @@ $index=0;
 echo "<table class='table table-striped'>
     <thead>
         <tr>
+        <th scope='col' class='change_font'>Id</th>
             <th scope='col' class='change_font'>Datum i vrijeme</th>
             <th scope='col' class='change_font' >Težina</th>
             <th scope='col' class='change_font'>Razlika</th>
@@ -132,13 +133,40 @@ echo "<table class='table table-striped'>
         echo "<tr>";  
   
         for($col=0;$col<sizeof($select_this_values);$col++){
-                 $trend=new Weight_stat(0.0);
+                 $trend=new Weight_stat(0,0.0);
                  if($data[$index]==$trend->trend_from_database($data[$index])){
                     $trend->setTrend($data[$index]);
                     $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
                     echo "<td class='change_font'>".$img."</td>";
                      echo "<td><button class='btn btn-light'>Izbriši vrijednost</button></td>";
-                 }else{
+                 }else if($index==0){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }else if($index==5){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }else if($index==10){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }else if($index==15){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==20){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==25){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==30){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==35){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==40){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else if($index==45){
+                      echo "<td class='change_font' id='".$data[$index]."'>".$data[$index]."</td>";
+                 }
+                 else{
                     echo "<td class='change_font'>".$data[$index]."</td>";
                    
                  }
