@@ -40,13 +40,19 @@ include("classes/message.php");
                  <?php 
            
 $message=new Message("");
-$message->setMessageValue("<div class='row'><div class='col'>Uspješno unesen zapis</div></div>");
+$message->setMessageValue("Uspješno unesen zapis");
     if(isset($_GET["message"])){
 echo $message->getMessageValue();
-    }else{
+    }else if(isset($_GET['id'])){
+     //delete database value
+      $message->setMessageValue("Zapis sa id-om ".$_GET['id']." je uspješno izbrisan.");
+      echo $message->getMessageValue();
+    }
+    else{
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if($_POST["weight"]==0.0){
-        echo "<div class='row'><div class='col'>Ne postoji podatak za unos.</div></div>";
+        $message->setMessageValue("Ne postoji podatak za unos.");
+        echo $message->getMessageValue();
     }else{
         if($message->getMessageValue()!=""){
             echo $message->getMessageValue();
