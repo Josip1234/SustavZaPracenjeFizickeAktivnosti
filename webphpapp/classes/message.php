@@ -1,6 +1,7 @@
 <?php
 class Message
 {
+    const ERROR_DELETING_RECORD="Cannot delete record from database. There is a problem.";
     private $message_value;
     public function __construct($message_value)
     {

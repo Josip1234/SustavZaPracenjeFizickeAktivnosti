@@ -16,6 +16,9 @@
 include("classes/physical.php");
 include("classes/dbconn.php");
 include("classes/message.php");
+   //poveži se na bazu
+    $conn=new DatabaseConnection();
+    $conn->connectToDatabase();
 ?>
         <div class="container">
                  <div class="row">
@@ -43,10 +46,20 @@ $message=new Message("");
 $message->setMessageValue("Uspješno unesen zapis");
     if(isset($_GET["message"])){
 echo $message->getMessageValue();
+    }else if(isset($_GET['deleted'])){
+$message->setMessageValue("Zapis je uspješno izbrisan.");
+echo $message->getMessageValue();
     }else if(isset($_GET['id'])){
      //delete database value
-      $message->setMessageValue("Zapis sa id-om ".$_GET['id']." je uspješno izbrisan.");
-      echo $message->getMessageValue();
+      $deleted=0;
+      $deleted=$conn->delete_from_database(Weight_stat::TABLE_NAME,"*",$_GET['id'],Weight_stat::COMPARE_COLUMN_FOR_DELETION,"i");
+        echo "<script type='text/javascript'> location.replace('index.php?deleted=success'); </script>";
+      if($deleted=1){
+         echo $message->getMessageValue();
+      }else{
+        echo Message::ERROR_DELETING_RECORD;
+      }
+    
     }
     else{
 if($_SERVER["REQUEST_METHOD"]=="POST"){
@@ -62,9 +75,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     //ispiši novu unesenu vrijednost
     //echo "Težina: ".$wstat->getWeight();
     //echo "<br>";
-    //poveži se na bazu
-    $conn=new DatabaseConnection();
-    $conn->connectToDatabase();
     //izvlači se iz baze zanji zapis
     $last_record=$conn->select_last_record_from_database("weight","weight_daily_stats");
     //echo "Zadnja poznata težina: ".$last_record;

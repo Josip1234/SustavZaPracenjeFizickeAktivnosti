@@ -11,6 +11,8 @@ class Weight_stat
     const FALLING="falling";
     const NEUTRAL="neutral";
     const IMAGE_SMALL_SIZE="small";
+    const TABLE_NAME="weight_daily_stats";
+    const COMPARE_COLUMN_FOR_DELETION="id";
 
     public function __construct($id,$weight)
     {

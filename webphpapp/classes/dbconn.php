@@ -74,6 +74,46 @@ class DatabaseConnection{
         }
         return $array_result;
     }
+   
+    public function delete_from_database($table,$values,$id,$compare_column,$bind_variable){
+        $deleted=0;
+        $single_value="";
+        $multiple_values=array();
+        $query_string="DELETE ";
+        if(gettype($values)=="string"){
+            if($values=="*"){
+                $values=" ";
+            }
+           $single_value=$values;
+        }else{
+          $single_value=$values;
+        } 
+        if($single_value==$values){
+              $query_string .= $single_value;
+        }else{
+              $multiple_values=$values;
+              foreach($multiple_values as $val){
+                $query_string .= $val.",";
+              }
+        }
+        $query_string .= " FROM ";
+        $query_string .= $table;
+        $query_string .= " WHERE ";
+        $query_string .= $compare_column;
+        $query_string .= "=?";
+        //$query_string .= $id.";";
+        $statement=$this->getDbconn()->prepare($query_string);
+        $statement->bind_param($bind_variable,$id);
+        if($statement->execute()){
+          $deleted=1;
+        }else{
+            $deleted=0;
+        }
+     return $deleted;
+
+
+
+    }
 	
 
 }
