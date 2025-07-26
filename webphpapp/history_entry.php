@@ -48,6 +48,7 @@
         </div>
  <?php 
    include("classes/physical.php");
+   include("classes/dbconn.php");
    $physical = new Weight_stat(0,0.0,"");
    if(isset($_POST['date_time']) && isset($_POST['weight'])){
         $physical->setWeight($_POST['weight']);
@@ -62,6 +63,11 @@
         $physical->setTrend($trend);
         $image=$physical->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
         echo "Trend:".$image."<br>";
+        $dbconn=new DatabaseConnection();
+        $dbconn->connectToDatabase();
+        $physical->setDateTime($dbconn->select_record_with_smallest_integer_value(Weight_stat::DATE_COLUMN_NAME,Weight_stat::TABLE_NAME,Weight_stat::INTEGER_COLUMN_FOR_SELECT_RECORD_WITH_LAST_DATE));
+        echo "Posljednji datum čiji je prvi zapis upisan u bazu:".$physical->getDateTime()."<br>";
+        $dbconn->close_database();
    }
 
 

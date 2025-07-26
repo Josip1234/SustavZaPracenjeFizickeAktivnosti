@@ -114,6 +114,23 @@ class DatabaseConnection{
 
 
     }
+    //this will be used to get smallest id from table weight_daily_stats
+    public function select_record_with_smallest_integer_value($what_column,$what_table,$what_integer_column){
+        //SELECT `date_time` FROM `weight_daily_stats` WHERE id = (SELECT MIN(id) FROM weight_daily_stats);
+        $record="";
+        $query="SELECT $what_column FROM $what_table WHERE $what_integer_column = (SELECT MIN($what_integer_column) FROM $what_table)";
+        $statement=$this->getDbconn()->prepare($query);
+        if($statement->execute()){
+            $result=$statement->get_result();
+            while($row=$result->fetch_array()){
+                foreach ($row as $value) {
+                    $record=$value;
+                }
+            }
+        }
+        return $record;
+
+    }
 	
 
 }
