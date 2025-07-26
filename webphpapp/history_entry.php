@@ -67,6 +67,8 @@
         $dbconn->connectToDatabase();
         $physical->setDateTime($dbconn->select_record_with_smallest_integer_value(Weight_stat::DATE_COLUMN_NAME,Weight_stat::TABLE_NAME,Weight_stat::INTEGER_COLUMN_FOR_SELECT_RECORD_WITH_LAST_DATE));
         echo "Posljednji datum čiji je prvi zapis upisan u bazu:".$physical->getDateTime()."<br>";
+        $records=array();
+        $records=$dbconn->select_all_of_records_less_than_date(Weight_stat::TABLE_NAME,$_POST['date_time'],Weight_stat::DATE_COLUMN_NAME);
         $dbconn->close_database();
    }
 
