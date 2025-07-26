@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             echo $message->getMessageValue();
         }
     //postavi novu unesenu vrijednost
-    $wstat=new Weight_stat(0,$_POST["weight"],"");
+    $wstat=new Weight_stat(0,$_POST["weight"],"","",0.0);
     //ispiši novu unesenu vrijednost
     //echo "Težina: ".$wstat->getWeight();
     //echo "<br>";
@@ -165,7 +165,7 @@ echo "<table class='table table-striped'>
         //print every 5th id variable
         $print_every_fifth=0;
         for($col=0;$col<sizeof($select_this_values);$col++){
-                 $trend=new Weight_stat(0,0.0,"");
+                 $trend=new Weight_stat(0,0.0,"","",0.0);
                  if($data[$index]==$trend->trend_from_database($data[$index])){
                     $trend->setTrend($data[$index]);
                     $img=$trend->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);

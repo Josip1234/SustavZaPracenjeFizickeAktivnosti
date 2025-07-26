@@ -16,11 +16,13 @@ class Weight_stat
     const DATE_COLUMN_NAME="date_time";
     const INTEGER_COLUMN_FOR_SELECT_RECORD_WITH_LAST_DATE="id";
 
-    public function __construct($id,$weight,$date_time)
+    public function __construct($id,$weight,$date_time,$trend,$difference)
     {
         $this->id=$id;
         $this->weight = $weight;
         $this->date_time=$date_time;
+        $this->trend=$trend;
+        $this->difference=$difference;
     }  
 
     public function __destruct()

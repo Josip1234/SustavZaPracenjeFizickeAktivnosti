@@ -41,35 +41,37 @@
   <span class="input-group-text">Unesi svoju trenutnu težinu:</span>
   <input type="number" id="weight" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1" value="0.0" min="0.0">
 </div>
+ <div class="input-group mb-3">
+   <span class="input-group-text">Unesi trend:</span>
+<select class="form-select form-select-sm" aria-label="Small select example" name="trend">
+  <option selected>Odaberi trend</option>
+  <option value="growing">Rastući</option>
+  <option value="neutral">Neutralni</option>
+  <option value="falling">Padajući</option>
+</select>
+ </div>
+ <div class="input-group mb-3">
+  <span class="input-group-text">Unesi razliku:</span>
+  <input type="number" id="difference" class="form-control"  aria-label="weight" aria-describedby="weight" name="difference" step="0.1" value="0.0" min="0.0">
+</div>
                          <div class="input-group mb-3">
-               <input type="submit" class="btn btn-light" value="Unesi svoje podatke" onclick="enable_button()">
+               <input type="submit" class="btn btn-light" value="Unesi podatke" onclick="enable_button()">
 </div>
                                 </form>
         </div>
  <?php 
    include("classes/physical.php");
    include("classes/dbconn.php");
-   $physical = new Weight_stat(0,0.0,"");
-   if(isset($_POST['date_time']) && isset($_POST['weight'])){
-        $physical->setWeight($_POST['weight']);
-        $physical->setDateTime($_POST['date_time']);
+
+   if(isset($_POST['date_time']) && isset($_POST['weight']) && isset($_POST['trend']) && isset($_POST['difference'])){
+          $physical = new Weight_stat(0,$_POST['weight'],$_POST['date_time'],$_POST['trend'],$_POST['difference']);
         echo "Datum mjerenja: ".$physical->getDateTime()."<br>";
         echo "Težina:".$physical->getWeight()."<br>";
         //za razliku trebamo ispis prijašnjeg zapisa te ga postaviti kao objekt 
         //nova vrijednost iz obrasca će se koristiti za izračun razlike
         //trenutno nemamo prijašnjeg zapisa pa bi vrijednost trebala biti 0
         echo "Razlika:".$physical->countDifference($physical->getWeight())."<br>";
-        $trend=$physical->determine_trend($physical->getWeight(),$_POST['weight']);
-        $physical->setTrend($trend);
-        $image=$physical->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
-        echo "Trend:".$image."<br>";
-        $dbconn=new DatabaseConnection();
-        $dbconn->connectToDatabase();
-        $physical->setDateTime($dbconn->select_record_with_smallest_integer_value(Weight_stat::DATE_COLUMN_NAME,Weight_stat::TABLE_NAME,Weight_stat::INTEGER_COLUMN_FOR_SELECT_RECORD_WITH_LAST_DATE));
-        echo "Posljednji datum čiji je prvi zapis upisan u bazu:".$physical->getDateTime()."<br>";
-        $records=array();
-        $records=$dbconn->select_all_of_records_less_than_date(Weight_stat::TABLE_NAME,$_POST['date_time'],Weight_stat::DATE_COLUMN_NAME);
-        $dbconn->close_database();
+        echo "Trend:".$physical->getTrend()."<br>";
    }
 
 
