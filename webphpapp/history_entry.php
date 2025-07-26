@@ -46,6 +46,27 @@
 </div>
                                 </form>
         </div>
+ <?php 
+   include("classes/physical.php");
+   $physical = new Weight_stat(0,0.0,"");
+   if(isset($_POST['date_time']) && isset($_POST['weight'])){
+        $physical->setWeight($_POST['weight']);
+        $physical->setDateTime($_POST['date_time']);
+        echo "Datum mjerenja: ".$physical->getDateTime()."<br>";
+        echo "Težina:".$physical->getWeight()."<br>";
+        //za razliku trebamo ispis prijašnjeg zapisa te ga postaviti kao objekt 
+        //nova vrijednost iz obrasca će se koristiti za izračun razlike
+        //trenutno nemamo prijašnjeg zapisa pa bi vrijednost trebala biti 0
+        echo "Razlika:".$physical->countDifference($physical->getWeight())."<br>";
+        $trend=$physical->determine_trend($physical->getWeight(),$_POST['weight']);
+        $physical->setTrend($trend);
+        $image=$physical->setImgDependingOnTrend(Weight_stat::IMAGE_SMALL_SIZE);
+        echo "Trend:".$image."<br>";
+   }
+
+
+
+?>
 
     </div>
 

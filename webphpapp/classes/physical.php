@@ -14,10 +14,11 @@ class Weight_stat
     const TABLE_NAME="weight_daily_stats";
     const COMPARE_COLUMN_FOR_DELETION="id";
 
-    public function __construct($id,$weight)
+    public function __construct($id,$weight,$date_time)
     {
         $this->id=$id;
         $this->weight = $weight;
+        $this->date_time=$date_time;
     }  
 
     public function __destruct()
