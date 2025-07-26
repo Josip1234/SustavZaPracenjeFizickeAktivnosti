@@ -147,6 +147,21 @@ class DatabaseConnection{
         return $records;
     }
 
+     public function select_all_of_records_greather_than_date($what_table,$what_date, $comparasion_column){
+        $records=array();
+        $query="SELECT * FROM $what_table WHERE $comparasion_column > '$what_date'";
+               $statement=$this->getDbconn()->prepare($query);
+        if($statement->execute()){
+            $result=$statement->get_result();
+            while($row=$result->fetch_array()){
+                foreach ($row as $value) {
+                    $records[]=$value;
+                }
+            }
+        }
+        return $records;
+    }
+
 }
 
 
