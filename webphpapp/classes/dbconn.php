@@ -161,7 +161,44 @@ class DatabaseConnection{
         }
         return $records;
     }
+     //without bind parameters, dont know hot to send bind parameter values 
+     //as values in string
+     //we can declare another function with binding parameters 
+    public function insert_into_table($what_data,$what_table,$values){
+       $sql_query="";
+       $sql_query .="INSERT INTO ";
+       $sql_query .= $what_table." ";
+       $sql_query .= "(";
+       $index=1;
+       foreach($what_data as $value){
+        if($index==sizeof($what_data)){
+              $sql_query .= $value;
+        }else{ 
+            $sql_query .= $value.",";
+        }
+        $index++;
+       }
+       $sql_query .= ") ";
+       $sql_query .= "VALUES ";
+       $sql_query .= "(";
+       $index_val=1;
+       foreach ($values as $value) {
+        if($index_val==sizeof($values)){
+            $sql_query .= "'".$value."'";
+        }else{
+            $sql_query .= "'".$value."',";
+        }
+         $index_val++;
+       }
+       $sql_query .= ")";
+       $statement=$this->getDbconn()->prepare($sql_query);
+       if($statement->execute()){
+         echo Message::SUCCESSFULL_INSERT_IN_DATABASE;
+       }else{
+        echo Message::ERROR_INSERTING_DATA_INTO_DATABASE;
+       }
 
+    }
 }
 
 

@@ -35,15 +35,15 @@
                        
                                                      <div class="input-group mb-3">
   <span class="input-group-text">Unesi datum mjerenja:</span>
-  <input type="datetime-local" id="date_time" name="date_time" class="form-control">
+  <input type="datetime-local" id="date_time" name="date_time" class="form-control" required>
 </div>
                                   <div class="input-group mb-3">
   <span class="input-group-text">Unesi svoju trenutnu težinu:</span>
-  <input type="number" id="weight" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1" value="0.0" min="0.0">
+  <input type="number" id="weight" class="form-control"  aria-label="weight" aria-describedby="weight" name="weight" step="0.1" value="0.0" min="0.0" required>
 </div>
  <div class="input-group mb-3">
    <span class="input-group-text">Unesi trend:</span>
-<select class="form-select form-select-sm" aria-label="Small select example" name="trend">
+<select class="form-select form-select-sm" aria-label="Small select example" name="trend" required>
   <option selected>Odaberi trend</option>
   <option value="growing">Rastući</option>
   <option value="neutral">Neutralni</option>
@@ -52,7 +52,7 @@
  </div>
  <div class="input-group mb-3">
   <span class="input-group-text">Unesi razliku:</span>
-  <input type="number" id="difference" class="form-control"  aria-label="weight" aria-describedby="weight" name="difference" step="0.1" value="0.0" min="0.0">
+  <input type="number" id="difference" class="form-control"  aria-label="weight" aria-describedby="weight" name="difference" step="0.1" value="0.0" min="0.0" required>
 </div>
                          <div class="input-group mb-3">
                <input type="submit" class="btn btn-light" value="Unesi podatke" onclick="enable_button()">
@@ -62,8 +62,13 @@
  <?php 
    include("classes/physical.php");
    include("classes/dbconn.php");
+   include("classes/message.php");
 
    if(isset($_POST['date_time']) && isset($_POST['weight']) && isset($_POST['trend']) && isset($_POST['difference'])){
+
+             if($_POST['trend']=="Odaberi trend"){
+              echo Message::CHOOSE_ANOTHER_VALUE_FROM_DROPDOWN;
+             }else{
           $physical = new Weight_stat(0,$_POST['weight'],$_POST['date_time'],$_POST['trend'],$_POST['difference']);
         echo "Datum mjerenja: ".$physical->getDateTime()."<br>";
         echo "Težina:".$physical->getWeight()."<br>";
@@ -72,6 +77,14 @@
         //trenutno nemamo prijašnjeg zapisa pa bi vrijednost trebala biti 0
         echo "Razlika:".$physical->countDifference($physical->getWeight())."<br>";
         echo "Trend:".$physical->getTrend()."<br>";
+        $database_connection= new DatabaseConnection();
+        $database_connection->connectToDatabase();
+        $columns=array("weight","date_time","trend","difference");
+        $values=array($physical->getWeight(),$physical->getDateTime(),$physical->getTrend(),$physical->getDifference());
+        $param_types=array("float","string","string","float");
+        $database_connection->insert_into_table($columns,Weight_stat::TABLE_NAME,$values);
+        $database_connection->close_database();
+             }
    }
 
 

@@ -3,7 +3,7 @@ include("classes/images.php");
 class Weight_stat
 {
     private $id;
-    private $weight;
+    private  $weight;
     private $difference;
     private $trend;
     private $date_time;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2025 at 11:06 AM
+-- Generation Time: Aug 02, 2025 at 03:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -219,7 +219,31 @@ INSERT INTO `weight_daily_stats` (`id`, `date_time`, `weight`, `difference`, `tr
 (33, '2025-07-16 20:41:58', 91.7, 0.3, 'growing'),
 (34, '2025-07-17 08:39:12', 90.5, 1.2, 'falling'),
 (35, '2025-07-17 19:57:14', 91.5, 1, 'growing'),
-(36, '2025-07-18 11:05:33', 90.4, 1.1, 'falling');
+(36, '2025-07-18 11:05:33', 90.4, 1.1, 'falling'),
+(37, '2025-07-18 12:50:53', 92.3, 1.9, 'growing'),
+(38, '2025-07-18 14:24:24', 91, 1.3, 'falling'),
+(39, '2025-07-18 17:33:24', 91, 0, 'neutral'),
+(40, '2025-07-19 09:38:16', 90.1, 0.9, 'falling'),
+(41, '2025-07-20 09:29:08', 90.3, 0.2, 'growing'),
+(42, '2025-07-20 13:48:57', 91.3, 1, 'growing'),
+(43, '2025-07-20 21:41:06', 91.2, 0.1, 'falling'),
+(44, '2025-07-21 09:24:46', 90.4, 0.8, 'falling'),
+(45, '2025-07-21 13:14:59', 91, 0.6, 'growing'),
+(46, '2025-07-22 09:18:58', 89.9, 1.1, 'falling'),
+(47, '2025-07-22 13:18:23', 91.3, 1.4, 'growing'),
+(48, '2025-07-23 10:08:33', 90.1, 1.2, 'falling'),
+(49, '2025-07-23 11:32:01', 90.2, 0.1, 'growing'),
+(50, '2025-07-24 12:44:02', 91, 0.8, 'growing'),
+(51, '2025-07-25 10:24:06', 89.7, 1.3, 'falling'),
+(52, '2025-07-26 10:23:08', 90.3, 0.6, 'growing'),
+(53, '2025-07-26 13:47:41', 92.1, 1.8, 'growing'),
+(54, '2025-07-27 09:55:38', 90.5, 1.6, 'falling'),
+(55, '2025-07-28 12:42:15', 90.8, 0.3, 'growing'),
+(56, '2025-07-29 20:23:13', 91.5, 0.7, 'growing'),
+(57, '2025-07-30 22:24:51', 92.7, 1.2, 'growing'),
+(58, '2025-07-31 08:19:44', 92.3, 0.4, 'falling'),
+(59, '2025-08-01 12:52:19', 91.8, 0.5, 'falling'),
+(60, '2025-08-02 13:54:57', 91.8, 0, 'neutral');
 
 --
 -- Indexes for dumped tables
@@ -305,7 +329,7 @@ ALTER TABLE `walkingstatistika`
 -- AUTO_INCREMENT for table `weight_daily_stats`
 --
 ALTER TABLE `weight_daily_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- Constraints for dumped tables
