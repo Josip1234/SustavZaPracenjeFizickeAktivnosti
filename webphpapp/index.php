@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="history_entry.php">Unos prošlih mjerenja</a>
         </li>
+             <li class="nav-item">
+          <a class="nav-link" href="bmi.php">Provjera indeksa tjelesne mase</a>
+        </li>
       </ul>
     </div>
   </div>

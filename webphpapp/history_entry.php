@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="index.php">Povratak na početnu stranicu</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="bmi.php">Provjera indeksa tjelesne mase</a>
+        </li>
       </ul>
     </div>
   </div>
